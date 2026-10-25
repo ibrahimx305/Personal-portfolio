@@ -256,6 +256,35 @@
       .card .go:hover { text-decoration: underline; }
       .no-results { display: none; color: var(--ink2); padding: 18px 4px; }
 
+      /* ---------- country rail: swipe left / right ---------- */
+      .rail {
+        display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+        padding: 4px 2px 12px; scrollbar-width: thin; scrollbar-color: var(--green) transparent;
+        -webkit-overflow-scrolling: touch;
+      }
+      .rail:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+      .rail::-webkit-scrollbar { height: 6px; }
+      .rail::-webkit-scrollbar-thumb { background: var(--green); border-radius: 3px; }
+      .rail::-webkit-scrollbar-track { background: transparent; }
+      .rail .card { flex: 0 0 min(300px, 84vw); scroll-snap-align: start; }
+      .rail-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 2px; }
+      .rail-btn {
+        width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--line);
+        background: var(--surface); color: var(--ink); cursor: pointer; display: grid; place-items: center;
+        box-shadow: var(--shadow); flex: none; padding: 0;
+      }
+      .rail-btn:hover { border-color: var(--green); color: var(--green-deep); }
+      @media (prefers-color-scheme: dark) { .rail-btn:hover { color: var(--green); } }
+      .rail-btn svg { width: 18px; height: 18px; fill: currentColor; }
+      .rail-btn:disabled { opacity: .35; cursor: default; }
+      .rail-dots { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+      .rail-dot {
+        width: 8px; height: 8px; border-radius: 99px; border: 0; padding: 0;
+        background: var(--line); cursor: pointer; transition: width .2s ease, background .2s ease;
+      }
+      .rail-dot.active { background: var(--green); width: 22px; }
+      @media (prefers-reduced-motion: reduce) { .rail-dot { transition: none; } }
+
       /* ---------- fixtures ---------- */
       .fixtures { display: grid; gap: 10px; }
       .fixture {
@@ -601,8 +630,8 @@
       <!-- ============ CRICKET FROM EVERY COUNTRY ============ -->
       <section class="block" id="countries">
         <div class="sec-head"><span class="bar"></span><h2>Cricket From Every Country</h2></div>
-        <p class="sec-sub">Not just Pakistan — every major cricket nation's official board channel is here, and every one of them is free. The honest picture: big international matches usually sit on paid TV in most countries, but the boards themselves stream plenty free on their own channels — live domestic, women's and A-team matches, plus highlights of the internationals. Pick your country:</p>
-        <div class="grid" id="countryGrid">
+        <p class="sec-sub">Not just Pakistan — every major cricket nation's official board channel is here, and every one of them is free. The honest picture: big international matches usually sit on paid TV in most countries, but the boards themselves stream plenty free on their own channels — live domestic, women's and A-team matches, plus highlights of the internationals. Swipe left or right — or use the arrows — to browse every country:</p>
+        <div class="rail" id="countryGrid" tabindex="0" aria-label="Cricket countries — scroll left and right to browse">
           <article class="card" data-name="pakistan pcb men in green shaheens">
             <div class="card-top">
               <span class="logo-tile" style="background:#0d7a3e">PAK</span>
@@ -722,6 +751,11 @@
             <p>Zimbabwe Cricket's official channel: free live streams of the Pro50 Championship and Logan Cup, plus women's internationals and Chevrons highlights.</p>
             <a class="go" href="https://www.youtube.com/channel/UCe-5I6Hd1Oxy9xke1a_LIaQ" target="_blank" rel="noopener">Open Zimbabwe Cricket →</a>
           </article>
+        </div>
+        <div class="rail-nav">
+          <button class="rail-btn" type="button" id="countryPrev" aria-label="Scroll countries left"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+          <div class="rail-dots" id="countryDots" role="tablist" aria-label="Country position"></div>
+          <button class="rail-btn" type="button" id="countryNext" aria-label="Scroll countries right"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg></button>
         </div>
         <p class="no-results" id="countryNoResults">No country matches that search. Try “India”, “Australia” or “Windies”.</p>
         <p style="color:var(--ink2);font-size:14.5px;margin:14px 0 0">Watching a World Cup or Champions Trophy instead? Those are ICC events — check the free <a href="#channels">ICC.tv card above</a>, which streams live free in regions without a TV deal. And whichever country is playing, the free ball-by-ball scores on <a href="#channels">Cricbuzz and ESPNcricinfo</a> cover every international match.</p>
@@ -974,6 +1008,7 @@
             if (show) countryVisible++;
           });
           countryNoResults.style.display = countryVisible === 0 ? 'block' : 'none';
+          refreshRail();
           fixtures.forEach(function (fx) {
             var name = (fx.getAttribute('data-name') || '') + ' ' + fx.textContent.toLowerCase();
             fx.style.display = (!q || name.indexOf(q) !== -1) ? '' : 'none';
@@ -988,6 +1023,72 @@
             applyFilters();
           });
         });
+
+        /* Country rail: swipe / scroll left-right through every country's card,
+           like the match strip in score apps — with arrow buttons and dots.
+           refreshRail() is called from applyFilters() so search keeps working. */
+        var rail = document.getElementById('countryGrid');
+        var dotsBox = document.getElementById('countryDots');
+        var prevBtn = document.getElementById('countryPrev');
+        var nextBtn = document.getElementById('countryNext');
+        var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function visibleCountryCards() {
+          return countryCards.filter(function (c) { return c.style.display !== 'none'; });
+        }
+        function cardPos(card) {
+          return card.getBoundingClientRect().left - rail.getBoundingClientRect().left + rail.scrollLeft;
+        }
+        function refreshRail() {
+          if (!rail || !dotsBox) return;
+          var vis = visibleCountryCards();
+          dotsBox.innerHTML = '';
+          vis.forEach(function (card) {
+            var h = card.querySelector('h3');
+            var d = document.createElement('button');
+            d.type = 'button';
+            d.className = 'rail-dot';
+            d.setAttribute('aria-label', 'Go to ' + (h ? h.textContent : 'country'));
+            d.addEventListener('click', function () {
+              rail.scrollTo({ left: cardPos(card), behavior: reduceMotion ? 'auto' : 'smooth' });
+            });
+            dotsBox.appendChild(d);
+          });
+          rail.scrollLeft = 0;
+          updateRail();
+        }
+        function updateRail() {
+          if (!rail || !dotsBox) return;
+          var vis = visibleCountryCards();
+          if (!vis.length) return;
+          var idx = 0, best = Infinity;
+          vis.forEach(function (card, i) {
+            var dist = Math.abs(cardPos(card) - rail.scrollLeft);
+            if (dist < best) { best = dist; idx = i; }
+          });
+          Array.prototype.forEach.call(dotsBox.children, function (d, i) {
+            d.classList.toggle('active', i === idx);
+          });
+          if (prevBtn) prevBtn.disabled = rail.scrollLeft <= 4;
+          if (nextBtn) nextBtn.disabled = rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 4;
+        }
+        function railStep(dir) {
+          var vis = visibleCountryCards();
+          if (!vis.length) return;
+          rail.scrollBy({ left: dir * (vis[0].offsetWidth + 14), behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+        if (rail) {
+          var railTicking = false;
+          rail.addEventListener('scroll', function () {
+            if (!railTicking) {
+              railTicking = true;
+              window.requestAnimationFrame(function () { updateRail(); railTicking = false; });
+            }
+          }, { passive: true });
+          if (prevBtn) prevBtn.addEventListener('click', function () { railStep(-1); });
+          if (nextBtn) nextBtn.addEventListener('click', function () { railStep(1); });
+          window.addEventListener('resize', updateRail);
+          refreshRail();
+        }
 
         /* Countdown to the next match: Tue 27 Oct 2026, 1:00 PM PKT (UTC+5), then the final. */
         var targets = [
