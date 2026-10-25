@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="description" content="Free cricket in your browser: today's Pakistan vs England live stream links, free channels, schedule, points table and squads — no paid apps, no Pro locks." />
+    <meta name="description" content="Free cricket in your browser: today's Pakistan vs England live stream links, free channels for every cricket country, schedule, points table and squads — no paid apps, no Pro locks." />
     <meta property="og:title" content="CricPK Free — Live Cricket, 100% Free Links" />
     <meta property="og:description" content="Pakistan vs England live today: free official stream links, schedule, points table and highlights. Works in any browser." />
     <meta property="og:type" content="website" />
@@ -291,6 +291,23 @@
       details.faq summary { font-weight: 700; font-size: 16.5px; cursor: pointer; }
       details.faq p { margin: 8px 0 2px; color: var(--ink2); font-size: 15px; }
 
+      /* ---------- contact ---------- */
+      .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+      .contact-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+        padding: 20px; display: flex; flex-direction: column; gap: 6px; box-shadow: var(--shadow);
+        text-decoration: none; color: var(--ink);
+      }
+      .contact-card:hover { border-color: var(--green); }
+      .contact-card .cc-icon {
+        width: 46px; height: 46px; border-radius: 11px; display: grid; place-items: center; margin-bottom: 4px;
+      }
+      .contact-card .cc-icon svg { width: 22px; height: 22px; fill: #fff; }
+      .contact-card h3 { margin: 0; font-size: 21px; font-weight: 700; line-height: 1.1; }
+      .contact-card .cc-value { font-size: 17px; font-weight: 700; color: var(--green-deep); word-break: break-all; }
+      @media (prefers-color-scheme: dark) { .contact-card .cc-value { color: var(--green); } }
+      .contact-card p { margin: 0; color: var(--ink2); font-size: 14.5px; }
+
       footer.site { margin-top: 44px; border-top: 3px solid var(--green); background: var(--surface); }
       .foot-in { padding: 22px 0 30px; display: grid; gap: 8px; font-size: 14px; color: var(--ink2); }
       .foot-in .sources a { margin-right: 14px; }
@@ -309,15 +326,17 @@
         </a>
         <div class="searchbox">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
-          <input id="search" type="search" placeholder="Search channels &amp; matches…" aria-label="Search channels and matches" />
+          <input id="search" type="search" placeholder="Search channels, countries &amp; matches…" aria-label="Search channels, countries and matches" />
         </div>
         <nav class="main" aria-label="Main">
           <a href="#live">Watch Live</a>
           <a href="#channels">Channels</a>
+          <a href="#countries">All Countries</a>
           <a href="#schedule">Schedule</a>
           <a href="#table">Points Table</a>
           <a href="#highlights">Highlights</a>
           <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
         </nav>
       </div>
     </header>
@@ -456,6 +475,135 @@
           </article>
         </div>
         <p class="no-results" id="noResults">No channel matches that search. Try “YouTube”, “TV” or “scores”.</p>
+      </section>
+
+      <!-- ============ CRICKET FROM EVERY COUNTRY ============ -->
+      <section class="block" id="countries">
+        <div class="sec-head"><span class="bar"></span><h2>Cricket From Every Country</h2></div>
+        <p class="sec-sub">Not just Pakistan — every major cricket nation's official board channel is here, and every one of them is free. The honest picture: big international matches usually sit on paid TV in most countries, but the boards themselves stream plenty free on their own channels — live domestic, women's and A-team matches, plus highlights of the internationals. Pick your country:</p>
+        <div class="grid" id="countryGrid">
+          <article class="card" data-name="pakistan pcb men in green shaheens">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#0d7a3e">PAK</span>
+              <h3>Pakistan</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Pakistan Cricket Board's official channel: free highlights of every Pakistan match, live domestic and women's cricket, press conferences and behind-the-scenes.</p>
+            <a class="go" href="https://bit.ly/SubscribePakistanCricket" target="_blank" rel="noopener">Open PCB on YouTube →</a>
+          </article>
+
+          <article class="card" data-name="india bcci team india kohli rohit">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#1256a0">IND</span>
+              <h3>India</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The BCCI's official channel: Team India highlights, interviews and features, plus Indian domestic cricket — all free to watch on YouTube.</p>
+            <a class="go" href="https://www.youtube.com/channel/UCAqfuhLGIDCvrtp70YNRQYw" target="_blank" rel="noopener">Open BCCI on YouTube →</a>
+          </article>
+
+          <article class="card" data-name="australia cricket.com.au aussies ashes big bash">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#946b00">AUS</span>
+              <h3>Australia</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Cricket Australia's cricket.com.au channel: match highlights and interviews, and free live streams of Australian domestic cricket like the Sheffield Shield.</p>
+            <a class="go" href="https://www.youtube.com/cricketcomau" target="_blank" rel="noopener">Open Cricket Australia →</a>
+          </article>
+
+          <article class="card" data-name="england ecb three lions county championship ashes">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#1b3a6b">ENG</span>
+              <h3>England</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The ECB's official channel: England highlights from Tests, ODIs and T20s, plus County Championship and Vitality Blast action — including today's visitors.</p>
+            <a class="go" href="https://www.youtube.com/ecbcricket" target="_blank" rel="noopener">Open ECB on YouTube →</a>
+          </article>
+
+          <article class="card" data-name="south africa proteas csa">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#0a6b3a">RSA</span>
+              <h3>South Africa</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>ProteasCricket — Cricket South Africa's official channel: Proteas highlights, women's matches and free live streams of South African domestic cricket.</p>
+            <a class="go" href="https://www.youtube.com/channel/UC1xHJoiSXk4JGRlSG1XrjYg" target="_blank" rel="noopener">Open Proteas on YouTube →</a>
+          </article>
+
+          <article class="card" data-name="new zealand blackcaps nzc kiwis white ferns">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#333333">NZL</span>
+              <h3>New Zealand</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>New Zealand Cricket's home for the BLACKCAPS and White Ferns: official live scorecards and news, with A-team and domestic matches streamed free on NZC's YouTube.</p>
+            <a class="go" href="https://www.nzc.nz/international/blackcaps/" target="_blank" rel="noopener">Open BLACKCAPS home →</a>
+          </article>
+
+          <article class="card" data-name="sri lanka slc lions lanka premier league">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#8d153a">SRI</span>
+              <h3>Sri Lanka</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Sri Lanka Cricket's official channel — one of the best free ones: home series and domestic matches are regularly streamed live here, free, plus full highlights.</p>
+            <a class="go" href="https://www.youtube.com/srilankacricket" target="_blank" rel="noopener">Open Sri Lanka Cricket →</a>
+          </article>
+
+          <article class="card" data-name="bangladesh bcb tigers shakib">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#006a4e">BAN</span>
+              <h3>Bangladesh</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>“Bangladesh Cricket: The Tigers” — the BCB's official channel: live streams of domestic cricket like the NCL, Tigers highlights and player interviews, all free.</p>
+            <a class="go" href="https://www.youtube.com/c/BangladeshCricketTheTigersOfficial" target="_blank" rel="noopener">Open BCB on YouTube →</a>
+          </article>
+
+          <article class="card" data-name="west indies windies caribbean cwi">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#7b0041">WIN</span>
+              <h3>West Indies</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Windies Cricket streams Caribbean cricket live and free: the West Indies Championship, the women's T20 Blaze and regional tournaments, plus international highlights.</p>
+            <a class="go" href="https://www.youtube.com/@windiescricket" target="_blank" rel="noopener">Open Windies on YouTube →</a>
+          </article>
+
+          <article class="card" data-name="afghanistan acb rashid khan atalan">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#1d4e89">AFG</span>
+              <h3>Afghanistan</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The Afghanistan Cricket Board's official channel: Afghan Atalan highlights, live domestic cricket, training and press conferences — home of Rashid Khan's team.</p>
+            <a class="go" href="https://bit.ly/AfghanistanCricketBoard" target="_blank" rel="noopener">Open ACB on YouTube →</a>
+          </article>
+
+          <article class="card" data-name="ireland cricket ireland wolves stirling">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#169b62">IRE</span>
+              <h3>Ireland</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Cricket Ireland Live streams Irish domestic and inter-provincial cricket free on YouTube, with national-team news, interviews and highlights.</p>
+            <a class="go" href="https://www.youtube.com/CricketIrelandLive" target="_blank" rel="noopener">Open Cricket Ireland →</a>
+          </article>
+
+          <article class="card" data-name="zimbabwe zc chevrons harare">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#c8102e">ZIM</span>
+              <h3>Zimbabwe</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Zimbabwe Cricket's official channel: free live streams of the Pro50 Championship and Logan Cup, plus women's internationals and Chevrons highlights.</p>
+            <a class="go" href="https://www.youtube.com/channel/UCe-5I6Hd1Oxy9xke1a_LIaQ" target="_blank" rel="noopener">Open Zimbabwe Cricket →</a>
+          </article>
+        </div>
+        <p class="no-results" id="countryNoResults">No country matches that search. Try “India”, “Australia” or “Windies”.</p>
+        <p style="color:var(--ink2);font-size:14.5px;margin:14px 0 0">Watching a World Cup or Champions Trophy instead? Those are ICC events — check the free <a href="#channels">ICC.tv card above</a>, which streams live free in regions without a TV deal. And whichever country is playing, the free ball-by-ball scores on <a href="#channels">Cricbuzz and ESPNcricinfo</a> cover every international match.</p>
       </section>
 
       <!-- ============ SCHEDULE ============ -->
@@ -614,6 +762,10 @@
           <p>Every match in this tri-series starts at 1:00 PM Pakistan time, with the toss at 12:30 PM: Pakistan vs Sri Lanka on Tue 27 Oct, Sri Lanka vs England on Thu 29 Oct, and the final on Sat 31 Oct — all at Gaddafi Stadium, Lahore.</p>
         </details>
         <details class="faq">
+          <summary>Can I watch other countries' cricket here too — India, Australia, England…?</summary>
+          <p>Yes — the <a href="#countries">Cricket From Every Country</a> section above links all twelve major teams' official board channels: Pakistan, India, Australia, England, South Africa, New Zealand, Sri Lanka, Bangladesh, West Indies, Afghanistan, Ireland and Zimbabwe. They're all free: boards stream their domestic, women's and A-team matches live on them and post international highlights. Live internationals themselves are usually on paid TV in most countries — when a board or the ICC streams one free, it's on that country's channel or ICC.tv.</p>
+        </details>
+        <details class="faq">
           <summary>Where do I watch the next tournament for free?</summary>
           <p>The pattern is the same almost every series: check the PCB and Sports Central YouTube channels first for free streams and highlights, ICC.tv for ICC events (World Cups, Champions Trophy) in regions without a TV deal, and PTV Sports on TV. This page is rebuilt for each big series with the working free links.</p>
         </details>
@@ -622,12 +774,39 @@
           <p>Those sites get shut down mid-match, bury the video under pop-ups, and some push risky downloads. Every link here is an official channel, so the stream stays up for the whole match — and it never asks for your card or a package.</p>
         </details>
       </section>
+
+      <!-- ============ CONTACT ============ -->
+      <section class="block" id="contact">
+        <div class="sec-head"><span class="bar"></span><h2>Contact Me</h2></div>
+        <p class="sec-sub">Found a free stream that works, a link that stopped working, or a question about the page? Get in touch — every way below reaches Ibrahim Khan directly.</p>
+        <div class="contact-grid">
+          <a class="contact-card" href="https://wa.me/923002220065?text=Hi%20Ibrahim%2C%20I%27m%20visiting%20your%20CricPK%20Free%20page%20and%20wanted%20to%20contact%20you." target="_blank" rel="noopener">
+            <span class="cc-icon" style="background:#1faa55"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.83 9.83 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.82 9.82 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.89 9.88zm8.42-18.3A11.82 11.82 0 0 0 12.04 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.16-3.47-8.41z"/></svg></span>
+            <h3>WhatsApp</h3>
+            <span class="cc-value">0300 2220065</span>
+            <p>Fastest way to reach me — tap to open a WhatsApp chat.</p>
+          </a>
+          <a class="contact-card" href="mailto:ibbikhan1010@gmail.com?subject=CricPK%20Free%20page">
+            <span class="cc-icon" style="background:#0d7a3e"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></span>
+            <h3>Email</h3>
+            <span class="cc-value">ibbikhan1010@gmail.com</span>
+            <p>Tap to write an email — good for link suggestions and corrections.</p>
+          </a>
+          <a class="contact-card" href="tel:+923002220065">
+            <span class="cc-icon" style="background:#1b3a6b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02z"/></svg></span>
+            <h3>Call</h3>
+            <span class="cc-value">0300 2220065</span>
+            <p>On a phone? Tap to call directly (Pakistan number).</p>
+          </a>
+        </div>
+      </section>
     </main>
 
     <footer class="site">
       <div class="wrap foot-in">
         <span class="foot-brand">CricPK Free — Live Cricket, 100% Free Links Only</span>
         <span style="font-size:15px"><b style="color:var(--ink)">Created by Ibrahim Khan</b> — made so anyone can follow Pakistan cricket free, right in the browser.</span>
+        <span>Contact Ibrahim: <a href="mailto:ibbikhan1010@gmail.com?subject=CricPK%20Free%20page">ibbikhan1010@gmail.com</a> · <a href="https://wa.me/923002220065" target="_blank" rel="noopener">WhatsApp 0300 2220065</a> · <a href="tel:+923002220065">Call 0300 2220065</a></span>
         <span>Match facts checked Sun 25 Oct 2026 against the PCB's channels and series coverage. Scores on this page are a snapshot from during today's match — use the Cricbuzz or ESPNcricinfo links for live ball-by-ball updates.</span>
         <span class="sources">
           Sources:
@@ -642,8 +821,10 @@
       (function () {
         var search = document.getElementById('search');
         var cards = Array.prototype.slice.call(document.querySelectorAll('#channelGrid .card'));
+        var countryCards = Array.prototype.slice.call(document.querySelectorAll('#countryGrid .card'));
         var fixtures = Array.prototype.slice.call(document.querySelectorAll('#fixtureList .fixture'));
         var noResults = document.getElementById('noResults');
+        var countryNoResults = document.getElementById('countryNoResults');
         var chips = Array.prototype.slice.call(document.querySelectorAll('.fchip'));
         var activeFilter = 'all';
 
@@ -660,6 +841,14 @@
             if (show) visible++;
           });
           noResults.style.display = visible === 0 ? 'block' : 'none';
+          var countryVisible = 0;
+          countryCards.forEach(function (card) {
+            var name = (card.getAttribute('data-name') || '') + ' ' + card.textContent.toLowerCase();
+            var show = !q || name.indexOf(q) !== -1;
+            card.style.display = show ? '' : 'none';
+            if (show) countryVisible++;
+          });
+          countryNoResults.style.display = countryVisible === 0 ? 'block' : 'none';
           fixtures.forEach(function (fx) {
             var name = (fx.getAttribute('data-name') || '') + ' ' + fx.textContent.toLowerCase();
             fx.style.display = (!q || name.indexOf(q) !== -1) ? '' : 'none';
