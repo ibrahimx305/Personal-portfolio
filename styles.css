@@ -140,6 +140,25 @@ footer { text-align: center; padding: 2.5rem 5%; color: var(--muted); font-size:
 .section { opacity: 0; transform: translateY(24px); transition: opacity .6s, transform .6s; }
 .section.visible { opacity: 1; transform: none; }
 
+/* 3D EFFECTS */
+.hero-inner { perspective: 1200px; }
+.hero-photo { transform-style: preserve-3d; will-change: transform; transition: transform .25s ease-out; }
+.hero-photo img { animation: float3d 6s ease-in-out infinite; }
+@keyframes float3d {
+  0%, 100% { transform: translateZ(38px) translateY(0); }
+  50% { transform: translateZ(38px) translateY(-12px); }
+}
+.skills-grid, .projects-grid, .stats, .contact-cards { perspective: 1200px; }
+.skill-card, .project-card, .stat, .contact-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform .25s ease-out, border-color .15s;
+}
+.skill-card h4, .project-card h4 { transform: translateZ(28px); }
+.skill-card ul, .project-card p, .project-card .tags { transform: translateZ(18px); }
+.stat strong, .stat span { transform: translateZ(20px); display: block; }
+.contact-card strong, .contact-card span { transform: translateZ(18px); display: block; }
+
 /* MOBILE */
 @media (max-width: 720px) {
   .nav-links {
