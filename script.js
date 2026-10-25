@@ -164,17 +164,25 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // Theme integration — restyle the 3D scene for dark / light
     function applyBgTheme(mode) {
       if (mode === 'light') {
-        renderer.setClearColor(0xe9ebf5, 1);
-        scene.fog.color.set(0xe9ebf5);
-        stars.material.color.set(0x39406e);
+        renderer.setClearColor(0xeef0f7, 1);
+        scene.fog.color.set(0xeef0f7);
+        stars.material.color.set(0x8a93c0);
+        stars.material.opacity = 0.35;
+        core.material.color.set(0xdfe4f7);
+        core.material.opacity = 0.45;
         globe.material.color.set(0x7c3aed);
+        globe.material.opacity = 0.4;
         ring.material.color.set(0x2563eb);
-        nebulae.forEach(n => { n.material.opacity = 0.15; n.material.blending = THREE.NormalBlending; n.material.needsUpdate = true; });
+        nebulae.forEach(n => { n.material.opacity = 0.08; n.material.blending = THREE.NormalBlending; n.material.needsUpdate = true; });
       } else {
         renderer.setClearColor(0x07070f, 1);
         scene.fog.color.set(0x07070f);
         stars.material.color.set(0xffffff);
+        stars.material.opacity = 0.95;
+        core.material.color.set(0x0d0d1d);
+        core.material.opacity = 0.88;
         globe.material.color.set(0x8b5cf6);
+        globe.material.opacity = 0.5;
         ring.material.color.set(0x60a5fa);
         nebulae.forEach(n => { n.material.opacity = 0.32; n.material.blending = THREE.AdditiveBlending; n.material.needsUpdate = true; });
       }
@@ -282,7 +290,7 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
           s.y += s.speed * dt / 16.7;
           if (s.y > 1.02) { s.y = -0.02; s.x = Math.random(); }
           ctx.fillStyle = light
-            ? `rgba(45, 48, 84, ${0.35 + Math.abs(Math.sin(s.tw)) * 0.65})`
+            ? `rgba(90, 96, 140, ${(0.35 + Math.abs(Math.sin(s.tw)) * 0.65) * 0.4})`
             : `rgba(235, 240, 255, ${0.35 + Math.abs(Math.sin(s.tw)) * 0.65})`;
           ctx.beginPath(); ctx.arc(s.x * W, s.y * H, s.r, 0, Math.PI * 2); ctx.fill();
         }

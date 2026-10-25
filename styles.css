@@ -147,7 +147,7 @@ body > *:not(#bg-canvas) { position: relative; z-index: 1; }
 
 /* FLOATING THEME TOGGLE */
 .theme-toggle {
-  position: fixed; bottom: 24px; right: 24px; z-index: 200;
+  position: fixed !important; bottom: 24px; right: 24px; z-index: 999 !important;
   width: 54px; height: 54px; border-radius: 50%;
   background: var(--accent); color: #fff; font-size: 1.35rem;
   border: none; cursor: pointer; display: grid; place-items: center;
