@@ -302,6 +302,30 @@
       .rail-dot.active { background: var(--green); width: 22px; }
       @media (prefers-reduced-motion: reduce) { .rail-dot { transition: none; } }
 
+      /* ---------- match cards (score-app style, inside the swipe rail) ---------- */
+      .mcard { padding: 0; overflow: hidden; gap: 0; }
+      .mc-head { display: flex; align-items: center; gap: 8px; padding: 12px 16px 2px; }
+      .mc-series { font-size: 13.5px; color: var(--ink2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; min-width: 0; }
+      .mc-teams { display: grid; gap: 9px; padding: 10px 16px 2px; }
+      .mc-row { display: flex; align-items: center; gap: 11px; }
+      .mc-flag {
+        width: 46px; height: 30px; border-radius: 5px; flex: none;
+        display: grid; place-items: center; color: #fff;
+        font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .05em;
+      }
+      .mc-code { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 21px; letter-spacing: .03em; }
+      .mc-score { margin-left: auto; font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 23px; white-space: nowrap; }
+      .mc-score small { font-size: 13px; font-weight: 600; color: var(--ink2); }
+      .mc-row.dim { color: var(--ink2); }
+      .mc-row.dim .mc-score { font-weight: 600; }
+      .mcard .mc-status { padding: 6px 16px 12px; font-weight: 600; font-size: 15px; color: var(--green-deep); }
+      @media (prefers-color-scheme: dark) { .mcard .mc-status { color: var(--green); } }
+      .mcard .mc-status.soon { color: var(--gold); }
+      .mc-foot { background: var(--surface2); border-top: 1px solid var(--line); padding: 9px 16px; text-align: right; }
+      .mc-foot a { font-weight: 700; font-size: 13.5px; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; color: var(--ink2); }
+      .mc-foot a:hover { color: var(--green-deep); text-decoration: underline; }
+      @media (prefers-color-scheme: dark) { .mc-foot a:hover { color: var(--green); } }
+
       /* ---------- fixtures ---------- */
       .fixtures { display: grid; gap: 10px; }
       .fixture {
@@ -423,6 +447,7 @@
         </div>
         <nav class="main" aria-label="Main">
           <a href="#live">Watch Live</a>
+          <a href="#matches">Matches</a>
           <a href="#channels">Channels</a>
           <a href="#countries">All Countries</a>
           <a href="#schedule">Schedule</a>
@@ -477,6 +502,109 @@
             <a class="btn btn-ghost" href="https://www.youtube.com/watch?v=jb818F1nwgI" target="_blank" rel="noopener">Pre-Match Show</a>
           </div>
           <p class="hero-note">Today's match is finished — Pakistan chased 242 with one wicket to spare and top the table with three wins from three. The next match is Pakistan vs Sri Lanka on Tuesday 27 October, free on <b>PTV Sports TV</b> in Pakistan and on the official Sports Central YouTube stream in most other countries — YouTube blocks that stream <b>inside Pakistan</b>, where the rights sit with the paid apps. Tap “Cricbuzz Scorecard” for the full card from today.</p>
+        </div>
+      </section>
+
+      <!-- ============ MATCH CARDS — SWIPE ============ -->
+      <section class="block" id="matches">
+        <div class="sec-head"><span class="bar"></span><h2>Every Match — Swipe the Cards</h2></div>
+        <p class="sec-sub">Every match of the tri-series as its own card, the way the score apps show them — swipe left and right through the whole series: the results so far, the next match and the final. Tap <b>Scorecard</b> on today's match for the full card.</p>
+        <div class="rail" id="matchRail" tabindex="0" aria-label="All matches — scroll left and right to browse">
+          <article class="card mcard" data-name="match 1 pakistan sri lanka rawalpindi result salman ali agha">
+            <div class="mc-head">
+              <span class="mc-series">Match 1 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-done">Result</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0d7a3e">PAK</span><span class="mc-code">PAK</span><span class="mc-score">305 <small>all out</small></span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#8d153a">SL</span><span class="mc-code">SL</span><span class="mc-score">268 <small>all out</small></span></div>
+            </div>
+            <p class="mc-status">Sun 18 Oct · Rawalpindi — Pakistan won by 37 runs · Salman Ali Agha 107</p>
+            <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
+          </article>
+
+          <article class="card mcard" data-name="match 2 pakistan england rawalpindi result arafat minhas">
+            <div class="mc-head">
+              <span class="mc-series">Match 2 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-done">Result</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0d7a3e">PAK</span><span class="mc-code">PAK</span><span class="mc-score">302/9</span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#1b3a6b">ENG</span><span class="mc-code">ENG</span><span class="mc-score">215 <small>all out</small></span></div>
+            </div>
+            <p class="mc-status">Tue 20 Oct · Rawalpindi — Pakistan won by 87 runs · Arafat Minhas 6/40 &amp; 59</p>
+            <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
+          </article>
+
+          <article class="card mcard" data-name="match 3 sri lanka england rawalpindi result harry brook">
+            <div class="mc-head">
+              <span class="mc-series">Match 3 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-done">Result</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#8d153a">SL</span><span class="mc-code">SL</span><span class="mc-score">430/8</span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#1b3a6b">ENG</span><span class="mc-code">ENG</span><span class="mc-score">429/4</span></div>
+            </div>
+            <p class="mc-status">Thu 22 Oct · Rawalpindi — Sri Lanka won by 2 wickets · Harry Brook 202</p>
+            <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
+          </article>
+
+          <article class="card mcard" data-name="match 4 pakistan england lahore result shadab khan duckett">
+            <div class="mc-head">
+              <span class="mc-series">Match 4 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-done">Result</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0d7a3e">PAK</span><span class="mc-code">PAK</span><span class="mc-score">243/9</span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#1b3a6b">ENG</span><span class="mc-code">ENG</span><span class="mc-score">241 <small>all out</small></span></div>
+            </div>
+            <p class="mc-status">Sun 25 Oct · Lahore — Pakistan won by 1 wicket · Shadab Khan 113*</p>
+            <div class="mc-foot"><a href="https://www.cricbuzz.com/live-cricket-scores/170733/pak-vs-eng-4th-match-pakistan-odi-tri-series-2026" target="_blank" rel="noopener">Scorecard →</a></div>
+          </article>
+
+          <article class="card mcard" data-name="match 5 pakistan sri lanka lahore next match">
+            <div class="mc-head">
+              <span class="mc-series">Match 5 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-next">Next Match</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0d7a3e">PAK</span><span class="mc-code">PAK</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#8d153a">SL</span><span class="mc-code">SL</span></div>
+            </div>
+            <p class="mc-status soon">Tue 27 Oct · 1:00 PM PKT · Gaddafi Stadium, Lahore — Pakistan are already in the final</p>
+            <div class="mc-foot"><a href="#channels">Free Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-name="match 6 sri lanka england lahore upcoming">
+            <div class="mc-head">
+              <span class="mc-series">Match 6 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#8d153a">SL</span><span class="mc-code">SL</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#1b3a6b">ENG</span><span class="mc-code">ENG</span></div>
+            </div>
+            <p class="mc-status soon">Thu 29 Oct · 1:00 PM PKT · Lahore — England likely need this one to stay alive for the final</p>
+            <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
+          </article>
+
+          <article class="card mcard" data-name="final lahore tri series pakistan qualified">
+            <div class="mc-head">
+              <span class="mc-series">Final · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-next">Final</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0d7a3e">PAK</span><span class="mc-code">PAK</span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#666666">TBC</span><span class="mc-code">Opponent TBC</span></div>
+            </div>
+            <p class="mc-status soon">Sat 31 Oct · 1:00 PM PKT · Lahore — Pakistan have qualified; Sri Lanka and England fight for the other spot</p>
+            <div class="mc-foot"><a href="#table">Points Table →</a></div>
+          </article>
+        </div>
+        <div class="rail-nav">
+          <button class="rail-btn" type="button" id="matchPrev" aria-label="Scroll matches left"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+          <div class="rail-dots" id="matchDots" role="tablist" aria-label="Match position"></div>
+          <button class="rail-btn" type="button" id="matchNext" aria-label="Scroll matches right"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg></button>
         </div>
       </section>
 
@@ -998,6 +1126,7 @@
         var search = document.getElementById('search');
         var cards = Array.prototype.slice.call(document.querySelectorAll('#channelGrid .card'));
         var countryCards = Array.prototype.slice.call(document.querySelectorAll('#countryGrid .card'));
+        var matchCards = Array.prototype.slice.call(document.querySelectorAll('#matchRail .mcard'));
         var fixtures = Array.prototype.slice.call(document.querySelectorAll('#fixtureList .fixture'));
         var noResults = document.getElementById('noResults');
         var countryNoResults = document.getElementById('countryNoResults');
@@ -1025,6 +1154,10 @@
             if (show) countryVisible++;
           });
           countryNoResults.style.display = countryVisible === 0 ? 'block' : 'none';
+          matchCards.forEach(function (card) {
+            var name = (card.getAttribute('data-name') || '') + ' ' + card.textContent.toLowerCase();
+            card.style.display = (!q || name.indexOf(q) !== -1) ? '' : 'none';
+          });
           refreshRail();
           fixtures.forEach(function (fx) {
             var name = (fx.getAttribute('data-name') || '') + ' ' + fx.textContent.toLowerCase();
@@ -1041,70 +1174,84 @@
           });
         });
 
-        /* Country rail: swipe / scroll left-right through every country's card,
-           like the match strip in score apps — with arrow buttons and dots.
+        /* Swipe rails: the match cards and the country cards both scroll
+           left-right like the match strip in score apps — finger swipe,
+           arrow buttons and position dots. One controller drives each rail;
            refreshRail() is called from applyFilters() so search keeps working. */
-        var rail = document.getElementById('countryGrid');
-        var dotsBox = document.getElementById('countryDots');
-        var prevBtn = document.getElementById('countryPrev');
-        var nextBtn = document.getElementById('countryNext');
         var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        function visibleCountryCards() {
-          return countryCards.filter(function (c) { return c.style.display !== 'none'; });
-        }
-        function cardPos(card) {
-          return card.getBoundingClientRect().left - rail.getBoundingClientRect().left + rail.scrollLeft;
-        }
-        function refreshRail() {
-          if (!rail || !dotsBox) return;
-          var vis = visibleCountryCards();
-          dotsBox.innerHTML = '';
-          vis.forEach(function (card) {
-            var h = card.querySelector('h3');
-            var d = document.createElement('button');
-            d.type = 'button';
-            d.className = 'rail-dot';
-            d.setAttribute('aria-label', 'Go to ' + (h ? h.textContent : 'country'));
-            d.addEventListener('click', function () {
-              rail.scrollTo({ left: cardPos(card), behavior: reduceMotion ? 'auto' : 'smooth' });
+        function createRail(railEl, dotsBox, prevBtn, nextBtn, allCards) {
+          if (!railEl || !dotsBox) return { refresh: function () {}, update: function () {} };
+          function visible() {
+            return allCards.filter(function (c) { return c.style.display !== 'none'; });
+          }
+          function pos(card) {
+            return card.getBoundingClientRect().left - railEl.getBoundingClientRect().left + railEl.scrollLeft;
+          }
+          function update() {
+            var vis = visible();
+            if (!vis.length) return;
+            var idx = 0, best = Infinity;
+            vis.forEach(function (card, i) {
+              var dist = Math.abs(pos(card) - railEl.scrollLeft);
+              if (dist < best) { best = dist; idx = i; }
             });
-            dotsBox.appendChild(d);
-          });
-          rail.scrollLeft = 0;
-          updateRail();
-        }
-        function updateRail() {
-          if (!rail || !dotsBox) return;
-          var vis = visibleCountryCards();
-          if (!vis.length) return;
-          var idx = 0, best = Infinity;
-          vis.forEach(function (card, i) {
-            var dist = Math.abs(cardPos(card) - rail.scrollLeft);
-            if (dist < best) { best = dist; idx = i; }
-          });
-          Array.prototype.forEach.call(dotsBox.children, function (d, i) {
-            d.classList.toggle('active', i === idx);
-          });
-          if (prevBtn) prevBtn.disabled = rail.scrollLeft <= 4;
-          if (nextBtn) nextBtn.disabled = rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 4;
-        }
-        function railStep(dir) {
-          var vis = visibleCountryCards();
-          if (!vis.length) return;
-          rail.scrollBy({ left: dir * (vis[0].offsetWidth + 14), behavior: reduceMotion ? 'auto' : 'smooth' });
-        }
-        if (rail) {
-          var railTicking = false;
-          rail.addEventListener('scroll', function () {
-            if (!railTicking) {
-              railTicking = true;
-              window.requestAnimationFrame(function () { updateRail(); railTicking = false; });
+            Array.prototype.forEach.call(dotsBox.children, function (d, i) {
+              d.classList.toggle('active', i === idx);
+            });
+            if (prevBtn) prevBtn.disabled = railEl.scrollLeft <= 4;
+            if (nextBtn) nextBtn.disabled = railEl.scrollLeft >= railEl.scrollWidth - railEl.clientWidth - 4;
+          }
+          function refresh() {
+            dotsBox.innerHTML = '';
+            visible().forEach(function (card) {
+              var h = card.querySelector('h3, .mc-series');
+              var d = document.createElement('button');
+              d.type = 'button';
+              d.className = 'rail-dot';
+              d.setAttribute('aria-label', 'Go to ' + (h ? h.textContent : 'card'));
+              d.addEventListener('click', function () {
+                railEl.scrollTo({ left: pos(card), behavior: reduceMotion ? 'auto' : 'smooth' });
+              });
+              dotsBox.appendChild(d);
+            });
+            railEl.scrollLeft = 0;
+            update();
+          }
+          function step(dir) {
+            var vis = visible();
+            if (!vis.length) return;
+            railEl.scrollBy({ left: dir * (vis[0].offsetWidth + 14), behavior: reduceMotion ? 'auto' : 'smooth' });
+          }
+          var ticking = false;
+          railEl.addEventListener('scroll', function () {
+            if (!ticking) {
+              ticking = true;
+              window.requestAnimationFrame(function () { update(); ticking = false; });
             }
           }, { passive: true });
-          if (prevBtn) prevBtn.addEventListener('click', function () { railStep(-1); });
-          if (nextBtn) nextBtn.addEventListener('click', function () { railStep(1); });
-          window.addEventListener('resize', updateRail);
-          refreshRail();
+          if (prevBtn) prevBtn.addEventListener('click', function () { step(-1); });
+          if (nextBtn) nextBtn.addEventListener('click', function () { step(1); });
+          window.addEventListener('resize', update);
+          refresh();
+          return { refresh: refresh, update: update };
+        }
+        var countryRail = createRail(
+          document.getElementById('countryGrid'),
+          document.getElementById('countryDots'),
+          document.getElementById('countryPrev'),
+          document.getElementById('countryNext'),
+          countryCards
+        );
+        var matchRail = createRail(
+          document.getElementById('matchRail'),
+          document.getElementById('matchDots'),
+          document.getElementById('matchPrev'),
+          document.getElementById('matchNext'),
+          matchCards
+        );
+        function refreshRail() {
+          countryRail.refresh();
+          matchRail.refresh();
         }
 
         /* Countdown to the next match: Tue 27 Oct 2026, 1:00 PM PKT (UTC+5), then the final. */
