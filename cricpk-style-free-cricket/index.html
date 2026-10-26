@@ -330,6 +330,27 @@
       .mc-foot a:hover { color: var(--green-deep); text-decoration: underline; }
       @media (prefers-color-scheme: dark) { .mc-foot a:hover { color: var(--green); } }
 
+      /* match card buttons: Watch Live / Scores on every card */
+      .mc-actions { display: flex; gap: 8px; padding: 2px 16px 12px; margin-top: auto; }
+      .mc-btn {
+        flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+        font: inherit; font-weight: 700; font-size: 14.5px; cursor: pointer;
+        padding: 9px 8px; border-radius: 10px;
+      }
+      .mc-btn svg { width: 16px; height: 16px; fill: currentColor; flex: none; }
+      .mc-btn-watch { background: var(--green); border: 1.5px solid var(--green); color: #fff; }
+      .mc-btn-watch:hover { background: var(--green-deep); border-color: var(--green-deep); }
+      .mc-btn-scores { background: var(--surface2); border: 1.5px solid var(--line); color: var(--ink); }
+      .mc-btn-scores:hover { border-color: var(--green); color: var(--green-deep); }
+      @media (prefers-color-scheme: dark) { .mc-btn-scores:hover { color: var(--green); } }
+
+      /* match Watch Live view: channels grouped by country */
+      .mw-group-head {
+        display: flex; align-items: center; gap: 10px;
+        font-family: "Playfair Display", Georgia, serif; font-size: 21px; font-weight: 700;
+        margin: 20px 0 10px;
+      }
+
       /* ---------- match detail: tap a card, open the full match view ---------- */
       .rail .mcard { cursor: pointer; }
       .md-backdrop {
@@ -660,7 +681,7 @@
       <!-- ============ MATCH CARDS — SWIPE ============ -->
       <section class="block" id="matches">
         <div class="sec-head"><span class="bar"></span><h2>Live &amp; Upcoming — Matches All Over the World</h2></div>
-        <p class="sec-sub">Live and upcoming cricket from all over the world in one swipe strip — Pakistan, India, Zimbabwe, New Zealand, Australia, South Africa, Bangladesh, the West Indies, Afghanistan, Sri Lanka and England, all mixed together. Swipe left and right, or use the arrows, to browse every match. Tap any card to open its full match view — info, score, scorecard, squads and highlights — just like the score apps.</p>
+        <p class="sec-sub">Live and upcoming cricket from all over the world in one swipe strip — Pakistan, India, Zimbabwe, New Zealand, Australia, South Africa, Bangladesh, the West Indies, Afghanistan, Sri Lanka and England, all mixed together. Swipe left and right, or use the arrows, to browse every match. Tap any card to open its full match view — info, score, scorecard, squads and highlights — just like the score apps. Every card also has two buttons: <b>Watch Live</b> opens the free channels for both teams in that match, and <b>Scores</b> opens the same match view.</p>
         <div class="rail" id="matchRail" tabindex="0" aria-label="Live and upcoming matches all over the world — scroll left and right to browse">
           <article class="card mcard" data-mid="indw2" data-name="india women zimbabwe women 2nd odi vadodara result harmanpreet kaur deepti sharma world">
             <div class="mc-head">
@@ -1494,6 +1515,20 @@
       </div>
     </div>
 
+    <!-- ============ MATCH WATCH LIVE — a match card's Watch Live button: both teams' free channels ============ -->
+    <div class="md-backdrop" id="mwBackdrop" hidden>
+      <div class="md-sheet" role="dialog" aria-modal="true" aria-labelledby="mwTitle">
+        <div class="md-head">
+          <button class="md-back" type="button" id="mwBack" aria-label="Back to all matches"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></button>
+          <div class="md-titlebox">
+            <div class="md-title" id="mwTitle">Watch Live</div>
+            <div class="md-subtitle" id="mwSub"></div>
+          </div>
+        </div>
+        <div class="md-body" id="mwBody"></div>
+      </div>
+    </div>
+
     <footer class="site">
       <div class="wrap foot-in">
         <span class="foot-brand">Live Cricket — 100% Free Links Only</span>
@@ -1996,7 +2031,7 @@
             openMatch(card);
           });
           card.addEventListener('keydown', function (e) {
-            if ((e.key === 'Enter' || e.key === ' ') && !(e.target.closest && e.target.closest('a'))) {
+            if ((e.key === 'Enter' || e.key === ' ') && !(e.target.closest && e.target.closest('a, button'))) {
               e.preventDefault();
               openMatch(card);
             }
@@ -2077,6 +2112,17 @@
         var curCountry = null;
         var ctChoiceWatch = document.getElementById('ctChoiceWatch');
         var ctChoiceScores = document.getElementById('ctChoiceScores');
+        /* One channel card, exactly as the country Watch Live view shows it —
+           same name, same honest labels, same link. Used by both the country
+           panel and the match cards' Watch Live view. */
+        function chanCardHtml(c) {
+          var internal = c.u.charAt(0) === '#';
+          return '<a class="ct-chan" href="' + esc(c.u) + '"' + (internal ? ' data-goto="' + esc(c.u) + '"' : ' target="_blank" rel="noopener"') + '>' +
+            '<div class="card-top"><span class="logo-tile" style="background:' + esc(c.bg) + '">' + esc(c.tile) + '</span><h4>' + esc(c.name) + '</h4><span class="tag tag-free">' + esc(c.tag) + '</span></div>' +
+            (c.note ? '<span class="blocked-note">' + esc(c.note) + '</span>' : '') +
+            '<p>' + esc(c.desc) + '</p>' +
+            '<span class="go">' + esc(c.go) + '</span></a>';
+        }
         function renderCountryScores() {
           var name = curCountry.name;
           var found = countryMatches(curCountry.code);
@@ -2116,14 +2162,7 @@
           ctTitle.textContent = name + ' \u2014 Watch Live';
           ctSub.textContent = chans.length + (chans.length === 1 ? ' free channel' : ' free channels') + ' for ' + name + ' \u2014 every one free and official';
           var h = '<p class="md-note" style="margin:0 0 14px">Multiple channels carry ' + esc(name) + ' free \u2014 pick the one that works where you are. Each is an official channel already listed on this page.</p>';
-          chans.forEach(function (c) {
-            var internal = c.u.charAt(0) === '#';
-            h += '<a class="ct-chan" href="' + esc(c.u) + '"' + (internal ? ' data-goto="' + esc(c.u) + '"' : ' target="_blank" rel="noopener"') + '>' +
-              '<div class="card-top"><span class="logo-tile" style="background:' + esc(c.bg) + '">' + esc(c.tile) + '</span><h4>' + esc(c.name) + '</h4><span class="tag tag-free">' + esc(c.tag) + '</span></div>' +
-              (c.note ? '<span class="blocked-note">' + esc(c.note) + '</span>' : '') +
-              '<p>' + esc(c.desc) + '</p>' +
-              '<span class="go">' + esc(c.go) + '</span></a>';
-          });
+          chans.forEach(function (c) { h += chanCardHtml(c); });
           h += '<div class="md-actions"><button class="md-act" type="button" id="ctScoresBtn">See ' + esc(name) + '\u2019s scores instead</button></div>';
           ctBody.innerHTML = h;
           ctBody.scrollTop = 0;
@@ -2176,6 +2215,79 @@
               e.preventDefault();
               openCountry(card);
             }
+          });
+        });
+
+        /* Match card buttons — every card in the world rail gets Watch Live
+           and Scores. Scores opens the match's full match view (the same as
+           tapping the card). Watch Live opens the free channels for BOTH
+           teams in that match, grouped by country, reusing the exact
+           COUNTRY_CHANNELS mapping behind the country view's Watch Live tab.
+           Each button stops propagation, so it never also fires the card's
+           own tap behaviour, and the card tap never fires the buttons. */
+        var TEAM_COUNTRY = { PAK: 'PAK', ENG: 'ENG', SL: 'SRI', IND: 'IND', INDW: 'IND', NZ: 'NZL', RSA: 'RSA', AUS: 'AUS', BAN: 'BAN', WI: 'WIN', AFG: 'AFG', ZIM: 'ZIM', ZIMW: 'ZIM' };
+        var COUNTRY_NAMES = { PAK: 'Pakistan', IND: 'India', AUS: 'Australia', ENG: 'England', RSA: 'South Africa', NZL: 'New Zealand', SRI: 'Sri Lanka', BAN: 'Bangladesh', WIN: 'West Indies', AFG: 'Afghanistan', IRE: 'Ireland', ZIM: 'Zimbabwe' };
+        var mwBackdrop = document.getElementById('mwBackdrop');
+        var mwBody = document.getElementById('mwBody');
+        var mwTitle = document.getElementById('mwTitle');
+        var mwSub = document.getElementById('mwSub');
+        var lastWatchCard = null;
+        function openMatchWatch(card) {
+          var m = readCard(card);
+          lastWatchCard = card;
+          mwTitle.textContent = m.teams.map(function (t) { return t.flagText; }).join(' v ') + ' — Watch Live';
+          mwSub.textContent = m.series;
+          var h = '<p class="md-note" style="margin:0 0 4px">Free channels for both teams in this match — every one official and already listed on this page, with the same honest labels. Pick the channel that works where you are.</p>';
+          var seen = {};
+          var unknown = false;
+          m.teams.forEach(function (t) {
+            var key = TEAM_COUNTRY[t.flagText];
+            if (!key) { unknown = true; return; }
+            if (seen[key]) return;
+            seen[key] = true;
+            h += '<h3 class="mw-group-head">' + flagHtml(t) + esc(COUNTRY_NAMES[key] || t.code) + '</h3>';
+            (COUNTRY_CHANNELS[key] || []).forEach(function (c) { h += chanCardHtml(c); });
+          });
+          if (unknown) h += '<p class="md-note">One team in this match is still to be confirmed — their free channels will appear here once they are known.</p>';
+          mwBody.innerHTML = h;
+          mwBody.scrollTop = 0;
+          mwBackdrop.hidden = false;
+          document.body.style.overflow = 'hidden';
+          document.getElementById('mwBack').focus();
+        }
+        function closeMatchWatch() {
+          mwBackdrop.hidden = true;
+          document.body.style.overflow = '';
+          if (lastWatchCard) lastWatchCard.focus();
+        }
+        document.getElementById('mwBack').addEventListener('click', closeMatchWatch);
+        mwBackdrop.addEventListener('click', function (e) { if (e.target === mwBackdrop) closeMatchWatch(); });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !mwBackdrop.hidden) closeMatchWatch();
+        });
+        mwBody.addEventListener('click', function (e) {
+          var link = e.target.closest ? e.target.closest('[data-goto]') : null;
+          if (!link) return;
+          e.preventDefault();
+          var target = document.querySelector(link.getAttribute('data-goto'));
+          closeMatchWatch();
+          if (target) target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+        });
+        matchCards.forEach(function (card) {
+          var teamsLabel = Array.prototype.map.call(card.querySelectorAll('.mc-flag'), function (f) { return f.textContent.trim(); }).join(' v ');
+          var actions = document.createElement('div');
+          actions.className = 'mc-actions';
+          actions.innerHTML =
+            '<button class="mc-btn mc-btn-watch" type="button" aria-label="Watch live — free channels for ' + teamsLabel + '"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Watch Live</button>' +
+            '<button class="mc-btn mc-btn-scores" type="button" aria-label="Scores — open the full match view for ' + teamsLabel + '"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h3.2v9H4zM10.4 4h3.2v15h-3.2zM16.8 13H20v6h-3.2z"/></svg>Scores</button>';
+          card.insertBefore(actions, card.querySelector('.mc-foot'));
+          actions.querySelector('.mc-btn-watch').addEventListener('click', function (e) {
+            e.stopPropagation();
+            openMatchWatch(card);
+          });
+          actions.querySelector('.mc-btn-scores').addEventListener('click', function (e) {
+            e.stopPropagation();
+            openMatch(card);
           });
         });
 
