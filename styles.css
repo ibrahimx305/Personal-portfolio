@@ -163,6 +163,8 @@ body > *:not(#bg-canvas) { position: relative; z-index: 1; }
 
 /* FOOTER */
 footer { text-align: center; padding: 2.5rem 5%; color: var(--muted); font-size: .88rem; border-top: 1px solid var(--border); }
+footer a { color: var(--accent); font-weight: 600; }
+footer a:hover { text-decoration: underline; }
 
 /* REVEAL */
 .section { opacity: 0; transform: translateY(24px); transition: opacity .6s, transform .6s; }
