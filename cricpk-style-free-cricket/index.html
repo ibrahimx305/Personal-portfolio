@@ -301,6 +301,10 @@
       }
       .rail-dot.active { background: var(--green); width: 22px; }
       @media (prefers-reduced-motion: reduce) { .rail-dot { transition: none; } }
+      .rail-subhead { display: flex; align-items: center; gap: 10px; margin: 28px 0 2px; }
+      .rail-subhead .bar { width: 30px; height: 4px; border-radius: 3px; background: var(--gold); flex: none; }
+      .rail-subhead h3 { margin: 0; font-size: 23px; font-weight: 700; text-transform: uppercase; }
+      .rail-sub { color: var(--ink2); margin: 0 0 10px; max-width: 760px; font-size: 15px; }
 
       /* ---------- match cards (score-app style, inside the swipe rail) ---------- */
       .mcard { padding: 0; overflow: hidden; gap: 0; }
@@ -508,7 +512,7 @@
       <!-- ============ MATCH CARDS — SWIPE ============ -->
       <section class="block" id="matches">
         <div class="sec-head"><span class="bar"></span><h2>Every Match — Swipe the Cards</h2></div>
-        <p class="sec-sub">Every match of the tri-series as its own card, the way the score apps show them — swipe left and right through the whole series: the results so far, the next match and the final. Tap <b>Scorecard</b> on today's match for the full card.</p>
+        <p class="sec-sub">Not just Pakistan — every match as its own card, the way the score apps show them. The first swipe row is the whole tri-series: the results so far, the next match and the final. Below it, a second row — <b>Around the World</b> — carries the other countries playing this week: India, Zimbabwe, New Zealand, Australia, South Africa, Bangladesh, the West Indies and Afghanistan. Swipe left and right through both rows.</p>
         <div class="rail" id="matchRail" tabindex="0" aria-label="All matches — scroll left and right to browse">
           <article class="card mcard" data-name="match 1 pakistan sri lanka rawalpindi result salman ali agha">
             <div class="mc-head">
@@ -605,6 +609,106 @@
           <button class="rail-btn" type="button" id="matchPrev" aria-label="Scroll matches left"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
           <div class="rail-dots" id="matchDots" role="tablist" aria-label="Match position"></div>
           <button class="rail-btn" type="button" id="matchNext" aria-label="Scroll matches right"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg></button>
+        </div>
+
+        <div class="rail-subhead"><span class="bar"></span><h3>Around the World — Every Country</h3></div>
+        <p class="rail-sub">The rest of this week's international cricket, in the same swipe cards — a result from India, and the series running now in New Zealand, South Africa, the UAE and Bangladesh.</p>
+        <div class="rail" id="worldRail" tabindex="0" aria-label="Matches around the world — scroll left and right to browse">
+          <article class="card mcard" data-name="india women zimbabwe women 2nd odi vadodara result harmanpreet kaur deepti sharma world">
+            <div class="mc-head">
+              <span class="mc-series">2nd ODI · Zimbabwe Women tour of India 2026</span>
+              <span class="tag badge-done">Result</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">INDW</span><span class="mc-code">INDW</span><span class="mc-score">328/6 <small>(50)</small></span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#ba0c2f">ZIMW</span><span class="mc-code">ZIMW</span><span class="mc-score">207 <small>all out (48.5)</small></span></div>
+            </div>
+            <p class="mc-status">Sun 25 Oct · Vadodara — India Women won by 121 runs · Harmanpreet Kaur 126 &amp; Deepti Sharma 106* · India take the series 2–0</p>
+            <div class="mc-foot"><a href="https://www.cricbuzz.com/live-cricket-scores/155562/2nd-odi-zimbabwe-women-tour-of-india-2026" target="_blank" rel="noopener">Scorecard →</a></div>
+          </article>
+
+          <article class="card mcard" data-name="new zealand india 3rd t20i wellington upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">3rd T20I · India tour of New Zealand 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#23272e">NZ</span><span class="mc-code">NZ</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">IND</span><span class="mc-code">IND</span></div>
+            </div>
+            <p class="mc-status soon">Tue 27 Oct · Wellington — India's long tour runs to 1 Dec: 5 T20Is, then 5 ODIs and 2 Tests</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-name="south africa australia 3rd test newlands cape town upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">3rd Test · Australia tour of South Africa 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#007749">RSA</span><span class="mc-code">RSA</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#b8860b">AUS</span><span class="mc-code">AUS</span></div>
+            </div>
+            <p class="mc-status soon">Tue 27 – Sat 31 Oct · Newlands, Cape Town — the third and final Test of Australia's tour</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-name="afghanistan zimbabwe uae series tests t20i upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">Afghanistan vs Zimbabwe · UAE Series</span>
+              <span class="tag badge-next">Series</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0f766e">AFG</span><span class="mc-code">AFG</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#ba0c2f">ZIM</span><span class="mc-code">ZIM</span></div>
+            </div>
+            <p class="mc-status soon">Starts Tue 27 Oct · UAE — 2 Tests &amp; 3 T20Is between the two sides, running to 17 Nov</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-name="india women zimbabwe women 3rd odi vadodara upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">3rd ODI · Zimbabwe Women tour of India 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">INDW</span><span class="mc-code">INDW</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#ba0c2f">ZIMW</span><span class="mc-code">ZIMW</span></div>
+            </div>
+            <p class="mc-status soon">Wed 28 Oct · 2:00 PM IST (1:30 PM PKT) · BCA Stadium, Vadodara — India lead 2–0 and hunt a clean sweep in the final ODI</p>
+            <div class="mc-foot"><a href="#channels">Free Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-name="bangladesh west indies 1st test dhaka upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">1st Test · West Indies tour of Bangladesh 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#006a4e">BAN</span><span class="mc-code">BAN</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#5e2590">WI</span><span class="mc-code">WI</span></div>
+            </div>
+            <p class="mc-status soon">Wed 28 Oct – Sun 1 Nov · Shere Bangla Stadium, Dhaka — the first of 2 Tests</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-name="new zealand india 4th t20i auckland eden park upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">4th T20I · India tour of New Zealand 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#23272e">NZ</span><span class="mc-code">NZ</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">IND</span><span class="mc-code">IND</span></div>
+            </div>
+            <p class="mc-status soon">Fri 30 Oct · Eden Park, Auckland — the T20I series moves north before the ODIs begin</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+        </div>
+        <div class="rail-nav">
+          <button class="rail-btn" type="button" id="worldPrev" aria-label="Scroll world matches left"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+          <div class="rail-dots" id="worldDots" role="tablist" aria-label="World match position"></div>
+          <button class="rail-btn" type="button" id="worldNext" aria-label="Scroll world matches right"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg></button>
         </div>
       </section>
 
@@ -1111,12 +1215,13 @@
         <span class="foot-brand">Live Cricket — 100% Free Links Only</span>
         <span style="font-size:15px"><b style="color:var(--ink)">Created by Ibrahim Khan</b> — made so anyone can follow Pakistan cricket free, right in the browser.</span>
         <span>Contact Ibrahim: <a href="mailto:ibbikhan1010@gmail.com?subject=Live%20Cricket%20page">ibbikhan1010@gmail.com</a> · <a href="https://wa.me/923002220065" target="_blank" rel="noopener">WhatsApp 0300 2220065</a> · <a href="tel:+923002220065">Call 0300 2220065</a></span>
-        <span>Match facts checked Sun 25 Oct 2026 against the PCB's channels and series coverage. Scores on this page are the final result from today's match — use the Cricbuzz or ESPNcricinfo links for the full scorecard.</span>
+        <span>Match facts checked Sun 25 Oct 2026 against the PCB's channels and series coverage; the Around the World scores and fixtures were checked Mon 26 Oct 2026 against Cricbuzz and ESPNcricinfo. Scores on this page are the final result from today's match — use the Cricbuzz or ESPNcricinfo links for the full scorecard.</span>
         <span class="sources">
           Sources:
           <a href="https://www.pcb.com.pk/" target="_blank" rel="noopener">PCB — pcb.com.pk</a>
           <a href="https://www.geosuper.tv/latest/60529-commentary-panel-for-pakistan-hosted-odi-tri-series-unveiled" target="_blank" rel="noopener">Geo Super — series guide</a>
           <a href="https://sportimeline.com/blog/pakistan-odi-tri-series-2026-schedule-squads/" target="_blank" rel="noopener">Sportimeline — schedule &amp; squads</a>
+          <a href="https://www.cricinfo.com/series/zimbabwe-women-in-india-2026-27-1535648/india-women-vs-zimbabwe-women-2nd-odi-1535656/match-report" target="_blank" rel="noopener">ESPNcricinfo — India Women v Zimbabwe Women, 2nd ODI report</a>
         </span>
       </div>
     </footer>
@@ -1127,6 +1232,7 @@
         var cards = Array.prototype.slice.call(document.querySelectorAll('#channelGrid .card'));
         var countryCards = Array.prototype.slice.call(document.querySelectorAll('#countryGrid .card'));
         var matchCards = Array.prototype.slice.call(document.querySelectorAll('#matchRail .mcard'));
+        var worldCards = Array.prototype.slice.call(document.querySelectorAll('#worldRail .mcard'));
         var fixtures = Array.prototype.slice.call(document.querySelectorAll('#fixtureList .fixture'));
         var noResults = document.getElementById('noResults');
         var countryNoResults = document.getElementById('countryNoResults');
@@ -1155,6 +1261,10 @@
           });
           countryNoResults.style.display = countryVisible === 0 ? 'block' : 'none';
           matchCards.forEach(function (card) {
+            var name = (card.getAttribute('data-name') || '') + ' ' + card.textContent.toLowerCase();
+            card.style.display = (!q || name.indexOf(q) !== -1) ? '' : 'none';
+          });
+          worldCards.forEach(function (card) {
             var name = (card.getAttribute('data-name') || '') + ' ' + card.textContent.toLowerCase();
             card.style.display = (!q || name.indexOf(q) !== -1) ? '' : 'none';
           });
@@ -1249,9 +1359,17 @@
           document.getElementById('matchNext'),
           matchCards
         );
+        var worldRail = createRail(
+          document.getElementById('worldRail'),
+          document.getElementById('worldDots'),
+          document.getElementById('worldPrev'),
+          document.getElementById('worldNext'),
+          worldCards
+        );
         function refreshRail() {
           countryRail.refresh();
           matchRail.refresh();
+          worldRail.refresh();
         }
 
         /* Countdown to the next match: Tue 27 Oct 2026, 1:00 PM PKT (UTC+5), then the final. */
