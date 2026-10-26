@@ -503,6 +503,25 @@
       }
       @media (prefers-color-scheme: dark) { .ct-chan .go { color: var(--green); } }
 
+      /* ---------- in-page YouTube player ---------- */
+      .yt-frame {
+        position: relative; width: 100%; aspect-ratio: 16 / 9;
+        background: #000; border-radius: 12px; overflow: hidden;
+        border: 1px solid var(--line);
+      }
+      .yt-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+      .yt-note { color: var(--ink2); font-size: 14.5px; margin: 12px 0 0; line-height: 1.5; }
+      .yt-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+
+      /* WTC standings: more columns than the tri-series table, so tighter cells */
+      table.pts-compact { font-size: 14px; }
+      table.pts-compact th, table.pts-compact td { padding: 8px 4px; }
+      table.pts-compact th { font-size: 11.5px; }
+      @media (max-width: 480px) {
+        table.pts-compact { font-size: 13px; }
+        table.pts-compact th, table.pts-compact td { padding: 7px 3px; }
+      }
+
       /* ---------- fixtures ---------- */
       .fixtures { display: grid; gap: 10px; }
       .fixture {
@@ -629,6 +648,7 @@
           <a href="#countries">All Countries</a>
           <a href="#schedule">Schedule</a>
           <a href="#table">Points Table</a>
+          <a href="#wtc">WTC Table</a>
           <a href="#highlights">Highlights</a>
           <a href="#app">Get the App</a>
           <a href="#faq">FAQ</a>
@@ -924,7 +944,7 @@
             </div>
             <span class="blocked-note">Blocked in Pakistan — plays outside Pakistan only</span>
             <p>PCB's official YouTube streaming partner. Today's Pakistan vs England match streamed here free in most countries. Inside Pakistan this stream is blocked: there, watch free on PTV Sports on TV below.</p>
-            <a class="go" href="https://www.youtube.com/watch?v=Ni-4S8Dlm-A" target="_blank" rel="noopener">Open the live stream (outside Pakistan) →</a>
+            <a class="go" href="https://www.youtube.com/watch?v=Ni-4S8Dlm-A" target="_blank" rel="noopener" data-yt="UC-fzWbU1zavz77kP1gPPdSg" data-ytmode="live" data-ytname="Sports Central — Live">Open the live stream (outside Pakistan) →</a>
           </article>
 
           <article class="card" data-cat="live highlights" data-name="pakistan cricket pcb youtube highlights live domestic">
@@ -934,7 +954,7 @@
               <span class="tag tag-free">Free</span>
             </div>
             <p>The PCB's own channel: free highlights of every Pakistan match, plus live streams of domestic and women's cricket, interviews and press conferences.</p>
-            <a class="go" href="https://bit.ly/SubscribePakistanCricket" target="_blank" rel="noopener">Open the channel →</a>
+            <a class="go" href="https://bit.ly/SubscribePakistanCricket" target="_blank" rel="noopener" data-yt="UCiWrjBhlICf_L_RK5y6Vrxw" data-ytmode="live" data-ytname="Pakistan Cricket — YouTube">Open the channel →</a>
           </article>
 
           <article class="card" data-cat="live" data-name="icc tv icc.tv world cup free sign up">
@@ -994,7 +1014,7 @@
               <span class="tag tag-free">Free</span>
             </div>
             <p>Cricbuzz's official YouTube channel (3M+ subscribers): live match-day shows, expert analysis with voices like Harsha Bhogle, highlights and interviews — the video side of the same Cricbuzz whose free live scores are linked above.</p>
-            <a class="go" href="https://www.youtube.com/@cricbuzz" target="_blank" rel="noopener">Open Cricbuzz on YouTube →</a>
+            <a class="go" href="https://www.youtube.com/@cricbuzz" target="_blank" rel="noopener" data-yt="UCSRQXk5yErn4e14vN76upOw" data-ytmode="uploads" data-ytname="Cricbuzz — YouTube">Open Cricbuzz on YouTube →</a>
           </article>
 
           <article class="card" data-cat="live highlights" data-name="willow cricket willow by cricbuzz youtube usa canada free usa matches">
@@ -1004,7 +1024,7 @@
               <span class="tag tag-free">Free</span>
             </div>
             <p>Willow by Cricbuzz's official YouTube channel — North America's home of cricket. Willow streams Team USA matches live and free here (all four USA group games at the T20 World Cup 2026 were free on this channel), plus highlights from world cricket all year.</p>
-            <a class="go" href="https://www.youtube.com/@WillowCricket" target="_blank" rel="noopener">Open Willow on YouTube →</a>
+            <a class="go" href="https://www.youtube.com/@WillowCricket" target="_blank" rel="noopener" data-yt="UC2V_LHwvaNS2XWZ5l8x3jLQ" data-ytmode="live" data-ytname="Willow Cricket — YouTube">Open Willow on YouTube →</a>
           </article>
 
           <article class="card" data-cat="highlights" data-name="icc youtube channel world cup highlights classic matches">
@@ -1014,7 +1034,7 @@
               <span class="tag tag-free">Free</span>
             </div>
             <p>The ICC's own YouTube channel (13M+ subscribers): official highlights from every World Cup and Champions Trophy match, classic full matches, player features and behind-the-scenes — all free, straight from the world governing body.</p>
-            <a class="go" href="https://www.youtube.com/@ICC" target="_blank" rel="noopener">Open ICC on YouTube →</a>
+            <a class="go" href="https://www.youtube.com/@ICC" target="_blank" rel="noopener" data-yt="UCt2JXOLNxqry7B_4rRZME3Q" data-ytmode="live" data-ytname="ICC — YouTube">Open ICC on YouTube →</a>
           </article>
 
           <article class="card" data-cat="highlights" data-name="espncricinfo youtube cricinfo channel analysis highlights shows">
@@ -1034,7 +1054,7 @@
               <span class="tag tag-free">Free</span>
             </div>
             <p>Subscribe free so the next match stream finds you: PSL, Pakistan internationals, domestic cricket, highlights and behind-the-scenes from Pakistan sport.</p>
-            <a class="go" href="https://bit.ly/SubscribeSportsCentral" target="_blank" rel="noopener">Subscribe free →</a>
+            <a class="go" href="https://bit.ly/SubscribeSportsCentral" target="_blank" rel="noopener" data-yt="UC-fzWbU1zavz77kP1gPPdSg" data-ytmode="live" data-ytname="Sports Central — Full Channel">Subscribe free →</a>
           </article>
 
           <article class="card" data-cat="live tv" data-name="tvnz plus new zealand blackcaps white ferns super smash free to air duke">
@@ -1066,7 +1086,7 @@
               <span class="tag tag-free">Free</span>
             </div>
             <p>Bangladesh's official digital rights holder (about 8.9M subscribers): Bangladesh home series stream live and free on this YouTube channel, with highlights after every match. If Bangladesh are playing at home, this is the free place to watch.</p>
-            <a class="go" href="https://www.youtube.com/c/RabbitholebdSports/" target="_blank" rel="noopener">Open Rabbitholebd Sports →</a>
+            <a class="go" href="https://www.youtube.com/c/RabbitholebdSports/" target="_blank" rel="noopener" data-yt="UCNU0Vv6U1xZS82cIQrgDeqw" data-ytmode="live" data-ytname="Rabbitholebd Sports — YouTube">Open Rabbitholebd Sports →</a>
           </article>
 
           <article class="card" data-cat="live tv" data-name="sabc sport sabc plus south africa proteas free to air">
@@ -1139,6 +1159,56 @@
             </div>
             <p>Independent free online ball-by-ball commentary — not a board or broadcaster channel, but a fan-run service that is deliberately not geo-blocked, with listeners in around 200 countries. A fun, informal alternative call of big matches, free from anywhere.</p>
             <a class="go" href="https://guerillacricket.com/" target="_blank" rel="noopener">Listen at guerillacricket.com →</a>
+          </article>
+
+          <article class="card" data-cat="highlights" data-name="ipl indian premier league youtube highlights india league t20">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#1e3a8a">IPL</span>
+              <h3>IPL — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The Indian Premier League's official YouTube channel: free highlights of every IPL match, the biggest sixes and wickets, interviews and behind-the-scenes. Free highlights — full live IPL matches are not streamed free here.</p>
+            <a class="go" href="https://www.youtube.com/@IPLT20Official" target="_blank" rel="noopener">Open IPL on YouTube →</a>
+          </article>
+
+          <article class="card" data-cat="highlights" data-name="psl pakistan super league youtube highlights league t20 hbl">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#0b6e4f">PSL</span>
+              <h3>Pakistan Super League — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The official HBL PSL YouTube channel: free highlights of every PSL match, plus shows, player features and classic games from Pakistan's T20 league. Free highlights and shows — not full live matches.</p>
+            <a class="go" href="https://www.youtube.com/@pakistansuperleagueofficial" target="_blank" rel="noopener" data-yt="UCpNzXJ5jpcJojC5mHQvGA8w" data-ytmode="uploads" data-ytname="Pakistan Super League — YouTube">Open PSL on YouTube →</a>
+          </article>
+
+          <article class="card" data-cat="highlights" data-name="big bash league bbl youtube highlights australia league t20">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#b45309">BBL</span>
+              <h3>Big Bash League — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The Big Bash's official YouTube channel (“The Big Bash”): free highlights of every BBL and WBBL match, top catches and big hits from Australia's T20 league. Free highlights — not full live matches.</p>
+            <a class="go" href="https://www.youtube.com/@BigBash" target="_blank" rel="noopener">Open Big Bash on YouTube →</a>
+          </article>
+
+          <article class="card" data-cat="highlights" data-name="the hundred youtube highlights england league 100 ball ecb">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#5b21b6">100</span>
+              <h3>The Hundred — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The official YouTube channel of England's 100-ball league: free highlights of every men's and women's match, top plays and player stories. Free highlights — not full live matches.</p>
+            <a class="go" href="https://www.youtube.com/@thehundred" target="_blank" rel="noopener">Open The Hundred on YouTube →</a>
+          </article>
+
+          <article class="card" data-cat="highlights" data-name="sony sports network youtube highlights broadcaster asia cup india">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#1f2937">SONY</span>
+              <h3>Sony Sports Network — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Sony Pictures Networks' official sports channel: free cricket highlights in English and Hindi — Asia Cup, India tours and more from Sony's broadcasts. Free highlights — not full live matches.</p>
+            <a class="go" href="https://www.youtube.com/@SonySportsNetwork" target="_blank" rel="noopener" data-yt="UC_WKb6N9iTGc77hxwXLDrbA" data-ytmode="uploads" data-ytname="Sony Sports Network — YouTube">Open Sony Sports Network on YouTube →</a>
           </article>
         </div>
         <p class="no-results" id="noResults">No channel matches that search. Try “YouTube”, “TV” or “scores”.</p>
@@ -1381,6 +1451,30 @@
         </div>
       </section>
 
+      <!-- ============ WORLD TEST CHAMPIONSHIP TABLE ============ -->
+      <section class="block" id="wtc">
+        <div class="sec-head"><span class="bar"></span><h2>World Test Championship — Points Table</h2></div>
+        <p class="sec-sub">The other countries' table: the ICC World Test Championship 2025–27 standings for all nine Test nations — the same teams whose Test matches appear in the world strip at the top of this page. Standings as of <b>23 October 2026</b>, after South Africa beat Australia in Gqeberha. Teams are ranked by PCT — the percentage of available points they have won — and the top two reach the 2027 final.</p>
+        <div class="panel">
+          <h3>ICC World Test Championship 2025–27</h3>
+          <table class="pts pts-compact">
+            <thead><tr><th class="num">#</th><th>Team</th><th class="num">Played</th><th class="num">Won</th><th class="num">Lost</th><th class="num">Drawn</th><th class="num">Points</th><th class="num">PCT</th></tr></thead>
+            <tbody>
+              <tr><td class="num">1</td><td class="team-name">Australia</td><td class="num">12</td><td class="num">9</td><td class="num">3</td><td class="num">0</td><td class="num"><b>108</b></td><td class="num"><b>75.00</b></td></tr>
+              <tr><td class="num">2</td><td class="team-name">New Zealand</td><td class="num">6</td><td class="num">4</td><td class="num">1</td><td class="num">1</td><td class="num"><b>52</b></td><td class="num"><b>72.22</b></td></tr>
+              <tr><td class="num">3</td><td class="team-name">South Africa</td><td class="num">6</td><td class="num">4</td><td class="num">2</td><td class="num">0</td><td class="num"><b>48</b></td><td class="num"><b>66.67</b></td></tr>
+              <tr><td class="num">4</td><td class="team-name">Bangladesh</td><td class="num">6</td><td class="num">3</td><td class="num">2</td><td class="num">1</td><td class="num"><b>40</b></td><td class="num"><b>55.56</b></td></tr>
+              <tr><td class="num">5</td><td class="team-name">India</td><td class="num">11</td><td class="num">5</td><td class="num">4</td><td class="num">2</td><td class="num"><b>68</b></td><td class="num"><b>51.52</b></td></tr>
+              <tr><td class="num">6</td><td class="team-name">England</td><td class="num">16</td><td class="num">7</td><td class="num">8</td><td class="num">1</td><td class="num"><b>74</b></td><td class="num"><b>38.54</b></td></tr>
+              <tr><td class="num">7</td><td class="team-name">Sri Lanka</td><td class="num">6</td><td class="num">1</td><td class="num">2</td><td class="num">3</td><td class="num"><b>24</b></td><td class="num"><b>33.33</b></td></tr>
+              <tr><td class="num">8</td><td class="team-name">West Indies</td><td class="num">12</td><td class="num">2</td><td class="num">8</td><td class="num">2</td><td class="num"><b>30</b></td><td class="num"><b>20.83</b></td></tr>
+              <tr><td class="num">9</td><td class="team-name">Pakistan</td><td class="num">9</td><td class="num">2</td><td class="num">7</td><td class="num">0</td><td class="num"><b>5</b></td><td class="num"><b>4.63</b></td></tr>
+            </tbody>
+          </table>
+          <p class="note">A win is worth 12 points, a draw 4. Points shown already include slow-over-rate deductions — England −14, Pakistan −19 and West Indies −2 — which is why Pakistan, whose two wins earned 24 points, sit on just 5. Next WTC matches: South Africa vs Australia, the series decider in Cape Town from 27 October, and Bangladesh vs West Indies in Mirpur from 28 October. Standings checked 26 October 2026 against Wisden, Sportstar and the ICC coverage of the championship.</p>
+        </div>
+      </section>
+
       <!-- ============ HIGHLIGHTS ============ -->
       <section class="block" id="highlights">
         <div class="sec-head"><span class="bar"></span><h2>Highlights &amp; Videos — Free</h2></div>
@@ -1530,6 +1624,26 @@
           </div>
         </div>
         <div class="md-body" id="mwBody"></div>
+      </div>
+    </div>
+
+    <!-- ============ YOUTUBE PLAYER — plays a channel right inside this page ============ -->
+    <div class="md-backdrop" id="ytBackdrop" hidden>
+      <div class="md-sheet" role="dialog" aria-modal="true" aria-labelledby="ytTitle">
+        <div class="md-head">
+          <button class="md-back" type="button" id="ytBack" aria-label="Close the player"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></button>
+          <div class="md-titlebox">
+            <div class="md-title" id="ytTitle">Watch</div>
+            <div class="md-subtitle" id="ytSub">Playing here on Live Cricket</div>
+          </div>
+        </div>
+        <div class="md-body">
+          <div class="yt-frame"><iframe id="ytFrame" title="YouTube player" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+          <p class="yt-note" id="ytNote"></p>
+          <div class="yt-actions">
+            <a class="md-act" id="ytOpen" href="#" target="_blank" rel="noopener">Open on YouTube →</a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -2048,57 +2162,57 @@
            the strip; tapping a match opens its full match view, and Back
            from there returns to the country's list. */
         var COUNTRY_TEAMS = { PAK: ['PAK'], IND: ['IND', 'INDW'], AUS: ['AUS'], ENG: ['ENG'], RSA: ['RSA'], NZL: ['NZ'], SRI: ['SL'], BAN: ['BAN'], WIN: ['WI'], AFG: ['AFG'], IRE: [], ZIM: ['ZIM', 'ZIMW'] };
-        /* Watch Live: each country's free channels, taken only from the
-           cards already on this page (the Free Channels grid and the
-           country cards) — same names, same honest labels, same links.
-           u is the card's own link; a '#…' link stays on this page. */
+        /* Watch Live: each country's free YouTube channels only (the user's
+           "show only youtube" rule) — no TV, radio or streaming sites here;
+           those stay in the Free Channels grid. Entries carry the channel's
+           name, honest labels and link from the cards already on this page.
+           yt/ytm wire a channel into the in-page player: ytm 'live' embeds
+           the channel's live stream, 'uploads' its latest videos. Only
+           channels whose YouTube channel ID is verified get yt; the rest
+           simply open on YouTube, as before. u is the card's own link; a
+           '#…' link stays on this page. */
         var COUNTRY_CHANNELS = {
           PAK: [
-            { tile: 'SC', bg: '#c92424', name: 'Sports Central', tag: 'Free', note: 'Blocked in Pakistan — plays outside Pakistan only', desc: 'PCB\u2019s official YouTube streaming partner. Pakistan matches streamed here free in most countries; inside Pakistan this stream is blocked.', go: 'Open the live stream (outside Pakistan) \u2192', u: 'https://www.youtube.com/watch?v=Ni-4S8Dlm-A' },
-            { tile: 'PCB', bg: '#0d7a3e', name: 'Pakistan Cricket — YouTube', tag: 'Free', desc: 'The PCB\u2019s own channel: free highlights of every Pakistan match, plus live streams of domestic and women\u2019s cricket, interviews and press conferences.', go: 'Open the channel \u2192', u: 'https://bit.ly/SubscribePakistanCricket' },
-            { tile: 'PTV', bg: '#7a4d00', name: 'PTV Sports — TV', tag: 'Free TV', desc: 'Pakistan\u2019s free-to-air sports channel. If you\u2019re near a TV, PTV Sports is the no-cost way to follow Pakistan cricket — no app, no account, no package.', go: 'How to watch on TV \u2192', u: '#faq' }
+            { tile: 'SC', bg: '#c92424', name: 'Sports Central', tag: 'Free', note: 'Blocked in Pakistan — plays outside Pakistan only', desc: 'PCB\u2019s official YouTube streaming partner. Pakistan matches streamed here free in most countries; inside Pakistan this stream is blocked.', go: 'Open the live stream (outside Pakistan) \u2192', u: 'https://www.youtube.com/watch?v=Ni-4S8Dlm-A', yt: 'UC-fzWbU1zavz77kP1gPPdSg', ytm: 'live' },
+            { tile: 'PCB', bg: '#0d7a3e', name: 'Pakistan Cricket — YouTube', tag: 'Free', desc: 'The PCB\u2019s own channel: free highlights of every Pakistan match, plus live streams of domestic and women\u2019s cricket, interviews and press conferences.', go: 'Open the channel \u2192', u: 'https://bit.ly/SubscribePakistanCricket', yt: 'UCiWrjBhlICf_L_RK5y6Vrxw', ytm: 'live' },
+            { tile: 'PSL', bg: '#0b6e4f', name: 'Pakistan Super League — YouTube', tag: 'Free', desc: 'Pakistan\u2019s league channel: the official HBL PSL YouTube channel — free highlights of every PSL match, plus shows and player features. Highlights and shows, not full live matches.', go: 'Open PSL on YouTube \u2192', u: 'https://www.youtube.com/@pakistansuperleagueofficial', yt: 'UCpNzXJ5jpcJojC5mHQvGA8w', ytm: 'uploads' }
           ],
           IND: [
-            { tile: 'DD', bg: '#f26522', name: 'DD Sports — India', tag: 'Free TV · India', desc: 'India\u2019s free-to-air sports channel on DD Free Dish: India matches, plus the semi-finals and finals of major ICC events, are shown free by law under the Mandatory Sharing Act. TV only.', go: 'How free-to-air TV works \u2192', u: '#faq' },
-            { tile: 'IND', bg: '#1256a0', name: 'BCCI — India on YouTube', tag: 'Free', desc: 'The BCCI\u2019s official channel: Team India highlights, interviews and features, plus Indian domestic cricket — all free to watch on YouTube.', go: 'Open BCCI on YouTube \u2192', u: 'https://www.youtube.com/channel/UCAqfuhLGIDCvrtp70YNRQYw' }
+            { tile: 'IND', bg: '#1256a0', name: 'BCCI — India on YouTube', tag: 'Free', desc: 'The BCCI\u2019s official channel: Team India highlights, interviews and features, plus Indian domestic cricket — all free to watch on YouTube.', go: 'Open BCCI on YouTube \u2192', u: 'https://www.youtube.com/channel/UCAqfuhLGIDCvrtp70YNRQYw', yt: 'UCAqfuhLGIDCvrtp70YNRQYw', ytm: 'uploads' },
+            { tile: 'IPL', bg: '#1e3a8a', name: 'IPL — YouTube', tag: 'Free', desc: 'India\u2019s league channel: the Indian Premier League\u2019s official YouTube channel — free highlights of every IPL match, the biggest sixes and wickets, interviews and behind-the-scenes. Highlights, not full live matches.', go: 'Open IPL on YouTube \u2192', u: 'https://www.youtube.com/@IPLT20Official' }
           ],
           AUS: [
-            { tile: '7+', bg: '#e4002b', name: '7plus — Australia', tag: 'Free · AUS', note: 'Plays inside Australia only', desc: 'Channel 7\u2019s free streaming service: Australia\u2019s home men\u2019s Tests, women\u2019s internationals and many Big Bash matches live free on TV and on 7plus with a free account — no subscription.', go: 'Open 7plus \u2192', u: 'https://7plus.com.au/' },
             { tile: 'AUS', bg: '#946b00', name: 'Cricket Australia — YouTube', tag: 'Free', desc: 'Cricket Australia\u2019s cricket.com.au channel: match highlights and interviews, and free live streams of Australian domestic cricket like the Sheffield Shield.', go: 'Open Cricket Australia \u2192', u: 'https://www.youtube.com/cricketcomau' },
-            { tile: 'ABC', bg: '#0047bb', name: 'ABC Grandstand — Radio', tag: 'Free Radio', desc: 'Australia\u2019s free ball-by-ball radio institution: Tests, ODIs and T20Is called live and ad-free on ABC Sport, via the free ABC listen app and the ABC Sport website.', go: 'Get the free ABC listen app \u2192', u: 'https://play.google.com/store/apps/details?id=com.thisisaim.abcradio&hl=en_AU' }
+            { tile: 'BBL', bg: '#b45309', name: 'Big Bash League — YouTube', tag: 'Free', desc: 'Australia\u2019s league channel: the Big Bash\u2019s official YouTube channel — free highlights of every BBL and WBBL match, top catches and big hits. Highlights, not full live matches.', go: 'Open Big Bash on YouTube \u2192', u: 'https://www.youtube.com/@BigBash' }
           ],
           ENG: [
-            { tile: 'ENG', bg: '#1b3a6b', name: 'ECB — England on YouTube', tag: 'Free', desc: 'The ECB\u2019s official channel: England highlights from Tests, ODIs and T20s, plus County Championship and Vitality Blast action.', go: 'Open ECB on YouTube \u2192', u: 'https://www.youtube.com/ecbcricket' },
-            { tile: 'TMS', bg: '#7a1fa2', name: 'BBC Test Match Special — Radio', tag: 'Free Radio · UK', desc: 'The most famous commentary team in cricket: free ball-by-ball radio of England matches and The Hundred on BBC Sounds and BBC Radio 5 Sports Extra.', go: 'Listen to Test Match Special \u2192', u: 'http://www.bbc.co.uk/programmes/p02nrsl2' },
-            { tile: 'BBC', bg: '#b8000f', name: 'BBC Sport — The Hundred', tag: 'Free · UK', note: 'Plays inside the UK only', desc: '16 matches from The Hundred live free every season on BBC Two and BBC iPlayer — men\u2019s and women\u2019s double-headers including the finals — plus free highlights of England\u2019s home internationals. UK only.', go: 'See the BBC\u2019s free coverage \u2192', u: 'https://www.ecb.co.uk/news/4257648' }
+            { tile: 'ENG', bg: '#1b3a6b', name: 'ECB — England on YouTube', tag: 'Free', desc: 'The ECB\u2019s official channel: England highlights from Tests, ODIs and T20s, plus County Championship and Vitality Blast action.', go: 'Open ECB on YouTube \u2192', u: 'https://www.youtube.com/ecbcricket', yt: 'UCz1D0n02BR3t51KuBOPmfTQ', ytm: 'uploads' },
+            { tile: '100', bg: '#5b21b6', name: 'The Hundred — YouTube', tag: 'Free', desc: 'England\u2019s league channel: the official YouTube channel of the 100-ball league — free highlights of every men\u2019s and women\u2019s match, top plays and player stories. Highlights, not full live matches.', go: 'Open The Hundred on YouTube \u2192', u: 'https://www.youtube.com/@thehundred' }
           ],
           RSA: [
-            { tile: 'SA', bg: '#007a4d', name: 'SABC Sport / SABC+ — South Africa', tag: 'Free · RSA', note: 'Plays inside South Africa only', desc: 'Cricket South Africa\u2019s official free-to-air home: Proteas home matches live free on SABC 2/3 TV, at sabcsport.com and in the SABC+ app — inside South Africa only.', go: 'Open SABC Sport \u2192', u: 'https://sabcsport.com/cricket/news/sabc-to-broadcast-proteas-men-and-women-inbound-tours' },
-            { tile: 'RSA', bg: '#0a6b3a', name: 'ProteasCricket — YouTube', tag: 'Free', desc: 'ProteasCricket — Cricket South Africa\u2019s official channel: Proteas highlights, women\u2019s matches and free live streams of South African domestic cricket.', go: 'Open Proteas on YouTube \u2192', u: 'https://www.youtube.com/channel/UC1xHJoiSXk4JGRlSG1XrjYg' }
+            { tile: 'RSA', bg: '#0a6b3a', name: 'ProteasCricket — YouTube', tag: 'Free', desc: 'ProteasCricket — Cricket South Africa\u2019s official channel: Proteas highlights, women\u2019s matches and free live streams of South African domestic cricket.', go: 'Open Proteas on YouTube \u2192', u: 'https://www.youtube.com/channel/UC1xHJoiSXk4JGRlSG1XrjYg', yt: 'UC1xHJoiSXk4JGRlSG1XrjYg', ytm: 'uploads' }
           ],
           NZL: [
-            { tile: 'NZ+', bg: '#111111', name: 'TVNZ+ — New Zealand', tag: 'Free · NZ', note: 'Plays inside New Zealand only', desc: 'New Zealand\u2019s free-to-air home of cricket: BLACKCAPS, White Ferns and Super Smash matches live free on TVNZ 1, Duke TV and the TVNZ+ app — no subscription.', go: 'Open TVNZ+ Sport \u2192', u: 'https://www.tvnz.co.nz/sport' },
-            { tile: 'NZL', bg: '#333333', name: 'New Zealand Cricket — BLACKCAPS', tag: 'Free', desc: 'New Zealand Cricket\u2019s home for the BLACKCAPS and White Ferns: official live scorecards and news, with A-team and domestic matches streamed free on NZC\u2019s YouTube.', go: 'Open BLACKCAPS home \u2192', u: 'https://www.nzc.nz/international/blackcaps/' }
+            { tile: 'NZC', bg: '#111111', name: 'New Zealand Cricket — YouTube', tag: 'Free', desc: 'NZC\u2019s official YouTube channel: free live streams of A-team and domestic matches — Super Smash, Plunket Shield and more — plus BLACKCAPS and White Ferns highlights.', go: 'Watch NZC on YouTube \u2192', u: 'https://www.youtube.com/channel/UCuKowzPg2-A0FcmyPa3yWug', yt: 'UCuKowzPg2-A0FcmyPa3yWug', ytm: 'live' }
           ],
           SRI: [
             { tile: 'SRI', bg: '#8d153a', name: 'Sri Lanka Cricket — YouTube', tag: 'Free', desc: 'Sri Lanka Cricket\u2019s official channel — one of the best free ones: home series and domestic matches are regularly streamed live here, free, plus full highlights.', go: 'Open Sri Lanka Cricket \u2192', u: 'https://www.youtube.com/srilankacricket' }
           ],
           BAN: [
-            { tile: 'RH', bg: '#006a4e', name: 'Rabbitholebd Sports — YouTube', tag: 'Free', desc: 'Bangladesh\u2019s official digital rights holder: Bangladesh home series stream live and free on this YouTube channel, with highlights after every match. If Bangladesh are playing at home, this is the free place to watch.', go: 'Open Rabbitholebd Sports \u2192', u: 'https://www.youtube.com/c/RabbitholebdSports/' },
+            { tile: 'RH', bg: '#006a4e', name: 'Rabbitholebd Sports — YouTube', tag: 'Free', desc: 'Bangladesh\u2019s official digital rights holder: Bangladesh home series stream live and free on this YouTube channel, with highlights after every match. If Bangladesh are playing at home, this is the free place to watch.', go: 'Open Rabbitholebd Sports \u2192', u: 'https://www.youtube.com/c/RabbitholebdSports/', yt: 'UCNU0Vv6U1xZS82cIQrgDeqw', ytm: 'live' },
             { tile: 'BAN', bg: '#006a4e', name: 'Bangladesh Cricket: The Tigers — YouTube', tag: 'Free', desc: 'The BCB\u2019s official channel: live streams of domestic cricket like the NCL, Tigers highlights and player interviews, all free.', go: 'Open BCB on YouTube \u2192', u: 'https://www.youtube.com/c/BangladeshCricketTheTigersOfficial' }
           ],
           WIN: [
             { tile: 'WIN', bg: '#7b0041', name: 'Windies Cricket — YouTube', tag: 'Free', desc: 'Windies Cricket streams Caribbean cricket live and free: the West Indies Championship, the women\u2019s T20 Blaze and regional tournaments, plus international highlights.', go: 'Open Windies on YouTube \u2192', u: 'https://www.youtube.com/@windiescricket' }
           ],
           AFG: [
-            { tile: 'RTA', bg: '#0f766e', name: 'RTA Sport — Afghanistan', tag: 'Free', desc: 'Afghanistan\u2019s state broadcaster: Afghanistan matches live free on RTA Sport TV, and the free RTA app streams the channel live on your phone.', go: 'Get the free RTA app \u2192', u: 'https://play.google.com/store/apps/details?id=com.rta.media&hl=en_IN' },
             { tile: 'AFG', bg: '#1d4e89', name: 'Afghanistan Cricket Board — YouTube', tag: 'Free', desc: 'The Afghanistan Cricket Board\u2019s official channel: Afghan Atalan highlights, live domestic cricket, training and press conferences — home of Rashid Khan\u2019s team.', go: 'Open ACB on YouTube \u2192', u: 'https://bit.ly/AfghanistanCricketBoard' }
           ],
           IRE: [
             { tile: 'IRE', bg: '#169b62', name: 'Cricket Ireland Live — YouTube', tag: 'Free', desc: 'Cricket Ireland Live streams Irish domestic and inter-provincial cricket free on YouTube, with national-team news, interviews and highlights.', go: 'Open Cricket Ireland \u2192', u: 'https://www.youtube.com/CricketIrelandLive' }
           ],
           ZIM: [
-            { tile: 'ZIM', bg: '#c8102e', name: 'Zimbabwe Cricket — YouTube', tag: 'Free', desc: 'Zimbabwe Cricket\u2019s official channel: free live streams of the Pro50 Championship and Logan Cup, plus women\u2019s internationals and Chevrons highlights.', go: 'Open Zimbabwe Cricket \u2192', u: 'https://www.youtube.com/channel/UCe-5I6Hd1Oxy9xke1a_LIaQ' }
+            { tile: 'ZIM', bg: '#c8102e', name: 'Zimbabwe Cricket — YouTube', tag: 'Free', desc: 'Zimbabwe Cricket\u2019s official channel: free live streams of the Pro50 Championship and Logan Cup, plus women\u2019s internationals and Chevrons highlights.', go: 'Open Zimbabwe Cricket \u2192', u: 'https://www.youtube.com/channel/UCe-5I6Hd1Oxy9xke1a_LIaQ', yt: 'UCe-5I6Hd1Oxy9xke1a_LIaQ', ytm: 'uploads' }
           ]
         };
         var ctBackdrop = document.getElementById('ctBackdrop');
@@ -2121,7 +2235,8 @@
            panel and the match cards' Watch Live view. */
         function chanCardHtml(c) {
           var internal = c.u.charAt(0) === '#';
-          return '<a class="ct-chan" href="' + esc(c.u) + '"' + (internal ? ' data-goto="' + esc(c.u) + '"' : ' target="_blank" rel="noopener"') + '>' +
+          var ytAttrs = c.yt ? ' data-yt="' + esc(c.yt) + '" data-ytmode="' + esc(c.ytm || 'live') + '" data-ytname="' + esc(c.name) + '"' : '';
+          return '<a class="ct-chan" href="' + esc(c.u) + '"' + (internal ? ' data-goto="' + esc(c.u) + '"' : ' target="_blank" rel="noopener"') + ytAttrs + '>' +
             '<div class="card-top"><span class="logo-tile" style="background:' + esc(c.bg) + '">' + esc(c.tile) + '</span><h4>' + esc(c.name) + '</h4><span class="tag tag-free">' + esc(c.tag) + '</span></div>' +
             (c.note ? '<span class="blocked-note">' + esc(c.note) + '</span>' : '') +
             '<p>' + esc(c.desc) + '</p>' +
@@ -2164,8 +2279,8 @@
           var name = curCountry.name;
           var chans = COUNTRY_CHANNELS[curCountry.code] || [];
           ctTitle.textContent = name + ' \u2014 Watch Live';
-          ctSub.textContent = chans.length + (chans.length === 1 ? ' free channel' : ' free channels') + ' for ' + name + ' \u2014 every one free and official';
-          var h = '<p class="md-note" style="margin:0 0 14px">Multiple channels carry ' + esc(name) + ' free \u2014 pick the one that works where you are. Each is an official channel already listed on this page.</p>';
+          ctSub.textContent = chans.length + (chans.length === 1 ? ' free YouTube channel' : ' free YouTube channels') + ' for ' + name + ' \u2014 every one free and official';
+          var h = '<p class="md-note" style="margin:0 0 14px">' + esc(name) + '\u2019s free official YouTube channels \u2014 live streams, highlights and shows, all on YouTube. Tap one to play it right here.</p>';
           chans.forEach(function (c) { h += chanCardHtml(c); });
           h += '<div class="md-actions"><button class="md-act" type="button" id="ctScoresBtn">See ' + esc(name) + '\u2019s scores instead</button></div>';
           ctBody.innerHTML = h;
@@ -2241,7 +2356,7 @@
           lastWatchCard = card;
           mwTitle.textContent = m.teams.map(function (t) { return t.flagText; }).join(' v ') + ' — Watch Live';
           mwSub.textContent = m.series;
-          var h = '<p class="md-note" style="margin:0 0 4px">Free channels for both teams in this match — every one official and already listed on this page, with the same honest labels. Pick the channel that works where you are.</p>';
+          var h = '<p class="md-note" style="margin:0 0 4px">Free YouTube channels for both teams in this match \u2014 every one official, with the same honest labels as the channel list. Tap one to play it right here.</p>';
           var seen = {};
           var unknown = false;
           m.teams.forEach(function (t) {
@@ -2293,6 +2408,55 @@
             e.stopPropagation();
             openMatch(card);
           });
+        });
+
+        /* In-page YouTube player — tapping a YouTube channel card that
+           carries a verified channel ID plays right here instead of
+           sending the visitor away: streaming channels embed their live
+           stream (YouTube shows its own notice inside when they are not
+           live), highlights channels embed their latest uploads. The
+           "Open on YouTube" link stays as the fallback for channels that
+           have embedding turned off. A plain iframe — no new windows — so
+           it works inside the installed app's WebView too. */
+        var ytBackdrop = document.getElementById('ytBackdrop');
+        var ytFrame = document.getElementById('ytFrame');
+        var ytTitle = document.getElementById('ytTitle');
+        var ytNote = document.getElementById('ytNote');
+        var ytOpen = document.getElementById('ytOpen');
+        var lastPlayerTrigger = null;
+        function openPlayer(trigger) {
+          var cid = trigger.getAttribute('data-yt');
+          if (!cid) return;
+          var mode = trigger.getAttribute('data-ytmode') || 'live';
+          lastPlayerTrigger = trigger;
+          ytTitle.textContent = trigger.getAttribute('data-ytname') || 'Watch';
+          ytFrame.src = mode === 'uploads'
+            ? 'https://www.youtube.com/embed/videoseries?list=UU' + cid.slice(2) + '&autoplay=1&rel=0'
+            : 'https://www.youtube.com/embed/live_stream?channel=' + cid + '&autoplay=1&rel=0';
+          ytNote.textContent = mode === 'uploads'
+            ? 'This channel\u2019s latest videos and highlights, playing right here on this page. If the player stays blank, the channel has embedding turned off \u2014 use the button below to open it on YouTube instead.'
+            : 'If this channel is live right now, the match plays right here on this page. If it isn\u2019t live, YouTube shows its own notice inside the player \u2014 or use the button below to open the channel on YouTube.';
+          ytOpen.href = trigger.getAttribute('href') || '#';
+          ytBackdrop.hidden = false;
+          document.body.style.overflow = 'hidden';
+          document.getElementById('ytBack').focus();
+        }
+        function closePlayer() {
+          ytFrame.src = 'about:blank';
+          ytBackdrop.hidden = true;
+          if (ctBackdrop.hidden && mwBackdrop.hidden && mdBackdrop.hidden) document.body.style.overflow = '';
+          if (lastPlayerTrigger) lastPlayerTrigger.focus();
+        }
+        document.getElementById('ytBack').addEventListener('click', closePlayer);
+        ytBackdrop.addEventListener('click', function (e) { if (e.target === ytBackdrop) closePlayer(); });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !ytBackdrop.hidden) closePlayer();
+        });
+        document.addEventListener('click', function (e) {
+          var t = e.target.closest ? e.target.closest('[data-yt]') : null;
+          if (!t) return;
+          e.preventDefault();
+          openPlayer(t);
         });
 
         /* Install-the-app: one tap on any Install button opens the browser's own
