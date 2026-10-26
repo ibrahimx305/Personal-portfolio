@@ -330,6 +330,120 @@
       .mc-foot a:hover { color: var(--green-deep); text-decoration: underline; }
       @media (prefers-color-scheme: dark) { .mc-foot a:hover { color: var(--green); } }
 
+      /* ---------- match detail: tap a card, open the full match view ---------- */
+      .rail .mcard { cursor: pointer; }
+      .md-backdrop {
+        position: fixed; inset: 0; z-index: 200;
+        background: rgba(4, 14, 7, .55);
+        display: flex; align-items: stretch; justify-content: center;
+      }
+      .md-backdrop[hidden] { display: none; }
+      .md-sheet {
+        background: var(--bg); color: var(--ink);
+        width: 100%; max-width: 620px; height: 100%;
+        display: flex; flex-direction: column;
+        box-shadow: 0 0 40px rgba(0, 0, 0, .35);
+      }
+      @media (min-width: 700px) {
+        .md-backdrop { align-items: center; padding: 22px 12px; }
+        .md-sheet { height: auto; max-height: 100%; border-radius: 16px; overflow: hidden; }
+      }
+      .md-head {
+        background: var(--green); color: #fff; flex: none;
+        display: flex; align-items: center; gap: 10px; padding: 12px 14px;
+      }
+      .md-back {
+        width: 40px; height: 40px; border-radius: 50%; border: 0; flex: none;
+        background: rgba(255, 255, 255, .14); color: #fff; cursor: pointer;
+        display: grid; place-items: center; padding: 0;
+      }
+      .md-back:hover { background: rgba(255, 255, 255, .28); }
+      .md-back svg { width: 20px; height: 20px; fill: #fff; }
+      .md-titlebox { flex: 1; min-width: 0; }
+      .md-title { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 26px; line-height: 1; letter-spacing: .03em; }
+      .md-subtitle { font-size: 13px; color: rgba(255, 255, 255, .85); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .md-head .tag { background: rgba(255, 255, 255, .18); color: #fff; border: 1px solid rgba(255, 255, 255, .4); }
+      .md-tabs {
+        flex: none; display: flex; background: var(--green); color: #fff;
+        padding: 0 2px; overflow-x: auto; scrollbar-width: none;
+      }
+      .md-tabs::-webkit-scrollbar { display: none; }
+      .md-tab {
+        flex: 1 0 auto; background: none; border: 0; cursor: pointer;
+        color: rgba(255, 255, 255, .72); font: inherit; font-weight: 600; font-size: 11.5px;
+        text-transform: uppercase; letter-spacing: 0;
+        padding: 11px 3px 9px; border-bottom: 3px solid transparent; text-align: center;
+      }
+      .md-tab[aria-selected="true"] { color: #fff; border-bottom-color: #fff; }
+      .md-body { overflow-y: auto; padding: 18px 18px 30px; -webkit-overflow-scrolling: touch; }
+      .md-score { display: grid; gap: 12px; }
+      .md-srow { display: flex; align-items: center; gap: 12px; }
+      .md-srow .mc-code { font-size: 26px; }
+      .md-srow .mc-score { font-size: 30px; }
+      .md-srow.dim { color: var(--ink2); }
+      .md-srow.dim .mc-score { font-weight: 600; }
+      .md-result { font-weight: 700; font-size: 17px; color: var(--green-deep); margin: 12px 0 0; }
+      @media (prefers-color-scheme: dark) { .md-result { color: var(--green); } }
+      .md-result.soon { color: var(--gold); }
+      .md-note { color: var(--ink2); font-size: 15px; margin: 10px 0 0; }
+      .md-h { font-size: 13px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--ink2); margin: 22px 0 8px; }
+      .md-potm { display: flex; align-items: center; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+      .md-avatar { width: 52px; height: 52px; border-radius: 50%; flex: none; background: var(--green); color: #fff; display: grid; place-items: center; font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 20px; }
+      .md-potm-name { font-weight: 700; font-size: 18px; line-height: 1.15; }
+      .md-potm-line { color: var(--ink2); font-size: 14.5px; }
+      table.md-info { width: 100%; border-collapse: collapse; font-size: 15.5px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+      table.md-info td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      table.md-info tr:last-child td { border-bottom: 0; }
+      table.md-info td.k { color: var(--ink2); width: 104px; }
+      table.md-info td.v { font-weight: 600; }
+      .md-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+      .md-act {
+        display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+        font: inherit; font-weight: 700; font-size: 14.5px; text-decoration: none;
+        padding: 10px 15px; border-radius: 10px;
+        background: var(--surface); color: var(--ink); border: 1.5px solid var(--line);
+      }
+      .md-act:hover { border-color: var(--green); color: var(--green-deep); }
+      @media (prefers-color-scheme: dark) { .md-act:hover { color: var(--green); } }
+      .md-act.primary { background: var(--green); border-color: var(--green); color: #fff; }
+      .md-act.primary:hover { background: var(--green-deep); color: #fff; }
+      .md-inn { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 13px 15px; margin-bottom: 10px; }
+      .md-inn-note { color: var(--ink2); font-size: 14.5px; margin-top: 5px; }
+      .md-xi { display: grid; grid-template-columns: 1fr 1fr; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+      .md-xi-col { padding: 12px 14px; min-width: 0; }
+      .md-xi-col + .md-xi-col { border-left: 1px solid var(--line); }
+      .md-xi-head { display: flex; align-items: center; gap: 8px; font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 19px; margin-bottom: 8px; }
+      .md-xi ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+      .md-xi li { font-size: 14.5px; line-height: 1.25; font-weight: 600; }
+      .md-xi li span { display: block; font-weight: 400; color: var(--ink2); font-size: 12.5px; }
+      .md-squad-list { columns: 2; column-gap: 22px; margin: 0; padding-left: 18px; font-size: 15px; }
+      @media (max-width: 480px) { .md-squad-list { columns: 1; } }
+      .md-squad-list li { break-inside: avoid; margin-bottom: 4px; }
+      .md-hl { display: flex; align-items: center; gap: 13px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; text-decoration: none; color: var(--ink); margin-bottom: 10px; }
+      .md-hl:hover { border-color: var(--green); }
+      .md-hl .play { width: 38px; height: 38px; border-radius: 50%; background: var(--red); display: grid; place-items: center; flex: none; }
+      .md-hl .play svg { width: 15px; height: 15px; fill: #fff; margin-left: 2px; }
+      .md-hl-t { font-weight: 700; font-size: 16px; line-height: 1.2; }
+      .md-hl-s { color: var(--ink2); font-size: 13.5px; }
+
+      /* ---------- country matches panel ---------- */
+      #countryGrid .card { cursor: pointer; }
+      .ct-item {
+        display: block; width: 100%; text-align: left; cursor: pointer;
+        font: inherit; color: var(--ink);
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        padding: 13px 15px; margin-bottom: 12px;
+      }
+      .ct-item:hover { border-color: var(--green); }
+      .ct-item-head { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
+      .ct-item-head .mc-series { font-size: 14.5px; }
+      .ct-item .md-score { gap: 9px; }
+      .ct-item .md-srow .mc-code { font-size: 22px; }
+      .ct-item .md-srow .mc-score { font-size: 25px; }
+      .ct-item-status { font-weight: 600; font-size: 14.5px; color: var(--green-deep); margin: 9px 0 0; }
+      @media (prefers-color-scheme: dark) { .ct-item-status { color: var(--green); } }
+      .ct-item-status.soon { color: var(--gold); }
+
       /* ---------- fixtures ---------- */
       .fixtures { display: grid; gap: 10px; }
       .fixture {
@@ -511,49 +625,23 @@
 
       <!-- ============ MATCH CARDS — SWIPE ============ -->
       <section class="block" id="matches">
-        <div class="sec-head"><span class="bar"></span><h2>Every Match — Swipe the Cards</h2></div>
-        <p class="sec-sub">Not just Pakistan — every match as its own card, the way the score apps show them. The first swipe row is the whole tri-series: the results so far, the next match and the final. Below it, a second row — <b>Around the World</b> — carries the other countries playing this week: India, Zimbabwe, New Zealand, Australia, South Africa, Bangladesh, the West Indies and Afghanistan. Swipe left and right through both rows.</p>
-        <div class="rail" id="matchRail" tabindex="0" aria-label="All matches — scroll left and right to browse">
-          <article class="card mcard" data-name="match 1 pakistan sri lanka rawalpindi result salman ali agha">
+        <div class="sec-head"><span class="bar"></span><h2>Live &amp; Upcoming — Matches All Over the World</h2></div>
+        <p class="sec-sub">Live and upcoming cricket from all over the world in one swipe strip — Pakistan, India, Zimbabwe, New Zealand, Australia, South Africa, Bangladesh, the West Indies, Afghanistan, Sri Lanka and England, all mixed together. Swipe left and right, or use the arrows, to browse every match. Tap any card to open its full match view — info, score, scorecard, squads and highlights — just like the score apps.</p>
+        <div class="rail" id="matchRail" tabindex="0" aria-label="Live and upcoming matches all over the world — scroll left and right to browse">
+          <article class="card mcard" data-mid="indw2" data-name="india women zimbabwe women 2nd odi vadodara result harmanpreet kaur deepti sharma world">
             <div class="mc-head">
-              <span class="mc-series">Match 1 · Pakistan ODI Tri-Series 2026</span>
+              <span class="mc-series">2nd ODI · Zimbabwe Women tour of India, 2026</span>
               <span class="tag badge-done">Result</span>
             </div>
             <div class="mc-teams">
-              <div class="mc-row"><span class="mc-flag" style="background:#0d7a3e">PAK</span><span class="mc-code">PAK</span><span class="mc-score">305 <small>all out</small></span></div>
-              <div class="mc-row dim"><span class="mc-flag" style="background:#8d153a">SL</span><span class="mc-code">SL</span><span class="mc-score">268 <small>all out</small></span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">INDW</span><span class="mc-code">INDW</span><span class="mc-score">328/6 <small>(50)</small></span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#ba0c2f">ZIMW</span><span class="mc-code">ZIMW</span><span class="mc-score">207 <small>all out (48.5)</small></span></div>
             </div>
-            <p class="mc-status">Sun 18 Oct · Rawalpindi — Pakistan won by 37 runs · Salman Ali Agha 107</p>
-            <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
+            <p class="mc-status">Sun 25 Oct · Vadodara — India Women won by 121 runs · ZIMW were 107/2 (22.2) chasing 329 · Harmanpreet Kaur 126 &amp; Deepti Sharma 106* · India take the series 2–0</p>
+            <div class="mc-foot"><a href="https://www.cricbuzz.com/live-cricket-scores/155562/2nd-odi-zimbabwe-women-tour-of-india-2026" target="_blank" rel="noopener">Scorecard →</a></div>
           </article>
 
-          <article class="card mcard" data-name="match 2 pakistan england rawalpindi result arafat minhas">
-            <div class="mc-head">
-              <span class="mc-series">Match 2 · Pakistan ODI Tri-Series 2026</span>
-              <span class="tag badge-done">Result</span>
-            </div>
-            <div class="mc-teams">
-              <div class="mc-row"><span class="mc-flag" style="background:#0d7a3e">PAK</span><span class="mc-code">PAK</span><span class="mc-score">302/9</span></div>
-              <div class="mc-row dim"><span class="mc-flag" style="background:#1b3a6b">ENG</span><span class="mc-code">ENG</span><span class="mc-score">215 <small>all out</small></span></div>
-            </div>
-            <p class="mc-status">Tue 20 Oct · Rawalpindi — Pakistan won by 87 runs · Arafat Minhas 6/40 &amp; 59</p>
-            <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
-          </article>
-
-          <article class="card mcard" data-name="match 3 sri lanka england rawalpindi result harry brook">
-            <div class="mc-head">
-              <span class="mc-series">Match 3 · Pakistan ODI Tri-Series 2026</span>
-              <span class="tag badge-done">Result</span>
-            </div>
-            <div class="mc-teams">
-              <div class="mc-row"><span class="mc-flag" style="background:#8d153a">SL</span><span class="mc-code">SL</span><span class="mc-score">430/8</span></div>
-              <div class="mc-row dim"><span class="mc-flag" style="background:#1b3a6b">ENG</span><span class="mc-code">ENG</span><span class="mc-score">429/4</span></div>
-            </div>
-            <p class="mc-status">Thu 22 Oct · Rawalpindi — Sri Lanka won by 2 wickets · Harry Brook 202</p>
-            <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
-          </article>
-
-          <article class="card mcard" data-name="match 4 pakistan england lahore result shadab khan duckett">
+          <article class="card mcard" data-mid="pakeng4" data-name="match 4 pakistan england lahore result shadab khan duckett">
             <div class="mc-head">
               <span class="mc-series">Match 4 · Pakistan ODI Tri-Series 2026</span>
               <span class="tag badge-done">Result</span>
@@ -566,7 +654,20 @@
             <div class="mc-foot"><a href="https://www.cricbuzz.com/live-cricket-scores/170733/pak-vs-eng-4th-match-pakistan-odi-tri-series-2026" target="_blank" rel="noopener">Scorecard →</a></div>
           </article>
 
-          <article class="card mcard" data-name="match 5 pakistan sri lanka lahore next match">
+          <article class="card mcard" data-mid="nzind3" data-name="new zealand india 3rd t20i wellington upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">3rd T20I · India tour of New Zealand 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#23272e">NZ</span><span class="mc-code">NZ</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">IND</span><span class="mc-code">IND</span></div>
+            </div>
+            <p class="mc-status soon">Tue 27 Oct · Wellington — India's long tour runs to 1 Dec: 5 T20Is, then 5 ODIs and 2 Tests</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="paksl5" data-name="match 5 pakistan sri lanka lahore next match">
             <div class="mc-head">
               <span class="mc-series">Match 5 · Pakistan ODI Tri-Series 2026</span>
               <span class="tag badge-next">Next Match</span>
@@ -579,7 +680,98 @@
             <div class="mc-foot"><a href="#channels">Free Channels →</a></div>
           </article>
 
-          <article class="card mcard" data-name="match 6 sri lanka england lahore upcoming">
+          <article class="card mcard" data-mid="rsa3" data-name="south africa australia 3rd test newlands cape town upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">3rd Test · Australia tour of South Africa 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#007749">RSA</span><span class="mc-code">RSA</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#b8860b">AUS</span><span class="mc-code">AUS</span></div>
+            </div>
+            <p class="mc-status soon">Tue 27 – Sat 31 Oct · Newlands, Cape Town — the third and final Test of Australia's tour</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="sleng3" data-name="match 3 sri lanka england rawalpindi result harry brook">
+            <div class="mc-head">
+              <span class="mc-series">Match 3 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-done">Result</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#8d153a">SL</span><span class="mc-code">SL</span><span class="mc-score">430/8</span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#1b3a6b">ENG</span><span class="mc-code">ENG</span><span class="mc-score">429/4</span></div>
+            </div>
+            <p class="mc-status">Thu 22 Oct · Rawalpindi — Sri Lanka won by 2 wickets · Harry Brook 202</p>
+            <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="indw3" data-name="india women zimbabwe women 3rd odi vadodara upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">3rd ODI · Zimbabwe Women tour of India 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">INDW</span><span class="mc-code">INDW</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#ba0c2f">ZIMW</span><span class="mc-code">ZIMW</span></div>
+            </div>
+            <p class="mc-status soon">Wed 28 Oct · 2:00 PM IST (1:30 PM PKT) · BCA Stadium, Vadodara — India lead 2–0 and hunt a clean sweep in the final ODI</p>
+            <div class="mc-foot"><a href="#channels">Free Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="paksl1" data-name="match 1 pakistan sri lanka rawalpindi result salman ali agha">
+            <div class="mc-head">
+              <span class="mc-series">Match 1 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-done">Result</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0d7a3e">PAK</span><span class="mc-code">PAK</span><span class="mc-score">305 <small>all out</small></span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#8d153a">SL</span><span class="mc-code">SL</span><span class="mc-score">268 <small>all out</small></span></div>
+            </div>
+            <p class="mc-status">Sun 18 Oct · Rawalpindi — Pakistan won by 37 runs · Salman Ali Agha 107</p>
+            <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="banwi1" data-name="bangladesh west indies 1st test dhaka upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">1st Test · West Indies tour of Bangladesh 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#006a4e">BAN</span><span class="mc-code">BAN</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#5e2590">WI</span><span class="mc-code">WI</span></div>
+            </div>
+            <p class="mc-status soon">Wed 28 Oct – Sun 1 Nov · Shere Bangla Stadium, Dhaka — the first of 2 Tests</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="pakeng2" data-name="match 2 pakistan england rawalpindi result arafat minhas">
+            <div class="mc-head">
+              <span class="mc-series">Match 2 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-done">Result</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0d7a3e">PAK</span><span class="mc-code">PAK</span><span class="mc-score">302/9</span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#1b3a6b">ENG</span><span class="mc-code">ENG</span><span class="mc-score">215 <small>all out</small></span></div>
+            </div>
+            <p class="mc-status">Tue 20 Oct · Rawalpindi — Pakistan won by 87 runs · Arafat Minhas 6/40 &amp; 59</p>
+            <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="afgzim" data-name="afghanistan zimbabwe uae series tests t20i upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">Afghanistan vs Zimbabwe · UAE Series</span>
+              <span class="tag badge-next">Series</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0f766e">AFG</span><span class="mc-code">AFG</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#ba0c2f">ZIM</span><span class="mc-code">ZIM</span></div>
+            </div>
+            <p class="mc-status soon">Starts Tue 27 Oct · UAE — 2 Tests &amp; 3 T20Is between the two sides, running to 17 Nov</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="sleng6" data-name="match 6 sri lanka england lahore upcoming">
             <div class="mc-head">
               <span class="mc-series">Match 6 · Pakistan ODI Tri-Series 2026</span>
               <span class="tag badge-next">Upcoming</span>
@@ -592,7 +784,20 @@
             <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
           </article>
 
-          <article class="card mcard" data-name="final lahore tri series pakistan qualified">
+          <article class="card mcard" data-mid="nzind4" data-name="new zealand india 4th t20i auckland eden park upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">4th T20I · India tour of New Zealand 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#23272e">NZ</span><span class="mc-code">NZ</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">IND</span><span class="mc-code">IND</span></div>
+            </div>
+            <p class="mc-status soon">Fri 30 Oct · Eden Park, Auckland — the T20I series moves north before the ODIs begin</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="final" data-name="final lahore tri series pakistan qualified">
             <div class="mc-head">
               <span class="mc-series">Final · Pakistan ODI Tri-Series 2026</span>
               <span class="tag badge-next">Final</span>
@@ -609,106 +814,6 @@
           <button class="rail-btn" type="button" id="matchPrev" aria-label="Scroll matches left"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
           <div class="rail-dots" id="matchDots" role="tablist" aria-label="Match position"></div>
           <button class="rail-btn" type="button" id="matchNext" aria-label="Scroll matches right"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg></button>
-        </div>
-
-        <div class="rail-subhead"><span class="bar"></span><h3>Around the World — Every Country</h3></div>
-        <p class="rail-sub">The rest of this week's international cricket, in the same swipe cards — a result from India, and the series running now in New Zealand, South Africa, the UAE and Bangladesh.</p>
-        <div class="rail" id="worldRail" tabindex="0" aria-label="Matches around the world — scroll left and right to browse">
-          <article class="card mcard" data-name="india women zimbabwe women 2nd odi vadodara result harmanpreet kaur deepti sharma world">
-            <div class="mc-head">
-              <span class="mc-series">2nd ODI · Zimbabwe Women tour of India 2026</span>
-              <span class="tag badge-done">Result</span>
-            </div>
-            <div class="mc-teams">
-              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">INDW</span><span class="mc-code">INDW</span><span class="mc-score">328/6 <small>(50)</small></span></div>
-              <div class="mc-row dim"><span class="mc-flag" style="background:#ba0c2f">ZIMW</span><span class="mc-code">ZIMW</span><span class="mc-score">207 <small>all out (48.5)</small></span></div>
-            </div>
-            <p class="mc-status">Sun 25 Oct · Vadodara — India Women won by 121 runs · Harmanpreet Kaur 126 &amp; Deepti Sharma 106* · India take the series 2–0</p>
-            <div class="mc-foot"><a href="https://www.cricbuzz.com/live-cricket-scores/155562/2nd-odi-zimbabwe-women-tour-of-india-2026" target="_blank" rel="noopener">Scorecard →</a></div>
-          </article>
-
-          <article class="card mcard" data-name="new zealand india 3rd t20i wellington upcoming world">
-            <div class="mc-head">
-              <span class="mc-series">3rd T20I · India tour of New Zealand 2026</span>
-              <span class="tag badge-next">Upcoming</span>
-            </div>
-            <div class="mc-teams">
-              <div class="mc-row"><span class="mc-flag" style="background:#23272e">NZ</span><span class="mc-code">NZ</span></div>
-              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">IND</span><span class="mc-code">IND</span></div>
-            </div>
-            <p class="mc-status soon">Tue 27 Oct · Wellington — India's long tour runs to 1 Dec: 5 T20Is, then 5 ODIs and 2 Tests</p>
-            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
-          </article>
-
-          <article class="card mcard" data-name="south africa australia 3rd test newlands cape town upcoming world">
-            <div class="mc-head">
-              <span class="mc-series">3rd Test · Australia tour of South Africa 2026</span>
-              <span class="tag badge-next">Upcoming</span>
-            </div>
-            <div class="mc-teams">
-              <div class="mc-row"><span class="mc-flag" style="background:#007749">RSA</span><span class="mc-code">RSA</span></div>
-              <div class="mc-row"><span class="mc-flag" style="background:#b8860b">AUS</span><span class="mc-code">AUS</span></div>
-            </div>
-            <p class="mc-status soon">Tue 27 – Sat 31 Oct · Newlands, Cape Town — the third and final Test of Australia's tour</p>
-            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
-          </article>
-
-          <article class="card mcard" data-name="afghanistan zimbabwe uae series tests t20i upcoming world">
-            <div class="mc-head">
-              <span class="mc-series">Afghanistan vs Zimbabwe · UAE Series</span>
-              <span class="tag badge-next">Series</span>
-            </div>
-            <div class="mc-teams">
-              <div class="mc-row"><span class="mc-flag" style="background:#0f766e">AFG</span><span class="mc-code">AFG</span></div>
-              <div class="mc-row"><span class="mc-flag" style="background:#ba0c2f">ZIM</span><span class="mc-code">ZIM</span></div>
-            </div>
-            <p class="mc-status soon">Starts Tue 27 Oct · UAE — 2 Tests &amp; 3 T20Is between the two sides, running to 17 Nov</p>
-            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
-          </article>
-
-          <article class="card mcard" data-name="india women zimbabwe women 3rd odi vadodara upcoming world">
-            <div class="mc-head">
-              <span class="mc-series">3rd ODI · Zimbabwe Women tour of India 2026</span>
-              <span class="tag badge-next">Upcoming</span>
-            </div>
-            <div class="mc-teams">
-              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">INDW</span><span class="mc-code">INDW</span></div>
-              <div class="mc-row"><span class="mc-flag" style="background:#ba0c2f">ZIMW</span><span class="mc-code">ZIMW</span></div>
-            </div>
-            <p class="mc-status soon">Wed 28 Oct · 2:00 PM IST (1:30 PM PKT) · BCA Stadium, Vadodara — India lead 2–0 and hunt a clean sweep in the final ODI</p>
-            <div class="mc-foot"><a href="#channels">Free Channels →</a></div>
-          </article>
-
-          <article class="card mcard" data-name="bangladesh west indies 1st test dhaka upcoming world">
-            <div class="mc-head">
-              <span class="mc-series">1st Test · West Indies tour of Bangladesh 2026</span>
-              <span class="tag badge-next">Upcoming</span>
-            </div>
-            <div class="mc-teams">
-              <div class="mc-row"><span class="mc-flag" style="background:#006a4e">BAN</span><span class="mc-code">BAN</span></div>
-              <div class="mc-row"><span class="mc-flag" style="background:#5e2590">WI</span><span class="mc-code">WI</span></div>
-            </div>
-            <p class="mc-status soon">Wed 28 Oct – Sun 1 Nov · Shere Bangla Stadium, Dhaka — the first of 2 Tests</p>
-            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
-          </article>
-
-          <article class="card mcard" data-name="new zealand india 4th t20i auckland eden park upcoming world">
-            <div class="mc-head">
-              <span class="mc-series">4th T20I · India tour of New Zealand 2026</span>
-              <span class="tag badge-next">Upcoming</span>
-            </div>
-            <div class="mc-teams">
-              <div class="mc-row"><span class="mc-flag" style="background:#23272e">NZ</span><span class="mc-code">NZ</span></div>
-              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">IND</span><span class="mc-code">IND</span></div>
-            </div>
-            <p class="mc-status soon">Fri 30 Oct · Eden Park, Auckland — the T20I series moves north before the ODIs begin</p>
-            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
-          </article>
-        </div>
-        <div class="rail-nav">
-          <button class="rail-btn" type="button" id="worldPrev" aria-label="Scroll world matches left"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
-          <div class="rail-dots" id="worldDots" role="tablist" aria-label="World match position"></div>
-          <button class="rail-btn" type="button" id="worldNext" aria-label="Scroll world matches right"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg></button>
         </div>
       </section>
 
@@ -879,7 +984,7 @@
       <!-- ============ CRICKET FROM EVERY COUNTRY ============ -->
       <section class="block" id="countries">
         <div class="sec-head"><span class="bar"></span><h2>Cricket From Every Country</h2></div>
-        <p class="sec-sub">Not just Pakistan — every major cricket nation's official board channel is here, and every one of them is free. The honest picture: big international matches usually sit on paid TV in most countries, but the boards themselves stream plenty free on their own channels — live domestic, women's and A-team matches, plus highlights of the internationals. Swipe left or right — or use the arrows — to browse every country:</p>
+        <p class="sec-sub">Not just Pakistan — every major cricket nation's official board channel is here, and every one of them is free. The honest picture: big international matches usually sit on paid TV in most countries, but the boards themselves stream plenty free on their own channels — live domestic, women's and A-team matches, plus highlights of the internationals. Swipe left or right — or use the arrows — to browse every country. Tap any country to see all of its matches in one list:</p>
         <div class="rail" id="countryGrid" tabindex="0" aria-label="Cricket countries — scroll left and right to browse">
           <article class="card" data-name="pakistan pcb men in green shaheens">
             <div class="card-top">
@@ -1210,6 +1315,43 @@
       </section>
     </main>
 
+    <!-- ============ MATCH DETAIL — opens when a match card is tapped ============ -->
+    <div class="md-backdrop" id="mdBackdrop" hidden>
+      <div class="md-sheet" role="dialog" aria-modal="true" aria-labelledby="mdTitle">
+        <div class="md-head">
+          <button class="md-back" type="button" id="mdBack" aria-label="Back to all matches"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></button>
+          <div class="md-titlebox">
+            <div class="md-title" id="mdTitle">Match</div>
+            <div class="md-subtitle" id="mdSub"></div>
+          </div>
+          <span class="tag" id="mdTag"></span>
+        </div>
+        <div class="md-tabs" role="tablist" aria-label="Match sections">
+          <button class="md-tab" type="button" role="tab" data-tab="info" aria-selected="false">Info</button>
+          <button class="md-tab" type="button" role="tab" data-tab="live" aria-selected="true">Live</button>
+          <button class="md-tab" type="button" role="tab" data-tab="scorecard" aria-selected="false">Scorecard</button>
+          <button class="md-tab" type="button" role="tab" data-tab="squads" aria-selected="false">Squads</button>
+          <button class="md-tab" type="button" role="tab" data-tab="overs" aria-selected="false">Overs</button>
+          <button class="md-tab" type="button" role="tab" data-tab="highlights" aria-selected="false">Highlights</button>
+        </div>
+        <div class="md-body" id="mdBody"></div>
+      </div>
+    </div>
+
+    <!-- ============ COUNTRY MATCHES — opens when a country card is tapped ============ -->
+    <div class="md-backdrop" id="ctBackdrop" hidden>
+      <div class="md-sheet" role="dialog" aria-modal="true" aria-labelledby="ctTitle">
+        <div class="md-head">
+          <button class="md-back" type="button" id="ctBack" aria-label="Back to all matches"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></button>
+          <div class="md-titlebox">
+            <div class="md-title" id="ctTitle">Country Matches</div>
+            <div class="md-subtitle" id="ctSub"></div>
+          </div>
+        </div>
+        <div class="md-body" id="ctBody"></div>
+      </div>
+    </div>
+
     <footer class="site">
       <div class="wrap foot-in">
         <span class="foot-brand">Live Cricket — 100% Free Links Only</span>
@@ -1232,7 +1374,6 @@
         var cards = Array.prototype.slice.call(document.querySelectorAll('#channelGrid .card'));
         var countryCards = Array.prototype.slice.call(document.querySelectorAll('#countryGrid .card'));
         var matchCards = Array.prototype.slice.call(document.querySelectorAll('#matchRail .mcard'));
-        var worldCards = Array.prototype.slice.call(document.querySelectorAll('#worldRail .mcard'));
         var fixtures = Array.prototype.slice.call(document.querySelectorAll('#fixtureList .fixture'));
         var noResults = document.getElementById('noResults');
         var countryNoResults = document.getElementById('countryNoResults');
@@ -1261,10 +1402,6 @@
           });
           countryNoResults.style.display = countryVisible === 0 ? 'block' : 'none';
           matchCards.forEach(function (card) {
-            var name = (card.getAttribute('data-name') || '') + ' ' + card.textContent.toLowerCase();
-            card.style.display = (!q || name.indexOf(q) !== -1) ? '' : 'none';
-          });
-          worldCards.forEach(function (card) {
             var name = (card.getAttribute('data-name') || '') + ' ' + card.textContent.toLowerCase();
             card.style.display = (!q || name.indexOf(q) !== -1) ? '' : 'none';
           });
@@ -1359,17 +1496,9 @@
           document.getElementById('matchNext'),
           matchCards
         );
-        var worldRail = createRail(
-          document.getElementById('worldRail'),
-          document.getElementById('worldDots'),
-          document.getElementById('worldPrev'),
-          document.getElementById('worldNext'),
-          worldCards
-        );
         function refreshRail() {
           countryRail.refresh();
           matchRail.refresh();
-          worldRail.refresh();
         }
 
         /* Countdown to the next match: Tue 27 Oct 2026, 1:00 PM PKT (UTC+5), then the final. */
@@ -1399,6 +1528,417 @@
         }
         tick();
         setInterval(tick, 1000);
+
+        /* Match detail — tapping a card in the world strip opens the match
+           the way the score apps show it: a full-screen view with Info, Live,
+           Scorecard, Squads, Overs and Highlights tabs. Everything shown
+           comes from this page's own match facts; a tab with no local data
+           links out to the free coverage rather than inventing numbers. */
+        var PAK_SQUAD = ['Shaheen Shah Afridi (c)', 'Abrar Ahmed', 'Salman Ali Agha', 'Arafat Minhas', 'Babar Azam', 'Faheem Ashraf', 'Fakhar Zaman', 'Muhammad Ghazi Ghori (wk)', 'Haris Rauf', 'Hasan Nawaz', 'Naseem Shah', 'Razaullah', 'Saad Baig (wk)', 'Saim Ayub', 'Shadab Khan', 'Sufiyan Moqim'];
+        var ENG_SQUAD = ['Harry Brook (c)', 'Gus Atkinson', 'Sonny Baker', 'Tom Banton', 'James Coles', 'Jordan Cox', 'Mason Crane', 'Henry Crocombe', 'Sam Curran', 'Liam Dawson', 'Ben Duckett', 'Will Jacks', 'Jamie Overton', 'Adil Rashid', 'Joe Root', 'Josh Tongue'];
+        var PAK_XI_M4 = ['Fakhar Zaman', 'Saim Ayub', 'Babar Azam', 'Saad Baig (wk)', 'Salman Ali Agha', 'Hasan Nawaz', 'Shadab Khan', 'Arafat Minhas', 'Shaheen Afridi (c)', 'Razaullah — ODI debut', 'Haris Rauf'];
+        var SL_NOTE = 'Sri Lanka are captained by Kusal Mendis for this series.';
+        var MD = {
+          indw2: {
+            date: 'Sun 25 Oct 2026', time: '1:30 PM PKT', toss: 'India Women opt to bat',
+            venue: 'BCA Stadium, Kotambi, Vadodara', city: 'Vadodara',
+            potm: { name: 'Harmanpreet Kaur', line: '126 (121)' },
+            summary: 'Harmanpreet Kaur\u2019s 126 and Deepti Sharma\u2019s unbeaten 106* lifted India Women to 328/6. Zimbabwe Women reached 107/2 chasing 329, but were bowled out for 207 in 48.5 overs \u2014 India Women won by 121 runs and took the series 2\u20130.',
+            notes: { INDW: 'Harmanpreet Kaur 126 \u00b7 Deepti Sharma 106*', ZIMW: 'Were 107/2 (22.2) chasing 329' },
+            pair: {
+              A: [['Pratika Rawal', 'Batter'], ['Smriti Mandhana (c)', 'Batter'], ['Shafali Verma', 'Batter'], ['Harmanpreet Kaur', 'Batting Allrounder'], ['Tejal Hasabnis', 'Batting Allrounder'], ['Deepti Sharma', 'Batting Allrounder'], ['Richa Ghosh (wk)', 'WK-Batter'], ['Vaishnavi Sharma', 'Bowling Allrounder'], ['Sayali Satghare', 'Bowling Allrounder'], ['Shree Charani', 'Bowler'], ['Jintimani Kalita', 'Bowling Allrounder']],
+              B: [['Modester Mupachikwa (wk)', 'WK-Batter'], ['Loryn Phiri', 'Bowling Allrounder'], ['Chipo Mugeri-Tiripano', 'Batting Allrounder'], ['Beloved Biza', 'Bowling Allrounder'], ['Josephine Nkomo (c)', 'Bowling Allrounder'], ['Nyasha Gwanzura', 'Batter'], ['Chiedza Dhururu', 'WK-Batter'], ['Michelle Mavunga', 'Batter'], ['Nomvelo Sibanda', 'Bowler'], ['Tendai Makusha', 'Batting Allrounder'], ['Olinder Chare', 'Bowler']]
+            }
+          },
+          pakeng4: {
+            date: 'Sun 25 Oct 2026', time: '1:00 PM PKT', toss: 'Pakistan won the toss and chose to bowl',
+            venue: 'Gaddafi Stadium, Lahore', city: 'Lahore',
+            potm: { name: 'Shadab Khan', line: '113* (not out)' },
+            summary: 'England made 241 all out \u2014 Ben Duckett 105, with Shaheen Afridi taking 4/46. Pakistan then collapsed to 154/9 before Shadab Khan\u2019s unbeaten 113 dragged them home with one wicket to spare. Pakistan top the table with three wins from three and are already through to the final.',
+            notes: { ENG: 'Ben Duckett 105 \u00b7 Shaheen Afridi 4/46', PAK: 'Shadab Khan 113* \u2014 rescued Pakistan from 154/9' },
+            squads: [
+              { head: 'Pakistan \u2014 Playing XI', list: PAK_XI_M4, note: 'Team news: Shadab Khan returns; Razaullah debuts in place of Naseem Shah, who dislocated two fingers in the warm-up.' },
+              { head: 'England \u2014 Series Squad', list: ENG_SQUAD, note: 'England hand a debut to seamer Henry Crocombe. Jos Buttler misses the tour through injury; Jofra Archer is rested.' }
+            ],
+            highlights: [
+              { t: 'Pre-Match Show \u2014 Pakistan vs England', s: 'Sports Central \u00b7 YouTube', u: 'https://www.youtube.com/watch?v=jb818F1nwgI' },
+              { t: 'A Shade of Pink \u2014 Pakistan\u2019s Pink Day Kit', s: 'PCB \u00b7 YouTube Short', u: 'https://www.youtube.com/shorts/PJVvR38dsWI' }
+            ]
+          },
+          nzind3: {
+            date: 'Tue 27 Oct 2026', time: '12:00 PM PKT', venue: 'Wellington', city: 'Wellington'
+          },
+          paksl5: {
+            date: 'Tue 27 Oct 2026', time: '1:00 PM PKT \u00b7 toss 12:30 PM', venue: 'Gaddafi Stadium, Lahore', city: 'Lahore',
+            note: 'Pakistan are already in the final \u2014 this match helps decide who joins them.',
+            squads: [
+              { head: 'Pakistan \u2014 Series Squad', list: PAK_SQUAD },
+              { head: 'Sri Lanka', text: SL_NOTE }
+            ]
+          },
+          rsa3: {
+            date: 'Tue 27 \u2013 Sat 31 Oct 2026', venue: 'Newlands, Cape Town', city: 'Cape Town'
+          },
+          sleng3: {
+            date: 'Thu 22 Oct 2026', time: '1:00 PM PKT', venue: 'Rawalpindi', city: 'Rawalpindi',
+            summary: 'England piled up 429/4 behind Harry Brook\u2019s 202, but Sri Lanka chased it down \u2014 430/8 \u2014 to win by 2 wickets in one of the great ODI chases.',
+            notes: { ENG: 'Harry Brook 202 off 116 balls', SL: 'Chased down 430 to win by 2 wickets' },
+            squads: [
+              { head: 'England \u2014 Series Squad', list: ENG_SQUAD },
+              { head: 'Sri Lanka', text: SL_NOTE }
+            ]
+          },
+          indw3: {
+            date: 'Wed 28 Oct 2026', time: '2:00 PM IST (1:30 PM PKT)', venue: 'BCA Stadium, Kotambi, Vadodara', city: 'Vadodara'
+          },
+          paksl1: {
+            date: 'Sun 18 Oct 2026', time: '1:00 PM PKT', venue: 'Rawalpindi', city: 'Rawalpindi',
+            summary: 'Salman Ali Agha\u2019s 107 set up Pakistan\u2019s 305 all out; Sri Lanka were bowled out for 268 \u2014 Pakistan won by 37 runs.',
+            notes: { PAK: 'Salman Ali Agha 107' },
+            squads: [
+              { head: 'Pakistan \u2014 Series Squad', list: PAK_SQUAD },
+              { head: 'Sri Lanka', text: SL_NOTE }
+            ]
+          },
+          banwi1: {
+            date: 'Wed 28 Oct \u2013 Sun 1 Nov 2026', venue: 'Shere Bangla Stadium, Dhaka', city: 'Dhaka'
+          },
+          pakeng2: {
+            date: 'Tue 20 Oct 2026', time: '1:00 PM PKT', venue: 'Rawalpindi', city: 'Rawalpindi',
+            summary: 'Pakistan\u2019s 302/9 proved far too many: Arafat Minhas followed his 59 with 6/40 as England were bowled out for 215 \u2014 Pakistan won by 87 runs.',
+            notes: { PAK: 'Arafat Minhas 59', ENG: 'Arafat Minhas took 6/40' },
+            squads: [
+              { head: 'Pakistan \u2014 Series Squad', list: PAK_SQUAD },
+              { head: 'England \u2014 Series Squad', list: ENG_SQUAD }
+            ],
+            highlights: [
+              { t: 'Arafat Minhas\u2019 Brilliant 6-Wicket Haul', s: 'Pakistan vs England \u00b7 Match 2 \u00b7 PCB / Sports Central', u: 'https://www.youtube.com/watch?v=WfJyQllWrRM' }
+            ]
+          },
+          afgzim: {
+            match: 'Series \u2014 2 Tests & 3 T20Is', series: 'Afghanistan vs Zimbabwe in the UAE',
+            date: 'Starts Tue 27 Oct 2026', venue: 'UAE'
+          },
+          sleng6: {
+            date: 'Thu 29 Oct 2026', time: '1:00 PM PKT', venue: 'Gaddafi Stadium, Lahore', city: 'Lahore',
+            squads: [
+              { head: 'England \u2014 Series Squad', list: ENG_SQUAD },
+              { head: 'Sri Lanka', text: SL_NOTE }
+            ]
+          },
+          nzind4: {
+            date: 'Fri 30 Oct 2026', venue: 'Eden Park, Auckland', city: 'Auckland'
+          },
+          final: {
+            date: 'Sat 31 Oct 2026', time: '1:00 PM PKT', venue: 'Gaddafi Stadium, Lahore', city: 'Lahore',
+            squads: [
+              { head: 'Pakistan \u2014 Series Squad', list: PAK_SQUAD },
+              { head: 'The Other Finalist', text: 'Decided on Thu 29 Oct, when Sri Lanka play England in Lahore.' }
+            ]
+          }
+        };
+        var mdBackdrop = document.getElementById('mdBackdrop');
+        var mdBody = document.getElementById('mdBody');
+        var mdTitle = document.getElementById('mdTitle');
+        var mdSub = document.getElementById('mdSub');
+        var mdTag = document.getElementById('mdTag');
+        var mdTabBtns = Array.prototype.slice.call(document.querySelectorAll('.md-tab'));
+        var cur = null;
+        var lastCard = null;
+
+        function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+        function initials(name) {
+          var p = String(name).replace(/\*/g, '').split(' ');
+          return (p[0].charAt(0) + (p.length > 1 ? p[p.length - 1].charAt(0) : '')).toUpperCase();
+        }
+        function readCard(card) {
+          var teams = [];
+          Array.prototype.forEach.call(card.querySelectorAll('.mc-row'), function (row) {
+            var flag = row.querySelector('.mc-flag');
+            var score = row.querySelector('.mc-score');
+            teams.push({
+              code: row.querySelector('.mc-code').textContent.trim(),
+              flagText: flag.textContent.trim(),
+              flagStyle: flag.getAttribute('style') || '',
+              score: score ? score.innerHTML : '',
+              dim: row.classList.contains('dim')
+            });
+          });
+          var statusEl = card.querySelector('.mc-status');
+          var status = statusEl.textContent.trim();
+          var cut = status.indexOf(' \u2014 ');
+          var foot = card.querySelector('.mc-foot a');
+          var href = foot ? foot.getAttribute('href') : '';
+          var mid = card.getAttribute('data-mid') || '';
+          return {
+            series: card.querySelector('.mc-series').textContent.trim(),
+            tag: card.querySelector('.mc-head .tag').textContent.trim(),
+            teams: teams,
+            soon: statusEl.classList.contains('soon'),
+            status: status,
+            resultLine: cut >= 0 ? status.slice(cut + 3) : status,
+            ext: /^https:\/\/www\.cricbuzz\.com\//.test(href) ? href : null,
+            d: MD[mid] || {}
+          };
+        }
+        function flagHtml(t) { return '<span class="mc-flag" style="' + t.flagStyle + '">' + esc(t.flagText) + '</span>'; }
+        function rowHtml(t) {
+          return '<div class="md-srow' + (t.dim ? ' dim' : '') + '">' + flagHtml(t) +
+            '<span class="mc-code">' + esc(t.code) + '</span>' +
+            (t.score ? '<span class="mc-score">' + t.score + '</span>' : '') + '</div>';
+        }
+        function hasScores() { return cur.teams.some(function (t) { return !!t.score; }); }
+        function whenLine() {
+          var d = cur.d;
+          return [d.date, d.time, d.venue].filter(Boolean).map(esc).join(' \u00b7 ');
+        }
+        function actionsHtml(primaryLabel) {
+          var h = '<div class="md-actions">';
+          if (cur.ext) h += '<a class="md-act primary" href="' + cur.ext + '" target="_blank" rel="noopener">' + esc(primaryLabel || 'Full Scorecard \u2014 Cricbuzz (Free)') + '</a>';
+          h += '<button class="md-act" type="button" data-goto="#channels">Free Channels</button>';
+          h += '<button class="md-act" type="button" data-goto="#schedule">Schedule</button>';
+          return h + '</div>';
+        }
+        function tabLiveHtml() {
+          var d = cur.d;
+          var h = '<div class="md-score">' + cur.teams.map(rowHtml).join('') + '</div>';
+          h += '<p class="md-result' + (cur.soon ? ' soon' : '') + '">' + esc(cur.resultLine) + '</p>';
+          if (!hasScores() && whenLine()) h += '<p class="md-note">' + whenLine() + '</p>';
+          if (d.potm) {
+            h += '<h3 class="md-h">Player of the Match</h3><div class="md-potm"><span class="md-avatar" aria-hidden="true">' + esc(initials(d.potm.name)) + '</span><span><span class="md-potm-name">' + esc(d.potm.name) + '</span><br /><span class="md-potm-line">' + esc(d.potm.line) + '</span></span></div>';
+          }
+          if (d.summary) h += '<h3 class="md-h">Match Summary</h3><p style="margin:0">' + esc(d.summary) + '</p>';
+          else if (d.note) h += '<p class="md-note">' + esc(d.note) + '</p>';
+          h += actionsHtml();
+          return h;
+        }
+        function tabInfoHtml() {
+          var d = cur.d;
+          var parts = cur.series.split(' \u00b7 ');
+          var rows = '';
+          function r(k, v) { if (v) rows += '<tr><td class="k">' + esc(k) + '</td><td class="v">' + esc(v) + '</td></tr>'; }
+          r('Match', d.match || parts[0]);
+          r('Series', d.series || (parts.length > 1 ? parts.slice(1).join(' \u00b7 ') : parts[0]));
+          r('Date', d.date);
+          r('Time', d.time);
+          r('Toss', d.toss);
+          r('Venue', d.venue);
+          r('Status', cur.tag);
+          var h = '<table class="md-info"><tbody>' + rows + '</tbody></table>';
+          if (d.venue && d.city) {
+            h += '<h3 class="md-h">Venue Guide</h3><table class="md-info"><tbody>' +
+              '<tr><td class="k">Stadium</td><td class="v">' + esc(d.venue) + '</td></tr>' +
+              '<tr><td class="k">City</td><td class="v">' + esc(d.city) + '</td></tr></tbody></table>';
+          }
+          h += '<p class="md-note">' + esc(cur.resultLine) + '</p>';
+          h += actionsHtml();
+          return h;
+        }
+        function tabScoreHtml() {
+          var d = cur.d;
+          if (!hasScores()) {
+            var when = whenLine();
+            return '<p class="md-note">This match has not started, so there is no scorecard yet.' + (when ? ' It is on ' + when + '.' : '') + '</p>' + actionsHtml('Live Scorecard \u2014 Cricbuzz (Free)');
+          }
+          var h = '';
+          cur.teams.forEach(function (t) {
+            if (!t.score) return;
+            h += '<div class="md-inn">' + rowHtml(t);
+            var note = d.notes && d.notes[t.code];
+            if (note) h += '<div class="md-inn-note">' + esc(note) + '</div>';
+            h += '</div>';
+          });
+          h += '<p class="md-result' + (cur.soon ? ' soon' : '') + '">' + esc(cur.resultLine) + '</p>';
+          if (cur.ext) h += '<div class="md-actions"><a class="md-act primary" href="' + cur.ext + '" target="_blank" rel="noopener">Full Ball-by-Ball Scorecard \u2014 Cricbuzz (Free)</a></div>';
+          else h += '<p class="md-note">The full ball-by-ball card for this match is free on Cricbuzz and ESPNcricinfo \u2014 see the Channels section.</p>' + actionsHtml();
+          return h;
+        }
+        function tabSquadsHtml() {
+          var d = cur.d;
+          if (d.pair) {
+            function col(t, list) {
+              var c = '<div class="md-xi-col"><div class="md-xi-head">' + flagHtml(t) + esc(t.code) + '</div><ul>';
+              list.forEach(function (p) { c += '<li>' + esc(p[0]) + '<span>' + esc(p[1]) + '</span></li>'; });
+              return c + '</ul></div>';
+            }
+            return '<h3 class="md-h">Playing XI</h3><div class="md-xi">' + col(cur.teams[0], d.pair.A) + col(cur.teams[1], d.pair.B) + '</div>';
+          }
+          if (d.squads) {
+            var h = '';
+            d.squads.forEach(function (s) {
+              h += '<h3 class="md-h">' + esc(s.head) + '</h3>';
+              if (s.list) h += '<ul class="md-squad-list">' + s.list.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>';
+              if (s.text) h += '<p style="margin:0">' + esc(s.text) + '</p>';
+              if (s.note) h += '<p class="md-note">' + esc(s.note) + '</p>';
+            });
+            return h;
+          }
+          return '<p class="md-note">The playing XIs for this match are announced at the toss. Follow the free coverage on the country channels in the meantime.</p>' +
+            '<div class="md-actions"><button class="md-act" type="button" data-goto="#countries">Country Channels</button><button class="md-act" type="button" data-goto="#channels">Free Channels</button></div>';
+        }
+        function tabOversHtml() {
+          var h = '<p class="md-note">' + (hasScores()
+            ? 'This page is a snapshot, so it cannot run ball-by-ball overs itself \u2014 but every over of this match is free on the Cricbuzz scorecard, ball by ball.'
+            : 'This match has not started yet. Once play begins, every over is carried ball by ball on the free scorecard.') + '</p>';
+          if (cur.ext) h += '<div class="md-actions"><a class="md-act primary" href="' + cur.ext + '" target="_blank" rel="noopener">Overs &amp; Commentary \u2014 Cricbuzz (Free)</a></div>';
+          else h += '<div class="md-actions"><button class="md-act" type="button" data-goto="#channels">Free Live Scores</button></div>';
+          return h;
+        }
+        function tabHighlightsHtml() {
+          var d = cur.d;
+          if (d.highlights) {
+            return d.highlights.map(function (v) {
+              return '<a class="md-hl" href="' + v.u + '" target="_blank" rel="noopener"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><span><span class="md-hl-t">' + esc(v.t) + '</span><br /><span class="md-hl-s">' + esc(v.s) + '</span></span></a>';
+            }).join('') + '<p class="md-note">All highlights here are on the official PCB and Sports Central YouTube channels \u2014 free to watch any time.</p>';
+          }
+          return '<p class="md-note">Highlights from this series go up free on the official YouTube channels \u2014 PCB and Sports Central for the Pakistan series, the ICC channel for the world matches.</p>' +
+            '<div class="md-actions"><button class="md-act" type="button" data-goto="#channels">Free Channels</button><button class="md-act" type="button" data-goto="#highlights">This Page\u2019s Highlights</button></div>';
+        }
+        function renderTab(name) {
+          var h = '';
+          if (name === 'live') h = tabLiveHtml();
+          else if (name === 'info') h = tabInfoHtml();
+          else if (name === 'scorecard') h = tabScoreHtml();
+          else if (name === 'squads') h = tabSquadsHtml();
+          else if (name === 'overs') h = tabOversHtml();
+          else if (name === 'highlights') h = tabHighlightsHtml();
+          mdBody.innerHTML = h;
+          mdBody.scrollTop = 0;
+          mdTabBtns.forEach(function (b) { b.setAttribute('aria-selected', b.getAttribute('data-tab') === name ? 'true' : 'false'); });
+        }
+        function openMatch(card) {
+          cur = readCard(card);
+          lastCard = card;
+          mdTitle.textContent = cur.teams.map(function (t) { return t.flagText; }).join(' v ');
+          mdSub.textContent = cur.series;
+          mdTag.textContent = cur.tag;
+          renderTab('live');
+          mdBackdrop.hidden = false;
+          document.body.style.overflow = 'hidden';
+          document.getElementById('mdBack').focus();
+        }
+        var returnToCountry = false;
+        function closeMatch() {
+          mdBackdrop.hidden = true;
+          if (returnToCountry) {
+            returnToCountry = false;
+            ctBackdrop.hidden = false;
+            document.getElementById('ctBack').focus();
+            return;
+          }
+          document.body.style.overflow = '';
+          if (lastCard) lastCard.focus();
+        }
+        document.getElementById('mdBack').addEventListener('click', closeMatch);
+        mdBackdrop.addEventListener('click', function (e) { if (e.target === mdBackdrop) closeMatch(); });
+        document.addEventListener('keydown', function (e) {
+          if (e.key !== 'Escape') return;
+          if (!mdBackdrop.hidden) closeMatch();
+          else if (typeof ctBackdrop !== 'undefined' && ctBackdrop && !ctBackdrop.hidden) closeCountry();
+        });
+        mdTabBtns.forEach(function (b) { b.addEventListener('click', function () { renderTab(b.getAttribute('data-tab')); }); });
+        mdBody.addEventListener('click', function (e) {
+          var btn = e.target.closest ? e.target.closest('[data-goto]') : null;
+          if (!btn) return;
+          var target = document.querySelector(btn.getAttribute('data-goto'));
+          closeMatch();
+          if (target) target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+        });
+        matchCards.forEach(function (card) {
+          card.setAttribute('tabindex', '0');
+          card.setAttribute('role', 'button');
+          var codes = Array.prototype.map.call(card.querySelectorAll('.mc-flag'), function (f) { return f.textContent.trim(); });
+          card.setAttribute('aria-label', 'Open match details: ' + card.querySelector('.mc-series').textContent.trim() + ' \u2014 ' + codes.join(' v '));
+          card.addEventListener('click', function (e) {
+            if (e.target.closest && e.target.closest('.mc-foot')) return;
+            openMatch(card);
+          });
+          card.addEventListener('keydown', function (e) {
+            if ((e.key === 'Enter' || e.key === ' ') && !(e.target.closest && e.target.closest('a'))) {
+              e.preventDefault();
+              openMatch(card);
+            }
+          });
+        });
+
+        /* Country matches — tapping a country card lists every match that
+           country plays in the world strip above, in one panel. The panel
+           is built from the match cards themselves, so it always matches
+           the strip; tapping a match opens its full match view, and Back
+           from there returns to the country's list. */
+        var COUNTRY_TEAMS = { PAK: ['PAK'], IND: ['IND', 'INDW'], AUS: ['AUS'], ENG: ['ENG'], RSA: ['RSA'], NZL: ['NZ'], SRI: ['SL'], BAN: ['BAN'], WIN: ['WI'], AFG: ['AFG'], IRE: [], ZIM: ['ZIM', 'ZIMW'] };
+        var ctBackdrop = document.getElementById('ctBackdrop');
+        var ctBody = document.getElementById('ctBody');
+        var ctTitle = document.getElementById('ctTitle');
+        var ctSub = document.getElementById('ctSub');
+        var lastCountryCard = null;
+        function countryMatches(code) {
+          var wanted = COUNTRY_TEAMS[code] || [];
+          return matchCards.filter(function (card) {
+            var codes = Array.prototype.map.call(card.querySelectorAll('.mc-flag'), function (f) { return f.textContent.trim(); });
+            return codes.some(function (c) { return wanted.indexOf(c) !== -1; });
+          });
+        }
+        function openCountry(card) {
+          var name = card.querySelector('h3').textContent.trim();
+          var code = card.querySelector('.logo-tile').textContent.trim().toUpperCase();
+          var found = countryMatches(code);
+          lastCountryCard = card;
+          ctTitle.textContent = name + ' \u2014 All Matches';
+          ctSub.textContent = found.length ? found.length + (found.length === 1 ? ' match' : ' matches') + ' in the world strip \u2014 tap one for its full match view' : 'No matches in this week\u2019s world strip';
+          var h = '';
+          if (found.length) {
+            found.forEach(function (mc) {
+              var m = readCard(mc);
+              h += '<button class="ct-item" type="button" data-mid="' + esc(mc.getAttribute('data-mid') || '') + '" aria-label="' + esc(m.series) + ' \u2014 ' + esc(m.teams.map(function (t) { return t.flagText; }).join(' v ')) + ' (in ' + esc(name) + ' matches)">' +
+                '<span class="ct-item-head"><span class="mc-series">' + esc(m.series) + '</span><span class="tag">' + esc(m.tag) + '</span></span>' +
+                '<span class="md-score">' + m.teams.map(rowHtml).join('') + '</span>' +
+                '<span class="ct-item-status' + (m.soon ? ' soon' : '') + '">' + esc(m.status) + '</span></button>';
+            });
+          } else {
+            h = '<p class="md-note">' + esc(name) + ' have no match in this week\u2019s world strip. Their free official channel is on the card you just tapped \u2014 and when ' + esc(name) + ' play, their matches show up in the strip at the top of this page.</p>';
+          }
+          h += '<div class="md-actions"><button class="md-act" type="button" id="ctAllBtn">\u2190 Back to All Matches</button></div>';
+          ctBody.innerHTML = h;
+          ctBody.scrollTop = 0;
+          var allBtn = document.getElementById('ctAllBtn');
+          if (allBtn) allBtn.addEventListener('click', closeCountry);
+          Array.prototype.forEach.call(ctBody.querySelectorAll('.ct-item'), function (item) {
+            item.addEventListener('click', function () {
+              var target = null;
+              matchCards.forEach(function (mc) { if (mc.getAttribute('data-mid') === item.getAttribute('data-mid')) target = mc; });
+              if (!target) return;
+              ctBackdrop.hidden = true;
+              returnToCountry = true;
+              openMatch(target);
+            });
+          });
+          ctBackdrop.hidden = false;
+          document.body.style.overflow = 'hidden';
+          document.getElementById('ctBack').focus();
+        }
+        function closeCountry() {
+          ctBackdrop.hidden = true;
+          document.body.style.overflow = '';
+          if (lastCountryCard) lastCountryCard.focus();
+        }
+        document.getElementById('ctBack').addEventListener('click', closeCountry);
+        ctBackdrop.addEventListener('click', function (e) { if (e.target === ctBackdrop) closeCountry(); });
+        countryCards.forEach(function (card) {
+          card.setAttribute('tabindex', '0');
+          card.setAttribute('role', 'button');
+          card.setAttribute('aria-label', 'See all matches: ' + card.querySelector('h3').textContent.trim());
+          card.addEventListener('click', function (e) {
+            if (e.target.closest && e.target.closest('a')) return;
+            openCountry(card);
+          });
+          card.addEventListener('keydown', function (e) {
+            if ((e.key === 'Enter' || e.key === ' ') && !(e.target.closest && e.target.closest('a'))) {
+              e.preventDefault();
+              openCountry(card);
+            }
+          });
+        });
 
         /* Install-the-app: one tap on any Install button opens the browser's own
            install dialog directly. Only when the browser offers no install dialog
