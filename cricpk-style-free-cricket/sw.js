@@ -1,3 +1,4 @@
+// Live Cricket service worker - network-first. Deployed via GitHub.
 const CACHE = 'live-cricket-v9';
 const SHELL = ['/', '/index.html', '/assets/page.css?v=9', '/assets/app.js?v=9', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png'];
 self.addEventListener('install', function (e) {
