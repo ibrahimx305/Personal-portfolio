@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="dark" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta name="description" content="CricPK — worldwide sports channel directory. Official, legally free live sports from every country: cricket, football, hockey, tennis and more. Created by Ibrahim Khan." />
 <link rel="icon" href="data:," />
 <title>CricPK — Worldwide Free Sports TV, Live Scores & Channels</title>
@@ -132,6 +133,9 @@ main{min-width:0}
 .badge.result{background:#052e16;color:#86efac}
 .badge.final{background:#451a03;color:#fcd34d}
 .badge.up{background:#172554;color:#bfdbfe}
+.badge.liveb{background:#450a0a;color:#fca5a5}
+.match .watch{color:var(--green-soft);font-size:13px;margin-top:8px}
+.match .watch b{color:var(--faint);font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-right:6px}
 .match .links{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
 
 /* ---------- countries ---------- */
@@ -237,6 +241,7 @@ footer nav a:hover{color:var(--green-soft)}
     <nav class="main" id="mainNav" aria-label="Main">
       <a href="#/home" data-nav="home">Home</a>
       <a href="#/live" data-nav="live">Live TV</a>
+      <a href="#/matches" data-nav="matches">Matches</a>
       <a href="#/cricket" data-nav="cricket">Cricket</a>
       <a href="#/football" data-nav="football">Football</a>
       <a href="#/hockey" data-nav="hockey">Hockey</a>
@@ -256,6 +261,7 @@ footer nav a:hover{color:var(--green-soft)}
     <div id="sideSports"></div>
     <h3 style="margin-top:18px">Quick links</h3>
     <a href="#/live">Live TV directory</a>
+    <a href="#/matches">Worldwide match centre</a>
     <a href="#/countries">Browse by country</a>
     <a href="#/search">Search everything</a>
     <a href="#/favorites">My favorites</a>
@@ -291,9 +297,9 @@ footer nav a:hover{color:var(--green-soft)}
       </div>
 
       <div class="sec">
-        <div class="sec-head"><h2>Cricket — latest &amp; next</h2><p>Pakistan ODI Tri-Series, Lahore.</p><a class="more" href="#/cricket">Cricket page →</a></div>
+        <div class="sec-head"><h2>Cricket — latest &amp; next</h2><p>Pakistan ODI Tri-Series, Lahore.</p><a class="more" href="#/matches">Worldwide match centre →</a></div>
         <div class="mgrid" id="homeMatches"></div>
-        <p class="snapshot">Score snapshot: 28 Oct 2026, 10:12 AM PKT (Asia/Karachi). Scores update when the page is rebuilt — for ball-by-ball, use the official score links on each card.</p>
+        <p class="snapshot">Score &amp; fixture snapshot: verified Wed 28 Oct 2026, 10:46 AM PKT (Asia/Karachi) from ESPNcricinfo, Reuters, UEFA and Premier League listings, Formula1.com and the FIH. This public build is a static page, so it cannot poll a live scores API — every status below was exact at that time; for ball-by-ball, use the official score links on each card. Automatic live updates arrive with the phase-two server (see Owner Admin).</p>
       </div>
 
       <div class="sec">
@@ -328,6 +334,28 @@ footer nav a:hover{color:var(--green-soft)}
       <div class="empty" id="channelEmpty" style="display:none">No channel matches those filters. Try clearing the search or choosing a different country.</div>
     </section>
 
+    <!-- ============ MATCH CENTRE ============ -->
+    <section class="view" id="view-matches">
+      <div class="page-head"><h1>Match centre — worldwide</h1><p>Fixtures, results and status across every sport and country CricPK covers — not one league, not one country. Filter by sport, status, country, league or date. Each card names its authorized viewing options: the free channels that carry it and the official score service.</p></div>
+      <div style="height:18px"></div>
+      <div class="filters">
+        <input type="search" id="mmSearch" placeholder="Search teams, competitions, venues…" aria-label="Search matches" />
+        <select id="mmSport" aria-label="Filter matches by sport"><option value="">All sports</option></select>
+        <select id="mmStatus" aria-label="Filter matches by status">
+          <option value="">Any status</option><option value="live">Live now</option><option value="upcoming">Upcoming</option><option value="completed">Completed</option>
+        </select>
+        <select id="mmCountry" aria-label="Filter matches by country"><option value="">All countries</option></select>
+        <select id="mmLeague" aria-label="Filter matches by league or competition"><option value="">All leagues</option></select>
+        <select id="mmDay" aria-label="Filter matches by date">
+          <option value="">All dates</option><option value="today">Today — Wed 28 Oct</option><option value="week">Next 7 days</option><option value="past">Earlier dates</option>
+        </select>
+      </div>
+      <p class="result-count" id="matchCount"></p>
+      <div id="matchGroups"></div>
+      <div class="empty" id="matchEmpty" style="display:none">No verified matches match these filters in the current snapshot. CricPK only lists fixtures and results it could verify from a reliable source — when no reliable data is available for a sport, country or date, this space stays empty rather than showing invented fixtures. Try widening the filters, or follow the sport on its official score service (ESPNcricinfo and Cricbuzz for cricket, the league links on each card for the rest).</div>
+      <p class="snapshot">Snapshot verified Wed 28 Oct 2026, 10:46 AM PKT (Asia/Karachi). Sources: ESPNcricinfo, Reuters, UEFA / Premier League fixture listings, Formula1.com, ATP Tour and the FIH. A static page cannot fetch live APIs or refresh itself, so statuses are exact as of that time — automatic worldwide discovery and live score updates are wired into the phase-two server build (API keys stay on the server; see Owner Admin → Match data &amp; live APIs).</p>
+    </section>
+
     <!-- ============ PLAYER ============ -->
     <section class="view" id="view-player">
       <a class="backlink" href="#/live">← Back to Live TV</a>
@@ -344,7 +372,7 @@ footer nav a:hover{color:var(--green-soft)}
     <!-- ============ CRICKET ============ -->
     <section class="view" id="view-cricket">
       <div class="page-head"><h1>Cricket</h1><p>Results, the final, and where to watch and follow every match free — official channels only.</p></div>
-      <div class="sec"><div class="sec-head"><h2>Pakistan ODI Tri-Series — Lahore</h2><span class="badge result">Results verified 28 Oct 2026</span></div>
+      <div class="sec"><div class="sec-head"><h2>Cricket — results &amp; fixtures</h2><span class="badge result">Snapshot verified 28 Oct 2026</span></div>
       <div class="mgrid" id="cricketMatches"></div></div>
       <div class="sec"><div class="sec-head"><h2>Watch &amp; follow free</h2></div><div class="grid" id="cricketChannels"></div></div>
       <div class="sec"><div class="sec-head"><h2>Ball-by-ball scores</h2></div>
@@ -380,6 +408,7 @@ footer nav a:hover{color:var(--green-soft)}
           <div class="match"><span class="comp">Always free on FIFA+</span><div class="teams">Qualifiers, youth World Cups &amp; the archive</div><div class="detail">CAF and OFC World Cup qualifiers, U-17 and U-20 World Cups, Futsal and Beach Soccer World Cups, plus full World Cup replays back to 1966. Senior World Cup live matches follow local TV rights.</div><div class="links"><a class="btn small ghost" href="https://www.plus.fifa.com/" target="_blank" rel="noopener">Open FIFA+</a></div></div>
         </div>
       </div>
+      <div class="sec"><div class="sec-head"><h2>Fixtures &amp; results — worldwide</h2><p>From the verified snapshot · full filters in the <a href="#/matches">Match centre</a>.</p></div><div class="mgrid" id="footballMatches"></div></div>
       <div class="sec"><div class="sec-head"><h2>Football channels</h2></div><div class="grid" id="footballChannels"></div></div>
     </section>
 
@@ -388,6 +417,7 @@ footer nav a:hover{color:var(--green-soft)}
       <div class="page-head"><h1>Hockey</h1><p>Field hockey's official home is Watch.Hockey — the FIH platform with free live streams of selected events, highlights and documentaries. Pakistan hockey also features on PTV Sports and Sports Central.</p></div>
       <div class="sec"><div class="sec-head"><h2>Hockey channels</h2></div><div class="grid" id="hockeyChannels"></div></div>
       <div class="sec"><div class="sec-head"><h2>Fixtures &amp; results</h2></div>
+        <div class="mgrid" id="hockeyMatches" style="margin-bottom:14px"></div>
         <div class="panel"><h3>FIH Pro League &amp; World Cups</h3><p>The FIH publishes the full international calendar — Pro League seasons, World Cup qualifiers and junior events — with free selected streams and highlights on Watch.Hockey. Check the official platform for your region's live schedule before each match window.</p><a class="btn small" href="https://watch.hockey" target="_blank" rel="noopener">Open Watch.Hockey</a></div>
       </div>
     </section>
@@ -395,6 +425,7 @@ footer nav a:hover{color:var(--green-soft)}
     <!-- ============ OTHER SPORTS ============ -->
     <section class="view" id="view-other">
       <div class="page-head"><h1>Other sports</h1><p>Tennis, basketball, volleyball, rugby, badminton, Formula 1 and motorsport — official free homes for each.</p></div>
+      <div class="sec" style="margin-top:22px"><div class="sec-head"><h2>Fixtures &amp; results</h2><p>Tennis, Formula 1 and more from the worldwide snapshot.</p></div><div class="mgrid" id="otherMatches"></div></div>
       <div style="height:16px"></div>
       <div class="chips" id="otherChips"></div>
       <div class="grid" id="otherGrid"></div>
@@ -482,11 +513,16 @@ footer nav a:hover{color:var(--green-soft)}
       </div>
       <div class="sec"><div class="sec-head"><h2>In-page playback</h2></div>
         <div class="panel"><p style="margin-top:0">19 of the 32 channels now play <strong style="color:var(--ink)">inside CricPK</strong>: Red Bull TV, through its official free HLS live stream, and 18 official YouTube channels through YouTube's own embed player — Sports Central, Pakistan Cricket, BWF TV, Cricket Ireland Live, Rabbitholebd Sports, FIBA, FIFA, ICC, UEFA, Formula 1, Cricbuzz, Sony Sports Network, New Zealand Cricket, ATP, WTA, World Rugby, Volleyball World and Olympics. A channel's Live tab plays only while that channel is actually broadcasting, and its Latest videos tab always works. FIFA+ is the clearest example of the rule: the FIFA+ platform itself forbids embedding (its live matches still open on FIFA+), but FIFA's official YouTube channel permits it — so FIFA videos play here while the page says exactly that. The other 13 channels keep their official-platform button because the broadcaster permits no embedding and has no verified embeddable channel — 7plus and TVNZ+ even block framing outright (X-Frame-Options: SAMEORIGIN). An ordinary web-page link is never treated as a video stream, and nothing is copied, re-hosted or DRM-bypassed. All channel IDs above were read off the broadcasters' own YouTube channel pages on 28 Oct 2026.</p>
+        <p><strong style="color:var(--ink)">YouTube “Error 153 — video player configuration error”:</strong> this is YouTube refusing an embed that arrives without the Referer identity its developer terms require. CricPK's embeds are configured against it three ways: every player loads from the privacy-enhanced <code>youtube-nocookie.com</code> embed domain, every embed iframe sends <code>referrerpolicy="strict-origin-when-cross-origin"</code>, and the page itself declares the same referrer policy so no layer strips it. Embed URLs are built only from verified channel IDs — never from watch-page links. If one specific video still shows an error, that video's owner has disabled embedding for it; the channel's other tab or the Official platform button will work.</p>
         <p>Verify the player any time — the test uses Apple's public sample stream through the exact same HLS pipeline (HTML5 video + hls.js) as the live channels:</p>
         <div class="btnrow"><a class="btn small" href="#/player/test-hls">▶ Test the HLS player</a><a class="btn small ghost" href="#/player/redbull">▶ Open Red Bull TV (live HLS)</a><a class="btn small ghost" href="#/player/fifaplus">▶ Open FIFA (YouTube)</a><a class="btn small ghost" href="#/player/sportscentral">▶ Open Sports Central (YouTube)</a></div></div>
       </div>
       <div class="sec"><div class="sec-head"><h2>Channel register</h2><p>Everything currently published, with its access type and whether it plays inside CricPK.</p></div>
         <div class="panel tablewrap"><table><thead><tr><th>Channel</th><th>Sport</th><th>Country</th><th>Access</th><th>Platform</th><th>In-page player</th></tr></thead><tbody id="adminTable"></tbody></table></div>
+      </div>
+      <div class="sec"><div class="sec-head"><h2>Match data &amp; live APIs</h2></div>
+        <div class="panel"><p style="margin-top:0">The Match centre currently renders a <strong style="color:var(--ink)">verified snapshot</strong> (this build: Wed 28 Oct 2026, 10:46 AM PKT) gathered from ESPNcricinfo, Reuters, UEFA and Premier League listings, Formula1.com, the ATP Tour and the FIH, with sport, status, country, league and date filters. That is deliberate: this public build is a static page with no server, and a static page cannot hold an API key safely or poll a scores API — anything it “fetched live” from the browser would either expose a key or depend on a third-party proxy. Rather than fake automatic updates, the page labels its snapshot time on every match view.</p>
+        <p><strong style="color:var(--ink)">How automatic worldwide discovery plugs in (phase two):</strong> the Next.js server exposes one route, <code>/api/matches?sport=&amp;country=&amp;league=&amp;date=</code>, which calls the licensed data providers with keys kept in server environment variables (for example <code>SPORTS_API_KEY</code>) — never in page code. Cricket, football, hockey, tennis, basketball and motorsport feeds all normalize into the same match shape the Match centre already renders (sport, league, country, date, status, teams, score, official viewing options), results cache for a few minutes server-side, and the filters on this page work unchanged. Until that server exists, score updates ship as re-verified snapshots like this one — and any sport or date with no reliable source shows the honest “no verified data” message instead of invented fixtures.</p></div>
       </div>
       <div class="sec"><div class="sec-head"><h2>Setup &amp; deployment (phase two)</h2></div>
         <div class="panel">
@@ -520,6 +556,7 @@ footer nav a:hover{color:var(--green-soft)}
 <nav class="mnav" aria-label="Mobile">
   <a href="#/home" data-nav="home">Home</a>
   <a href="#/live" data-nav="live">Live TV</a>
+  <a href="#/matches" data-nav="matches">Matches</a>
   <a href="#/cricket" data-nav="cricket">Scores</a>
   <a href="#/search" data-nav="search">Search</a>
   <a href="#/favorites" data-nav="favorites">Favorites</a>
@@ -563,12 +600,31 @@ var CHANNELS = [
  {id:"olympics",name:"Olympics.com",country:"Worldwide",sport:"Multi-sport",lang:"Multiple",access:"Free",type:"Web & app",color:"c2",url:"https://olympics.com",play:{kind:"youtube",yt:"UCTl3QQTvqHFjurroKxexy2Q",note:"Olympics.com itself does not allow embedding, so its live pages still open there. The official Olympics YouTube channel does allow embedding, and its videos play here."},status:"Live Olympic qualifiers & original sport",desc:"The IOC's official platform: free live qualifiers, Olympic Channel originals and multi-sport coverage between Games."}
 ];
 
+/* Worldwide match snapshot — every entry verified at build time from the
+   source named on its card (ESPNcricinfo, Reuters, UEFA / Premier League
+   listings, Formula1.com, ATP Tour, FIH). Snapshot: Wed 28 Oct 2026,
+   10:46 AM PKT. Statuses were exact at that time; a static page cannot
+   poll a live API, so nothing here claims to be live after that moment.
+   Fields: status = live | upcoming | completed; date = ISO day used by
+   the Match centre date filter; link = the official scores/fixtures page;
+   watch = the authorized viewing options for that match. */
+var SNAPSHOT_DATE = "2026-10-28", SNAPSHOT_WEEK_END = "2026-11-03";
+var CRICINFO = {label:"Scorecard — ESPNcricinfo", url:"https://www.espncricinfo.com"};
 var MATCHES = [
- {comp:"Pakistan ODI Tri-Series · Match 5 · Lahore",teams:"Pakistan vs Sri Lanka",score:"SL won by 8 wickets",detail:"Pakistan 110 all out (25.3 overs — Babar Azam 29; Dilshan Madushanka 5/34). Sri Lanka chased in 18.2 overs, Kamindu Mendis 62 not out. Played Tue 27 Oct 2026, Gaddafi Stadium.",badge:"result",badgeText:"Result",sport:"Cricket"},
- {comp:"Pakistan ODI Tri-Series · Match 4 · Lahore",teams:"Pakistan vs England",score:"PAK won by 1 wicket",detail:"England 241 all out; Pakistan 243/9 — Shadab Khan's 113* carried Pakistan home. Played Sun 25 Oct 2026.",badge:"result",badgeText:"Result",sport:"Cricket"},
- {comp:"Pakistan ODI Tri-Series · The Final · Lahore",teams:"Pakistan vs Sri Lanka",score:"Sat 31 Oct 2026 · Gaddafi Stadium",detail:"Both teams are through: Pakistan topped the group; Sri Lanka's win on Tuesday sealed their place and knocked England out. Watch free via the cricket channels below and follow ball-by-ball on ESPNcricinfo / Cricbuzz.",badge:"final",badgeText:"Final",sport:"Cricket"},
- {comp:"Pakistan ODI Tri-Series · Lahore",teams:"Sri Lanka vs England",score:"Thu 29 Oct 2026",detail:"Final group match. England are already eliminated, so this decides nothing for the final — pride and points only.",badge:"up",badgeText:"Upcoming",sport:"Cricket"},
- {comp:"India tour of New Zealand · 3rd T20I · Wellington",teams:"New Zealand vs India",score:"Tue 27 Oct 2026",detail:"Part of India's long tour running to 1 December: 5 T20Is, then 5 ODIs and 2 Tests. See the full scorecard on ESPNcricinfo; NZ home matches stream free on TVNZ+.",badge:"up",badgeText:"Scorecard",sport:"Cricket"}
+ {sport:"Cricket",league:"Pakistan ODI Tri-Series",country:"Pakistan",date:"2026-10-27",status:"completed",comp:"Pakistan ODI Tri-Series · Match 5 · Lahore",teams:"Pakistan vs Sri Lanka",score:"SL won by 8 wickets",detail:"Pakistan 110 all out (25.3 overs — Babar Azam 29; Dilshan Madushanka 5/34). Sri Lanka chased in 18.2 overs, Kamindu Mendis 62 not out. Played Tue 27 Oct 2026, Gaddafi Stadium.",badge:"result",badgeText:"Result",watch:"Sports Central & PCB on YouTube (highlights) · PTV Sports (TV, Pakistan)",link:CRICINFO},
+ {sport:"Cricket",league:"Pakistan ODI Tri-Series",country:"Pakistan",date:"2026-10-25",status:"completed",comp:"Pakistan ODI Tri-Series · Match 4 · Lahore",teams:"Pakistan vs England",score:"PAK won by 1 wicket",detail:"England 241 all out; Pakistan 243/9 — Shadab Khan's 113* carried Pakistan home. Played Sun 25 Oct 2026.",badge:"result",badgeText:"Result",watch:"Sports Central & PCB on YouTube (highlights) · PTV Sports (TV, Pakistan)",link:CRICINFO},
+ {sport:"Cricket",league:"Pakistan ODI Tri-Series",country:"Pakistan",date:"2026-10-31",status:"upcoming",comp:"Pakistan ODI Tri-Series · The Final · Lahore",teams:"Pakistan vs Sri Lanka",score:"Sat 31 Oct 2026 · 1:00 PM PKT · Gaddafi Stadium",detail:"Both teams are through: Pakistan topped the group; Sri Lanka's win on Tuesday sealed their place and knocked England out.",badge:"final",badgeText:"Final",watch:"Sports Central (YouTube) · PTV Sports (free-to-air TV, Pakistan)",link:CRICINFO},
+ {sport:"Cricket",league:"Pakistan ODI Tri-Series",country:"Pakistan",date:"2026-10-29",status:"upcoming",comp:"Pakistan ODI Tri-Series · Match 6 · Lahore",teams:"Sri Lanka vs England",score:"Thu 29 Oct 2026 · Gaddafi Stadium",detail:"Final group match. England are already eliminated, so this decides nothing for the final — pride and points only.",badge:"up",badgeText:"Upcoming",watch:"Sports Central (YouTube) · PTV Sports (free-to-air TV, Pakistan)",link:CRICINFO},
+ {sport:"Cricket",league:"India tour of New Zealand",country:"New Zealand",date:"2026-10-27",status:"completed",comp:"India tour of New Zealand · 3rd T20I · Wellington",teams:"New Zealand vs India",score:"IND won by 6 wickets",detail:"New Zealand 198/3 (Daryl Mitchell 89*); India 199/4 in just 13.2 overs — Abhishek Sharma 113 off 38 balls, with a T20I-record 118/0 powerplay alongside Vaibhav Sooryavanshi (45 off 19). India take an unassailable 3–0 series lead. Played Tue 27 Oct 2026, Hnry Stadium.",badge:"result",badgeText:"Result",watch:"TVNZ+ (free in NZ) · NZ Cricket on YouTube (highlights)",link:CRICINFO},
+ {sport:"Cricket",league:"India tour of New Zealand",country:"New Zealand",date:"2026-10-30",status:"upcoming",comp:"India tour of New Zealand · 4th T20I · Auckland",teams:"New Zealand vs India",score:"Fri 30 Oct 2026 · Eden Park, Auckland",detail:"India lead the five-match series 3–0. The 5th T20I follows, then 5 ODIs and 2 Tests on a tour running to 1 December.",badge:"up",badgeText:"Upcoming",watch:"TVNZ+ (free in NZ) · NZ Cricket on YouTube (highlights)",link:CRICINFO},
+ {sport:"Football",league:"UEFA Champions League",country:"Europe",date:"2026-10-21",status:"completed",comp:"UEFA Champions League · Matchday 3 · Europe",teams:"Bayern Munich 2–2 Arsenal · Real Madrid 4–1 RB Leipzig",score:"Wed 21 Oct 2026",detail:"Matchday 3 of the league phase: Como stunned Manchester United 4–1 in Italy, PSG beat Barcelona 4–2 and Manchester City beat AEK Athens 5–1 on the Tuesday night. PSG, Aston Villa, Liverpool, Real Madrid and Real Betis top the table on 9 points.",badge:"result",badgeText:"Result",watch:"UEFA.tv (free account) · UEFA on YouTube — highlights play on CricPK",link:{label:"UEFA on CricPK", url:"#/player/uefatv"}},
+ {sport:"Football",league:"Premier League",country:"England",date:"2026-10-25",status:"completed",comp:"Premier League · Matchweek 8 · England",teams:"Aston Villa end Manchester City's perfect start",score:"Weekend of 24–25 Oct 2026",detail:"Villa's win ended City's perfect opening to the season; in the same round Tottenham won 2–0 at Chelsea and Bournemouth won 3–0 at Manchester United.",badge:"result",badgeText:"Result",watch:"FIFA+ & UEFA.tv carry free football content; Premier League live rights are subscription in most countries — cards say so honestly",link:{label:"Fixtures & table — VAVEL", url:"https://www.vavel.com/en/data/premier-league/fixtures/"}},
+ {sport:"Football",league:"Premier League",country:"England",date:"2026-10-31",status:"upcoming",comp:"Premier League · Matchweek 9 · England",teams:"Chelsea vs Manchester United — plus 7 more",score:"Sat 31 Oct 2026 · Stamford Bridge, 12:30 UK time",detail:"Also Saturday: Man City vs Brighton, Tottenham vs Crystal Palace, Aston Villa vs Fulham, Bournemouth vs Leeds, Brentford vs Nottingham Forest, Coventry vs Sunderland and Hull vs Ipswich. Liverpool vs Arsenal follows on Sun 1 Nov at Anfield.",badge:"up",badgeText:"Upcoming",watch:"Free official content on FIFA+ / UEFA.tv; live Premier League is with local rights holders",link:{label:"Fixtures & table — VAVEL", url:"https://www.vavel.com/en/data/premier-league/fixtures/"}},
+ {sport:"Football",league:"UEFA Champions League",country:"Europe",date:"2026-11-04",status:"upcoming",comp:"UEFA Champions League · Matchday 4 · Europe",teams:"League phase — Matchday 4",score:"Tue 4 – Wed 5 Nov 2026",detail:"The league phase continues across Europe. All 36 clubs play eight league-phase matches before the knockout play-offs in February.",badge:"up",badgeText:"Upcoming",watch:"UEFA.tv (free account) carries selected free live content; UEFA on YouTube plays on CricPK",link:{label:"UEFA on CricPK", url:"#/player/uefatv"}},
+ {sport:"Motorsport",league:"Formula 1",country:"USA",date:"2026-10-25",status:"completed",comp:"Formula 1 · Round 19 · Austin, USA",teams:"United States Grand Prix — Antonelli wins",score:"Sun 25 Oct 2026 · Circuit of the Americas",detail:"Kimi Antonelli (Mercedes) won from pole in 1:35:16.650 — his ninth win of the season — ahead of Charles Leclerc (Ferrari, +13.1s) and Max Verstappen (Red Bull, +17.5s). Lewis Hamilton 4th, Lando Norris 5th. Full classification on Formula1.com.",badge:"result",badgeText:"Result",watch:"Formula 1 on YouTube — free highlights play on CricPK; live races via F1 TV / local rights",link:{label:"Full race result — Formula1.com", url:"https://www.formula1.com/en/results/2026/races/1297/united-states/race-result"}},
+ {sport:"Motorsport",league:"Formula 1",country:"Mexico",date:"2026-11-01",status:"upcoming",comp:"Formula 1 · Round 20 · Mexico City",teams:"Mexico City Grand Prix",score:"Race: Sun 1 Nov 2026 · Autódromo Hermanos Rodríguez",detail:"Round 20 of 24. The weekend runs Fri 30 Oct – Sun 1 Nov; Antonelli arrives leading the championship and can close on the title after his Austin win. São Paulo follows on 6–8 Nov.",badge:"up",badgeText:"Upcoming",watch:"Formula 1 on YouTube — free highlights play on CricPK; live races via F1 TV / local rights",link:{label:"F1 on CricPK", url:"#/player/f1"}},
+ {sport:"Tennis",league:"ATP Masters 1000 — Paris",country:"France",date:"2026-10-31",status:"upcoming",comp:"ATP Masters 1000 · Rolex Paris Masters · Paris",teams:"Rolex Paris Masters — qualifying begins",score:"Sat 31 Oct – Sun 8 Nov 2026 · Plenitude Arena, Nanterre",detail:"The final Masters 1000 of the season: qualifying 31 Oct – 1 Nov, main draw from Mon 2 Nov, final Sun 8 Nov, with the last ATP Finals places at stake. Defending champion Jannik Sinner is absent after ending his season early (knee). In France, france.tv streams a free daily featured match.",badge:"up",badgeText:"Upcoming",watch:"france.tv (free in France) · ATP on YouTube — highlights & live scores on CricPK",link:{label:"ATP on CricPK", url:"#/player/atp"}},
+ {sport:"Hockey",league:"FIH Pro League",country:"Argentina",date:"2026-12-08",status:"upcoming",comp:"FIH Pro League 2026-27 · Round 1 · Argentina",teams:"France vs Great Britain (men) — season opener",score:"Tue 8 Dec 2026 · Argentina (venue TBC)",detail:"The new Pro League season opens in Argentina (8–13 Dec) with Argentina, France (men), Great Britain and China (women); Spain then hosts Belgium, Germany and the Netherlands in Valencia, 14–22 Dec. India women and France men return after winning the Nations Cup. The season runs to 27 Jun 2027 and its winner qualifies directly for the LA 2028 Olympics.",badge:"up",badgeText:"Upcoming",watch:"Watch.Hockey — selected matches stream free",link:{label:"Watch.Hockey on CricPK", url:"#/player/watchhockey"}}
 ];
 
 var SPORTS = ["Cricket","Football","Hockey","Tennis","Basketball","Volleyball","Rugby","Badminton","Motorsport","Multi-sport"];
@@ -596,9 +652,40 @@ function cardHTML(ch){
 }
 function renderInto(id, list){ $(id).innerHTML = list.map(cardHTML).join(""); }
 function matchHTML(m){
+  var lk = m.link || CRICINFO;
+  var ext = lk.url.indexOf("http") === 0;
   return '<article class="match"><span class="comp">'+m.comp+'</span> <span class="badge '+m.badge+'">'+m.badgeText+'</span>'
    + '<div class="teams">'+m.teams+'</div><div class="score">'+m.score+'</div><p class="detail">'+m.detail+'</p>'
-   + '<div class="links"><a class="btn small ghost" href="https://www.espncricinfo.com" target="_blank" rel="noopener">Scorecard</a><a class="btn small ghost" href="#/live">Watch free</a></div></article>';
+   + (m.watch ? '<p class="watch"><b>Watch</b>'+m.watch+'</p>' : '')
+   + '<div class="links"><a class="btn small ghost" href="'+lk.url+'"'+(ext ? ' target="_blank" rel="noopener"' : '')+'>'+lk.label+'</a><a class="btn small ghost" href="#/live">All free channels</a></div></article>';
+}
+
+/* ================= MATCH CENTRE FILTERS ================= */
+function matchGroup(title, list){
+  if(!list.length) return "";
+  return '<div class="sec" style="margin-top:26px"><div class="sec-head"><h2>'+title+'</h2><p>'+list.length+' match'+(list.length>1?"es":"")+'</p></div><div class="mgrid">'+list.map(matchHTML).join("")+'</div></div>';
+}
+function applyMatchFilters(){
+  var q = $("mmSearch").value.trim().toLowerCase(), sp = $("mmSport").value, st = $("mmStatus").value,
+      co = $("mmCountry").value, lg = $("mmLeague").value, dy = $("mmDay").value;
+  var list = MATCHES.filter(function(m){
+    if(sp && m.sport !== sp) return false;
+    if(st && m.status !== st) return false;
+    if(co && m.country !== co) return false;
+    if(lg && m.league !== lg) return false;
+    if(dy === "today" && m.date !== SNAPSHOT_DATE) return false;
+    if(dy === "week" && (m.date < SNAPSHOT_DATE || m.date > SNAPSHOT_WEEK_END)) return false;
+    if(dy === "past" && m.date >= SNAPSHOT_DATE) return false;
+    if(q && (m.teams+" "+m.comp+" "+m.league+" "+m.country+" "+m.detail).toLowerCase().indexOf(q) === -1) return false;
+    return true;
+  });
+  var byDateAsc = function(a,b){ return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; };
+  var live = list.filter(function(m){ return m.status === "live"; }).sort(byDateAsc);
+  var up = list.filter(function(m){ return m.status === "upcoming"; }).sort(byDateAsc);
+  var done = list.filter(function(m){ return m.status === "completed"; }).sort(function(a,b){ return -byDateAsc(a,b); });
+  $("matchGroups").innerHTML = matchGroup("Live now", live) + matchGroup("Upcoming", up) + matchGroup("Latest results", done);
+  $("matchEmpty").style.display = list.length ? "none" : "block";
+  $("matchCount").textContent = list.length + " of " + MATCHES.length + " matches in the verified snapshot · " + SPORTS.filter(function(s){ return MATCHES.some(function(m){ return m.sport === s; }); }).length + " sports · " + new Set(MATCHES.map(function(m){ return m.country; })).size + " countries & regions";
 }
 
 /* ================= LIVE TV FILTERS ================= */
@@ -621,7 +708,7 @@ function applyFilters(){
 function sportChipsHTML(active){ return '<button class="chip'+(active===""?" on":"")+'" data-sport="">All sports</button>' + SPORTS.map(function(s){ return '<button class="chip'+(active===s?" on":"")+'" data-sport="'+s+'">'+s+'</button>'; }).join(""); }
 
 /* ================= ROUTER ================= */
-var VIEWS = ["home","live","player","cricket","football","hockey","other","countries","search","favorites","about","contact","admin"];
+var VIEWS = ["home","live","matches","player","cricket","football","hockey","other","countries","search","favorites","about","contact","admin"];
 function route(){
   var h = location.hash.replace(/^#\//,"") || "home";
   var parts = h.split("/"), view = parts[0];
@@ -757,9 +844,13 @@ function startPlayback(){
   } else if(ch.play.kind === "iframe"){
     sb.innerHTML = '<div class="mediawrap"><iframe src="'+ch.play.src+'" title="'+ch.name+' — official embed player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>';
   } else {
+    /* Error 153 hardening: privacy-enhanced nocookie host + playsinline/rel
+       params; the iframe also carries referrerpolicy="strict-origin-
+       when-cross-origin" and the page declares the same policy, so the
+       Referer identity YouTube's embed terms require is never stripped. */
     var src = ytMode === "live"
-      ? "https://www.youtube-nocookie.com/embed/live_stream?channel=" + ch.play.yt + "&autoplay=1"
-      : "https://www.youtube-nocookie.com/embed/videoseries?list=UU" + ch.play.yt.slice(2) + "&autoplay=1";
+      ? "https://www.youtube-nocookie.com/embed/live_stream?channel=" + ch.play.yt + "&autoplay=1&playsinline=1&rel=0"
+      : "https://www.youtube-nocookie.com/embed/videoseries?list=UU" + ch.play.yt.slice(2) + "&autoplay=1&playsinline=1&rel=0";
     sb.innerHTML = '<div class="mediawrap"><iframe src="'+src+'" title="'+ch.name+' — official YouTube player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>';
   }
   renderYtTabs();
@@ -833,8 +924,18 @@ document.addEventListener("DOMContentLoaded", function(){
   renderInto("cricketChannels", CHANNELS.filter(function(c){return c.sport==="Cricket";}).slice(0,6));
   renderInto("footballChannels", CHANNELS.filter(function(c){return c.sport==="Football";}));
   renderInto("hockeyChannels", CHANNELS.filter(function(c){return c.sport==="Hockey" || c.id==="ptv" || c.id==="sportscentral";}));
-  $("homeMatches").innerHTML = MATCHES.slice(0,3).map(matchHTML).join("");
-  $("cricketMatches").innerHTML = MATCHES.map(matchHTML).join("");
+  $("homeMatches").innerHTML = MATCHES.filter(function(m){return m.sport==="Cricket";}).slice(0,3).map(matchHTML).join("");
+  $("cricketMatches").innerHTML = MATCHES.filter(function(m){return m.sport==="Cricket";}).map(matchHTML).join("");
+  $("footballMatches").innerHTML = MATCHES.filter(function(m){return m.sport==="Football";}).map(matchHTML).join("");
+  $("hockeyMatches").innerHTML = MATCHES.filter(function(m){return m.sport==="Hockey";}).map(matchHTML).join("");
+  $("otherMatches").innerHTML = MATCHES.filter(function(m){return ["Tennis","Motorsport","Basketball","Volleyball","Rugby","Badminton"].indexOf(m.sport)>-1;}).map(matchHTML).join("");
+
+  /* match centre filters */
+  fillSelect($("mmSport"), SPORTS);
+  fillSelect($("mmCountry"), Array.from(new Set(MATCHES.map(function(m){return m.country;}))).sort());
+  fillSelect($("mmLeague"), Array.from(new Set(MATCHES.map(function(m){return m.league;}))).sort());
+  ["mmSearch","mmSport","mmStatus","mmCountry","mmLeague","mmDay"].forEach(function(id){ $(id).addEventListener("input", applyMatchFilters); $(id).addEventListener("change", applyMatchFilters); });
+  applyMatchFilters();
   renderOther();
   applyFilters();
 
