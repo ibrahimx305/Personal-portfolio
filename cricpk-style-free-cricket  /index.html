@@ -1,0 +1,1107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="google-site-verification" content="_Fs2Nfcm7Lyy0qzEZt9GzKahXiEuYNsBw4bmSK5emik" />
+    <meta name="description" content="Watch free live cricket from all over the world: live matches, free official channels, TV and radio, full schedule and points table. 100% free, no sign-up." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://cricpk-style-free-cricket.vercel.app/" />
+    <meta property="og:title" content="Live Cricket — 100% Free Links" />
+    <meta property="og:description" content="Free live cricket from all over the world: matches, free official channels, TV and radio, schedule and points table. 100% free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cricpk-style-free-cricket.vercel.app/" />
+    <link rel="icon" href="/icon-192.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#14532d" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Live Cricket" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <title>Live Cricket — Free Live Matches, Channels & Schedule</title>
+    <script src="/assets/app.js?v=9"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/page.css?v=9">
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap site-row">
+        <a class="brand" href="#top">
+          <span class="brand-badge">LIVE</span>
+          <span>
+            <span class="brand-name">Live <em>Cricket</em></span>
+            <span class="brand-tag" style="display:block">Every link 100% free · Created by Ibrahim Khan</span>
+          </span>
+        </a>
+        <div class="searchbox">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
+          <input id="search" type="search" placeholder="Search channels, countries &amp; matches…" aria-label="Search channels, countries and matches" />
+        </div>
+        <nav class="main" aria-label="Main">
+          <a href="#watch">Player</a>
+          <a href="#live">Watch Live</a>
+          <a href="#matches">Matches</a>
+          <a href="#channels">Channels</a>
+          <a href="#countries">All Countries</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#table">Points Table</a>
+          <a href="#wtc">WTC Table</a>
+          <a href="#highlights">Highlights</a>
+          <a href="#app">Get the App</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="ticker">
+      <div class="wrap ticker-row">
+        <span class="live-pill"><span class="live-dot"></span>RESULT</span>
+        <span>Pakistan vs England, Lahore — <strong>Pakistan won by 1 wicket</strong> · PAK 243/9 · Shadab Khan 113* · ENG 241 all out</span>
+        <a href="https://www.cricbuzz.com/live-cricket-scores/170733/pak-vs-eng-4th-match-pakistan-odi-tri-series-2026" target="_blank" rel="noopener">Full scorecard →</a>
+      </div>
+    </div>
+
+    <main class="wrap" id="top">
+      <!-- ============ APP PLAYER — the big screen at the top ============ -->
+      <section class="app-player" id="watch" aria-label="Video player — pick a channel to watch here">
+        <div class="app-player-bar">
+          <span class="app-player-status" id="appPlayerStatus"><span class="live-dot" style="background:#ffd75e"></span>Free Player</span>
+          <span class="app-player-name" id="appPlayerName">No channel chosen yet</span>
+          <button class="app-player-stop" type="button" id="appPlayerStop" hidden>✕ Close</button>
+        </div>
+        <div class="app-player-frame">
+          <iframe id="appFrame" title="Live Cricket video player" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
+          <div class="app-player-empty" id="appPlayerEmpty">
+            <span class="big-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+            <h2>Pick a channel below to watch here</h2>
+            <p>Tap the green <b>Watch</b> button on any free channel and it plays right here at the top — no second website, no leaving this page.</p>
+            <div class="app-player-picks">
+              <a class="app-pick" href="https://www.youtube.com/watch?v=Ni-4S8Dlm-A" data-yt="UC-fzWbU1zavz77kP1gPPdSg" data-ytmode="live" data-ytname="Sports Central — Live"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Sports Central — Live</a>
+              <a class="app-pick" href="https://bit.ly/SubscribePakistanCricket" data-yt="UCiWrjBhlICf_L_RK5y6Vrxw" data-ytmode="live" data-ytname="Pakistan Cricket — YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Pakistan Cricket</a>
+              <a class="app-pick" href="#channels"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>All Channels ↓</a>
+            </div>
+          </div>
+        </div>
+        <div class="app-player-foot">
+          <p class="app-player-note" id="appPlayerNote">Only the free, official channels from this page play here. Channels marked “Blocked in Pakistan” only play outside Pakistan — inside Pakistan the free way for live Pakistan matches is PTV Sports on TV.</p>
+          <div class="app-player-actions" id="appPlayerActions" hidden>
+            <a class="md-act" id="appPlayerOpen" href="#" target="_blank" rel="noopener">Open on YouTube →</a>
+            <a class="md-act" href="#channels">More channels</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ HERO / MATCH CENTRE ============ -->
+      <section class="hero" id="live" aria-label="Today's live match">
+        <div class="hero-in">
+          <div class="hero-top">
+            <span class="chip chip-free">100% Free</span>
+            <span class="chip chip-series">Pakistan ODI Tri-Series 2026 · Match 4</span>
+          </div>
+          <h1>Pakistan beat England by 1 Wicket</h1>
+          <p class="hero-sub">Sunday 25 October 2026 · Gaddafi Stadium, Lahore · Pakistan in pink today for Breast Cancer Awareness</p>
+          <div class="scoreboard">
+            <div>
+              <div class="score-main">PAK 243/9 <small>won by 1 wicket</small></div>
+              <div style="font-size:13.5px;color:#d9cfa5">Chasing ENG 241 all out — Shadab Khan's 113* rescued Pakistan from 154/9</div>
+            </div>
+            <div class="score-meta">
+              <span><b>Star of the match:</b> Shadab Khan 113* (not out)</span>
+              <span><b>England's innings:</b> Ben Duckett 105 · Shaheen Afridi 4/46</span>
+              <span><b>Toss:</b> Pakistan won, chose to bowl</span>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-watch" href="#ptv-tv">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              Watch Free — PTV Sports TV
+            </a>
+            <a class="btn btn-ghost" href="https://www.cricbuzz.com/live-cricket-scores/170733/pak-vs-eng-4th-match-pakistan-odi-tri-series-2026" target="_blank" rel="noopener">Cricbuzz Scorecard</a>
+            <button class="btn btn-ghost" type="button" data-install-trigger>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+              Install the App
+            </button>
+            <a class="btn btn-ghost" href="https://www.youtube.com/watch?v=jb818F1nwgI" target="_blank" rel="noopener">Pre-Match Show</a>
+          </div>
+          <p class="hero-note">Today's match is finished — Pakistan chased 242 with one wicket to spare and top the table with three wins from three. The next match is Pakistan vs Sri Lanka on Tuesday 27 October, free on <b>PTV Sports TV</b> in Pakistan and on the official Sports Central YouTube stream in most other countries — YouTube blocks that stream <b>inside Pakistan</b>, where the rights sit with the paid apps. Tap “Cricbuzz Scorecard” for the full card from today.</p>
+        </div>
+      </section>
+
+      <!-- ============ MATCH CARDS — SWIPE ============ -->
+      <section class="block" id="matches">
+        <div class="sec-head"><span class="bar"></span><h2>Live &amp; Upcoming — Matches All Over the World</h2></div>
+        <p class="sec-sub">Live and upcoming cricket from all over the world in one swipe strip — Pakistan, India, Zimbabwe, New Zealand, Australia, South Africa, Bangladesh, the West Indies, Afghanistan, Sri Lanka and England, all mixed together. Swipe left and right, or use the arrows, to browse every match. Tap any card to open its full match view — info, score, scorecard, squads and highlights — just like the score apps. Every card also has two buttons: <b>Watch Live</b> opens the free channels for both teams in that match, and <b>Scores</b> opens the same match view.</p>
+        <div class="rail" id="matchRail" tabindex="0" aria-label="Live and upcoming matches all over the world — scroll left and right to browse">
+          <article class="card mcard" data-mid="indw2" data-name="india women zimbabwe women 2nd odi vadodara result harmanpreet kaur deepti sharma world">
+            <div class="mc-head">
+              <span class="mc-series">2nd ODI · Zimbabwe Women tour of India, 2026</span>
+              <span class="tag badge-done">Result</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">INDW</span><span class="mc-code">INDW</span><span class="mc-score">328/6 <small>(50)</small></span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#ba0c2f">ZIMW</span><span class="mc-code">ZIMW</span><span class="mc-score">207 <small>all out (48.5)</small></span></div>
+            </div>
+            <p class="mc-status">Sun 25 Oct · Vadodara — India Women won by 121 runs · ZIMW were 107/2 (22.2) chasing 329 · Harmanpreet Kaur 126 &amp; Deepti Sharma 106* · India take the series 2–0</p>
+            <div class="mc-foot"><a href="https://www.cricbuzz.com/live-cricket-scores/155562/2nd-odi-zimbabwe-women-tour-of-india-2026" target="_blank" rel="noopener">Scorecard →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="pakeng4" data-name="match 4 pakistan england lahore result shadab khan duckett">
+            <div class="mc-head">
+              <span class="mc-series">Match 4 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-done">Result</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0d7a3e">PAK</span><span class="mc-code">PAK</span><span class="mc-score">243/9</span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#1b3a6b">ENG</span><span class="mc-code">ENG</span><span class="mc-score">241 <small>all out</small></span></div>
+            </div>
+            <p class="mc-status">Sun 25 Oct · Lahore — Pakistan won by 1 wicket · Shadab Khan 113*</p>
+            <div class="mc-foot"><a href="https://www.cricbuzz.com/live-cricket-scores/170733/pak-vs-eng-4th-match-pakistan-odi-tri-series-2026" target="_blank" rel="noopener">Scorecard →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="nzind3" data-name="new zealand india 3rd t20i wellington upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">3rd T20I · India tour of New Zealand 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#23272e">NZ</span><span class="mc-code">NZ</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">IND</span><span class="mc-code">IND</span></div>
+            </div>
+            <p class="mc-status soon">Tue 27 Oct · Wellington — India's long tour runs to 1 Dec: 5 T20Is, then 5 ODIs and 2 Tests</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="paksl5" data-name="match 5 pakistan sri lanka lahore next match">
+            <div class="mc-head">
+              <span class="mc-series">Match 5 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-next">Next Match</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0d7a3e">PAK</span><span class="mc-code">PAK</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#8d153a">SL</span><span class="mc-code">SL</span></div>
+            </div>
+            <p class="mc-status soon">Tue 27 Oct · 1:00 PM PKT · Gaddafi Stadium, Lahore — Pakistan are already in the final</p>
+            <div class="mc-foot"><a href="#channels">Free Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="rsa3" data-name="south africa australia 3rd test newlands cape town upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">3rd Test · Australia tour of South Africa 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#007749">RSA</span><span class="mc-code">RSA</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#b8860b">AUS</span><span class="mc-code">AUS</span></div>
+            </div>
+            <p class="mc-status soon">Tue 27 – Sat 31 Oct · Newlands, Cape Town — the third and final Test of Australia's tour</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="sleng3" data-name="match 3 sri lanka england rawalpindi result harry brook">
+            <div class="mc-head">
+              <span class="mc-series">Match 3 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-done">Result</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#8d153a">SL</span><span class="mc-code">SL</span><span class="mc-score">430/8</span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#1b3a6b">ENG</span><span class="mc-code">ENG</span><span class="mc-score">429/4</span></div>
+            </div>
+            <p class="mc-status">Thu 22 Oct · Rawalpindi — Sri Lanka won by 2 wickets · Harry Brook 202</p>
+            <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="indw3" data-name="india women zimbabwe women 3rd odi vadodara upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">3rd ODI · Zimbabwe Women tour of India 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">INDW</span><span class="mc-code">INDW</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#ba0c2f">ZIMW</span><span class="mc-code">ZIMW</span></div>
+            </div>
+            <p class="mc-status soon">Wed 28 Oct · 2:00 PM IST (1:30 PM PKT) · BCA Stadium, Vadodara — India lead 2–0 and hunt a clean sweep in the final ODI</p>
+            <div class="mc-foot"><a href="#channels">Free Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="paksl1" data-name="match 1 pakistan sri lanka rawalpindi result salman ali agha">
+            <div class="mc-head">
+              <span class="mc-series">Match 1 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-done">Result</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0d7a3e">PAK</span><span class="mc-code">PAK</span><span class="mc-score">305 <small>all out</small></span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#8d153a">SL</span><span class="mc-code">SL</span><span class="mc-score">268 <small>all out</small></span></div>
+            </div>
+            <p class="mc-status">Sun 18 Oct · Rawalpindi — Pakistan won by 37 runs · Salman Ali Agha 107</p>
+            <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="banwi1" data-name="bangladesh west indies 1st test dhaka upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">1st Test · West Indies tour of Bangladesh 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#006a4e">BAN</span><span class="mc-code">BAN</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#5e2590">WI</span><span class="mc-code">WI</span></div>
+            </div>
+            <p class="mc-status soon">Wed 28 Oct – Sun 1 Nov · Shere Bangla Stadium, Dhaka — the first of 2 Tests</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="pakeng2" data-name="match 2 pakistan england rawalpindi result arafat minhas">
+            <div class="mc-head">
+              <span class="mc-series">Match 2 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-done">Result</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0d7a3e">PAK</span><span class="mc-code">PAK</span><span class="mc-score">302/9</span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#1b3a6b">ENG</span><span class="mc-code">ENG</span><span class="mc-score">215 <small>all out</small></span></div>
+            </div>
+            <p class="mc-status">Tue 20 Oct · Rawalpindi — Pakistan won by 87 runs · Arafat Minhas 6/40 &amp; 59</p>
+            <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="afgzim" data-name="afghanistan zimbabwe uae series tests t20i upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">Afghanistan vs Zimbabwe · UAE Series</span>
+              <span class="tag badge-next">Series</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0f766e">AFG</span><span class="mc-code">AFG</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#ba0c2f">ZIM</span><span class="mc-code">ZIM</span></div>
+            </div>
+            <p class="mc-status soon">Starts Tue 27 Oct · UAE — 2 Tests &amp; 3 T20Is between the two sides, running to 17 Nov</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="sleng6" data-name="match 6 sri lanka england lahore upcoming">
+            <div class="mc-head">
+              <span class="mc-series">Match 6 · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#8d153a">SL</span><span class="mc-code">SL</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#1b3a6b">ENG</span><span class="mc-code">ENG</span></div>
+            </div>
+            <p class="mc-status soon">Thu 29 Oct · 1:00 PM PKT · Lahore — England likely need this one to stay alive for the final</p>
+            <div class="mc-foot"><a href="#schedule">Schedule →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="nzind4" data-name="new zealand india 4th t20i auckland eden park upcoming world">
+            <div class="mc-head">
+              <span class="mc-series">4th T20I · India tour of New Zealand 2026</span>
+              <span class="tag badge-next">Upcoming</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#23272e">NZ</span><span class="mc-code">NZ</span></div>
+              <div class="mc-row"><span class="mc-flag" style="background:#2456a6">IND</span><span class="mc-code">IND</span></div>
+            </div>
+            <p class="mc-status soon">Fri 30 Oct · Eden Park, Auckland — the T20I series moves north before the ODIs begin</p>
+            <div class="mc-foot"><a href="#countries">Country Channels →</a></div>
+          </article>
+
+          <article class="card mcard" data-mid="final" data-name="final lahore tri series pakistan qualified">
+            <div class="mc-head">
+              <span class="mc-series">Final · Pakistan ODI Tri-Series 2026</span>
+              <span class="tag badge-next">Final</span>
+            </div>
+            <div class="mc-teams">
+              <div class="mc-row"><span class="mc-flag" style="background:#0d7a3e">PAK</span><span class="mc-code">PAK</span></div>
+              <div class="mc-row dim"><span class="mc-flag" style="background:#666666">TBC</span><span class="mc-code">Opponent TBC</span></div>
+            </div>
+            <p class="mc-status soon">Sat 31 Oct · 1:00 PM PKT · Lahore — Pakistan have qualified; Sri Lanka and England fight for the other spot</p>
+            <div class="mc-foot"><a href="#table">Points Table →</a></div>
+          </article>
+        </div>
+        <div class="rail-nav">
+          <button class="rail-btn" type="button" id="matchPrev" aria-label="Scroll matches left"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+          <div class="rail-dots" id="matchDots" role="tablist" aria-label="Match position"></div>
+          <button class="rail-btn" type="button" id="matchNext" aria-label="Scroll matches right"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg></button>
+        </div>
+      </section>
+
+      <!-- ============ GET THE APP ============ -->
+      <section class="block" id="app">
+        <div class="app-card">
+          <img class="app-icon" src="/icon-512.png" alt="Live Cricket app icon — a red cricket ball on green" width="96" height="96" />
+          <div class="app-body apk-body">
+            <h2>Get the Live Cricket App</h2>
+            <p>On Android, download the real app file — just like the big cricket apps. Tap the gold button, the APK downloads in seconds, open it and tap Install. It lands on your home screen with the Live Cricket icon and opens the live matches full-screen.</p>
+            <div class="app-actions">
+              <a class="btn btn-apk" href="/LiveCricket.apk" download="LiveCricket.apk">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#231600" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                <span>Download APK — Android<span class="apk-meta">LiveCricket.apk · only 13 KB · Android 8 or newer · free</span></span>
+              </a>
+              <button class="btn btn-apk-outline" type="button" id="installBtn" data-install-trigger>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                Or install from the browser
+              </button>
+            </div>
+            <ol class="apk-steps">
+              <li>Tap <b>Download APK</b> above — the file lands in your Downloads.</li>
+              <li>Open <b>LiveCricket.apk</b> and tap <b>Install</b>. (First time only, Android asks you to allow installs from your browser — tap <b>Allow</b>. That's the normal step for any app downloaded outside the Play Store.)</li>
+              <li>Tap <b>Open</b> — Live Cricket is on your phone, opening straight to the live match.</li>
+            </ol>
+            <span id="installMsg" style="display:block;margin-top:10px;font-weight:600;font-size:15px" role="status"></span>
+          </div>
+          <p class="app-hint" id="installHint" hidden></p>
+        </div>
+      </section>
+
+      <!-- ============ FREE CHANNELS ============ -->
+      <section class="block" id="channels">
+        <div class="sec-head"><span class="bar"></span><h2>Free Channels — Watch Live</h2></div>
+        <p class="sec-sub">Every channel on this page is genuinely free and official. No Pro screens, no packages, no “renew now”. If a service ever charges for a match, it does not appear here. It's not just YouTube any more: alongside the YouTube channels, this grid now carries every official free route we could verify — free-to-air TV and free streaming from New Zealand, Australia, South Africa, India and Afghanistan, plus free ball-by-ball radio from the BBC, the ABC and Guerrilla Cricket. Where a service only works in its home country, the card says so honestly — the same rule as the Sports Central card below.</p>
+        <div class="filters" role="group" aria-label="Filter channels">
+          <button class="fchip" data-filter="all" aria-pressed="true">All</button>
+          <button class="fchip" data-filter="live" aria-pressed="false">Live Video</button>
+          <button class="fchip" data-filter="tv" aria-pressed="false">TV</button>
+          <button class="fchip" data-filter="scores" aria-pressed="false">Scores &amp; Radio</button>
+          <button class="fchip" data-filter="highlights" aria-pressed="false">Highlights</button>
+        </div>
+        <div class="grid" id="channelGrid">
+          <article class="card" data-cat="live" data-name="sports central youtube live stream pcb">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#c92424">SC</span>
+              <h3>Sports Central</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <span class="blocked-note">Blocked in Pakistan — plays outside Pakistan only</span>
+            <p>PCB's official YouTube streaming partner. Today's Pakistan vs England match streamed here free in most countries. Inside Pakistan this stream is blocked: there, watch free on PTV Sports on TV below.</p>
+            <a class="go" href="https://www.youtube.com/watch?v=Ni-4S8Dlm-A" target="_blank" rel="noopener" data-yt="UC-fzWbU1zavz77kP1gPPdSg" data-ytmode="live" data-ytname="Sports Central — Live">Open the live stream (outside Pakistan) →</a>
+          </article>
+
+          <article class="card" data-cat="live highlights" data-name="pakistan cricket pcb youtube highlights live domestic">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#0d7a3e">PCB</span>
+              <h3>Pakistan Cricket — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The PCB's own channel: free highlights of every Pakistan match, plus live streams of domestic and women's cricket, interviews and press conferences.</p>
+            <a class="go" href="https://bit.ly/SubscribePakistanCricket" target="_blank" rel="noopener" data-yt="UCiWrjBhlICf_L_RK5y6Vrxw" data-ytmode="live" data-ytname="Pakistan Cricket — YouTube">Open the channel →</a>
+          </article>
+
+          <article class="card" data-cat="live" data-name="icc tv icc.tv world cup free sign up">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#1b3a6b">ICC</span>
+              <h3>ICC.tv</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The ICC's official platform. Free to sign up, and live matches stream free in regions where no TV broadcaster holds the rights — plus replays and highlights everywhere.</p>
+            <a class="go" href="https://www.icc-cricket.com/ICCtv/faqs" target="_blank" rel="noopener">See what's free in your region →</a>
+          </article>
+
+          <article class="card" id="ptv-tv" data-cat="tv" data-name="ptv sports tv free to air television pakistan">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#7a4d00">PTV</span>
+              <h3>PTV Sports — TV</h3>
+              <span class="tag tag-free">Free TV</span>
+            </div>
+            <p>Pakistan's free-to-air sports channel. If you're near a TV, PTV Sports is the no-cost way to follow Pakistan cricket — no app, no account, no package.</p>
+            <a class="go" href="#faq">How to watch on TV →</a>
+          </article>
+
+          <article class="card" data-cat="scores" data-name="cricbuzz live score ball by ball commentary">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#0a6b4f">CB</span>
+              <h3>Cricbuzz — Live Scores</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Ball-by-ball score and commentary for today's match, free. The fastest way to follow along when you can't watch the video stream.</p>
+            <a class="go" href="https://www.cricbuzz.com/live-cricket-scores/170733/pak-vs-eng-4th-match-pakistan-odi-tri-series-2026" target="_blank" rel="noopener">Open live score →</a>
+          </article>
+
+          <article class="card" data-cat="scores" data-name="espncricinfo live score scorecard stats">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#1256a0">ESPN</span>
+              <h3>ESPNcricinfo — Scorecard</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Full scorecard, wagon wheels and stats for Pakistan vs England, updated ball by ball. Best pick if you want every number from the match.</p>
+            <a class="go" href="https://www.cricinfo.com/series/pakistan-odi-tri-series-2026-27-1550706/pakistan-vs-england-4th-match-1550716/live-cricket-score" target="_blank" rel="noopener">Open the scorecard →</a>
+          </article>
+
+          <article class="card" data-cat="scores live" data-name="pakpassion watch along commentary youtube">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#5b2a86">PP</span>
+              <h3>PakPassion Watch-Along</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Free live watch-along on YouTube: score updates, commentary and fan discussion for today's match. It's chat and analysis — not the TV picture — and costs nothing.</p>
+            <a class="go" href="https://www.youtube.com/watch?v=pw49Ywau4QI" target="_blank" rel="noopener">Join the watch-along →</a>
+          </article>
+
+          <article class="card" data-cat="live highlights" data-name="cricbuzz youtube channel live shows analysis harsha bhogle">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#04523e">CB▶</span>
+              <h3>Cricbuzz — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Cricbuzz's official YouTube channel (3M+ subscribers): live match-day shows, expert analysis with voices like Harsha Bhogle, highlights and interviews — the video side of the same Cricbuzz whose free live scores are linked above.</p>
+            <a class="go" href="https://www.youtube.com/@cricbuzz" target="_blank" rel="noopener" data-yt="UCSRQXk5yErn4e14vN76upOw" data-ytmode="uploads" data-ytname="Cricbuzz — YouTube">Open Cricbuzz on YouTube →</a>
+          </article>
+
+          <article class="card" data-cat="live highlights" data-name="willow cricket willow by cricbuzz youtube usa canada free usa matches">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#b3540a">W</span>
+              <h3>Willow Cricket — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Willow by Cricbuzz's official YouTube channel — North America's home of cricket. Willow streams Team USA matches live and free here (all four USA group games at the T20 World Cup 2026 were free on this channel), plus highlights from world cricket all year.</p>
+            <a class="go" href="https://www.youtube.com/@WillowCricket" target="_blank" rel="noopener" data-yt="UC2V_LHwvaNS2XWZ5l8x3jLQ" data-ytmode="live" data-ytname="Willow Cricket — YouTube">Open Willow on YouTube →</a>
+          </article>
+
+          <article class="card" data-cat="highlights" data-name="icc youtube channel world cup highlights classic matches">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#2b2b8f">ICC▶</span>
+              <h3>ICC — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The ICC's own YouTube channel (13M+ subscribers): official highlights from every World Cup and Champions Trophy match, classic full matches, player features and behind-the-scenes — all free, straight from the world governing body.</p>
+            <a class="go" href="https://www.youtube.com/@ICC" target="_blank" rel="noopener" data-yt="UCt2JXOLNxqry7B_4rRZME3Q" data-ytmode="live" data-ytname="ICC — YouTube">Open ICC on YouTube →</a>
+          </article>
+
+          <article class="card" data-cat="highlights" data-name="espncricinfo youtube cricinfo channel analysis highlights shows">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#0b3d91">ESPN</span>
+              <h3>ESPNcricinfo — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Cricinfo's official YouTube channel: match previews and reviews, expert analysis shows, interviews and features in English and Hindi — the video companion to the free scorecard linked above.</p>
+            <a class="go" href="https://www.youtube.com/@cricinfo" target="_blank" rel="noopener">Open ESPNcricinfo on YouTube →</a>
+          </article>
+
+          <article class="card" data-cat="highlights live" data-name="sports central subscribe youtube channel highlights">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#8a1c1c">SC+</span>
+              <h3>Sports Central — Full Channel</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Subscribe free so the next match stream finds you: PSL, Pakistan internationals, domestic cricket, highlights and behind-the-scenes from Pakistan sport.</p>
+            <a class="go" href="https://bit.ly/SubscribeSportsCentral" target="_blank" rel="noopener" data-yt="UC-fzWbU1zavz77kP1gPPdSg" data-ytmode="live" data-ytname="Sports Central — Full Channel">Subscribe free →</a>
+          </article>
+
+          <article class="card" data-cat="live tv" data-name="tvnz plus new zealand blackcaps white ferns super smash free to air duke">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#111111">NZ+</span>
+              <h3>TVNZ+ — New Zealand</h3>
+              <span class="tag tag-free">Free · NZ</span>
+            </div>
+            <span class="blocked-note">Plays inside New Zealand only</span>
+            <p>New Zealand's free-to-air home of cricket: BLACKCAPS, White Ferns and Super Smash matches live free on TVNZ 1, Duke TV and the TVNZ+ app — no subscription. In New Zealand this is the complete free package; outside New Zealand the streams don't play.</p>
+            <a class="go" href="https://www.tvnz.co.nz/sport" target="_blank" rel="noopener">Open TVNZ+ Sport →</a>
+          </article>
+
+          <article class="card" data-cat="live" data-name="7plus channel 7 australia tests big bash bbl women free account">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#e4002b">7+</span>
+              <h3>7plus — Australia</h3>
+              <span class="tag tag-free">Free · AUS</span>
+            </div>
+            <span class="blocked-note">Plays inside Australia only</span>
+            <p>Channel 7's free streaming service: Australia's home men's Tests, women's internationals and many Big Bash matches live free on TV and on 7plus with a free account — no subscription. The streams only play inside Australia.</p>
+            <a class="go" href="https://7plus.com.au/" target="_blank" rel="noopener">Open 7plus →</a>
+          </article>
+
+          <article class="card" data-cat="live highlights" data-name="rabbitholebd sports youtube bangladesh live stream bcb">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#006a4e">RH</span>
+              <h3>Rabbitholebd Sports — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Bangladesh's official digital rights holder (about 8.9M subscribers): Bangladesh home series stream live and free on this YouTube channel, with highlights after every match. If Bangladesh are playing at home, this is the free place to watch.</p>
+            <a class="go" href="https://www.youtube.com/c/RabbitholebdSports/" target="_blank" rel="noopener" data-yt="UCNU0Vv6U1xZS82cIQrgDeqw" data-ytmode="live" data-ytname="Rabbitholebd Sports — YouTube">Open Rabbitholebd Sports →</a>
+          </article>
+
+          <article class="card" data-cat="live tv" data-name="sabc sport sabc plus south africa proteas free to air">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#007a4d">SA</span>
+              <h3>SABC Sport / SABC+ — South Africa</h3>
+              <span class="tag tag-free">Free · RSA</span>
+            </div>
+            <span class="blocked-note">Plays inside South Africa only</span>
+            <p>Cricket South Africa's official free-to-air home for 2025/26 and 2026/27: Proteas home matches live free on SABC 2/3 TV, at sabcsport.com and in the SABC+ app — inside South Africa only.</p>
+            <a class="go" href="https://sabcsport.com/cricket/news/sabc-to-broadcast-proteas-men-and-women-inbound-tours" target="_blank" rel="noopener">Open SABC Sport →</a>
+          </article>
+
+          <article class="card" data-cat="tv" data-name="dd sports india free dish doordarshan free to air tv icc finals">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#f26522">DD</span>
+              <h3>DD Sports — India</h3>
+              <span class="tag tag-free">Free TV · India</span>
+            </div>
+            <p>India's free-to-air sports channel on DD Free Dish: India matches, plus the semi-finals and finals of major ICC events, are shown free by law under the Mandatory Sharing Act. TV only — the feed is blanked on private paid DTH platforms and is not streamed in the WAVES app.</p>
+            <a class="go" href="#faq">How free-to-air TV works →</a>
+          </article>
+
+          <article class="card" data-cat="live tv" data-name="rta sport afghanistan state broadcaster app live tv">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#0f766e">RTA</span>
+              <h3>RTA Sport — Afghanistan</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Afghanistan's state broadcaster: Afghanistan matches live free on RTA Sport TV, and the free RTA app streams the channel live on your phone — the official home of Afghan cricket at no cost.</p>
+            <a class="go" href="https://play.google.com/store/apps/details?id=com.rta.media&amp;hl=en_IN" target="_blank" rel="noopener">Get the free RTA app →</a>
+          </article>
+
+          <article class="card" data-cat="live tv highlights" data-name="bbc sport the hundred bbc two iplayer uk free">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#b8000f">BBC</span>
+              <h3>BBC Sport — The Hundred</h3>
+              <span class="tag tag-free">Free · UK</span>
+            </div>
+            <span class="blocked-note">Plays inside the UK only</span>
+            <p>16 matches from The Hundred live free every season on BBC Two and BBC iPlayer — men's and women's double-headers including the finals — plus free highlights of England's home internationals. UK only.</p>
+            <a class="go" href="https://www.ecb.co.uk/news/4257648" target="_blank" rel="noopener">See the BBC's free coverage →</a>
+          </article>
+
+          <article class="card" data-cat="scores" data-name="bbc test match special tms radio bbc sounds england commentary">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#7a1fa2">TMS</span>
+              <h3>BBC Test Match Special — Radio</h3>
+              <span class="tag tag-free">Free Radio · UK</span>
+            </div>
+            <p>The most famous commentary team in cricket: free ball-by-ball radio of England matches and The Hundred on BBC Sounds and BBC Radio 5 Sports Extra. The ECB–BBC audio deal runs to 2028, so TMS stays free for years.</p>
+            <a class="go" href="http://www.bbc.co.uk/programmes/p02nrsl2" target="_blank" rel="noopener">Listen to Test Match Special →</a>
+          </article>
+
+          <article class="card" data-cat="scores" data-name="abc grandstand abc sport radio listen app australia commentary ad free">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#0047bb">ABC</span>
+              <h3>ABC Grandstand — Radio</h3>
+              <span class="tag tag-free">Free Radio</span>
+            </div>
+            <p>Australia's free ball-by-ball radio institution: Tests, ODIs and T20Is called live and ad-free on ABC Sport, via the free ABC listen app and the ABC Sport website. No account, no ads, no cost.</p>
+            <a class="go" href="https://play.google.com/store/apps/details?id=com.thisisaim.abcradio&amp;hl=en_AU" target="_blank" rel="noopener">Get the free ABC listen app →</a>
+          </article>
+
+          <article class="card" data-cat="scores" data-name="guerrilla cricket independent radio commentary worldwide not geo blocked">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#37474f">GC</span>
+              <h3>Guerrilla Cricket — Radio</h3>
+              <span class="tag tag-free">Free Radio · Worldwide</span>
+            </div>
+            <p>Independent free online ball-by-ball commentary — not a board or broadcaster channel, but a fan-run service that is deliberately not geo-blocked, with listeners in around 200 countries. A fun, informal alternative call of big matches, free from anywhere.</p>
+            <a class="go" href="https://guerillacricket.com/" target="_blank" rel="noopener">Listen at guerillacricket.com →</a>
+          </article>
+
+          <article class="card" data-cat="highlights" data-name="ipl indian premier league youtube highlights india league t20">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#1e3a8a">IPL</span>
+              <h3>IPL — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The Indian Premier League's official YouTube channel: free highlights of every IPL match, the biggest sixes and wickets, interviews and behind-the-scenes. Free highlights — full live IPL matches are not streamed free here.</p>
+            <a class="go" href="https://www.youtube.com/@IPLT20Official" target="_blank" rel="noopener">Open IPL on YouTube →</a>
+          </article>
+
+          <article class="card" data-cat="highlights" data-name="psl pakistan super league youtube highlights league t20 hbl">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#0b6e4f">PSL</span>
+              <h3>Pakistan Super League — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The official HBL PSL YouTube channel: free highlights of every PSL match, plus shows, player features and classic games from Pakistan's T20 league. Free highlights and shows — not full live matches.</p>
+            <a class="go" href="https://www.youtube.com/@pakistansuperleagueofficial" target="_blank" rel="noopener" data-yt="UCpNzXJ5jpcJojC5mHQvGA8w" data-ytmode="uploads" data-ytname="Pakistan Super League — YouTube">Open PSL on YouTube →</a>
+          </article>
+
+          <article class="card" data-cat="highlights" data-name="big bash league bbl youtube highlights australia league t20">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#b45309">BBL</span>
+              <h3>Big Bash League — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The Big Bash's official YouTube channel (“The Big Bash”): free highlights of every BBL and WBBL match, top catches and big hits from Australia's T20 league. Free highlights — not full live matches.</p>
+            <a class="go" href="https://www.youtube.com/@BigBash" target="_blank" rel="noopener">Open Big Bash on YouTube →</a>
+          </article>
+
+          <article class="card" data-cat="highlights" data-name="the hundred youtube highlights england league 100 ball ecb">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#5b21b6">100</span>
+              <h3>The Hundred — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The official YouTube channel of England's 100-ball league: free highlights of every men's and women's match, top plays and player stories. Free highlights — not full live matches.</p>
+            <a class="go" href="https://www.youtube.com/@thehundred" target="_blank" rel="noopener">Open The Hundred on YouTube →</a>
+          </article>
+
+          <article class="card" data-cat="highlights" data-name="sony sports network youtube highlights broadcaster asia cup india">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#1f2937">SONY</span>
+              <h3>Sony Sports Network — YouTube</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Sony Pictures Networks' official sports channel: free cricket highlights in English and Hindi — Asia Cup, India tours and more from Sony's broadcasts. Free highlights — not full live matches.</p>
+            <a class="go" href="https://www.youtube.com/@SonySportsNetwork" target="_blank" rel="noopener" data-yt="UC_WKb6N9iTGc77hxwXLDrbA" data-ytmode="uploads" data-ytname="Sony Sports Network — YouTube">Open Sony Sports Network on YouTube →</a>
+          </article>
+        </div>
+        <p class="no-results" id="noResults">No channel matches that search. Try “YouTube”, “TV” or “scores”.</p>
+      </section>
+
+      <!-- ============ CRICKET FROM EVERY COUNTRY ============ -->
+      <section class="block" id="countries">
+        <div class="sec-head"><span class="bar"></span><h2>Cricket From Every Country</h2></div>
+        <p class="sec-sub">Not just Pakistan — every major cricket nation's official board channel is here, and every one of them is free. The honest picture: big international matches usually sit on paid TV in most countries, but the boards themselves stream plenty free on their own channels — live domestic, women's and A-team matches, plus highlights of the internationals. Swipe left or right — or use the arrows — to browse every country. Tap any country and choose: <b>Watch Live</b> for that country's free channels, or <b>Scores</b> for all of its matches in one list:</p>
+        <div class="rail" id="countryGrid" tabindex="0" aria-label="Cricket countries — scroll left and right to browse">
+          <article class="card" data-name="pakistan pcb men in green shaheens">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#0d7a3e">PAK</span>
+              <h3>Pakistan</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Pakistan Cricket Board's official channel: free highlights of every Pakistan match, live domestic and women's cricket, press conferences and behind-the-scenes.</p>
+            <a class="go" href="https://bit.ly/SubscribePakistanCricket" target="_blank" rel="noopener">Open PCB on YouTube →</a>
+          </article>
+
+          <article class="card" data-name="india bcci team india kohli rohit">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#1256a0">IND</span>
+              <h3>India</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The BCCI's official channel: Team India highlights, interviews and features, plus Indian domestic cricket — all free to watch on YouTube.</p>
+            <a class="go" href="https://www.youtube.com/channel/UCAqfuhLGIDCvrtp70YNRQYw" target="_blank" rel="noopener">Open BCCI on YouTube →</a>
+          </article>
+
+          <article class="card" data-name="australia cricket.com.au aussies ashes big bash">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#946b00">AUS</span>
+              <h3>Australia</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Cricket Australia's cricket.com.au channel: match highlights and interviews, and free live streams of Australian domestic cricket like the Sheffield Shield.</p>
+            <a class="go" href="https://www.youtube.com/cricketcomau" target="_blank" rel="noopener">Open Cricket Australia →</a>
+          </article>
+
+          <article class="card" data-name="england ecb three lions county championship ashes">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#1b3a6b">ENG</span>
+              <h3>England</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The ECB's official channel: England highlights from Tests, ODIs and T20s, plus County Championship and Vitality Blast action — including today's visitors.</p>
+            <a class="go" href="https://www.youtube.com/ecbcricket" target="_blank" rel="noopener">Open ECB on YouTube →</a>
+          </article>
+
+          <article class="card" data-name="south africa proteas csa">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#0a6b3a">RSA</span>
+              <h3>South Africa</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>ProteasCricket — Cricket South Africa's official channel: Proteas highlights, women's matches and free live streams of South African domestic cricket.</p>
+            <a class="go" href="https://www.youtube.com/channel/UC1xHJoiSXk4JGRlSG1XrjYg" target="_blank" rel="noopener">Open Proteas on YouTube →</a>
+          </article>
+
+          <article class="card" data-name="new zealand blackcaps nzc kiwis white ferns">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#333333">NZL</span>
+              <h3>New Zealand</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>New Zealand Cricket's home for the BLACKCAPS and White Ferns: official live scorecards and news, with A-team and domestic matches streamed free on NZC's YouTube.</p>
+            <a class="go" href="https://www.nzc.nz/international/blackcaps/" target="_blank" rel="noopener">Open BLACKCAPS home →</a>
+          </article>
+
+          <article class="card" data-name="sri lanka slc lions lanka premier league">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#8d153a">SRI</span>
+              <h3>Sri Lanka</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Sri Lanka Cricket's official channel — one of the best free ones: home series and domestic matches are regularly streamed live here, free, plus full highlights.</p>
+            <a class="go" href="https://www.youtube.com/srilankacricket" target="_blank" rel="noopener">Open Sri Lanka Cricket →</a>
+          </article>
+
+          <article class="card" data-name="bangladesh bcb tigers shakib">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#006a4e">BAN</span>
+              <h3>Bangladesh</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>“Bangladesh Cricket: The Tigers” — the BCB's official channel: live streams of domestic cricket like the NCL, Tigers highlights and player interviews, all free.</p>
+            <a class="go" href="https://www.youtube.com/c/BangladeshCricketTheTigersOfficial" target="_blank" rel="noopener">Open BCB on YouTube →</a>
+          </article>
+
+          <article class="card" data-name="west indies windies caribbean cwi">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#7b0041">WIN</span>
+              <h3>West Indies</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Windies Cricket streams Caribbean cricket live and free: the West Indies Championship, the women's T20 Blaze and regional tournaments, plus international highlights.</p>
+            <a class="go" href="https://www.youtube.com/@windiescricket" target="_blank" rel="noopener">Open Windies on YouTube →</a>
+          </article>
+
+          <article class="card" data-name="afghanistan acb rashid khan atalan">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#1d4e89">AFG</span>
+              <h3>Afghanistan</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>The Afghanistan Cricket Board's official channel: Afghan Atalan highlights, live domestic cricket, training and press conferences — home of Rashid Khan's team.</p>
+            <a class="go" href="https://bit.ly/AfghanistanCricketBoard" target="_blank" rel="noopener">Open ACB on YouTube →</a>
+          </article>
+
+          <article class="card" data-name="ireland cricket ireland wolves stirling">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#169b62">IRE</span>
+              <h3>Ireland</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Cricket Ireland Live streams Irish domestic and inter-provincial cricket free on YouTube, with national-team news, interviews and highlights.</p>
+            <a class="go" href="https://www.youtube.com/CricketIrelandLive" target="_blank" rel="noopener">Open Cricket Ireland →</a>
+          </article>
+
+          <article class="card" data-name="zimbabwe zc chevrons harare">
+            <div class="card-top">
+              <span class="logo-tile" style="background:#c8102e">ZIM</span>
+              <h3>Zimbabwe</h3>
+              <span class="tag tag-free">Free</span>
+            </div>
+            <p>Zimbabwe Cricket's official channel: free live streams of the Pro50 Championship and Logan Cup, plus women's internationals and Chevrons highlights.</p>
+            <a class="go" href="https://www.youtube.com/channel/UCe-5I6Hd1Oxy9xke1a_LIaQ" target="_blank" rel="noopener">Open Zimbabwe Cricket →</a>
+          </article>
+        </div>
+        <div class="rail-nav">
+          <button class="rail-btn" type="button" id="countryPrev" aria-label="Scroll countries left"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+          <div class="rail-dots" id="countryDots" role="tablist" aria-label="Country position"></div>
+          <button class="rail-btn" type="button" id="countryNext" aria-label="Scroll countries right"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg></button>
+        </div>
+        <p class="no-results" id="countryNoResults">No country matches that search. Try “India”, “Australia” or “Windies”.</p>
+        <p style="color:var(--ink2);font-size:14.5px;margin:14px 0 0">Watching a World Cup or Champions Trophy instead? Those are ICC events — check the free <a href="#channels">ICC.tv card above</a>, which streams live free in regions without a TV deal. And whichever country is playing, the free ball-by-ball scores on <a href="#channels">Cricbuzz and ESPNcricinfo</a> cover every international match.</p>
+      </section>
+
+      <!-- ============ SCHEDULE ============ -->
+      <section class="block" id="schedule">
+        <div class="sec-head"><span class="bar"></span><h2>Tri-Series Schedule &amp; Results</h2></div>
+        <p class="sec-sub">Pakistan, England and Sri Lanka — seven ODIs in Rawalpindi and Lahore, 18–31 October 2026. Every match starts 1:00 PM PKT. Pakistan have won all three of their matches and are already through to the final.</p>
+        <div class="fixtures" id="fixtureList">
+          <div class="fixture" data-name="pakistan sri lanka rawalpindi match 1">
+            <div class="when"><div class="d">Sun 18 Oct</div><div class="t">Match 1 · Rawalpindi</div></div>
+            <div class="teams">Pakistan vs Sri Lanka</div>
+            <span class="tag badge-done">Result</span>
+            <div class="result">PAK 305 all out beat SL 268 all out — <b>Pakistan won by 37 runs</b> · Salman Ali Agha 107</div>
+          </div>
+          <div class="fixture" data-name="pakistan england rawalpindi match 2">
+            <div class="when"><div class="d">Tue 20 Oct</div><div class="t">Match 2 · Rawalpindi</div></div>
+            <div class="teams">Pakistan vs England</div>
+            <span class="tag badge-done">Result</span>
+            <div class="result">PAK 302/9 beat ENG 215 all out — <b>Pakistan won by 87 runs</b> · Arafat Minhas 6/40 &amp; 59</div>
+          </div>
+          <div class="fixture" data-name="sri lanka england rawalpindi match 3">
+            <div class="when"><div class="d">Thu 22 Oct</div><div class="t">Match 3 · Rawalpindi</div></div>
+            <div class="teams">Sri Lanka vs England</div>
+            <span class="tag badge-done">Result</span>
+            <div class="result">SL 430/8 chased ENG 429/4 — <b>Sri Lanka won by 2 wickets</b> · Harry Brook 202 off 116 balls</div>
+          </div>
+          <div class="fixture" data-name="pakistan england lahore match 4 result shadab khan">
+            <div class="when"><div class="d">Sun 25 Oct</div><div class="t">Match 4 · Lahore</div></div>
+            <div class="teams">Pakistan vs England</div>
+            <span class="tag badge-done">Result</span>
+            <div class="result">PAK 243/9 beat ENG 241 all out — <b>Pakistan won by 1 wicket</b> · Shadab Khan 113* · Duckett 105 · Shaheen 4/46 · <a href="https://www.youtube.com/watch?v=Ni-4S8Dlm-A" target="_blank" rel="noopener"><b>Watch free (outside Pakistan) →</b></a></div>
+          </div>
+          <div class="fixture" data-name="pakistan sri lanka lahore match 5">
+            <div class="when"><div class="d">Tue 27 Oct</div><div class="t">Match 5 · Lahore · 1:00 PM</div></div>
+            <div class="teams">Pakistan vs Sri Lanka</div>
+            <span class="tag badge-next">Next Match</span>
+            <div class="result">Free stream link will be right here on match day — same Sports Central YouTube channel.</div>
+          </div>
+          <div class="fixture" data-name="sri lanka england lahore match 6">
+            <div class="when"><div class="d">Thu 29 Oct</div><div class="t">Match 6 · Lahore · 1:00 PM</div></div>
+            <div class="teams">Sri Lanka vs England</div>
+            <span class="tag badge-next">Upcoming</span>
+            <div class="result">England likely need this one to stay alive for the final.</div>
+          </div>
+          <div class="fixture" data-name="final lahore tri series">
+            <div class="when"><div class="d">Sat 31 Oct</div><div class="t">Final · Lahore · 1:00 PM</div></div>
+            <div class="teams">Final — Top Two Teams</div>
+            <span class="tag badge-next">Final</span>
+            <div class="result">Pakistan have already qualified. Sri Lanka and England fight for the other spot.</div>
+          </div>
+        </div>
+        <div class="countdown" id="countdownBox">
+          <span class="cd-label">Next match — Pakistan vs Sri Lanka, Tue 27 Oct, 1:00 PM PKT — starts in</span>
+          <span class="cd-time" id="cdTime">--:--:--</span>
+          <span style="font-size:13.5px;color:var(--ink2)">Come back here on match day: the free YouTube stream will be linked at the top of this page.</span>
+        </div>
+      </section>
+
+      <!-- ============ POINTS TABLE + SQUADS ============ -->
+      <section class="block" id="table">
+        <div class="sec-head"><span class="bar"></span><h2>Points Table &amp; Squads</h2></div>
+        <p class="sec-sub">Standings after four matches, including today's result. Top two teams reach the 31 October final in Lahore — Pakistan are already there.</p>
+        <div class="cols">
+          <div class="panel">
+            <h3>Points Table</h3>
+            <table class="pts">
+              <thead><tr><th>Team</th><th class="num">Played</th><th class="num">Won</th><th class="num">Lost</th><th class="num">Points</th></tr></thead>
+              <tbody>
+                <tr><td class="team-name">Pakistan<span class="q-badge">IN THE FINAL</span></td><td class="num">3</td><td class="num">3</td><td class="num">0</td><td class="num"><b>6</b></td></tr>
+                <tr><td class="team-name">Sri Lanka</td><td class="num">2</td><td class="num">1</td><td class="num">1</td><td class="num"><b>2</b></td></tr>
+                <tr><td class="team-name">England</td><td class="num">3</td><td class="num">0</td><td class="num">3</td><td class="num"><b>0</b></td></tr>
+              </tbody>
+            </table>
+            <p class="note">Pakistan top the table with three wins from three — 6 points and a place in the final already booked. England are bottom with 0 points from three matches and must beat Sri Lanka on 29 October to have any chance of reaching the final.</p>
+          </div>
+          <div class="panel">
+            <h3>Today's Pakistan XI</h3>
+            <ul class="xi-list">
+              <li>Fakhar Zaman</li>
+              <li>Saim Ayub</li>
+              <li>Babar Azam</li>
+              <li>Saad Baig (wk)</li>
+              <li>Salman Ali Agha</li>
+              <li>Hasan Nawaz</li>
+              <li>Shadab Khan</li>
+              <li>Arafat Minhas</li>
+              <li>Shaheen Afridi (c)</li>
+              <li>Razaullah — ODI debut</li>
+              <li>Haris Rauf</li>
+            </ul>
+            <p class="note">Team news: Shadab Khan returns; Razaullah debuts in place of Naseem Shah, who dislocated two fingers in the warm-up. England hand a debut to seamer Henry Crocombe.</p>
+          </div>
+        </div>
+        <div class="cols" style="margin-top:14px">
+          <div class="panel">
+            <h3>Pakistan Squad</h3>
+            <p class="squad-names"><b>Shaheen Shah Afridi (c)</b>, Abrar Ahmed, Salman Ali Agha, Arafat Minhas, Babar Azam, Faheem Ashraf, Fakhar Zaman, Muhammad Ghazi Ghori (wk), Haris Rauf, Hasan Nawaz, Naseem Shah, Razaullah, Saad Baig (wk), Saim Ayub, Shadab Khan, Sufiyan Moqim</p>
+          </div>
+          <div class="panel">
+            <h3>England Squad</h3>
+            <p class="squad-names"><b>Harry Brook (c)</b>, Gus Atkinson, Sonny Baker, Tom Banton, James Coles, Jordan Cox, Mason Crane, Henry Crocombe, Sam Curran, Liam Dawson, Ben Duckett, Will Jacks, Jamie Overton, Adil Rashid, Joe Root, Josh Tongue</p>
+            <p class="note">Jos Buttler misses the tour through injury; Jofra Archer is rested. Sri Lanka are captained by Kusal Mendis.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ WORLD TEST CHAMPIONSHIP TABLE ============ -->
+      <section class="block" id="wtc">
+        <div class="sec-head"><span class="bar"></span><h2>World Test Championship — Points Table</h2></div>
+        <p class="sec-sub">The other countries' table: the ICC World Test Championship 2025–27 standings for all nine Test nations — the same teams whose Test matches appear in the world strip at the top of this page. Standings as of <b>23 October 2026</b>, after South Africa beat Australia in Gqeberha. Teams are ranked by PCT — the percentage of available points they have won — and the top two reach the 2027 final.</p>
+        <div class="panel">
+          <h3>ICC World Test Championship 2025–27</h3>
+          <table class="pts pts-compact">
+            <thead><tr><th class="num">#</th><th>Team</th><th class="num">Played</th><th class="num">Won</th><th class="num">Lost</th><th class="num">Drawn</th><th class="num">Points</th><th class="num">PCT</th></tr></thead>
+            <tbody>
+              <tr><td class="num">1</td><td class="team-name">Australia</td><td class="num">12</td><td class="num">9</td><td class="num">3</td><td class="num">0</td><td class="num"><b>108</b></td><td class="num"><b>75.00</b></td></tr>
+              <tr><td class="num">2</td><td class="team-name">New Zealand</td><td class="num">6</td><td class="num">4</td><td class="num">1</td><td class="num">1</td><td class="num"><b>52</b></td><td class="num"><b>72.22</b></td></tr>
+              <tr><td class="num">3</td><td class="team-name">South Africa</td><td class="num">6</td><td class="num">4</td><td class="num">2</td><td class="num">0</td><td class="num"><b>48</b></td><td class="num"><b>66.67</b></td></tr>
+              <tr><td class="num">4</td><td class="team-name">Bangladesh</td><td class="num">6</td><td class="num">3</td><td class="num">2</td><td class="num">1</td><td class="num"><b>40</b></td><td class="num"><b>55.56</b></td></tr>
+              <tr><td class="num">5</td><td class="team-name">India</td><td class="num">11</td><td class="num">5</td><td class="num">4</td><td class="num">2</td><td class="num"><b>68</b></td><td class="num"><b>51.52</b></td></tr>
+              <tr><td class="num">6</td><td class="team-name">England</td><td class="num">16</td><td class="num">7</td><td class="num">8</td><td class="num">1</td><td class="num"><b>74</b></td><td class="num"><b>38.54</b></td></tr>
+              <tr><td class="num">7</td><td class="team-name">Sri Lanka</td><td class="num">6</td><td class="num">1</td><td class="num">2</td><td class="num">3</td><td class="num"><b>24</b></td><td class="num"><b>33.33</b></td></tr>
+              <tr><td class="num">8</td><td class="team-name">West Indies</td><td class="num">12</td><td class="num">2</td><td class="num">8</td><td class="num">2</td><td class="num"><b>30</b></td><td class="num"><b>20.83</b></td></tr>
+              <tr><td class="num">9</td><td class="team-name">Pakistan</td><td class="num">9</td><td class="num">2</td><td class="num">7</td><td class="num">0</td><td class="num"><b>5</b></td><td class="num"><b>4.63</b></td></tr>
+            </tbody>
+          </table>
+          <p class="note">A win is worth 12 points, a draw 4. Points shown already include slow-over-rate deductions — England −14, Pakistan −19 and West Indies −2 — which is why Pakistan, whose two wins earned 24 points, sit on just 5. Next WTC matches: South Africa vs Australia, the series decider in Cape Town from 27 October, and Bangladesh vs West Indies in Mirpur from 28 October. Standings checked 26 October 2026 against Wisden, Sportstar and the ICC coverage of the championship.</p>
+        </div>
+      </section>
+
+      <!-- ============ HIGHLIGHTS ============ -->
+      <section class="block" id="highlights">
+        <div class="sec-head"><span class="bar"></span><h2>Highlights &amp; Videos — Free</h2></div>
+        <p class="sec-sub">Missed a moment? These are on the official PCB and Sports Central YouTube channels — free to watch any time.</p>
+        <div class="hl-grid">
+          <a class="hl" href="https://www.youtube.com/watch?v=WfJyQllWrRM" target="_blank" rel="noopener">
+            <div class="hl-in">
+              <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+              <h3>Arafat Minhas' Brilliant 6-Wicket Haul</h3>
+              <p>Pakistan vs England · Match 2 · His 6/40 destroyed England in Rawalpindi</p>
+            </div>
+          </a>
+          <a class="hl" href="https://www.youtube.com/watch?v=jb818F1nwgI" target="_blank" rel="noopener">
+            <div class="hl-in">
+              <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+              <h3>Pre-Match Show — Pakistan vs England</h3>
+              <p>Today's build-up from Gaddafi Stadium · Sports Central</p>
+            </div>
+          </a>
+          <a class="hl" href="https://www.youtube.com/shorts/PJVvR38dsWI" target="_blank" rel="noopener">
+            <div class="hl-in">
+              <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+              <h3>A Shade of Pink — Pakistan's Pink Day Kit</h3>
+              <p>Short · The team in pink for Breast Cancer Awareness · PCB</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ============ HONEST NOTE ============ -->
+      <section class="block">
+        <div class="honest">
+          <h3>Straight talk: why Tamasha &amp; Tapmad are NOT on this page</h3>
+          <p>For this tri-series, Tamasha has put the matches behind its paid <b>Pro</b> lock, and Tapmad asks you to <b>renew a paid package</b> — so neither is free for these matches, and neither is listed here. Everything above plays without paying: the Sports Central YouTube stream, PCB's channel, ICC.tv where available, free-to-air TV, and free live scores. If a free route ever stops being free, it comes off this page.</p>
+        </div>
+      </section>
+
+      <!-- ============ FAQ ============ -->
+      <section class="block" id="faq">
+        <div class="sec-head"><span class="bar"></span><h2>Questions</h2></div>
+        <details class="faq">
+          <summary>Is the YouTube stream really free — no catch?</summary>
+          <p>Yes. Sports Central is the PCB's streaming partner and carries this series free on YouTube for viewers in regions where the paid apps hold no exclusive rights. You may see normal YouTube ads, but there is no subscription, no package and no payment screen. If YouTube ever shows the stream as blocked in your country, PTV Sports on TV and the free live scores above still cost nothing.</p>
+        </details>
+        <details class="faq">
+          <summary>How do I watch free on TV?</summary>
+          <p>Turn on PTV Sports — Pakistan's free-to-air sports channel, available on a normal TV antenna and basic cable. There is nothing to install and nothing to pay. For today's match online, the free Cricbuzz scorecard linked above has every ball — the Sports Central YouTube stream only plays outside Pakistan.</p>
+        </details>
+        <details class="faq">
+          <summary>What time do the remaining matches start?</summary>
+          <p>Every match in this tri-series starts at 1:00 PM Pakistan time, with the toss at 12:30 PM: Pakistan vs Sri Lanka on Tue 27 Oct, Sri Lanka vs England on Thu 29 Oct, and the final on Sat 31 Oct — all at Gaddafi Stadium, Lahore.</p>
+        </details>
+        <details class="faq">
+          <summary>Can I watch other countries' cricket here too — India, Australia, England…?</summary>
+          <p>Yes — the <a href="#countries">Cricket From Every Country</a> section above links all twelve major teams' official board channels: Pakistan, India, Australia, England, South Africa, New Zealand, Sri Lanka, Bangladesh, West Indies, Afghanistan, Ireland and Zimbabwe. They're all free: boards stream their domestic, women's and A-team matches live on them and post international highlights. Live internationals themselves are usually on paid TV in most countries — when a board or the ICC streams one free, it's on that country's channel or ICC.tv.</p>
+        </details>
+        <details class="faq">
+          <summary>Where do I watch the next tournament for free?</summary>
+          <p>The pattern is the same almost every series: check the PCB and Sports Central YouTube channels first for free streams and highlights, ICC.tv for ICC events (World Cups, Champions Trophy) in regions without a TV deal, and PTV Sports on TV. This page is rebuilt for each big series with the working free links.</p>
+        </details>
+        <details class="faq">
+          <summary>Can I install Live Cricket as an app on my phone?</summary>
+          <p>Yes — two ways, both free. On <b>Android</b>, tap <b>Download APK</b> in the <a href="#app">Get the App</a> section above: the real app file (13 KB, Android 8+) downloads straight to your phone; open it, tap Install, and the Live Cricket icon lands on your home screen. The first time, Android asks you to allow installs from your browser — that's the normal one-time step for any APK downloaded outside the Play Store. Prefer not to download a file? The same section's “install from the browser” button puts Live Cricket on your home screen without any file. On <b>iPhone</b> there is no APK — Apple only allows installing from Safari's Share button → “Add to Home Screen”. Either way the app opens this page full-screen from its own icon, and whenever the page updates, the app shows the newest version.</p>
+        </details>
+        <details class="faq">
+          <summary>Why not just list the pirate streaming sites?</summary>
+          <p>Those sites get shut down mid-match, bury the video under pop-ups, and some push risky downloads. Every link here is an official channel, so the stream stays up for the whole match — and it never asks for your card or a package.</p>
+        </details>
+      </section>
+
+      <!-- ============ CONTACT ============ -->
+      <section class="block" id="contact">
+        <div class="sec-head"><span class="bar"></span><h2>Contact Me</h2></div>
+        <p class="sec-sub">Found a free stream that works, a link that stopped working, or a question about the page? Get in touch — every way below reaches Ibrahim Khan directly.</p>
+        <div class="contact-grid">
+          <a class="contact-card" href="https://wa.me/923002220065?text=Hi%20Ibrahim%2C%20I%27m%20visiting%20your%20Live%20Cricket%20page%20and%20wanted%20to%20contact%20you." target="_blank" rel="noopener">
+            <span class="cc-icon" style="background:#1faa55"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.83 9.83 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.82 9.82 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.89 9.88zm8.42-18.3A11.82 11.82 0 0 0 12.04 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.16-3.47-8.41z"/></svg></span>
+            <h3>WhatsApp</h3>
+            <span class="cc-value">0300 2220065</span>
+            <p>Fastest way to reach me — tap to open a WhatsApp chat.</p>
+          </a>
+          <a class="contact-card" href="mailto:ibbikhan1010@gmail.com?subject=Live%20Cricket%20page">
+            <span class="cc-icon" style="background:#0d7a3e"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></span>
+            <h3>Email</h3>
+            <span class="cc-value">ibbikhan1010@gmail.com</span>
+            <p>Tap to write an email — good for link suggestions and corrections.</p>
+          </a>
+          <a class="contact-card" href="tel:+923002220065">
+            <span class="cc-icon" style="background:#1b3a6b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02z"/></svg></span>
+            <h3>Call</h3>
+            <span class="cc-value">0300 2220065</span>
+            <p>On a phone? Tap to call directly (Pakistan number).</p>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ MATCH DETAIL — opens when a match card is tapped ============ -->
+    <div class="md-backdrop" id="mdBackdrop" hidden>
+      <div class="md-sheet" role="dialog" aria-modal="true" aria-labelledby="mdTitle">
+        <div class="md-head">
+          <button class="md-back" type="button" id="mdBack" aria-label="Back to all matches"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></button>
+          <div class="md-titlebox">
+            <div class="md-title" id="mdTitle">Match</div>
+            <div class="md-subtitle" id="mdSub"></div>
+          </div>
+          <span class="tag" id="mdTag"></span>
+        </div>
+        <div class="md-tabs" role="tablist" aria-label="Match sections">
+          <button class="md-tab" type="button" role="tab" data-tab="info" aria-selected="false">Info</button>
+          <button class="md-tab" type="button" role="tab" data-tab="live" aria-selected="true">Live</button>
+          <button class="md-tab" type="button" role="tab" data-tab="scorecard" aria-selected="false">Scorecard</button>
+          <button class="md-tab" type="button" role="tab" data-tab="squads" aria-selected="false">Squads</button>
+          <button class="md-tab" type="button" role="tab" data-tab="overs" aria-selected="false">Overs</button>
+          <button class="md-tab" type="button" role="tab" data-tab="highlights" aria-selected="false">Highlights</button>
+        </div>
+        <div class="md-body" id="mdBody"></div>
+      </div>
+    </div>
+
+    <!-- ============ COUNTRY MATCHES — opens when a country card is tapped ============ -->
+    <div class="md-backdrop" id="ctBackdrop" hidden>
+      <div class="md-sheet" role="dialog" aria-modal="true" aria-labelledby="ctTitle">
+        <div class="md-head">
+          <button class="md-back" type="button" id="ctBack" aria-label="Back to all matches"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></button>
+          <div class="md-titlebox">
+            <div class="md-title" id="ctTitle">Country Matches</div>
+            <div class="md-subtitle" id="ctSub"></div>
+          </div>
+        </div>
+        <div class="ct-choices" role="group" aria-label="What do you want to see?">
+          <button class="ct-choice" type="button" id="ctChoiceWatch" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Watch Live</button>
+          <button class="ct-choice" type="button" id="ctChoiceScores" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h3.2v9H4zM10.4 4h3.2v15h-3.2zM16.8 13H20v6h-3.2z"/></svg>Scores</button>
+        </div>
+        <div class="md-body" id="ctBody"></div>
+      </div>
+    </div>
+
+    <!-- ============ MATCH WATCH LIVE — a match card's Watch Live button: both teams' free channels ============ -->
+    <div class="md-backdrop" id="mwBackdrop" hidden>
+      <div class="md-sheet" role="dialog" aria-modal="true" aria-labelledby="mwTitle">
+        <div class="md-head">
+          <button class="md-back" type="button" id="mwBack" aria-label="Back to all matches"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></button>
+          <div class="md-titlebox">
+            <div class="md-title" id="mwTitle">Watch Live</div>
+            <div class="md-subtitle" id="mwSub"></div>
+          </div>
+        </div>
+        <div class="md-body" id="mwBody"></div>
+      </div>
+    </div>
+
+    <!-- ============ YOUTUBE PLAYER — plays a channel right inside this page ============ -->
+    <div class="md-backdrop" id="ytBackdrop" hidden>
+      <div class="md-sheet" role="dialog" aria-modal="true" aria-labelledby="ytTitle">
+        <div class="md-head">
+          <button class="md-back" type="button" id="ytBack" aria-label="Close the player"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></button>
+          <div class="md-titlebox">
+            <div class="md-title" id="ytTitle">Watch</div>
+            <div class="md-subtitle" id="ytSub">Playing here on Live Cricket</div>
+          </div>
+        </div>
+        <div class="md-body">
+          <div class="yt-frame"><iframe id="ytFrame" title="YouTube player" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+          <p class="yt-note" id="ytNote"></p>
+          <div class="yt-actions">
+            <a class="md-act" id="ytOpen" href="#" target="_blank" rel="noopener">Open on YouTube →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site">
+      <div class="wrap foot-in">
+        <span class="foot-brand">Live Cricket — 100% Free Links Only</span>
+        <span style="font-size:15px"><b style="color:var(--ink)">Created by Ibrahim Khan</b> — made so anyone can follow Pakistan cricket free, right in the browser.</span>
+        <span>Contact Ibrahim: <a href="mailto:ibbikhan1010@gmail.com?subject=Live%20Cricket%20page">ibbikhan1010@gmail.com</a> · <a href="https://wa.me/923002220065" target="_blank" rel="noopener">WhatsApp 0300 2220065</a> · <a href="tel:+923002220065">Call 0300 2220065</a></span>
+        <span>Match facts checked Sun 25 Oct 2026 against the PCB's channels and series coverage; the Around the World scores and fixtures were checked Mon 26 Oct 2026 against Cricbuzz and ESPNcricinfo. Scores on this page are the final result from today's match — use the Cricbuzz or ESPNcricinfo links for the full scorecard.</span>
+        <span class="sources">
+          Sources:
+          <a href="https://www.pcb.com.pk/" target="_blank" rel="noopener">PCB — pcb.com.pk</a>
+          <a href="https://www.geosuper.tv/latest/60529-commentary-panel-for-pakistan-hosted-odi-tri-series-unveiled" target="_blank" rel="noopener">Geo Super — series guide</a>
+          <a href="https://sportimeline.com/blog/pakistan-odi-tri-series-2026-schedule-squads/" target="_blank" rel="noopener">Sportimeline — schedule &amp; squads</a>
+          <a href="https://www.cricinfo.com/series/zimbabwe-women-in-india-2026-27-1535648/india-women-vs-zimbabwe-women-2nd-odi-1535656/match-report" target="_blank" rel="noopener">ESPNcricinfo — India Women v Zimbabwe Women, 2nd ODI report</a>
+        </span>
+      </div>
+    </footer>
+
+    <!-- ============ APP TAB BAR — phones: thumb navigation, app-style ============ -->
+    <nav class="tabbar" aria-label="App sections">
+      <a href="#watch" data-spy="watch"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Watch</a>
+      <a href="#channels" data-spy="channels"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-9 14.5v-11l6 5.5z"/></svg>Channels</a>
+      <a href="#matches" data-spy="matches"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM7 17H5v-2h2zm0-4H5v-2h2zm0-4H5V7h2zm12 8h-8v-2h8zm0-4H11V11h8zm0-4H11V7h8z"/></svg>Matches</a>
+      <a href="#countries" data-spy="countries"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7 6h-3a15.6 15.6 0 0 0-1.3-3.6A8 8 0 0 1 19 8zM12 4a14 14 0 0 1 1.9 4h-3.8A14 14 0 0 1 12 4zM4.3 14a8.2 8.2 0 0 1 0-4h3.3a16.5 16.5 0 0 0 0 4zm.7 4a8 8 0 0 1 4.3-3.6A15.6 15.6 0 0 0 10.6 18zm-.7-10a8 8 0 0 1 5-3.6A15.6 15.6 0 0 0 8 8zm7.7 12a14 14 0 0 1-1.9-4h3.8A14 14 0 0 1 12 20zm2.3-6H9.7a14.7 14.7 0 0 1 0-4h4.6a14.7 14.7 0 0 1 0 4zm.4 5.6A15.6 15.6 0 0 0 16 16h3a8 8 0 0 1-4.3 3.6zM16.4 14a16.5 16.5 0 0 0 0-4h3.3a8.2 8.2 0 0 1 0 4z"/></svg>Countries</a>
+      <a href="#table" data-spy="table"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h3V10H4zm6.5 0h3V4h-3zm6.5 0h3v-7h-3z"/></svg>Tables</a>
+    </nav>
+
+    
+  <script>if ("serviceWorker" in navigator) { window.addEventListener("load", function () { navigator.serviceWorker.register("/sw.js"); }); }</script></body>
+</html>
