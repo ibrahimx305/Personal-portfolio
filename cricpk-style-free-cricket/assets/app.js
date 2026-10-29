@@ -223,7 +223,9 @@
             ]
           },
           nzind3: {
-            date: 'Tue 27 Oct 2026', time: '12:00 PM PKT', venue: 'Wellington', city: 'Wellington'
+            date: 'Tue 27 Oct 2026', time: '12:00 PM PKT', venue: 'Wellington', city: 'Wellington',
+            summary: 'Abhishek Sharma smashed 113 off 38 balls as India chased down New Zealand\u2019s total to win the 3rd T20I by 6 wickets in Wellington.',
+            notes: { IND: 'Abhishek Sharma 113 off 38 \u00b7 won by 6 wickets' }
           },
           paksl5: {
             date: 'Tue 27 Oct 2026', time: '1:00 PM PKT \u00b7 toss 12:30 PM', venue: 'Gaddafi Stadium, Lahore', city: 'Lahore',
@@ -237,7 +239,9 @@
             ]
           },
           rsa3: {
-            date: 'Tue 27 \u2013 Sat 31 Oct 2026', venue: 'Newlands, Cape Town', city: 'Cape Town'
+            date: 'Tue 27 \u2013 Sat 31 Oct 2026', venue: 'Newlands, Cape Town', city: 'Cape Town',
+            toss: 'Australia won, chose to bowl',
+            note: 'Day 3: South Africa 329 all out \u2014 Ackerman 95, Markram 78, Starc 6/72. Australia 334/4 \u2014 Inglis 86 not out, Carey 54 not out \u2014 Australia lead by 5 runs.'
           },
           sleng3: {
             date: 'Thu 22 Oct 2026', time: '1:00 PM PKT', venue: 'Rawalpindi', city: 'Rawalpindi',
@@ -249,7 +253,11 @@
             ]
           },
           indw3: {
-            date: 'Wed 28 Oct 2026', time: '2:00 PM IST (1:30 PM PKT)', venue: 'BCA Stadium, Kotambi, Vadodara', city: 'Vadodara'
+            date: 'Wed 28 Oct 2026', time: '2:00 PM IST (1:30 PM PKT)', venue: 'BCA Stadium, Kotambi, Vadodara', city: 'Vadodara',
+            toss: 'Zimbabwe Women won, chose to bat',
+            potm: { name: 'Vaishnavi Sharma', line: '5/39' },
+            summary: 'Zimbabwe Women were bowled out for 131 in 39.5 overs \u2014 Vaishnavi Sharma took her first ODI five-for, 5/39. India Women chased it down in 17 overs at 133/2, Pratika Rawal 59 not out and Shafali Verma 51 not out off 26 \u2014 India won by 8 wickets and swept the series 3\u20130.',
+            notes: { ZIMW: '131 all out (39.5) \u00b7 Mupachikwa 37', INDW: '133/2 (17) \u00b7 Rawal 59* \u00b7 Shafali 51*' }
           },
           paksl1: {
             date: 'Sun 18 Oct 2026', time: '1:00 PM PKT', venue: 'Rawalpindi', city: 'Rawalpindi',
@@ -261,7 +269,9 @@
             ]
           },
           banwi1: {
-            date: 'Wed 28 Oct \u2013 Sun 1 Nov 2026', venue: 'Shere Bangla Stadium, Dhaka', city: 'Dhaka'
+            date: 'Wed 28 Oct \u2013 Sun 1 Nov 2026', venue: 'Shere Bangla Stadium, Dhaka', city: 'Dhaka',
+            toss: 'Bangladesh won, chose to bat',
+            note: 'Day 2: Bangladesh 272 all out \u2014 Shadman Islam 105, Jomel Warrican 5/53. West Indies 89/1 (John Campbell 53 not out) \u2014 play interrupted.'
           },
           pakeng2: {
             date: 'Tue 20 Oct 2026', time: '1:00 PM PKT', venue: 'Rawalpindi', city: 'Rawalpindi',
@@ -980,3 +990,192 @@
         updateSpy();
       })();
     
+/* ===== Fixtures centre + series view + final poll (added 29 Oct 2026) ===== */
+document.addEventListener('DOMContentLoaded', function () {
+  var FIX = [
+    { grp: 0, mid: 'sleng6', sk: 'tri', f: 'ODI', st: 'live', teams: 'Sri Lanka vs England', txt: '6th ODI \u00b7 Lahore \u2014 Sri Lanka won the toss and are bowling first \u00b7 England batting' },
+    { grp: 0, mid: 'banwi1', sk: 'banwi', f: 'Test', st: 'live', teams: 'Bangladesh vs West Indies', txt: '1st Test \u00b7 Day 2 \u00b7 Dhaka \u2014 BAN 272 all out (Shadman 105) \u00b7 WI 89/1 \u00b7 play interrupted' },
+    { grp: 0, mid: 'rsa3', sk: 'rsa', f: 'Test', st: 'live', teams: 'South Africa vs Australia', txt: '3rd Test \u00b7 Day 3 \u00b7 Newlands \u2014 RSA 329 all out (Starc 6/72) \u00b7 AUS 334/4 (Inglis 86*)' },
+    { grp: 1, mid: 'nzind4', sk: 'nzind', f: 'T20', st: 'soon', teams: 'New Zealand vs India', txt: '4th T20I \u00b7 Fri 30 Oct \u00b7 12:00 PM PKT \u00b7 Eden Park, Auckland' },
+    { grp: 2, mid: 'final', sk: 'tri', f: 'ODI', st: 'soon', teams: 'Pakistan vs Sri Lanka', txt: 'THE FINAL \u00b7 Sat 31 Oct \u00b7 1:00 PM PKT \u00b7 Gaddafi Stadium, Lahore' },
+    { grp: 3, mid: null, sk: 'nzind', f: 'T20', st: 'soon', teams: 'New Zealand vs India', txt: '5th T20I \u00b7 Sun 1 Nov \u00b7 Hamilton' },
+    { grp: 3, mid: null, sk: 'banwi', f: 'Test', st: 'soon', teams: 'Bangladesh vs West Indies', txt: '2nd Test \u00b7 Thu 5 \u2013 Sun 9 Nov \u00b7 Sylhet International Cricket Stadium' },
+    { grp: 4, mid: 'indw3', sk: 'indwz', f: 'ODI', st: 'done', teams: 'India Women vs Zimbabwe Women', txt: '3rd ODI \u00b7 Wed 28 Oct \u00b7 Vadodara \u2014 India Women won by 8 wickets (ZIMW 131 all out, INDW 133/2) \u00b7 India sweep 3\u20130' },
+    { grp: 4, mid: 'paksl5', sk: 'tri', f: 'ODI', st: 'done', teams: 'Pakistan vs Sri Lanka', txt: 'Match 5 \u00b7 Tue 27 Oct \u00b7 Lahore \u2014 Sri Lanka won by 8 wickets (PAK 110 all out, SL 111/2)' },
+    { grp: 4, mid: 'nzind3', sk: 'nzind', f: 'T20', st: 'done', teams: 'New Zealand vs India', txt: '3rd T20I \u00b7 Tue 27 Oct \u00b7 Wellington \u2014 India won by 6 wickets \u00b7 Abhishek Sharma 113 off 38' },
+    { grp: 4, mid: 'pakeng4', sk: 'tri', f: 'ODI', st: 'done', teams: 'Pakistan vs England', txt: 'Match 4 \u00b7 Sun 25 Oct \u00b7 Lahore \u2014 Pakistan won by 1 wicket (ENG 241 all out, PAK 243/9)' },
+    { grp: 4, mid: 'indw2', sk: 'indwz', f: 'ODI', st: 'done', teams: 'India Women vs Zimbabwe Women', txt: '2nd ODI \u00b7 Sun 25 Oct \u00b7 Vadodara \u2014 India Women won by 121 runs (INDW 328/6, ZIMW 207 all out)' },
+    { grp: 4, mid: 'sleng3', sk: 'tri', f: 'ODI', st: 'done', teams: 'Sri Lanka vs England', txt: 'Match 3 \u00b7 Thu 22 Oct \u00b7 Rawalpindi \u2014 Sri Lanka won by 2 wickets (ENG 429/4, SL 430/8)' },
+    { grp: 4, mid: 'pakeng2', sk: 'tri', f: 'ODI', st: 'done', teams: 'Pakistan vs England', txt: 'Match 2 \u00b7 Tue 20 Oct \u00b7 Rawalpindi \u2014 Pakistan won by 87 runs (PAK 302/9, ENG 215 all out)' },
+    { grp: 4, mid: 'paksl1', sk: 'tri', f: 'ODI', st: 'done', teams: 'Pakistan vs Sri Lanka', txt: 'Match 1 \u00b7 Sun 18 Oct \u00b7 Rawalpindi \u2014 Pakistan won by 37 runs (PAK 305 all out, SL 268 all out)' }
+  ];
+  var GROUPS = ['Today \u2014 Thu 29 Oct 2026', 'Tomorrow \u2014 Fri 30 Oct', 'The Final \u2014 Sat 31 Oct', 'Coming up', 'Recent results'];
+  var SERIES = {
+    tri: { name: 'Pakistan ODI Tri-Series 2026', dates: '18 \u2013 31 Oct 2026 \u00b7 Lahore & Rawalpindi', table: true,
+      about: 'Hosts Pakistan, Sri Lanka and England in a seven-match ODI tri-series. Pakistan topped the table with three straight wins; Sri Lanka beat Pakistan on 27 October to join them in the final. The final is Saturday 31 October at Gaddafi Stadium, Lahore.',
+      squads: {
+        Pakistan: ['Babar Azam', 'Mohammad Rizwan', 'Fakhar Zaman', 'Saim Ayub', 'Salman Ali Agha', 'Hasan Nawaz', 'Hussain Talat', 'Mohammad Nawaz', 'Faheem Ashraf', 'Shadab Khan', 'Shaheen Shah Afridi', 'Haris Rauf', 'Mohammad Wasim Jr', 'Faisal Akram', 'Abrar Ahmed', 'Salman Mirza'],
+        England: ['Harry Brook', 'Jos Buttler', 'Tom Banton', 'Jacob Bethell', 'Rehan Ahmed', 'Liam Dawson', 'Sam Curran', 'Jamie Overton', 'Will Jacks', 'Jofra Archer', 'Adil Rashid', 'Luke Wood', 'Josh Tongue', 'Sonny Baker', 'Liam Livingstone', 'Phil Salt'],
+        'Sri Lanka': ['Kusal Mendis (captain, wk)', 'Avishka Fernando', 'Kamindu Mendis', 'Pavan Rathnayake', 'Sahan Arachchige', 'Janith Liyanage', 'Dasun Shanaka', 'Dunith Wellalage', 'Eshan Malinga', 'Asitha Fernando', 'Dilshan Madushanka', 'Lahiru Udara', 'Kamil Mishara', 'Sachindu Colombage', 'Maheesh Theekshana', 'Dushmantha Chameera']
+      } },
+    nzind: { name: 'India tour of New Zealand 2026', dates: '22 Oct \u2013 1 Dec 2026 \u00b7 New Zealand',
+      about: 'A long tour in three parts: 5 T20Is first, then 5 ODIs and 2 Tests. India won the 3rd T20I in Wellington by 6 wickets \u2014 Abhishek Sharma smashed 113 off 38 balls.' },
+    indwz: { name: 'Zimbabwe Women tour of India 2026', dates: 'Oct 2026 \u00b7 Vadodara',
+      about: 'India Women swept the three-match ODI series 3\u20130. Harmanpreet Kaur made 126 in the 2nd ODI, and Vaishnavi Sharma took 5/39 in the 3rd as Zimbabwe were bowled out for 131.' },
+    rsa: { name: 'Australia tour of South Africa 2026', dates: 'Oct 2026 \u00b7 South Africa',
+      about: 'A three-Test series, level coming into the Newlands decider. South Africa made 329 in the 3rd Test (Ackerman 95, Mitchell Starc 6/72); Australia reached 334/4 on Day 3 (Inglis 86 not out).' },
+    banwi: { name: 'West Indies tour of Bangladesh 2026', dates: '28 Oct \u2013 9 Nov 2026 \u00b7 Dhaka & Sylhet',
+      about: 'Two Tests. In the 1st Test at Dhaka, Bangladesh made 272 (Shadman Islam 105, Jomel Warrican 5/53) and West Indies were 89/1 on Day 2 when play was interrupted. The 2nd Test starts 5 November in Sylhet.' },
+    afgzim: { name: 'Afghanistan vs Zimbabwe \u2014 UAE Series', dates: '27 Oct \u2013 17 Nov 2026 \u00b7 UAE',
+      about: 'Two Tests and three T20Is between Afghanistan and Zimbabwe in the UAE. For ball-by-ball, use the free score sites listed in Channels.',
+      extra: [ { mid: 'afgzim', teams: 'Afghanistan vs Zimbabwe', txt: 'Series in the UAE \u2014 2 Tests & 3 T20Is, running to 17 Nov' } ] }
+  };
+  var TEAMS = [ ['Pakistan', 'PAK', '#0d7a3e'], ['India', 'IND', '#2456a6'], ['Australia', 'AUS', '#8a6d1f'], ['England', 'ENG', '#22335c'], ['South Africa', 'RSA', '#007a4d'], ['New Zealand', 'NZ', '#222222'], ['Sri Lanka', 'SL', '#8d153a'], ['Bangladesh', 'BAN', '#006a4e'], ['West Indies', 'WI', '#7b0041'], ['Afghanistan', 'AFG', '#a01218'], ['Ireland', 'IRE', '#169b62'], ['Zimbabwe', 'ZIM', '#ba0c2f'] ];
+
+  function openMid(mid) {
+    if (!mid) { document.getElementById('matches').scrollIntoView({ behavior: 'smooth' }); return; }
+    var card = document.querySelector('.mcard[data-mid="' + mid + '"]');
+    if (card) { card.click(); }
+  }
+  function badge(st) {
+    if (st === 'live') return '<span class="fx-live">\u25cf LIVE</span>';
+    if (st === 'done') return '<span class="fx-done">Result</span>';
+    return '<span class="fx-soon">Upcoming</span>';
+  }
+  function rowHtml(x) {
+    return '<button type="button" class="fx-row" data-mid="' + (x.mid || '') + '"><span><span class="fx-teams">' + x.teams + '</span><span class="fx-meta">' + x.txt + '</span></span><span>' + badge(x.st) + ' <span class="fx-arrow">\u203a</span></span></button>';
+  }
+
+  var curFmt = 'All';
+  function renderDay() {
+    var box = document.getElementById('fxDay');
+    if (!box) return;
+    var html = '', shown = 0;
+    GROUPS.forEach(function (g, gi) {
+      var rows = FIX.filter(function (x) { return x.grp === gi && (curFmt === 'All' || x.f === curFmt); });
+      if (!rows.length) return;
+      html += '<div class="fx-group"><h4>' + g + '</h4>' + rows.map(rowHtml).join('') + '</div>';
+      shown += rows.length;
+    });
+    if (!shown) html = '<p class="fx-empty">No ' + curFmt + ' matches in the current snapshot \u2014 the format filter covers the matches listed on this page. Switch back to All to see everything.</p>';
+    box.innerHTML = html;
+    box.querySelectorAll('.fx-row').forEach(function (r) {
+      r.addEventListener('click', function () { openMid(r.getAttribute('data-mid') || null); });
+    });
+  }
+  function seriesFixtures(sk) {
+    var list = FIX.filter(function (x) { return x.sk === sk; });
+    var ex = SERIES[sk].extra || [];
+    return ex.concat(list);
+  }
+  function renderSeries() {
+    var box = document.getElementById('fxSeries');
+    if (!box) return;
+    box.innerHTML = Object.keys(SERIES).map(function (sk) {
+      var s = SERIES[sk];
+      return '<button type="button" class="sr-card" data-sk="' + sk + '"><span><b>' + s.name + '</b><span>' + s.dates + ' \u00b7 ' + seriesFixtures(sk).length + ' matches</span></span><span class="fx-arrow">\u203a</span></button>';
+    }).join('');
+    box.querySelectorAll('.sr-card').forEach(function (c) {
+      c.addEventListener('click', function () { openSeries(c.getAttribute('data-sk'), 'overview'); });
+    });
+  }
+  function renderTeam() {
+    var box = document.getElementById('fxTeam');
+    if (!box) return;
+    box.innerHTML = TEAMS.map(function (t) {
+      return '<button type="button" class="tm-row"><span class="mc-flag" style="background:' + t[2] + '">' + t[1] + '</span> ' + t[0] + '<span class="fx-arrow">\u203a</span></button>';
+    }).join('') + '<p class="note">Tap a team to jump to Countries \u2014 there you can open its free Watch Live channels or its match list.</p>';
+    box.querySelectorAll('.tm-row').forEach(function (r) {
+      r.addEventListener('click', function () { document.getElementById('countries').scrollIntoView({ behavior: 'smooth' }); });
+    });
+  }
+
+  var backdrop = document.getElementById('srBackdrop');
+  var curSr = null;
+  function srTabBody(tab) {
+    var s = SERIES[curSr], body = document.getElementById('srBody');
+    document.querySelectorAll('.sr-tab').forEach(function (t) { t.classList.toggle('is-on', t.getAttribute('data-srtab') === tab); });
+    if (tab === 'overview') {
+      body.innerHTML = '<p>' + s.about + '</p>' + seriesFixtures(curSr).slice(0, 2).map(function (x) {
+        return '<div class="sr-fix" data-mid="' + (x.mid || '') + '"><b>' + x.teams + '</b><span>' + x.txt + '</span></div>';
+      }).join('');
+    } else if (tab === 'fixtures') {
+      body.innerHTML = seriesFixtures(curSr).map(function (x) {
+        return '<div class="sr-fix" data-mid="' + (x.mid || '') + '"><b>' + x.teams + '</b><span>' + x.txt + '</span></div>';
+      }).join('') || '<p>No fixtures in the current snapshot.</p>';
+    } else if (tab === 'squads') {
+      body.innerHTML = '<div class="sr-squads">' + Object.keys(s.squads).map(function (team) {
+        return '<h5>' + team + '</h5><ul>' + s.squads[team].map(function (p) { return '<li>' + p + '</li>'; }).join('') + '</ul>';
+      }).join('') + '</div>';
+    } else if (tab === 'points') {
+      body.innerHTML = '<table class="sr-table"><tr><th>Team</th><th>P</th><th>W</th><th>L</th><th>Pts</th></tr>' +
+        '<tr><td><b>Pakistan</b></td><td>3</td><td>3</td><td>0</td><td><b>6</b></td></tr>' +
+        '<tr><td><b>Sri Lanka</b></td><td>3</td><td>2</td><td>1</td><td><b>4</b></td></tr>' +
+        '<tr><td><b>England</b></td><td>3</td><td>0</td><td>3</td><td><b>0</b></td></tr></table>' +
+        '<p class="note">Pakistan and Sri Lanka are in the final \u2014 Sat 31 Oct, Lahore. England are out. The full table with squads is in the Points Tables section.</p>';
+    }
+    body.querySelectorAll('.sr-fix').forEach(function (r) {
+      r.addEventListener('click', function () { var m = r.getAttribute('data-mid') || null; closeSeries(); if (m) setTimeout(function () { openMid(m); }, 60); });
+    });
+  }
+  function openSeries(sk, tab) {
+    curSr = sk;
+    var s = SERIES[sk];
+    document.getElementById('srTitle').textContent = s.name;
+    document.getElementById('srSub').textContent = s.dates;
+    var tabs = [['overview', 'Overview'], ['fixtures', 'Fixtures']];
+    if (s.squads) tabs.push(['squads', 'Team Squads']);
+    if (s.table) tabs.push(['points', 'Points Table']);
+    document.getElementById('srTabs').innerHTML = tabs.map(function (t) {
+      return '<button type="button" class="sr-tab" data-srtab="' + t[0] + '">' + t[1] + '</button>';
+    }).join('');
+    document.querySelectorAll('.sr-tab').forEach(function (t) {
+      t.addEventListener('click', function () { srTabBody(t.getAttribute('data-srtab')); });
+    });
+    backdrop.hidden = false;
+    document.body.style.overflow = 'hidden';
+    srTabBody(tab || 'overview');
+  }
+  function closeSeries() { backdrop.hidden = true; document.body.style.overflow = ''; }
+  var srClose = document.getElementById('srClose');
+  if (srClose) srClose.addEventListener('click', closeSeries);
+  if (backdrop) backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeSeries(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && backdrop && !backdrop.hidden) closeSeries(); });
+
+  document.querySelectorAll('.fx-tab').forEach(function (t) {
+    t.addEventListener('click', function () {
+      document.querySelectorAll('.fx-tab').forEach(function (x) { x.classList.toggle('is-on', x === t); });
+      var v = t.getAttribute('data-fxview');
+      document.getElementById('fxDay').hidden = v !== 'day';
+      document.getElementById('fxSeries').hidden = v !== 'series';
+      document.getElementById('fxTeam').hidden = v !== 'team';
+      document.getElementById('fxChips').style.display = v === 'day' ? '' : 'none';
+    });
+  });
+  document.querySelectorAll('.fx-chip').forEach(function (c) {
+    c.addEventListener('click', function () {
+      document.querySelectorAll('.fx-chip').forEach(function (x) { x.classList.toggle('is-on', x === c); });
+      curFmt = c.getAttribute('data-fmt');
+      renderDay();
+    });
+  });
+  renderDay(); renderSeries(); renderTeam();
+
+  function paintPoll() {
+    var pick = null;
+    try { pick = localStorage.getItem('lcFinalPoll'); } catch (e) {}
+    document.querySelectorAll('.poll-opt').forEach(function (b) { b.classList.toggle('picked', b.getAttribute('data-poll') === pick); });
+    var msg = document.getElementById('pollMsg');
+    if (!msg) return;
+    if (pick === 'PAK') msg.textContent = 'You picked Pakistan \u2014 bring on Saturday! Tap the other team to change your pick.';
+    else if (pick === 'SL') msg.textContent = 'You picked Sri Lanka \u2014 bring on Saturday! Tap the other team to change your pick.';
+    else msg.textContent = 'Tap a team to cast your vote.';
+  }
+  document.querySelectorAll('.poll-opt').forEach(function (b) {
+    b.addEventListener('click', function () {
+      try { localStorage.setItem('lcFinalPoll', b.getAttribute('data-poll')); } catch (e) {}
+      paintPoll();
+    });
+  });
+  paintPoll();
+});

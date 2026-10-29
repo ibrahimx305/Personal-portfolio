@@ -745,3 +745,50 @@
         .tabbar a.spy-active::before { background: var(--green); }
       }
     
+/* ===== Fixtures centre, series view, poll, browse (added 29 Oct 2026) ===== */
+.fx-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 10px}
+.fx-tab{padding:9px 18px;border-radius:999px;border:1.5px solid #14532d;background:#fffdf6;color:#14532d;font:600 14.5px 'Barlow',sans-serif;cursor:pointer}
+.fx-tab.is-on{background:#14532d;color:#fdf9ec}
+.fx-chips{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 6px}
+.fx-chip{padding:6px 14px;border-radius:999px;border:1px solid #cbbd8d;background:#fdf9ec;color:#5c5340;font:600 13px 'Barlow',sans-serif;cursor:pointer}
+.fx-chip.is-on{background:#b8912f;border-color:#b8912f;color:#fff}
+.fx-group{margin:16px 0 4px}
+.fx-group h4{font-family:'Playfair Display',serif;font-size:17px;color:#14532d;margin:0 0 4px;border-bottom:2px solid #b8912f;padding-bottom:4px}
+.fx-row{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;text-align:left;padding:11px 13px;background:#fffdf6;border:1px solid #e5dcc3;border-radius:10px;margin:7px 0;cursor:pointer;font-family:'Barlow',sans-serif}
+.fx-row .fx-teams{font-weight:700;font-size:15.5px;color:#1c2420;display:block}
+.fx-row .fx-meta{font-size:12.8px;color:#5c665e;display:block;margin-top:2px}
+.fx-row .fx-arrow{font-size:18px;color:#b8912f;flex:none}
+.fx-live{color:#b3261e;font-weight:700}
+.fx-done{color:#33691e;font-weight:700}
+.fx-soon{color:#8a6d1f;font-weight:700}
+.fx-empty{padding:14px;border:1px dashed #cbbd8d;border-radius:10px;color:#5c665e;background:#fdf9ec}
+.sr-card{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;text-align:left;padding:13px;background:#fffdf6;border:1px solid #e5dcc3;border-radius:12px;margin:8px 0;cursor:pointer;font-family:'Barlow',sans-serif}
+.sr-card b{font-size:16px;color:#14532d;display:block}
+.sr-card span{font-size:13px;color:#5c665e}
+.tm-row{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:11px 13px;background:#fffdf6;border:1px solid #e5dcc3;border-radius:10px;margin:6px 0;cursor:pointer;font:600 15.5px 'Barlow',sans-serif;color:#1c2420}
+.tm-row .fx-arrow{margin-left:auto;color:#b8912f}
+.poll-box{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.poll-opt{flex:1;min-width:150px;padding:15px;border-radius:12px;border:2px solid #14532d;background:#fffdf6;font:700 17px 'Barlow',sans-serif;color:#14532d;cursor:pointer;display:flex;align-items:center;gap:10px;justify-content:center}
+.poll-opt.picked{background:#14532d;color:#fdf9ec}
+.browse-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px}
+.browse-tile{background:#fffdf6;border:1px solid #e5dcc3;border-radius:12px;padding:13px;text-decoration:none;color:inherit;display:block}
+.browse-tile b{display:block;font-size:15.5px;color:#14532d}
+.browse-tile span{font-size:12.5px;color:#5c665e}
+.sr-backdrop{position:fixed;inset:0;background:rgba(10,20,14,.55);z-index:120;display:flex;align-items:flex-end;justify-content:center}
+.sr-backdrop[hidden]{display:none}
+.sr-sheet{background:#faf6ea;width:100%;max-width:760px;max-height:88vh;overflow:auto;border-radius:16px 16px 0 0;padding:18px;box-sizing:border-box}
+.sr-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.sr-head h3{font-family:'Playfair Display',serif;font-size:22px;color:#14532d;margin:0}
+.sr-head p{margin:3px 0 0;color:#5c665e;font-size:13.5px}
+.sr-close{background:#14532d;color:#fdf9ec;border:none;border-radius:50%;width:34px;height:34px;font-size:19px;cursor:pointer;flex:none}
+.sr-tabs{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap}
+.sr-tab{padding:7px 15px;border-radius:999px;border:1.5px solid #14532d;background:transparent;color:#14532d;font:600 13.5px 'Barlow',sans-serif;cursor:pointer}
+.sr-tab.is-on{background:#14532d;color:#fdf9ec}
+.sr-fix{padding:9px 2px;border-bottom:1px dashed #d8cb9e;cursor:pointer}
+.sr-fix b{display:block;font-size:15px}
+.sr-fix span{font-size:13px;color:#5c665e}
+.sr-squads h5{font-family:'Playfair Display',serif;color:#14532d;font-size:16.5px;margin:14px 0 6px}
+.sr-squads ul{margin:0;padding-left:18px;font-size:14.5px;line-height:1.55}
+.sr-table{width:100%;border-collapse:collapse;font-size:14.5px}
+.sr-table th,.sr-table td{padding:7px 8px;border-bottom:1px solid #e5dcc3;text-align:left}
+.sr-table th{color:#14532d;font-family:'Playfair Display',serif}
