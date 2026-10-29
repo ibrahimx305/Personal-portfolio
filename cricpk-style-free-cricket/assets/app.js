@@ -1014,8 +1014,8 @@ document.addEventListener('DOMContentLoaded', function () {
     tri: { name: 'Pakistan ODI Tri-Series 2026', dates: '18 \u2013 31 Oct 2026 \u00b7 Lahore & Rawalpindi', table: true,
       about: 'Hosts Pakistan, Sri Lanka and England in a seven-match ODI tri-series. Pakistan topped the table with three straight wins; Sri Lanka beat Pakistan on 27 October to join them in the final. The final is Saturday 31 October at Gaddafi Stadium, Lahore.',
       squads: {
-        Pakistan: ['Babar Azam', 'Mohammad Rizwan', 'Fakhar Zaman', 'Saim Ayub', 'Salman Ali Agha', 'Hasan Nawaz', 'Hussain Talat', 'Mohammad Nawaz', 'Faheem Ashraf', 'Shadab Khan', 'Shaheen Shah Afridi', 'Haris Rauf', 'Mohammad Wasim Jr', 'Faisal Akram', 'Abrar Ahmed', 'Salman Mirza'],
-        England: ['Harry Brook', 'Jos Buttler', 'Tom Banton', 'Jacob Bethell', 'Rehan Ahmed', 'Liam Dawson', 'Sam Curran', 'Jamie Overton', 'Will Jacks', 'Jofra Archer', 'Adil Rashid', 'Luke Wood', 'Josh Tongue', 'Sonny Baker', 'Liam Livingstone', 'Phil Salt'],
+        Pakistan: ['Shaheen Shah Afridi (c)', 'Abrar Ahmed', 'Salman Ali Agha', 'Arafat Minhas', 'Babar Azam', 'Faheem Ashraf', 'Fakhar Zaman', 'Muhammad Ghazi Ghori (wk)', 'Haris Rauf', 'Hasan Nawaz', 'Naseem Shah', 'Razaullah', 'Saad Baig (wk)', 'Saim Ayub', 'Shadab Khan', 'Sufiyan Moqim'],
+        England: ['Harry Brook (c)', 'Gus Atkinson', 'Sonny Baker', 'Tom Banton', 'James Coles', 'Jordan Cox', 'Mason Crane', 'Henry Crocombe', 'Sam Curran', 'Liam Dawson', 'Ben Duckett', 'Will Jacks', 'Jamie Overton', 'Adil Rashid', 'Joe Root', 'Josh Tongue'],
         'Sri Lanka': ['Kusal Mendis (captain, wk)', 'Avishka Fernando', 'Kamindu Mendis', 'Pavan Rathnayake', 'Sahan Arachchige', 'Janith Liyanage', 'Dasun Shanaka', 'Dunith Wellalage', 'Eshan Malinga', 'Asitha Fernando', 'Dilshan Madushanka', 'Lahiru Udara', 'Kamil Mishara', 'Sachindu Colombage', 'Maheesh Theekshana', 'Dushmantha Chameera']
       } },
     nzind: { name: 'India tour of New Zealand 2026', dates: '22 Oct \u2013 1 Dec 2026 \u00b7 New Zealand',
