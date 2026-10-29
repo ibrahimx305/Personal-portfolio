@@ -227,7 +227,10 @@
           },
           paksl5: {
             date: 'Tue 27 Oct 2026', time: '1:00 PM PKT \u00b7 toss 12:30 PM', venue: 'Gaddafi Stadium, Lahore', city: 'Lahore',
-            note: 'Pakistan are already in the final \u2014 this match helps decide who joins them.',
+            toss: 'Sri Lanka won, chose to field',
+            summary: 'Pakistan were bowled out for 110 in 25.3 overs \u2014 Dilshan Madushanka took 5/34 and Babar Azam top-scored with 29. Sri Lanka chased it down in 18.2 overs at 111/2, Kamindu Mendis unbeaten on 62 \u2014 Sri Lanka won by 8 wickets and joined Pakistan in the final.',
+            notes: { PAK: '110 all out (25.3) \u00b7 Babar Azam 29', SL: '111/2 (18.2) \u00b7 Kamindu Mendis 62* \u00b7 Madushanka 5/34' },
+            note: 'Sri Lanka\u2019s win put them into Saturday\u2019s final against Pakistan.',
             squads: [
               { head: 'Pakistan \u2014 Series Squad', list: PAK_SQUAD },
               { head: 'Sri Lanka', text: SL_NOTE }
@@ -278,6 +281,8 @@
           },
           sleng6: {
             date: 'Thu 29 Oct 2026', time: '1:00 PM PKT', venue: 'Gaddafi Stadium, Lahore', city: 'Lahore',
+            toss: 'Sri Lanka won, chose to bowl',
+            note: 'The last league match \u2014 a dead rubber: Pakistan and Sri Lanka are already in Saturday\u2019s final, and England are playing for a consolation win after three straight defeats.',
             squads: [
               { head: 'England \u2014 Series Squad', list: ENG_SQUAD },
               { head: 'Sri Lanka', text: SL_NOTE }
@@ -288,9 +293,10 @@
           },
           final: {
             date: 'Sat 31 Oct 2026', time: '1:00 PM PKT', venue: 'Gaddafi Stadium, Lahore', city: 'Lahore',
+            note: 'Pakistan topped the table with three wins from three; Sri Lanka joined them by beating Pakistan on 27 Oct.',
             squads: [
               { head: 'Pakistan \u2014 Series Squad', list: PAK_SQUAD },
-              { head: 'The Other Finalist', text: 'Decided on Thu 29 Oct, when Sri Lanka play England in Lahore.' }
+              { head: 'Sri Lanka', text: SL_NOTE }
             ]
           }
         };

@@ -1,7 +1,7 @@
 // Live Cricket service worker - network-first. Deployed via GitHub.
 // pipeline check 2026-10-28 (new project trigger)
-const CACHE = 'live-cricket-v9';
-const SHELL = ['/', '/index.html', '/assets/page.css?v=9', '/assets/app.js?v=9', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png'];
+const CACHE = 'live-cricket-v10';
+const SHELL = ['/', '/index.html', '/assets/page.css?v=10', '/assets/app.js?v=10', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png'];
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(SHELL); }).then(function () { return self.skipWaiting(); }));
 });
