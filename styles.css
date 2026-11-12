@@ -32,7 +32,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ANIMATED BACKGROUND */
 #bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-body > *:not(#bg-canvas) { position: relative; z-index: 1; }
+body > *:not(#bg-canvas):not(.nav):not(.lamp-cone):not(.lamp-toggle) { position: relative; z-index: 1; }
 
 /* NAV */
 .nav {
