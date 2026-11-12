@@ -66,6 +66,14 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
 
+  const bgVid = document.getElementById('bg-video');
+  if (bgVid) {
+    canvas.style.display = 'none';
+    window.__setBgTheme = function () {};
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { bgVid.pause(); bgVid.removeAttribute('autoplay'); }
+    return;
+  }
+
   function webglSupported() {
     try {
       const c = document.createElement('canvas');
