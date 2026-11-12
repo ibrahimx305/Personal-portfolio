@@ -22,10 +22,14 @@ function currentTheme() {
   return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
 }
 function paintThemeToggle() {
-  if (themeToggleBtn) themeToggleBtn.textContent = currentTheme() === 'dark' ? '☀️' : '🌙';
+  if (!themeToggleBtn) return;
+  themeToggleBtn.classList.toggle('on', currentTheme() === 'dark');
 }
 paintThemeToggle();
 if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); themeToggleBtn.click(); }
+  });
   themeToggleBtn.addEventListener('click', () => {
     const next = currentTheme() === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;

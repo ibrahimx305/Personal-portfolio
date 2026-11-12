@@ -13,6 +13,7 @@
 </head>
 <body>
 <canvas id="bg-canvas"></canvas>
+<div class="lamp-cone" aria-hidden="true"></div>
 <nav class="nav">
   <a href="#top" class="logo">IK<span>.</span></a>
   <div class="nav-links" id="navLinks">
@@ -156,7 +157,21 @@
   <p>© 2026 Ibrahim Khan — Full-Stack Developer. Built with passion.</p>
 </footer>
 
-<button id="themeToggle" class="theme-toggle" aria-label="Switch between dark and light theme">☀️</button>
+<div id="themeToggle" class="lamp-toggle" role="button" tabindex="0" aria-label="Lamp switch: click to switch between light and dark theme" title="Lamp — click for light / dark">
+  <svg viewBox="0 0 120 150" aria-hidden="true">
+    <ellipse cx="62" cy="143" rx="26" ry="5" fill="#26262b" stroke="#3c3f47" stroke-width="2"/>
+    <line class="lamp-metal" x1="62" y1="140" x2="62" y2="74"/>
+    <line class="lamp-metal" x1="62" y1="74" x2="40" y2="44"/>
+    <circle cx="62" cy="74" r="5" fill="#3c3f47"/>
+    <circle cx="40" cy="44" r="5" fill="#3c3f47"/>
+    <polygon class="lamp-shade" points="14,62 54,62 44,36 24,36"/>
+    <circle class="lamp-bulb" cx="34" cy="65" r="7"/>
+    <g class="lamp-chain-g">
+      <line class="lamp-chain" x1="56" y1="58" x2="56" y2="80"/>
+      <circle cx="56" cy="84" r="4" fill="#8a8f98"/>
+    </g>
+  </svg>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="script.js"></script>
