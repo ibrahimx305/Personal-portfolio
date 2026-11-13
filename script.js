@@ -47,11 +47,16 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
 
   function addTilt(el, maxDeg) {
+    const glare = document.createElement('span');
+    glare.className = 'glare';
+    el.appendChild(glare);
     el.addEventListener('pointermove', e => {
       const r = el.getBoundingClientRect();
       const px = (e.clientX - r.left) / r.width - 0.5;
       const py = (e.clientY - r.top) / r.height - 0.5;
       el.style.transform = `rotateY(${(px * maxDeg).toFixed(2)}deg) rotateX(${(-py * maxDeg).toFixed(2)}deg)`;
+      glare.style.setProperty('--gx', ((px + 0.5) * 100).toFixed(1) + '%');
+      glare.style.setProperty('--gy', ((py + 0.5) * 100).toFixed(1) + '%');
     });
     el.addEventListener('pointerleave', () => { el.style.transform = ''; });
   }
@@ -59,6 +64,19 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     .forEach(el => addTilt(el, 12));
   const photo = document.querySelector('.hero-photo');
   if (photo) addTilt(photo, 8);
+
+  // Global pointer parallax: the video and floating shapes drift against the cards
+  let raf = null;
+  window.addEventListener('pointermove', e => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = null;
+      const nx = (e.clientX / window.innerWidth - 0.5).toFixed(3);
+      const ny = (e.clientY / window.innerHeight - 0.5).toFixed(3);
+      document.documentElement.style.setProperty('--mx', nx);
+      document.documentElement.style.setProperty('--my', ny);
+    });
+  }, { passive: true });
 })();
 
 /* ---------- 3D universe background (Three.js WebGL) with 2D fallback ---------- */
