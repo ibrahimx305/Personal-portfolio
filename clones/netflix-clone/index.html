@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netflix Clone — Demo UI</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Arial, sans-serif; }
+  body { background:#141414; color:#fff; }
+  header { position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; gap:26px; padding:14px 4%; background:linear-gradient(180deg, rgba(0,0,0,.75), transparent); transition:background .3s; }
+  header.solid { background:#141414; }
+  .logo { color:#e50914; font-size:29px; font-weight:900; letter-spacing:-1px; cursor:pointer; }
+  nav { display:flex; gap:18px; font-size:13.5px; }
+  nav a { color:#e5e5e5; text-decoration:none; cursor:pointer; }
+  nav a:hover { color:#b3b3b3; }
+  .hright { margin-left:auto; display:flex; align-items:center; gap:16px; }
+  .hright input { background:rgba(0,0,0,.75); border:1px solid #aaa; color:#fff; padding:7px 12px; font-size:13.5px; width:210px; outline:none; border-radius:2px; }
+  .avatar { width:32px; height:32px; border-radius:4px; object-fit:cover; cursor:pointer; }
+  .hero { height:86vh; min-height:480px; background:url('https://picsum.photos/seed/nfhero/1600/900') center/cover; position:relative; display:flex; align-items:center; }
+  .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(20,20,20,.88) 8%, transparent 60%), linear-gradient(0deg, #141414 2%, transparent 40%); }
+  .hero-in { position:relative; z-index:2; padding:0 4%; max-width:620px; }
+  .hero .tag { color:#e50914; font-weight:800; letter-spacing:3px; font-size:13px; margin-bottom:10px; }
+  .hero h1 { font-size:clamp(30px,5.2vw,58px); line-height:1.05; font-weight:900; text-shadow:2px 2px 8px rgba(0,0,0,.5); }
+  .hero .meta { margin:16px 0 6px; font-size:14.5px; display:flex; gap:12px; align-items:center; }
+  .match { color:#46d369; font-weight:700; }
+  .age { border:1px solid #888; padding:1px 7px; font-size:12px; }
+  .hero p { font-size:15.5px; line-height:1.5; text-shadow:1px 1px 4px rgba(0,0,0,.6); }
+  .hbtns { display:flex; gap:11px; margin-top:22px; }
+  .hbtns button { border:none; border-radius:5px; padding:11px 26px; font-size:16.5px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:8px; }
+  .play { background:#fff; color:#000; }
+  .play:hover { background:rgba(255,255,255,.8); }
+  .info { background:rgba(109,109,110,.7); color:#fff; }
+  .info:hover { background:rgba(109,109,110,.45); }
+  .rows { margin-top:-70px; position:relative; z-index:3; padding-bottom:26px; }
+  .row { padding:0 4% 26px; }
+  .row h2 { font-size:18px; margin-bottom:10px; }
+  .track { display:flex; gap:8px; overflow-x:auto; padding-bottom:8px; scrollbar-width:thin; }
+  .mcard { flex:none; width:250px; border-radius:6px; overflow:hidden; position:relative; cursor:pointer; transition:transform .25s; background:#222; }
+  .mcard:hover { transform:scale(1.06); z-index:4; }
+  .mcard img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; }
+  .mcard .ov { position:absolute; inset:0; background:linear-gradient(0deg, rgba(0,0,0,.88) 22%, transparent 65%); display:flex; flex-direction:column; justify-content:flex-end; padding:11px; opacity:0; transition:opacity .25s; }
+  .mcard:hover .ov { opacity:1; }
+  .ov b { font-size:14px; }
+  .ov small { color:#46d369; font-weight:700; margin-top:2px; }
+  .ov .ops { display:flex; gap:7px; margin-top:8px; }
+  .ov .ops button { width:31px; height:31px; border-radius:50%; border:2px solid #888; background:rgba(20,20,20,.8); color:#fff; cursor:pointer; font-size:13px; }
+  .ov .ops button:hover { border-color:#fff; }
+  .ov .ops button.inlist { background:#fff; color:#000; border-color:#fff; }
+  .modal { position:fixed; inset:0; background:rgba(0,0,0,.82); display:none; place-items:center; z-index:80; padding:16px; }
+  .modal.open { display:grid; }
+  .mbox { width:min(760px,100%); background:#181818; border-radius:10px; overflow:hidden; }
+  .mbox .vid { position:relative; }
+  .mbox video, .mbox .ph { width:100%; aspect-ratio:16/9; background:#000; display:block; }
+  .mbox .ph { object-fit:cover; }
+  .mbox .min { padding:20px 26px 26px; }
+  .mbox h3 { font-size:23px; margin-bottom:8px; }
+  .mbox p { color:#d2d2d2; font-size:14.5px; line-height:1.55; }
+  .x { position:absolute; top:12px; right:12px; width:36px; height:36px; border-radius:50%; border:none; background:#181818; color:#fff; font-size:17px; cursor:pointer; z-index:2; }
+  footer.note { text-align:center; color:#757575; font-size:12.5px; padding:16px 16px 34px; }
+  .empty { padding:0 4% 20px; color:#b3b3b3; font-size:15px; }
+  @media (max-width:760px){ nav{display:none;} .mcard{width:180px;} .hright input{width:130px;} }
+</style>
+</head>
+<body>
+<header id="hdr">
+  <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">NETFLIX</div>
+  <nav>
+    <a onclick="toast('Home is this page')">Home</a><a onclick="toast('TV Shows is a demo here')">TV Shows</a>
+    <a onclick="toast('Movies is a demo here')">Movies</a><a onclick="scrollToId('mylist-row')">My List</a>
+  </nav>
+  <div class="hright">
+    <input id="q" placeholder="Titles, people, genres" oninput="render()">
+    <span style="cursor:pointer" onclick="toast('No new notifications')">🔔</span>
+    <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-in">
+    <div class="tag">N SERIES</div>
+    <h1>The Last Kingdom of Sand</h1>
+    <div class="meta"><span class="match">98% Match</span><span>2026</span><span class="age">16+</span><span>2 Seasons</span></div>
+    <p>A banished prince crosses a burning desert to reclaim his father's throne — while an empire of raiders closes in from the sea. The year's biggest adventure saga.</p>
+    <div class="hbtns">
+      <button class="play" onclick="openMovie(0)">▶ Play</button>
+      <button class="info" onclick="openMovie(0)">ℹ More Info</button>
+    </div>
+  </div>
+</section>
+
+<div class="rows" id="rows"></div>
+<div class="empty" id="nores" style="display:none">No titles match your search.</div>
+<footer class="note">Demo UI clone built by Ibrahim Khan for learning &amp; portfolio purposes. Not affiliated with Netflix. Sample trailers: Google sample library.</footer>
+
+<div class="modal" id="modal">
+  <div class="mbox">
+    <div class="vid">
+      <button class="x" onclick="closeMovie()">✕</button>
+      <video id="player" controls playsinline style="display:none"></video>
+      <img class="ph" id="mImg" alt="">
+    </div>
+    <div class="min">
+      <h3 id="mTitle"></h3>
+      <p id="mMeta" style="margin-bottom:9px"></p>
+      <p id="mDesc"></p>
+      <div class="hbtns"><button class="play" id="mPlay">▶ Play Trailer</button><button class="info" id="mList">＋ My List</button></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SAMPLE = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/';
+const movies = [
+  { title:'The Last Kingdom of Sand', year:2026, match:98, dur:'2 Seasons', genre:'Adventure · Drama', file:'Sintel.mp4', img:'https://picsum.photos/seed/nfhero/800/450', desc:'A banished prince crosses a burning desert to reclaim his father\'s throne while an empire of raiders closes in from the sea.' },
+  { title:'Big Buck Bunny', year:2008, match:95, dur:'10m', genre:'Animation · Comedy', file:'BigBuckBunny.mp4', img:'https://picsum.photos/seed/nf1/500/280', desc:'A giant rabbit takes hilarious revenge on three bullying rodents in this beloved open-source animated short.' },
+  { title:'Elephants Dream', year:2006, match:89, dur:'11m', genre:'Sci-Fi · Animation', file:'ElephantsDream.mp4', img:'https://picsum.photos/seed/nf2/500/280', desc:'Two travellers explore a strange, infinite machine in the first movie ever made entirely with open-source tools.' },
+  { title:'Tears of Steel', year:2012, match:91, dur:'12m', genre:'Sci-Fi · Action', file:'TearsOfSteel.mp4', img:'https://picsum.photos/seed/nf3/500/280', desc:'Forty years after robots destroyed Amsterdam, a group of scientists stages one last desperate re-enactment.' },
+  { title:'Mountain Light', year:2025, match:93, dur:'1h 42m', genre:'Documentary · Nature', file:'ForBiggerJoyrides.mp4', img:'https://picsum.photos/seed/nf4/500/280', desc:'A breathtaking journey across the Karakoram and Himalaya ranges, filmed over three winters.' },
+  { title:'City of Wheels', year:2025, match:87, dur:'1h 28m', genre:'Action · Thriller', file:'SubaruOutbackOnStreetAndDirt.mp4', img:'https://picsum.photos/seed/nf5/500/280', desc:'A getaway driver takes one final job through the neon streets of a city that never sleeps.' },
+  { title:'The Silent Sea', year:2024, match:90, dur:'2h 5m', genre:'Drama · Mystery', file:'ForBiggerBlazes.mp4', img:'https://picsum.photos/seed/nf6/500/280', desc:'A lighthouse keeper and a shipwrecked stranger unravel a forty-year-old secret on a forgotten island.' },
+  { title:'Laugh Factory', year:2026, match:84, dur:'1 Season', genre:'Comedy · Stand-up', file:'ForBiggerFun.mp4', img:'https://picsum.photos/seed/nf7/500/280', desc:'Pakistan\'s funniest new comics take the stage — one mic, no mercy, all heart.' },
+  { title:'Escape Velocity', year:2026, match:96, dur:'2h 11m', genre:'Sci-Fi · Thriller', file:'ForBiggerEscapes.mp4', img:'https://picsum.photos/seed/nf8/500/280', desc:'The last crew of a dying space station has 90 minutes of oxygen — and one impossible plan.' },
+  { title:'Meltdown', year:2023, match:82, dur:'1h 37m', genre:'Action', file:'ForBiggerMeltdowns.mp4', img:'https://picsum.photos/seed/nf9/500/280', desc:'When a reactor goes critical, one engineer walks into the fire to stop a city-wide disaster.' },
+];
+const rowsDef = [
+  { title:'Trending Now', ids:[0,1,2,3,4] },
+  { title:'Popular on Netflix', ids:[5,6,7,8,9] },
+  { title:'Watch Again', ids:[2,4,6,8,1] },
+];
+let myList = new Set();
+function card(i){
+  const m = movies[i];
+  return `<div class="mcard" onclick="openMovie(${i})"><img src="${m.img}" alt="">
+    <div class="ov"><b>${m.title}</b><small>${m.match}% Match · ${m.dur}</small>
+    <div class="ops">
+      <button title="Play" onclick="event.stopPropagation(); openMovie(${i}, true)">▶</button>
+      <button title="My List" class="${myList.has(i) ? 'inlist' : ''}" onclick="event.stopPropagation(); toggleList(${i})">${myList.has(i) ? '✓' : '＋'}</button>
+      <button title="Like" onclick="event.stopPropagation(); toast('Rated 👍 (demo)')">👍</button>
+    </div></div></div>`;
+}
+function render(){
+  const q = document.getElementById('q').value.toLowerCase();
+  const wrap = document.getElementById('rows');
+  if (q) {
+    const ids = movies.map((m, i) => i).filter(i => (movies[i].title + ' ' + movies[i].genre).toLowerCase().includes(q));
+    wrap.innerHTML = ids.length ? `<div class="row"><h2>Results for "${q.replace(/</g,'&lt;')}"</h2><div class="track">${ids.map(card).join('')}</div></div>` : '';
+    document.getElementById('nores').style.display = ids.length ? 'none' : 'block';
+    return;
+  }
+  document.getElementById('nores').style.display = 'none';
+  let html = rowsDef.map(r => `<div class="row"><h2>${r.title}</h2><div class="track">${r.ids.map(card).join('')}</div></div>`).join('');
+  html += `<div class="row" id="mylist-row"><h2>My List</h2><div class="track">${myList.size ? [...myList].map(card).join('') : '<p style="color:#b3b3b3;font-size:14px">Nothing here yet — hover any title and tap ＋ to add it.</p>'}</div></div>`;
+  wrap.innerHTML = html;
+}
+function toggleList(i){ myList.has(i) ? myList.delete(i) : myList.add(i); render(); toast(myList.has(i) ? 'Added to My List' : 'Removed from My List'); }
+let current = 0;
+function openMovie(i, autoplay){
+  current = i; const m = movies[i];
+  document.getElementById('mTitle').textContent = m.title;
+  document.getElementById('mMeta').innerHTML = `<span class="match">${m.match}% Match</span> · ${m.year} · ${m.dur} · ${m.genre}`;
+  document.getElementById('mDesc').textContent = m.desc;
+  document.getElementById('mImg').src = m.img;
+  const p = document.getElementById('player');
+  p.style.display = 'none'; p.pause(); document.getElementById('mImg').style.display = 'block';
+  document.getElementById('mList').textContent = myList.has(i) ? '✓ In My List' : '＋ My List';
+  document.getElementById('modal').classList.add('open');
+  if (autoplay) playTrailer();
+}
+function playTrailer(){
+  const m = movies[current]; const p = document.getElementById('player');
+  p.src = SAMPLE + m.file; p.style.display = 'block';
+  document.getElementById('mImg').style.display = 'none';
+  p.play().catch(() => {});
+}
+document.getElementById('mPlay').addEventListener('click', playTrailer);
+document.getElementById('mList').addEventListener('click', () => { toggleList(current); document.getElementById('mList').textContent = myList.has(current) ? '✓ In My List' : '＋ My List'; });
+function closeMovie(){ const p = document.getElementById('player'); p.pause(); p.removeAttribute('src'); p.load(); document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') closeMovie(); });
+function scrollToId(id){ const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior:'smooth' }); }
+window.addEventListener('scroll', () => document.getElementById('hdr').classList.toggle('solid', window.scrollY > 40));
+function toast(msg){
+  const t = document.createElement('div');
+  t.textContent = msg;
+  t.style.cssText = 'position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#f5f5f1;color:#141414;padding:11px 18px;border-radius:6px;font-size:14px;z-index:99;box-shadow:0 6px 20px rgba(0,0,0,.5)';
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2400);
+}
+render();
+</script>
+</body>
+</html>

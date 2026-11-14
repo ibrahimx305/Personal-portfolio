@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facebook Clone — Demo UI</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', system-ui, sans-serif; }
+  body { background:#f0f2f5; color:#050505; }
+  header { position:fixed; top:0; left:0; right:0; height:56px; background:#fff; display:flex; align-items:center; justify-content:space-between; padding:0 16px; box-shadow:0 1px 4px rgba(0,0,0,.12); z-index:50; }
+  .logo { display:flex; align-items:center; gap:10px; }
+  .logo-b { width:40px; height:40px; border-radius:50%; background:#1877f2; color:#fff; display:grid; place-items:center; font-size:26px; font-weight:800; }
+  .search { background:#f0f2f5; border:none; border-radius:20px; padding:9px 14px; width:220px; font-size:14px; outline:none; }
+  nav.center { display:flex; gap:6px; }
+  nav.center button { background:none; border:none; width:96px; height:48px; border-radius:8px; font-size:20px; cursor:pointer; color:#65676b; }
+  nav.center button.active { color:#1877f2; border-bottom:3px solid #1877f2; border-radius:0; }
+  nav.center button:hover { background:#f0f2f5; }
+  .head-r { display:flex; align-items:center; gap:8px; }
+  .hbtn { width:40px; height:40px; border-radius:50%; border:none; background:#e4e6eb; font-size:17px; cursor:pointer; position:relative; }
+  .hbtn .dot { position:absolute; top:-2px; right:-2px; background:#e41e3f; color:#fff; font-size:10px; min-width:17px; height:17px; border-radius:9px; display:grid; place-items:center; padding:0 4px; }
+  .avatar { width:40px; height:40px; border-radius:50%; object-fit:cover; }
+  .layout { display:grid; grid-template-columns:280px 1fr 300px; gap:16px; max-width:1260px; margin:72px auto 24px; padding:0 12px; }
+  aside .item { display:flex; align-items:center; gap:12px; padding:9px 10px; border-radius:8px; cursor:pointer; font-size:15px; font-weight:500; }
+  aside .item:hover { background:#e4e6eb; }
+  aside .item img { width:36px; height:36px; border-radius:50%; object-fit:cover; }
+  aside .item .ic { width:36px; height:36px; border-radius:50%; background:#e7f0fe; display:grid; place-items:center; font-size:17px; }
+  main { max-width:590px; width:100%; margin:0 auto; }
+  .stories { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-bottom:16px; }
+  .story { height:200px; border-radius:10px; overflow:hidden; position:relative; cursor:pointer; background:#ccc; }
+  .story img.bg { width:100%; height:100%; object-fit:cover; transition:transform .3s; }
+  .story:hover img.bg { transform:scale(1.06); }
+  .story .ring { position:absolute; top:10px; left:10px; width:38px; height:38px; border-radius:50%; border:4px solid #1877f2; object-fit:cover; }
+  .story span { position:absolute; bottom:8px; left:8px; right:8px; color:#fff; font-size:12.5px; font-weight:600; text-shadow:0 1px 4px rgba(0,0,0,.7); }
+  .card { background:#fff; border-radius:10px; box-shadow:0 1px 2px rgba(0,0,0,.1); padding:14px 16px; margin-bottom:16px; }
+  .composer-top { display:flex; gap:10px; align-items:center; }
+  .composer-top input { flex:1; background:#f0f2f5; border:none; border-radius:20px; padding:11px 16px; font-size:15px; outline:none; }
+  .composer-actions { display:flex; margin-top:12px; border-top:1px solid #e4e6eb; padding-top:8px; }
+  .composer-actions button { flex:1; background:none; border:none; padding:8px; border-radius:8px; font-size:14px; font-weight:600; color:#65676b; cursor:pointer; }
+  .composer-actions button:hover { background:#f0f2f5; }
+  .post-head { display:flex; align-items:center; gap:10px; }
+  .post-head img { width:42px; height:42px; border-radius:50%; object-fit:cover; }
+  .post-head b { font-size:15px; display:block; }
+  .post-head small { color:#65676b; font-size:12.5px; }
+  .post-text { margin:10px 0; font-size:15px; line-height:1.45; }
+  .post-img { width:calc(100% + 32px); margin:0 -16px; max-height:460px; object-fit:cover; display:block; }
+  .post-stats { display:flex; justify-content:space-between; color:#65676b; font-size:13.5px; padding:9px 0 4px; }
+  .post-actions { display:flex; border-top:1px solid #e4e6eb; margin-top:4px; padding-top:4px; }
+  .post-actions button { flex:1; background:none; border:none; padding:8px; border-radius:6px; font-size:14px; font-weight:600; color:#65676b; cursor:pointer; }
+  .post-actions button:hover { background:#f0f2f5; }
+  .post-actions button.liked { color:#1877f2; }
+  .contact { display:flex; align-items:center; gap:10px; padding:7px 8px; border-radius:8px; cursor:pointer; font-size:14.5px; font-weight:500; }
+  .contact:hover { background:#e4e6eb; }
+  .contact img { width:34px; height:34px; border-radius:50%; object-fit:cover; }
+  .contact .on { width:9px; height:9px; background:#31a24c; border-radius:50%; margin-left:-20px; margin-top:22px; border:1.5px solid #fff; }
+  aside h4 { color:#65676b; font-size:15px; margin:12px 8px 6px; }
+  footer.note { text-align:center; color:#65676b; font-size:12.5px; padding:10px 16px 30px; }
+  @media (max-width:1080px){ .layout{grid-template-columns:70px 1fr;} .right{display:none;} aside .item span, aside h4{display:none;} }
+  @media (max-width:680px){ .layout{grid-template-columns:1fr;} .left{display:none;} nav.center{display:none;} .search{width:130px;} .stories{grid-template-columns:repeat(4,1fr);} .story{height:150px;} }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <div class="logo-b">f</div>
+    <input class="search" placeholder="Search Facebook" oninput="filterPosts(this.value)">
+  </div>
+  <nav class="center">
+    <button class="active" title="Home">⌂</button>
+    <button title="Watch" onclick="soon(this)">▶</button>
+    <button title="Marketplace" onclick="soon(this)">🛍</button>
+    <button title="Groups" onclick="soon(this)">👥</button>
+    <button title="Gaming" onclick="soon(this)">🎮</button>
+  </nav>
+  <div class="head-r">
+    <button class="hbtn" title="Notifications" onclick="toast('3 new notifications')">🔔<span class="dot">3</span></button>
+    <button class="hbtn" title="Messenger" onclick="toast('Messenger is a demo in this clone')">💬<span class="dot">2</span></button>
+    <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="You">
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="left">
+    <div class="item"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt=""><span>Ibrahim Khan</span></div>
+    <div class="item"><span class="ic">👥</span><span>Friends</span></div>
+    <div class="item"><span class="ic">🕘</span><span>Memories</span></div>
+    <div class="item"><span class="ic">🔖</span><span>Saved</span></div>
+    <div class="item"><span class="ic">👨‍👩‍👧</span><span>Groups</span></div>
+    <div class="item"><span class="ic">▶</span><span>Video</span></div>
+    <div class="item"><span class="ic">🛍</span><span>Marketplace</span></div>
+    <div class="item"><span class="ic">🏏</span><span>Cricket World</span></div>
+    <h4>Your shortcuts</h4>
+    <div class="item"><span class="ic">🎬</span><span>FactToons</span></div>
+    <div class="item"><span class="ic">💻</span><span>Web Developers PK</span></div>
+  </aside>
+
+  <main>
+    <div class="stories" id="stories"></div>
+
+    <div class="card">
+      <div class="composer-top">
+        <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+        <input id="composer" placeholder="What's on your mind, Ibrahim?" onkeydown="if(event.key==='Enter')publishPost()">
+      </div>
+      <div class="composer-actions">
+        <button onclick="toast('Live video is a demo here')">🔴 Live video</button>
+        <button onclick="publishPost()">🖼 Photo / Post</button>
+        <button onclick="toast('Feelings are a demo here')">😊 Feeling</button>
+      </div>
+    </div>
+
+    <div id="feed"></div>
+    <footer class="note">Demo UI clone built by Ibrahim Khan for learning &amp; portfolio purposes. Not affiliated with Meta / Facebook.</footer>
+  </main>
+
+  <aside class="right">
+    <h4>Contacts</h4>
+    <div id="contacts"></div>
+  </aside>
+</div>
+
+<script>
+const people = [
+  { name:'Ahmed Raza', img:'https://randomuser.me/api/portraits/men/45.jpg' },
+  { name:'Fatima Noor', img:'https://randomuser.me/api/portraits/women/44.jpg' },
+  { name:'Bilal Hussain', img:'https://randomuser.me/api/portraits/men/22.jpg' },
+  { name:'Ayesha Khan', img:'https://randomuser.me/api/portraits/women/68.jpg' },
+  { name:'Usman Tariq', img:'https://randomuser.me/api/portraits/men/77.jpg' },
+  { name:'Hira Shahid', img:'https://randomuser.me/api/portraits/women/12.jpg' },
+];
+let posts = [
+  { name:'Ahmed Raza', img:people[0].img, time:'2 hrs', text:'Alhamdulillah! Finally launched my new portfolio website today. Hard work pays off. 🚀', photo:'https://picsum.photos/seed/fbpost1/900/520', likes:148, comments:23, shares:4, liked:false },
+  { name:'Fatima Noor', img:people[1].img, time:'4 hrs', text:'Lahore ki shaam aur chai — perfect combination. ☕🌆', photo:'https://picsum.photos/seed/fbpost2/900/520', likes:326, comments:41, shares:12, liked:false },
+  { name:'Bilal Hussain', img:people[2].img, time:'6 hrs', text:'Pakistan U19 into the Asia Cup FINAL! What a team, what a chase. 🏏🇵🇰', photo:'', likes:512, comments:98, shares:37, liked:false },
+  { name:'Ayesha Khan', img:people[3].img, time:'9 hrs', text:'Finished my React course today. Next stop: building real projects and putting them on GitHub. 💻✨', photo:'https://picsum.photos/seed/fbpost3/900/520', likes:204, comments:35, shares:6, liked:false },
+];
+const storyData = [
+  { name:'Ahmed Raza', bg:'https://picsum.photos/seed/story1/300/420', img:people[0].img },
+  { name:'Fatima Noor', bg:'https://picsum.photos/seed/story2/300/420', img:people[1].img },
+  { name:'Bilal Hussain', bg:'https://picsum.photos/seed/story3/300/420', img:people[2].img },
+  { name:'Ayesha Khan', bg:'https://picsum.photos/seed/story4/300/420', img:people[3].img },
+  { name:'Usman Tariq', bg:'https://picsum.photos/seed/story5/300/420', img:people[4].img },
+];
+document.getElementById('stories').innerHTML = storyData.map(s =>
+  `<div class="story" onclick="toast('Stories are a demo here')"><img class="bg" src="${s.bg}" alt=""><img class="ring" src="${s.img}" alt=""><span>${s.name}</span></div>`).join('');
+document.getElementById('contacts').innerHTML = people.map(p =>
+  `<div class="contact" onclick="toast('Chat with ${p.name} is a demo here')"><img src="${p.img}" alt=""><span class="on"></span>${p.name}</div>`).join('');
+
+function renderFeed(list) {
+  document.getElementById('feed').innerHTML = list.map((p, i) => `
+  <article class="card">
+    <div class="post-head"><img src="${p.img}" alt=""><div><b>${p.name}</b><small>${p.time} · 🌐</small></div></div>
+    <p class="post-text">${p.text}</p>
+    ${p.photo ? `<img class="post-img" src="${p.photo}" alt="">` : ''}
+    <div class="post-stats"><span>👍 ❤️ ${p.likes}</span><span>${p.comments} comments · ${p.shares} shares</span></div>
+    <div class="post-actions">
+      <button class="${p.liked ? 'liked' : ''}" onclick="toggleLike(${posts.indexOf(p)})">${p.liked ? '👍 Liked' : '🤍 Like'}</button>
+      <button onclick="addComment(${posts.indexOf(p)})">💬 Comment</button>
+      <button onclick="sharePost(${posts.indexOf(p)})">↗ Share</button>
+    </div>
+  </article>`).join('');
+}
+function toggleLike(i){ posts[i].liked = !posts[i].liked; posts[i].likes += posts[i].liked ? 1 : -1; renderFeed(currentList()); }
+function addComment(i){ posts[i].comments++; renderFeed(currentList()); toast('Comment added (demo)'); }
+function sharePost(i){ posts[i].shares++; renderFeed(currentList()); toast('Post shared (demo)'); }
+let query = '';
+function currentList(){ return query ? posts.filter(p => (p.name + ' ' + p.text).toLowerCase().includes(query)) : posts; }
+function filterPosts(q){ query = q.toLowerCase(); renderFeed(currentList()); }
+function publishPost(){
+  const inp = document.getElementById('composer');
+  const text = inp.value.trim();
+  if (!text) { toast('Pehle kuch likhein, phir Post dabayein'); inp.focus(); return; }
+  posts.unshift({ name:'Ibrahim Khan', img:'https://randomuser.me/api/portraits/men/32.jpg', time:'Just now', text:text.replace(/</g,'&lt;'), photo:'', likes:0, comments:0, shares:0, liked:false });
+  inp.value = ''; query = ''; renderFeed(posts); toast('Your post is live (demo feed)');
+}
+function soon(btn){ document.querySelectorAll('nav.center button').forEach(b => b.classList.remove('active')); btn.classList.add('active'); toast('This section is a visual demo in the clone'); }
+function toast(msg){
+  const t = document.createElement('div');
+  t.textContent = msg;
+  t.style.cssText = 'position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#242526;color:#fff;padding:11px 18px;border-radius:8px;font-size:14px;z-index:99;box-shadow:0 6px 20px rgba(0,0,0,.3)';
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2400);
+}
+renderFeed(posts);
+</script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Clone — Demo UI</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:Roboto, 'Segoe UI', Arial, sans-serif; }
+  body { background:#0f0f0f; color:#fff; }
+  header { position:fixed; top:0; left:0; right:0; height:58px; background:#0f0f0f; display:flex; align-items:center; justify-content:space-between; padding:0 16px; z-index:50; gap:12px; }
+  .logo { display:flex; align-items:center; gap:5px; font-size:19px; font-weight:700; letter-spacing:-.5px; cursor:pointer; white-space:nowrap; }
+  .logo .play { background:#ff0000; color:#fff; width:30px; height:21px; border-radius:6px; display:grid; place-items:center; font-size:11px; }
+  .logo sup { color:#aaa; font-size:10px; font-weight:400; }
+  .searchbar { flex:1; max-width:620px; display:flex; }
+  .searchbar input { flex:1; background:#121212; border:1px solid #303030; border-radius:22px 0 0 22px; padding:10px 18px; color:#fff; font-size:15px; outline:none; }
+  .searchbar input:focus { border-color:#1c62b9; }
+  .searchbar button { width:62px; background:#222; border:1px solid #303030; border-left:none; border-radius:0 22px 22px 0; color:#fff; font-size:16px; cursor:pointer; }
+  .mic { width:40px; height:40px; border-radius:50%; border:none; background:#181818; color:#fff; margin-left:10px; cursor:pointer; flex:none; }
+  .hright { display:flex; align-items:center; gap:14px; }
+  .hright .ic { font-size:19px; cursor:pointer; background:none; border:none; color:#fff; position:relative; }
+  .hright .ic .dot { position:absolute; top:-4px; right:-7px; background:#c00; color:#fff; font-size:10px; border-radius:8px; padding:1px 5px; }
+  .avatar { width:34px; height:34px; border-radius:50%; object-fit:cover; cursor:pointer; }
+  .wrap { display:flex; margin-top:58px; }
+  aside { width:216px; flex:none; padding:12px; position:sticky; top:58px; height:calc(100vh - 58px); overflow-y:auto; }
+  aside .it { display:flex; gap:22px; align-items:center; padding:9px 12px; border-radius:10px; font-size:14px; cursor:pointer; }
+  aside .it:hover, aside .it.on { background:#272727; }
+  aside hr { border:none; border-top:1px solid #272727; margin:12px 0; }
+  aside h5 { font-size:15px; padding:6px 12px; }
+  aside .ch { display:flex; gap:20px; align-items:center; padding:7px 12px; border-radius:10px; font-size:14px; cursor:pointer; }
+  aside .ch:hover { background:#272727; }
+  aside .ch img { width:24px; height:24px; border-radius:50%; object-fit:cover; }
+  main { flex:1; padding:14px 22px 30px; min-width:0; }
+  .chips { display:flex; gap:9px; overflow-x:auto; padding-bottom:14px; }
+  .chips button { background:#272727; color:#fff; border:none; padding:7px 13px; border-radius:8px; font-size:13.5px; cursor:pointer; white-space:nowrap; }
+  .chips button.on { background:#fff; color:#0f0f0f; font-weight:600; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:18px 16px; }
+  .vcard { cursor:pointer; }
+  .thumb { position:relative; border-radius:12px; overflow:hidden; }
+  .thumb img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; transition:transform .25s; }
+  .vcard:hover .thumb img { transform:scale(1.04); }
+  .thumb .dur { position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,.85); font-size:12px; padding:2px 6px; border-radius:5px; }
+  .vmeta { display:flex; gap:11px; margin-top:11px; }
+  .vmeta img { width:36px; height:36px; border-radius:50%; object-fit:cover; flex:none; }
+  .vmeta h4 { font-size:14.5px; line-height:1.35; font-weight:600; }
+  .vmeta p { color:#aaa; font-size:12.5px; margin-top:3px; line-height:1.45; }
+  .modal { position:fixed; inset:0; background:rgba(0,0,0,.88); display:none; place-items:center; z-index:80; padding:16px; }
+  .modal.open { display:grid; }
+  .mbox { width:min(880px,100%); }
+  .mbox video { width:100%; border-radius:12px; background:#000; }
+  .mbox h3 { margin:14px 0 6px; font-size:18px; }
+  .mbox .row { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
+  .mbox .row p { color:#aaa; font-size:13.5px; }
+  .lbtn { background:#272727; color:#fff; border:none; padding:8px 16px; border-radius:18px; cursor:pointer; font-size:14px; }
+  .lbtn.liked { background:#fff; color:#0f0f0f; font-weight:600; }
+  .x { position:absolute; top:16px; right:22px; background:none; border:none; color:#fff; font-size:26px; cursor:pointer; }
+  footer.note { text-align:center; color:#717171; font-size:12.5px; padding:8px 16px 26px; }
+  @media (max-width:900px){ aside{display:none;} }
+  @media (max-width:560px){ .searchbar input{font-size:13px;} .mic{display:none;} main{padding:12px;} }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="play">▶</span> YouTube<sup>clone</sup></div>
+  <div class="searchbar">
+    <input id="q" placeholder="Search" oninput="render()">
+    <button onclick="render()">🔍</button>
+    <button class="mic" onclick="toast('Voice search is a demo here')">🎤</button>
+  </div>
+  <div class="hright">
+    <button class="ic" onclick="toast('Upload is a demo here')">＋</button>
+    <button class="ic" onclick="toast('3 notifications (demo)')">🔔<span class="dot">3</span></button>
+    <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+  </div>
+</header>
+
+<div class="wrap">
+  <aside>
+    <div class="it on">⌂ Home</div>
+    <div class="it" onclick="toast('Shorts feed is a demo here')">⚡ Shorts</div>
+    <div class="it" onclick="toast('Subscriptions is a demo here')">📺 Subscriptions</div>
+    <hr>
+    <div class="it" onclick="toast('History is a demo here')">🕘 History</div>
+    <div class="it" onclick="toast('Watch Later is a demo here')">⏱ Watch Later</div>
+    <div class="it" onclick="toast('Liked videos is a demo here')">👍 Liked videos</div>
+    <hr>
+    <h5>Subscriptions</h5>
+    <div id="subs"></div>
+  </aside>
+
+  <main>
+    <div class="chips" id="chips"></div>
+    <div class="grid" id="grid"></div>
+    <footer class="note">Demo UI clone built by Ibrahim Khan for learning &amp; portfolio purposes. Not affiliated with YouTube / Google. Sample videos: Google sample library.</footer>
+  </main>
+</div>
+
+<div class="modal" id="modal">
+  <button class="x" onclick="closePlayer()">✕</button>
+  <div class="mbox">
+    <video id="player" controls playsinline></video>
+    <h3 id="mTitle"></h3>
+    <div class="row">
+      <p id="mMeta"></p>
+      <button class="lbtn" id="likeBtn" onclick="toggleLike()">👍 Like</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const SAMPLE = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/';
+const channels = [
+  { name:'FactToons', img:'https://randomuser.me/api/portraits/men/32.jpg' },
+  { name:'Tech Urdu', img:'https://randomuser.me/api/portraits/men/45.jpg' },
+  { name:'Cricket World', img:'https://randomuser.me/api/portraits/men/22.jpg' },
+  { name:'Travel Diaries', img:'https://randomuser.me/api/portraits/women/44.jpg' },
+  { name:'Code Daily', img:'https://randomuser.me/api/portraits/women/68.jpg' },
+];
+const videos = [
+  { title:'Big Buck Bunny — Full Animated Short Film', ch:0, views:'2.1M views', age:'3 days ago', dur:'9:56', cat:'Entertainment', file:'BigBuckBunny.mp4', thumb:'https://picsum.photos/seed/yt1/640/360', likes:18400 },
+  { title:'Pakistan U19 Road to the Asia Cup Final — Highlights', ch:2, views:'856K views', age:'1 day ago', dur:'12:24', cat:'Cricket', file:'ForBiggerBlazes.mp4', thumb:'https://picsum.photos/seed/yt2/640/360', likes:32100 },
+  { title:'Learn JavaScript in Urdu — Complete Beginner Course', ch:1, views:'432K views', age:'1 week ago', dur:'24:10', cat:'Education', file:'ForBiggerEscapes.mp4', thumb:'https://picsum.photos/seed/yt3/640/360', likes:12800 },
+  { title:'Northern Areas Pakistan — Cinematic Travel Film', ch:3, views:'1.4M views', age:'5 days ago', dur:'8:47', cat:'Travel', file:'ForBiggerFun.mp4', thumb:'https://picsum.photos/seed/yt4/640/360', likes:27600 },
+  { title:'Build a Portfolio Website with React — Full Tutorial', ch:4, views:'289K views', age:'2 weeks ago', dur:'31:05', cat:'Education', file:'ForBiggerJoyrides.mp4', thumb:'https://picsum.photos/seed/yt5/640/360', likes:9400 },
+  { title:'Elephants Dream — Open Movie (Full)', ch:0, views:'967K views', age:'1 month ago', dur:'10:53', cat:'Entertainment', file:'ElephantsDream.mp4', thumb:'https://picsum.photos/seed/yt6/640/360', likes:15200 },
+  { title:'Top 10 Cricket Catches of All Time', ch:2, views:'3.2M views', age:'4 days ago', dur:'7:32', cat:'Cricket', file:'ForBiggerMeltdowns.mp4', thumb:'https://picsum.photos/seed/yt7/640/360', likes:41800 },
+  { title:'Sintel — Award Winning Fantasy Short Film', ch:0, views:'5.6M views', age:'2 months ago', dur:'14:48', cat:'Entertainment', file:'Sintel.mp4', thumb:'https://picsum.photos/seed/yt8/640/360', likes:52300 },
+  { title:'Hunza Valley Drone Tour — 4K', ch:3, views:'678K views', age:'6 days ago', dur:'5:19', cat:'Travel', file:'SubaruOutbackOnStreetAndDirt.mp4', thumb:'https://picsum.photos/seed/yt9/640/360', likes:11700 },
+];
+const cats = ['All','Cricket','Education','Entertainment','Travel'];
+let activeCat = 'All', current = -1;
+document.getElementById('subs').innerHTML = channels.map(c => `<div class="ch" onclick="toast('${c.name} channel page is a demo here')"><img src="${c.img}" alt="">${c.name}</div>`).join('');
+document.getElementById('chips').innerHTML = cats.map(c => `<button class="${c === 'All' ? 'on' : ''}" onclick="setCat('${c}', this)">${c}</button>`).join('');
+function setCat(c, btn){ activeCat = c; document.querySelectorAll('.chips button').forEach(b => b.classList.remove('on')); btn.classList.add('on'); render(); }
+function render(){
+  const q = document.getElementById('q').value.toLowerCase();
+  const list = videos.filter(v => (activeCat === 'All' || v.cat === activeCat) && v.title.toLowerCase().includes(q));
+  document.getElementById('grid').innerHTML = list.length ? list.map(v => { const i = videos.indexOf(v); const ch = channels[v.ch]; return `
+    <div class="vcard" onclick="openPlayer(${i})">
+      <div class="thumb"><img src="${v.thumb}" alt=""><span class="dur">${v.dur}</span></div>
+      <div class="vmeta"><img src="${ch.img}" alt=""><div><h4>${v.title}</h4><p>${ch.name}<br>${v.views} · ${v.age}</p></div></div>
+    </div>`; }).join('') : '<p style="color:#aaa">No videos match your search.</p>';
+}
+function openPlayer(i){
+  current = i; const v = videos[i];
+  const p = document.getElementById('player');
+  p.src = SAMPLE + v.file;
+  document.getElementById('mTitle').textContent = v.title;
+  document.getElementById('mMeta').textContent = channels[v.ch].name + ' · ' + v.views + ' · ' + v.age;
+  paintLike();
+  document.getElementById('modal').classList.add('open');
+  p.play().catch(() => {});
+}
+function paintLike(){
+  const v = videos[current]; const b = document.getElementById('likeBtn');
+  b.textContent = `👍 ${v.likes.toLocaleString()}${v.liked ? ' · Liked' : ''}`;
+  b.classList.toggle('liked', !!v.liked);
+}
+function toggleLike(){ const v = videos[current]; v.liked = !v.liked; v.likes += v.liked ? 1 : -1; paintLike(); }
+function closePlayer(){ const p = document.getElementById('player'); p.pause(); p.removeAttribute('src'); p.load(); document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') closePlayer(); });
+function toast(msg){
+  const t = document.createElement('div');
+  t.textContent = msg;
+  t.style.cssText = 'position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#f1f1f1;color:#0f0f0f;padding:11px 18px;border-radius:8px;font-size:14px;z-index:99;box-shadow:0 6px 20px rgba(0,0,0,.5)';
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2400);
+}
+render();
+</script>
+</body>
+</html>
