@@ -1,186 +1,695 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ibrahim Khan — Full-Stack Developer</title>
-<meta name="description" content="Ibrahim Khan is a full-stack developer building modern web applications, APIs and e-commerce experiences for freelance clients worldwide." />
-<link rel="stylesheet" href="styles.css" />
-<script>
-  try { document.documentElement.dataset.theme = localStorage.getItem('ik-theme') || 'dark'; }
-  catch (e) { document.documentElement.dataset.theme = 'dark'; }
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ibrahim Khan — Full-Stack Developer (React, Next.js, Node.js & Python), based in Peshawar, Pakistan. Open to remote work worldwide.">
+
+    <!--==================== UNICONS ====================-->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+    <!--==================== SWIPER CSS ====================-->
+    <link rel="stylesheet" href="swiper-bundle.min.css">
+
+    <!--==================== CSS ====================-->
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Ibrahim Khan — Full-Stack Developer</title>
 </head>
 <body>
-<canvas id="bg-canvas"></canvas>
-<video id="bg-video" autoplay muted loop playsinline preload="auto" poster="bg-poster.jpg" src="bg-waves.mp4"></video>
-<div class="bg-shade" aria-hidden="true"></div>
-<div class="lamp-cone" aria-hidden="true"></div>
-<div class="float-shapes" aria-hidden="true">
-  <div class="shape shape-ring"></div>
-  <div class="shape shape-sphere"></div>
-  <div class="shape shape-cube"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-</div>
-<nav class="nav">
-  <a href="#top" class="logo">IK<span>.</span></a>
-  <div class="nav-links" id="navLinks">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact" class="btn btn-small">Hire Me</a>
-  </div>
-  <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
-</nav>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">Ibrahim</a>
 
-<header class="hero" id="top">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <p class="hero-kicker">Hello, I'm</p>
-      <h1>Ibrahim Khan</h1>
-      <h2>Full-Stack <span>Developer</span></h2>
-      <p class="hero-desc">I design and build fast, scalable web applications — from pixel-perfect frontends to robust APIs and databases — for freelance clients around the world.</p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn">View My Work</a>
-        <a href="#contact" class="btn btn-outline">Contact Me</a>
-      </div>
-      <div class="hero-meta">
-        <span>📍 Available remotely</span>
-        <span>💼 Open to freelance projects</span>
-      </div>
-    </div>
-    <div class="hero-photo">
-      <img src="profile.jpg" alt="Ibrahim Khan" />
-    </div>
-  </div>
-</header>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list grid">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">
+                            <i class="uil uil-estate nav__icon"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">
+                            <i class="uil uil-user nav__icon"></i> About
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#skills" class="nav__link">
+                            <i class="uil uil-file-alt nav__icon"></i> Skills
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#services" class="nav__link">
+                            <i class="uil uil-briefcase-alt nav__icon"></i> Services
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#portfolio" class="nav__link">
+                            <i class="uil uil-scenery nav__icon"></i> Portfolio
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link">
+                            <i class="uil uil-message nav__icon"></i> Contact Me
+                        </a>
+                    </li>
+                </ul>
+                <i class="uil uil-times nav__close" id="nav-close"></i>
+            </div>
 
-<section id="about" class="section">
-  <h3 class="section-title">About <span>Me</span></h3>
-  <p class="about-text">I'm a full-stack developer with a passion for turning ideas into working products. I work with startups and businesses as a freelancer — taking projects from first sketch to deployed, production-ready applications. My focus is clean code, great user experience, and shipping on time.</p>
-  <div class="stats">
-    <div class="stat"><strong>20+</strong><span>Projects completed</span></div>
-    <div class="stat"><strong>12+</strong><span>Happy clients</span></div>
-    <div class="stat"><strong>3+</strong><span>Years experience</span></div>
-  </div>
-</section>
+            <div class="nav__btns">
+                <!-- Theme change button -->
+                <i class="uil uil-moon change-theme" id="theme-button"></i>
 
-<section id="skills" class="section">
-  <h3 class="section-title">My <span>Skills</span></h3>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <h4>Frontend</h4>
-      <ul><li>React / Next.js</li><li>JavaScript / TypeScript</li><li>HTML5 / CSS3 / Tailwind</li><li>Responsive Design</li></ul>
-    </div>
-    <div class="skill-card">
-      <h4>Backend</h4>
-      <ul><li>Node.js / Express</li><li>Python / FastAPI</li><li>REST APIs / GraphQL</li><li>Authentication & Payments</li></ul>
-    </div>
-    <div class="skill-card">
-      <h4>Database & Cloud</h4>
-      <ul><li>PostgreSQL / MongoDB</li><li>Firebase / Supabase</li><li>Vercel / AWS</li><li>Docker</li></ul>
-    </div>
-    <div class="skill-card">
-      <h4>Tools</h4>
-      <ul><li>Git / GitHub</li><li>Figma to Code</li><li>Stripe Integration</li><li>CI/CD Pipelines</li></ul>
-    </div>
-  </div>
-</section>
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="uil uil-apps"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<section id="experience" class="section">
-  <h3 class="section-title">Freelance <span>Experience</span></h3>
-  <div class="timeline">
-    <div class="timeline-item">
-      <span class="timeline-date">2024 — Present</span>
-      <h4>Freelance Full-Stack Developer</h4>
-      <p>Building custom web applications for international clients — SaaS dashboards, e-commerce stores and booking platforms. Handling everything from UI design to API development, deployment and maintenance.</p>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-date">2023 — 2024</span>
-      <h4>Freelance Web Developer</h4>
-      <p>Delivered 10+ client projects including business websites, admin panels and REST APIs. Specialized in React frontends with Node.js backends, Stripe payments and third-party integrations.</p>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-date">2022 — 2023</span>
-      <h4>Junior Web Developer (Contract)</h4>
-      <p>Worked with a remote team on frontend features and bug fixes, learned professional Git workflows, code reviews and agile delivery while contributing to production applications.</p>
-    </div>
-  </div>
-</section>
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home section" id="home">
+            <div class="home__container container grid">
+                <div class="home__content grid">
+                    <div class="home__social">
+                        <a href="https://www.linkedin.com/in/ibrahim-khan-77bb30450/" target="_blank" class="home__social-icon">
+                            <i class="uil uil-linkedin-alt"></i>
+                        </a>
+                        <a href="https://github.com/ibrahimx305" target="_blank" class="home__social-icon">
+                            <i class="uil uil-github-alt"></i>
+                        </a>
+                        <a href="https://wa.me/923002220065" target="_blank" class="home__social-icon">
+                            <i class="uil uil-whatsapp"></i>
+                        </a>
+                    </div>
 
-<section id="projects" class="section">
-  <h3 class="section-title">Featured <span>Projects</span></h3>
-  <div class="projects-grid">
-    <div class="project-card">
-      <h4>ShopHub — E-commerce Store</h4>
-      <p>Full-featured online store with cart, checkout, Stripe payments and an admin dashboard for managing products and orders.</p>
-      <div class="tags"><span>Next.js</span><span>Stripe</span><span>MongoDB</span></div>
-    </div>
-    <div class="project-card">
-      <h4>FoodDash — Restaurant Ordering</h4>
-      <p>Online food ordering platform with live order tracking, restaurant admin panel and customer notifications.</p>
-      <div class="tags"><span>React</span><span>Node.js</span><span>Socket.io</span></div>
-    </div>
-    <div class="project-card">
-      <h4>PropFind — Real Estate Portal</h4>
-      <p>Property listing website with advanced search filters, map view, image galleries and agent contact system.</p>
-      <div class="tags"><span>Next.js</span><span>PostgreSQL</span><span>Mapbox</span></div>
-    </div>
-    <div class="project-card">
-      <h4>TaskFlow — Project Manager</h4>
-      <p>Team collaboration app with kanban boards, deadlines, file attachments and real-time updates.</p>
-      <div class="tags"><span>React</span><span>FastAPI</span><span>PostgreSQL</span></div>
-    </div>
-    <div class="project-card">
-      <h4>MediBook — Clinic Booking</h4>
-      <p>Appointment booking system for clinics with doctor schedules, SMS reminders and patient records.</p>
-      <div class="tags"><span>Next.js</span><span>Supabase</span><span>Twilio</span></div>
-    </div>
-    <div class="project-card">
-      <h4>BlogCMS — Content Platform</h4>
-      <p>SEO-friendly blogging platform with a markdown editor, categories, comments and analytics dashboard.</p>
-      <div class="tags"><span>Next.js</span><span>MongoDB</span><span>Vercel</span></div>
-    </div>
-  </div>
-</section>
+                    <div class="home__img">
+                        <svg class="home__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <mask id="mask0" mask-type="alpha">
+                                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
+                            </mask>
+                            <g mask="url(#mask0)">
+                                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
+                                <image class="home__blob-img" x="12" y="0" width="176" xlink:href="profile.jpg"/>
+                            </g>
+                        </svg>
+                    </div>
 
-<section id="contact" class="section">
-  <h3 class="section-title">Get In <span>Touch</span></h3>
-  <p class="contact-text">Have a project in mind? Let's talk — I usually reply within a day.</p>
-  <div class="contact-cards">
-    <a class="contact-card" href="mailto:ibbikhan1010@gmail.com">
-      <strong>Email</strong><span>ibbikhan1010@gmail.com</span>
+                    <div class="home__data">
+                        <h1 class="home__title">Hi, I'm Ibrahim Khan</h1>
+                        <h3 class="home__subtitle">Full-Stack Developer</h3>
+                        <p class="home__description">I build complete web products end to end — front end, back end, database and deployment — producing clean, quality work for clients worldwide.</p>
+                        <a href="#contact" class="button button--flex">
+                            Contact Me <i class="uil uil-message button__icon"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="home__scroll">
+                    <a href="#about" class="home__scroll-button button--flex">
+                        <i class="uil uil-mouse-alt home__scroll-mouse"></i>
+                        <span class="home__scroll-name">Scroll down</span>
+                        <i class="uil uil-arrow-down home__scroll-arrow"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== ABOUT ====================-->
+        <section class="about section" id="about">
+            <h2 class="section__title">About Me</h2>
+            <span class="section__subtitle">My introduction</span>
+
+            <div class="about__container container grid">
+                <img src="profile.jpg" alt="Ibrahim Khan" class="about__img">
+
+                <div class="about__data">
+                    <p class="about__description">Full-stack developer with extensive knowledge and years of experience, working in web technologies and delivering quality work. I take projects from first sketch to deployed, production-ready applications — clean code, great user experience, and shipping on time.</p>
+
+                    <div class="about__info">
+                        <div>
+                            <span class="about__info-title">03+</span>
+                            <span class="about__info-name">Years <br> experience</span>
+                        </div>
+                        <div>
+                            <span class="about__info-title">20+</span>
+                            <span class="about__info-name">Completed <br> projects</span>
+                        </div>
+                        <div>
+                            <span class="about__info-title">15+</span>
+                            <span class="about__info-name">Technologies <br> in my stack</span>
+                        </div>
+                    </div>
+
+                    <div class="about__buttons">
+                        <a download="" href="ibrahim-khan-cv.pdf" class="button button--flex">
+                            Download CV <i class="uil uil-download-alt button__icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== SKILLS ====================-->
+        <section class="skills section" id="skills">
+            <h2 class="section__title">Skills</h2>
+            <span class="section__subtitle">My technical level</span>
+
+            <div class="skills__container container grid">
+                <div>
+                    <!--==================== SKILLS 1 ====================-->
+                    <div class="skills__content skills__open">
+                        <div class="skills__header">
+                            <i class="uil uil-brackets-curly skills__icon"></i>
+                            <div>
+                                <h1 class="skills__title">Frontend Developer</h1>
+                                <span class="skills__subtitle">React & Next.js</span>
+                            </div>
+                            <i class="uil uil-angle-down skills__arrow"></i>
+                        </div>
+
+                        <div class="skills__list grid">
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">JavaScript / TypeScript</h3>
+                                    <span class="skills__number">90%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__js"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">React</h3>
+                                    <span class="skills__number">88%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__react"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Next.js</h3>
+                                    <span class="skills__number">85%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__next"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">HTML5 / CSS3 / Tailwind</h3>
+                                    <span class="skills__number">90%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__html"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--==================== SKILLS 2 ====================-->
+                    <div class="skills__content skills__close">
+                        <div class="skills__header">
+                            <i class="uil uil-server-network skills__icon"></i>
+                            <div>
+                                <h1 class="skills__title">Backend Developer</h1>
+                                <span class="skills__subtitle">Node.js & Python</span>
+                            </div>
+                            <i class="uil uil-angle-down skills__arrow"></i>
+                        </div>
+
+                        <div class="skills__list grid">
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Node.js / Express</h3>
+                                    <span class="skills__number">85%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__node"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Python / FastAPI</h3>
+                                    <span class="skills__number">85%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__python"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">PostgreSQL</h3>
+                                    <span class="skills__number">80%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__postgres"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">MongoDB</h3>
+                                    <span class="skills__number">78%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__mongo"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <!--==================== SKILLS 3 ====================-->
+                    <div class="skills__content skills__close">
+                        <div class="skills__header">
+                            <i class="uil uil-swatchbook skills__icon"></i>
+                            <div>
+                                <h1 class="skills__title">Tools & Workflow</h1>
+                                <span class="skills__subtitle">Ship & deploy</span>
+                            </div>
+                            <i class="uil uil-angle-down skills__arrow"></i>
+                        </div>
+
+                        <div class="skills__list grid">
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Git / GitHub</h3>
+                                    <span class="skills__number">90%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__git"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">REST APIs & Auth</h3>
+                                    <span class="skills__number">88%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__api"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Vercel / Docker</h3>
+                                    <span class="skills__number">80%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__deploy"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">AI Coding Tools (Claude, Cursor)</h3>
+                                    <span class="skills__number">92%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__ai"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== QUALIFICATION ====================-->
+        <section class="qualification section">
+            <h2 class="section__title">Qualification</h2>
+            <span class="section__subtitle">My personal journey</span>
+
+            <div class="qualification__container container">
+                <div class="qualification__tabs">
+                    <div class="qualification__button button--flex qualification__active" data-target="#work">
+                        <i class="uil uil-briefcase-alt qualification__icon"></i>
+                        Work
+                    </div>
+                </div>
+
+                <div class="qualification__sections">
+                    <!--==================== QUALIFICATION CONTENT ====================-->
+                    <div class="qualification__content qualification__active" data-content id="work">
+                        <!--==================== QUALIFICATION 1 ====================-->
+                        <div class="qualification__data">
+                            <div>
+                                <h3 class="qualification__title">Freelance Full-Stack Developer</h3>
+                                <span class="qualification__subtitle">International clients — Remote</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    2024 — Present
+                                </div>
+                            </div>
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+                        </div>
+
+                        <!--==================== QUALIFICATION 2 ====================-->
+                        <div class="qualification__data">
+                            <div></div>
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+                            <div>
+                                <h3 class="qualification__title">Freelance Web Developer</h3>
+                                <span class="qualification__subtitle">Client projects — Remote</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    2023 — 2024
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--==================== QUALIFICATION 3 ====================-->
+                        <div class="qualification__data">
+                            <div>
+                                <h3 class="qualification__title">Junior Web Developer (Contract)</h3>
+                                <span class="qualification__subtitle">Remote team</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    2022 — 2023
+                                </div>
+                            </div>
+                            <div>
+                                <span class="qualification__rounder"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== SERVICES ====================-->
+        <section class="services section" id="services">
+            <h2 class="section__title">Services</h2>
+            <span class="section__subtitle">What I offer</span>
+
+            <div class="services__container container grid">
+                <!--==================== SERVICES 1 ====================-->
+                <div class="services__content">
+                    <div>
+                        <i class="uil uil-window-grid services__icon"></i>
+                        <h3 class="services__title">Frontend <br> Development</h3>
+                    </div>
+                    <span class="button button--flex button--small button--link services__button">
+                        View More
+                        <i class="uil uil-arrow-right button__icon"></i>
+                    </span>
+                    <div class="services__modal">
+                        <div class="services__modal-content">
+                            <h4 class="services__modal-title">Frontend <br> Development</h4>
+                            <i class="uil uil-times services__modal-close"></i>
+                            <ul class="services__modal-services grid">
+                                <li class="services__modal-service">
+                                    <i class="uil uil-check-circle services__modal-icon"></i>
+                                    <p>I develop the user interface with React and Next.js.</p>
+                                </li>
+                                <li class="services__modal-service">
+                                    <i class="uil uil-check-circle services__modal-icon"></i>
+                                    <p>Responsive web pages for mobile, tablet and desktop.</p>
+                                </li>
+                                <li class="services__modal-service">
+                                    <i class="uil uil-check-circle services__modal-icon"></i>
+                                    <p>I create smooth UX element interactions and animations.</p>
+                                </li>
+                                <li class="services__modal-service">
+                                    <i class="uil uil-check-circle services__modal-icon"></i>
+                                    <p>Figma designs converted to pixel-perfect code.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!--==================== SERVICES 2 ====================-->
+                <div class="services__content">
+                    <div>
+                        <i class="uil uil-arrow services__icon"></i>
+                        <h3 class="services__title">Backend <br> Development</h3>
+                    </div>
+                    <span class="button button--flex button--small button--link services__button">
+                        View More
+                        <i class="uil uil-arrow-right button__icon"></i>
+                    </span>
+                    <div class="services__modal">
+                        <div class="services__modal-content">
+                            <h4 class="services__modal-title">Backend <br> Development</h4>
+                            <i class="uil uil-times services__modal-close"></i>
+                            <ul class="services__modal-services grid">
+                                <li class="services__modal-service">
+                                    <i class="uil uil-check-circle services__modal-icon"></i>
+                                    <p>REST APIs with Node.js / Express and Python / FastAPI.</p>
+                                </li>
+                                <li class="services__modal-service">
+                                    <i class="uil uil-check-circle services__modal-icon"></i>
+                                    <p>Database design with PostgreSQL and MongoDB.</p>
+                                </li>
+                                <li class="services__modal-service">
+                                    <i class="uil uil-check-circle services__modal-icon"></i>
+                                    <p>Authentication, authorisation and secure sessions.</p>
+                                </li>
+                                <li class="services__modal-service">
+                                    <i class="uil uil-check-circle services__modal-icon"></i>
+                                    <p>Payments and third-party integrations (Stripe and more).</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!--==================== SERVICES 3 ====================-->
+                <div class="services__content">
+                    <div>
+                        <i class="uil uil-rocket services__icon"></i>
+                        <h3 class="services__title">Full-Stack <br> Web Apps</h3>
+                    </div>
+                    <span class="button button--flex button--small button--link services__button">
+                        View More
+                        <i class="uil uil-arrow-right button__icon"></i>
+                    </span>
+                    <div class="services__modal">
+                        <div class="services__modal-content">
+                            <h4 class="services__modal-title">Full-Stack <br> Web Apps</h4>
+                            <i class="uil uil-times services__modal-close"></i>
+                            <ul class="services__modal-services grid">
+                                <li class="services__modal-service">
+                                    <i class="uil uil-check-circle services__modal-icon"></i>
+                                    <p>Complete products: SaaS dashboards, e-commerce, booking platforms.</p>
+                                </li>
+                                <li class="services__modal-service">
+                                    <i class="uil uil-check-circle services__modal-icon"></i>
+                                    <p>Everything from UI design to API, deployment and maintenance.</p>
+                                </li>
+                                <li class="services__modal-service">
+                                    <i class="uil uil-check-circle services__modal-icon"></i>
+                                    <p>Deployment on Vercel with CI/CD from GitHub.</p>
+                                </li>
+                                <li class="services__modal-service">
+                                    <i class="uil uil-check-circle services__modal-icon"></i>
+                                    <p>Fast delivery with modern AI-assisted development workflow.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== PORTFOLIO ====================-->
+        <section class="portfolio section" id="portfolio">
+            <h2 class="section__title">Portfolio</h2>
+            <span class="section__subtitle">Most recent work</span>
+
+            <div class="portfolio__container container swiper-container">
+                <div class="swiper-wrapper">
+                    <!--==================== PORTFOLIO 1 ====================-->
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="cutpro-cover.png" alt="CutPro Studio" class="portfolio__img">
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">CutPro Studio</h3>
+                            <p class="portfolio__description">A full browser-based video editor — multi-track timeline, effects, auto captions and real MP4 export. Everything runs in the browser, no uploads, no server.</p>
+                            <a href="https://github.com/ibrahimx305/cutpro-studio" target="_blank" class="button button--flex button--small portfolio__button">
+                                View Code
+                                <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--==================== PORTFOLIO 2 ====================-->
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="netflix-cover.jpg" alt="Netflix UI Clone" class="portfolio__img">
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Netflix UI Clone</h3>
+                            <p class="portfolio__description">A working Netflix interface clone in a single HTML file — content rows, hover cards, My List, live search and a trailer player. One of four UI clones (Facebook, Amazon, YouTube, Netflix).</p>
+                            <a href="https://github.com/ibrahimx305/netflix-clone" target="_blank" class="button button--flex button--small portfolio__button">
+                                View Code
+                                <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--==================== PORTFOLIO 3 ====================-->
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="bg-poster.jpg" alt="Personal Portfolio Website" class="portfolio__img">
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Personal Portfolio Website</h3>
+                            <p class="portfolio__description">This very website — a responsive personal portfolio with dark/light mode, smooth scrolling and a clean, pleasant user interface. Deployed on Vercel from GitHub.</p>
+                            <a href="https://github.com/ibrahimx305/Personal-portfolio" target="_blank" class="button button--flex button--small portfolio__button">
+                                View Code
+                                <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Arrows -->
+                <div class="swiper-button-next">
+                    <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
+                </div>
+                <div class="swiper-button-prev">
+                    <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
+                </div>
+
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <!--==================== PROJECT IN MIND ====================-->
+        <section class="project section">
+            <div class="project__bg">
+                <div class="project__container container grid">
+                    <div class="project__data">
+                        <h2 class="project__title">You have a new project</h2>
+                        <p class="project__description">Contact me now and get your complete web product built — front end, back end and deployment, all in one place.</p>
+                        <a href="#contact" class="button button--flex button--white">
+                            Contact Me
+                            <i class="uil uil-message project__icon button__icon"></i>
+                        </a>
+                    </div>
+                    <img src="profile.jpg" alt="Ibrahim Khan" class="project__img">
+                </div>
+            </div>
+        </section>
+
+        <!--==================== CONTACT ME ====================-->
+        <section class="contact section" id="contact">
+            <h2 class="section__title">Contact Me</h2>
+            <span class="section__subtitle">Get in touch</span>
+
+            <div class="contact__container container grid">
+                <div>
+                    <div class="contact__information">
+                        <i class="uil uil-phone contact__icon"></i>
+                        <div>
+                            <h3 class="contact__title">Call Me</h3>
+                            <span class="contact__subtitle">+92 300 2220065</span>
+                        </div>
+                    </div>
+
+                    <div class="contact__information">
+                        <i class="uil uil-envelope contact__icon"></i>
+                        <div>
+                            <h3 class="contact__title">Email</h3>
+                            <span class="contact__subtitle">ibbikhan1010@gmail.com</span>
+                        </div>
+                    </div>
+
+                    <div class="contact__information">
+                        <i class="uil uil-map-marker contact__icon"></i>
+                        <div>
+                            <h3 class="contact__title">Location</h3>
+                            <span class="contact__subtitle">Peshawar, Pakistan — working remotely worldwide</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="" class="contact__form grid" id="contact-form">
+                    <div class="contact__inputs grid">
+                        <div class="contact__content">
+                            <label for="cf-name" class="contact__label">Name</label>
+                            <input type="text" id="cf-name" class="contact__input" required>
+                        </div>
+                        <div class="contact__content">
+                            <label for="cf-email" class="contact__label">Email</label>
+                            <input type="email" id="cf-email" class="contact__input" required>
+                        </div>
+                    </div>
+                    <div class="contact__content">
+                        <label for="cf-project" class="contact__label">Project</label>
+                        <input type="text" id="cf-project" class="contact__input">
+                    </div>
+                    <div class="contact__content">
+                        <label for="cf-message" class="contact__label">Message</label>
+                        <textarea id="cf-message" cols="0" rows="7" class="contact__input" required></textarea>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="button button--flex" style="border:none;cursor:pointer;font-family:inherit;">
+                            Send Message
+                            <i class="uil uil-message button__icon"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+        <div class="footer__bg">
+            <div class="footer__container container grid">
+                <div>
+                    <h1 class="footer__title">Ibrahim</h1>
+                    <span class="footer__subtitle">Full-Stack Developer</span>
+                </div>
+
+                <ul class="footer__links">
+                    <li>
+                        <a href="#services" class="footer__link">Services</a>
+                    </li>
+                    <li>
+                        <a href="#portfolio" class="footer__link">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="footer__link">Contact Me</a>
+                    </li>
+                </ul>
+
+                <div class="footer__socials">
+                    <a href="https://www.linkedin.com/in/ibrahim-khan-77bb30450/" target="_blank" class="footer__social">
+                        <i class="uil uil-linkedin-alt"></i>
+                    </a>
+                    <a href="https://github.com/ibrahimx305" target="_blank" class="footer__social">
+                        <i class="uil uil-github-alt"></i>
+                    </a>
+                    <a href="https://wa.me/923002220065" target="_blank" class="footer__social">
+                        <i class="uil uil-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <p class="footer__copy">&#169; 2026 Ibrahim Khan — Full-Stack Developer. Built with passion.</p>
+        </div>
+    </footer>
+
+    <!--==================== SCROLL TOP ====================-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="uil uil-arrow-up scrollup__icon"></i>
     </a>
-    <a class="contact-card" href="tel:+923002220065">
-      <strong>Phone</strong><span>0300 2220065</span>
-    </a>
-    <a class="contact-card" href="https://wa.me/923002220065" target="_blank" rel="noopener">
-      <strong>WhatsApp</strong><span>Chat with me</span>
-    </a>
-  </div>
-</section>
 
-<footer>
-  <p>© 2026 Ibrahim Khan — Full-Stack Developer. Built with passion.</p>
-</footer>
+    <!--==================== SWIPER JS ====================-->
+    <script src="swiper-bundle.min.js"></script>
 
-<div id="themeToggle" class="lamp-toggle" role="button" tabindex="0" aria-label="Lamp switch: click to switch between light and dark theme" title="Lamp — click for light / dark">
-  <svg viewBox="0 0 120 150" aria-hidden="true">
-    <ellipse cx="62" cy="143" rx="26" ry="5" fill="#26262b" stroke="#3c3f47" stroke-width="2"/>
-    <line class="lamp-metal" x1="62" y1="140" x2="62" y2="74"/>
-    <line class="lamp-metal" x1="62" y1="74" x2="40" y2="44"/>
-    <circle cx="62" cy="74" r="5" fill="#3c3f47"/>
-    <circle cx="40" cy="44" r="5" fill="#3c3f47"/>
-    <polygon class="lamp-shade" points="14,62 54,62 44,36 24,36"/>
-    <circle class="lamp-bulb" cx="34" cy="65" r="7"/>
-    <g class="lamp-chain-g">
-      <line class="lamp-chain" x1="56" y1="58" x2="56" y2="80"/>
-      <circle cx="56" cy="84" r="4" fill="#8a8f98"/>
-    </g>
-  </svg>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="script.js"></script>
+    <!--==================== MAIN JS ====================-->
+    <script src="script.js"></script>
 </body>
 </html>
