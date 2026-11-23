@@ -172,17 +172,6 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
 
-/*==================== CONTACT FORM (opens the visitor's email app) ====================*/
-const contactForm = document.getElementById('contact-form')
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault()
-        const name = document.getElementById('cf-name').value.trim()
-        const email = document.getElementById('cf-email').value.trim()
-        const project = document.getElementById('cf-project').value.trim()
-        const message = document.getElementById('cf-message').value.trim()
-        const subject = encodeURIComponent('Portfolio contact' + (project ? ' — ' + project : '') + ' from ' + name)
-        const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nProject: ' + project + '\n\n' + message)
-        window.location.href = 'mailto:ibbikhan1010@gmail.com?subject=' + subject + '&body=' + body
-    })
-}
+/*==================== CONTACT FORM ====================*/
+/* The form posts directly to FormSubmit, which delivers each message
+   to ibbikhan1010@gmail.com. No JavaScript handling needed. */
