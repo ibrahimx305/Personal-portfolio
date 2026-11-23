@@ -84,6 +84,7 @@
 </nav>
 
 <div class="hero"><h1>Grand Sale — up to <span>60% off</span> top brands</h1></div>
+<div id="resbar" style="padding:14px 22px 0;font-size:14px;color:#565959"></div>
 <div class="grid" id="grid"></div>
 <footer class="note">Demo store clone built by Ibrahim Khan for learning &amp; portfolio purposes. Not affiliated with Amazon.</footer>
 
@@ -99,18 +100,18 @@
 
 <script>
 const products = [
-  { id:1, name:'Wireless Noise-Cancelling Headphones — Bluetooth 5.3, 40H Battery', cat:'Electronics', price:59.99, was:129.99, rating:4.5, reviews:2314, img:'https://picsum.photos/seed/prod1/500/400' },
-  { id:2, name:'Smart Watch Series 8 — Fitness Tracker, Heart Rate, AMOLED Display', cat:'Electronics', price:89.50, was:149.00, rating:4, reviews:1876, img:'https://picsum.photos/seed/prod2/500/400' },
-  { id:3, name:'Men\'s Running Shoes — Lightweight, Breathable Mesh', cat:'Sports', price:45.00, was:79.99, rating:4.5, reviews:932, img:'https://picsum.photos/seed/prod3/500/400' },
-  { id:4, name:'Stainless Steel Water Bottle 1L — Insulated, Leak Proof', cat:'Sports', price:16.95, was:24.95, rating:5, reviews:5402, img:'https://picsum.photos/seed/prod4/500/400' },
-  { id:5, name:'Women\'s Summer Dress — Floral Print, Casual Fit', cat:'Fashion', price:29.99, was:54.99, rating:4, reviews:764, img:'https://picsum.photos/seed/prod5/500/400' },
-  { id:6, name:'Leather Wallet for Men — RFID Blocking, Bifold', cat:'Fashion', price:21.49, was:39.99, rating:4.5, reviews:3120, img:'https://picsum.photos/seed/prod6/500/400' },
-  { id:7, name:'Non-Stick Cookware Set — 10 Pieces, Dishwasher Safe', cat:'Home', price:74.99, was:119.99, rating:4.5, reviews:1287, img:'https://picsum.photos/seed/prod7/500/400' },
-  { id:8, name:'LED Desk Lamp with USB Charging Port — 5 Brightness Levels', cat:'Home', price:24.99, was:42.99, rating:4, reviews:689, img:'https://picsum.photos/seed/prod8/500/400' },
-  { id:9, name:'4K Action Camera — Waterproof, Wide Angle, WiFi', cat:'Electronics', price:119.00, was:199.00, rating:4.5, reviews:2054, img:'https://picsum.photos/seed/prod9/500/400' },
-  { id:10, name:'Cricket Bat — English Willow, Professional Grade', cat:'Sports', price:139.99, was:189.99, rating:5, reviews:421, img:'https://picsum.photos/seed/prod10/500/400' },
-  { id:11, name:'Ceramic Dinnerware Set — 16 Pieces, Service for 4', cat:'Home', price:49.95, was:79.95, rating:4.5, reviews:958, img:'https://picsum.photos/seed/prod11/500/400' },
-  { id:12, name:'Bluetooth Speaker — Portable, Deep Bass, 24H Playtime', cat:'Electronics', price:35.99, was:69.99, rating:4.5, reviews:4210, img:'https://picsum.photos/seed/prod12/500/400' },
+  { id:1, name:'Wireless Noise-Cancelling Headphones — Bluetooth 5.3, 40H Battery', cat:'Electronics', price:59.99, was:129.99, rating:4.5, reviews:2314, img:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=500&auto=format&fit=crop' },
+  { id:2, name:'Smart Watch Series 8 — Fitness Tracker, Heart Rate, AMOLED Display', cat:'Electronics', price:89.50, was:149.00, rating:4, reviews:1876, img:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=500&auto=format&fit=crop' },
+  { id:3, name:'Men\'s Running Shoes — Lightweight, Breathable Mesh', cat:'Sports', price:45.00, was:79.99, rating:4.5, reviews:932, img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=500&auto=format&fit=crop' },
+  { id:4, name:'Stainless Steel Water Bottle 1L — Insulated, Leak Proof', cat:'Sports', price:16.95, was:24.95, rating:5, reviews:5402, img:'https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=500&auto=format&fit=crop' },
+  { id:5, name:'Women\'s Summer Dress — Floral Print, Casual Fit', cat:'Fashion', price:29.99, was:54.99, rating:4, reviews:764, img:'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=500&auto=format&fit=crop' },
+  { id:6, name:'Leather Wallet for Men — RFID Blocking, Bifold', cat:'Fashion', price:21.49, was:39.99, rating:4.5, reviews:3120, img:'https://images.unsplash.com/photo-1627123424574-724758594e93?q=80&w=500&auto=format&fit=crop' },
+  { id:7, name:'Non-Stick Cookware Set — 10 Pieces, Dishwasher Safe', cat:'Home', price:74.99, was:119.99, rating:4.5, reviews:1287, img:'https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=500&auto=format&fit=crop' },
+  { id:8, name:'LED Desk Lamp with USB Charging Port — 5 Brightness Levels', cat:'Home', price:24.99, was:42.99, rating:4, reviews:689, img:'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=500&auto=format&fit=crop' },
+  { id:9, name:'4K Action Camera — Waterproof, Wide Angle, WiFi', cat:'Electronics', price:119.00, was:199.00, rating:4.5, reviews:2054, img:'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=500&auto=format&fit=crop' },
+  { id:10, name:'Cricket Bat — English Willow, Professional Grade', cat:'Sports', price:139.99, was:189.99, rating:5, reviews:421, img:'https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=500&auto=format&fit=crop' },
+  { id:11, name:'Ceramic Dinnerware Set — 16 Pieces, Service for 4', cat:'Home', price:49.95, was:79.95, rating:4.5, reviews:958, img:'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=500&auto=format&fit=crop' },
+  { id:12, name:'Bluetooth Speaker — Portable, Deep Bass, 24H Playtime', cat:'Electronics', price:35.99, was:69.99, rating:4.5, reviews:4210, img:'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?q=80&w=500&auto=format&fit=crop' },
 ];
 let cat = 'All';
 let cart = {};
@@ -119,9 +120,10 @@ function money(n){ return '$' + n.toFixed(2); }
 function render(){
   const q = document.getElementById('q').value.toLowerCase();
   const list = products.filter(p => (cat === 'All' || p.cat === cat) && p.name.toLowerCase().includes(q));
+  document.getElementById('resbar').innerHTML = list.length ? ('1&ndash;' + list.length + ' of ' + list.length + ' results for <b style="color:#0f1111">&quot;' + (cat === 'All' ? 'All products' : cat) + '&quot;</b>') : '';
   document.getElementById('grid').innerHTML = list.length ? list.map(p => `
     <div class="p-card">
-      <img src="${p.img}" alt="" onclick="toast('Product page is a demo here')">
+      <img src="${p.img}" alt="" onerror="this.onerror=null;this.src='https://picsum.photos/seed/prod'+${p.id}+'/500/400'" onclick="toast('Product page is a demo here')">
       <h3 onclick="toast('Product page is a demo here')">${p.name}</h3>
       <div class="stars">${stars(p.rating)}<small>${p.reviews.toLocaleString()}</small></div>
       <div><span class="price"><sup>$</sup>${Math.floor(p.price)}<sup>${String(Math.round((p.price % 1) * 100)).padStart(2,'0')}</sup></span> <span class="was">${money(p.was)}</span></div>

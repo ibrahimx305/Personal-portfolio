@@ -1,190 +1,244 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Netflix Clone — Demo UI</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Arial, sans-serif; }
-  body { background:#141414; color:#fff; }
-  header { position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; gap:26px; padding:14px 4%; background:linear-gradient(180deg, rgba(0,0,0,.75), transparent); transition:background .3s; }
-  header.solid { background:#141414; }
-  .logo { color:#e50914; font-size:29px; font-weight:900; letter-spacing:-1px; cursor:pointer; }
-  nav { display:flex; gap:18px; font-size:13.5px; }
-  nav a { color:#e5e5e5; text-decoration:none; cursor:pointer; }
-  nav a:hover { color:#b3b3b3; }
-  .hright { margin-left:auto; display:flex; align-items:center; gap:16px; }
-  .hright input { background:rgba(0,0,0,.75); border:1px solid #aaa; color:#fff; padding:7px 12px; font-size:13.5px; width:210px; outline:none; border-radius:2px; }
-  .avatar { width:32px; height:32px; border-radius:4px; object-fit:cover; cursor:pointer; }
-  .hero { height:86vh; min-height:480px; background:url('https://picsum.photos/seed/nfhero/1600/900') center/cover; position:relative; display:flex; align-items:center; }
-  .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(20,20,20,.88) 8%, transparent 60%), linear-gradient(0deg, #141414 2%, transparent 40%); }
-  .hero-in { position:relative; z-index:2; padding:0 4%; max-width:620px; }
-  .hero .tag { color:#e50914; font-weight:800; letter-spacing:3px; font-size:13px; margin-bottom:10px; }
-  .hero h1 { font-size:clamp(30px,5.2vw,58px); line-height:1.05; font-weight:900; text-shadow:2px 2px 8px rgba(0,0,0,.5); }
-  .hero .meta { margin:16px 0 6px; font-size:14.5px; display:flex; gap:12px; align-items:center; }
-  .match { color:#46d369; font-weight:700; }
-  .age { border:1px solid #888; padding:1px 7px; font-size:12px; }
-  .hero p { font-size:15.5px; line-height:1.5; text-shadow:1px 1px 4px rgba(0,0,0,.6); }
-  .hbtns { display:flex; gap:11px; margin-top:22px; }
-  .hbtns button { border:none; border-radius:5px; padding:11px 26px; font-size:16.5px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:8px; }
-  .play { background:#fff; color:#000; }
-  .play:hover { background:rgba(255,255,255,.8); }
-  .info { background:rgba(109,109,110,.7); color:#fff; }
-  .info:hover { background:rgba(109,109,110,.45); }
-  .rows { margin-top:-70px; position:relative; z-index:3; padding-bottom:26px; }
-  .row { padding:0 4% 26px; }
-  .row h2 { font-size:18px; margin-bottom:10px; }
-  .track { display:flex; gap:8px; overflow-x:auto; padding-bottom:8px; scrollbar-width:thin; }
-  .mcard { flex:none; width:250px; border-radius:6px; overflow:hidden; position:relative; cursor:pointer; transition:transform .25s; background:#222; }
-  .mcard:hover { transform:scale(1.06); z-index:4; }
-  .mcard img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; }
-  .mcard .ov { position:absolute; inset:0; background:linear-gradient(0deg, rgba(0,0,0,.88) 22%, transparent 65%); display:flex; flex-direction:column; justify-content:flex-end; padding:11px; opacity:0; transition:opacity .25s; }
-  .mcard:hover .ov { opacity:1; }
-  .ov b { font-size:14px; }
-  .ov small { color:#46d369; font-weight:700; margin-top:2px; }
-  .ov .ops { display:flex; gap:7px; margin-top:8px; }
-  .ov .ops button { width:31px; height:31px; border-radius:50%; border:2px solid #888; background:rgba(20,20,20,.8); color:#fff; cursor:pointer; font-size:13px; }
-  .ov .ops button:hover { border-color:#fff; }
-  .ov .ops button.inlist { background:#fff; color:#000; border-color:#fff; }
-  .modal { position:fixed; inset:0; background:rgba(0,0,0,.82); display:none; place-items:center; z-index:80; padding:16px; }
-  .modal.open { display:grid; }
-  .mbox { width:min(760px,100%); background:#181818; border-radius:10px; overflow:hidden; }
-  .mbox .vid { position:relative; }
-  .mbox video, .mbox .ph { width:100%; aspect-ratio:16/9; background:#000; display:block; }
-  .mbox .ph { object-fit:cover; }
-  .mbox .min { padding:20px 26px 26px; }
-  .mbox h3 { font-size:23px; margin-bottom:8px; }
-  .mbox p { color:#d2d2d2; font-size:14.5px; line-height:1.55; }
-  .x { position:absolute; top:12px; right:12px; width:36px; height:36px; border-radius:50%; border:none; background:#181818; color:#fff; font-size:17px; cursor:pointer; z-index:2; }
-  footer.note { text-align:center; color:#757575; font-size:12.5px; padding:16px 16px 34px; }
-  .empty { padding:0 4% 20px; color:#b3b3b3; font-size:15px; }
-  @media (max-width:760px){ nav{display:none;} .mcard{width:180px;} .hright input{width:130px;} }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: #141414; color: #fff; font-family: "Helvetica Neue", Arial, sans-serif; overflow-x: hidden; }
+  button { font: inherit; cursor: pointer; }
+  /* ---------- profile gate ---------- */
+  #gate { position: fixed; inset: 0; background: #141414; z-index: 60; display: flex; flex-direction: column; }
+  #gate .g-logo { color: #e50914; font-size: 34px; font-weight: 900; letter-spacing: 2px; padding: 22px 48px; }
+  .g-mid { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 16px 60px; }
+  .g-mid h1 { font-size: clamp(26px, 4.5vw, 46px); font-weight: 500; margin-bottom: 28px; }
+  .g-row { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; }
+  .g-prof { background: none; border: 0; color: #808080; text-align: center; width: 124px; }
+  .g-ava { width: 124px; height: 124px; border-radius: 6px; display: grid; place-items: center; font-size: 52px; font-weight: 800; color: #fff; margin-bottom: 10px; border: 3px solid transparent; }
+  .g-prof:hover .g-ava, .g-prof:focus .g-ava { border-color: #fff; }
+  .g-prof:hover { color: #fff; }
+  .g-prof span { font-size: 17px; }
+  .g-manage { margin-top: 46px; background: none; border: 1px solid #808080; color: #808080; padding: 9px 26px; font-size: 15px; letter-spacing: 2px; }
+  .g-manage:hover { border-color: #fff; color: #fff; }
+  /* ---------- nav ---------- */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 40; display: flex; align-items: center; gap: 26px; padding: 14px 48px; background: linear-gradient(#000c, transparent); transition: background .3s; }
+  nav.solid { background: #141414; }
+  .logo { color: #e50914; font-size: 27px; font-weight: 900; letter-spacing: 1px; }
+  .links { display: flex; gap: 18px; font-size: 14px; color: #e5e5e5; }
+  .links a { cursor: pointer; } .links a:hover { color: #b3b3b3; }
+  .sp { flex: 1; }
+  .search { display: flex; align-items: center; gap: 6px; }
+  .search input { width: 0; opacity: 0; transition: .3s; background: #000; border: 1px solid #fff; color: #fff; padding: 6px 10px; }
+  .search.open input { width: 200px; opacity: 1; }
+  .icon-btn { background: none; border: 0; color: #fff; font-size: 18px; }
+  .prof-wrap { position: relative; }
+  .avatar { border-radius: 4px; display: grid; place-items: center; font-weight: 800; cursor: pointer; border: 0; color: #fff; font-size: 16px; padding: 7px 9px; }
+  .caret { font-size: 10px; margin-left: 5px; vertical-align: middle; }
+  .dropdown { position: absolute; right: 0; top: 46px; width: 210px; background: #000e; border: 1px solid #333; padding: 10px 0; display: none; }
+  .prof-wrap.open .dropdown { display: block; }
+  .dropdown button { display: flex; align-items: center; gap: 10px; width: 100%; background: none; border: 0; color: #fff; text-align: left; padding: 7px 14px; font-size: 13.5px; }
+  .dropdown button:hover { text-decoration: underline; }
+  .dropdown .mini { width: 26px; height: 26px; border-radius: 3px; display: grid; place-items: center; font-weight: 800; font-size: 12px; color: #fff; flex: none; }
+  .dropdown hr { border: 0; border-top: 1px solid #333; margin: 8px 0; }
+  /* ---------- hero / rows ---------- */
+  .hero { position: relative; height: 78vh; min-height: 440px; background: #000 url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1600&auto=format&fit=crop') center/cover; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(77deg, #000d 20%, transparent 60%), linear-gradient(transparent 55%, #141414); }
+  .hero-in { position: absolute; z-index: 2; left: 48px; bottom: 24%; max-width: 560px; }
+  .hero-in .tag { color: #e50914; font-weight: 800; letter-spacing: 3px; font-size: 14px; }
+  .hero-in h1 { font-size: clamp(34px, 6vw, 62px); line-height: 1.02; margin: 8px 0 14px; }
+  .hero-in p { color: #ddd; font-size: 16.5px; text-shadow: 0 1px 4px #000; }
+  .hero-btns { display: flex; gap: 10px; margin-top: 20px; }
+  .play { background: #fff; color: #000; border: 0; border-radius: 4px; padding: 10px 26px; font-weight: 700; font-size: 17px; }
+  .more { background: #6d6d6eb3; color: #fff; border: 0; border-radius: 4px; padding: 10px 22px; font-weight: 700; font-size: 17px; }
+  main { position: relative; z-index: 3; margin-top: -70px; padding-bottom: 30px; }
+  .row { margin: 0 0 26px 48px; }
+  .row h2 { font-size: 19px; margin-bottom: 10px; }
+  .track { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin; }
+  .card { position: relative; flex: 0 0 250px; border-radius: 5px; overflow: hidden; background: #222; cursor: pointer; transition: transform .25s; }
+  .card:hover { transform: scale(1.06); z-index: 5; }
+  .card video { width: 100%; height: 141px; object-fit: cover; display: block; background: #000; }
+  .card .meta { padding: 9px 10px 11px; }
+  .card .meta b { font-size: 14px; display: block; }
+  .card .meta small { color: #46d369; font-weight: 700; }
+  .card .meta .yr { color: #bcbcbc; font-weight: 400; margin-left: 6px; }
+  .card .acts { display: flex; gap: 6px; margin-top: 8px; }
+  .card .acts button { border: 1.5px solid #888; background: #2a2a2acc; color: #fff; border-radius: 50%; width: 30px; height: 30px; font-size: 13px; }
+  .card .acts button:hover { border-color: #fff; }
+  .card .acts button.in { background: #fff; color: #000; border-color: #fff; }
+  .empty { color: #999; padding: 30px 48px; }
+  dialog { border: 0; padding: 0; background: #181818; color: #fff; width: min(880px, 94vw); border-radius: 8px; }
+  dialog::backdrop { background: #000b; }
+  dialog video { width: 100%; max-height: 62vh; background: #000; display: block; }
+  .dlg-in { padding: 20px 26px 26px; } .dlg-in h3 { font-size: 24px; margin-bottom: 8px; } .dlg-in p { color: #d2d2d2; line-height: 1.55; }
+  .x { position: absolute; top: 10px; right: 12px; background: #181818; color: #fff; border: 0; border-radius: 50%; width: 34px; height: 34px; font-size: 16px; z-index: 2; }
+  footer { color: #737373; font-size: 13px; padding: 26px 48px 34px; line-height: 1.7; }
+  #toast { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%) translateY(80px); background: #fff; color: #000; padding: 11px 20px; border-radius: 4px; font-weight: 600; transition: .3s; z-index: 80; }
+  #toast.on { transform: translateX(-50%); }
+  @media (max-width: 760px) { nav, .hero-in { padding-left: 18px; left: 18px; } .links { display: none; } .row { margin-left: 18px; } .g-logo { padding: 18px; } }
 </style>
 </head>
 <body>
-<header id="hdr">
-  <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">NETFLIX</div>
-  <nav>
-    <a onclick="toast('Home is this page')">Home</a><a onclick="toast('TV Shows is a demo here')">TV Shows</a>
-    <a onclick="toast('Movies is a demo here')">Movies</a><a onclick="scrollToId('mylist-row')">My List</a>
-  </nav>
-  <div class="hright">
-    <input id="q" placeholder="Titles, people, genres" oninput="render()">
-    <span style="cursor:pointer" onclick="toast('No new notifications')">🔔</span>
-    <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
-  </div>
-</header>
 
-<section class="hero">
-  <div class="hero-in">
-    <div class="tag">N SERIES</div>
-    <h1>The Last Kingdom of Sand</h1>
-    <div class="meta"><span class="match">98% Match</span><span>2026</span><span class="age">16+</span><span>2 Seasons</span></div>
-    <p>A banished prince crosses a burning desert to reclaim his father's throne — while an empire of raiders closes in from the sea. The year's biggest adventure saga.</p>
-    <div class="hbtns">
-      <button class="play" onclick="openMovie(0)">▶ Play</button>
-      <button class="info" onclick="openMovie(0)">ℹ More Info</button>
-    </div>
-  </div>
-</section>
-
-<div class="rows" id="rows"></div>
-<div class="empty" id="nores" style="display:none">No titles match your search.</div>
-<footer class="note">Demo UI clone built by Ibrahim Khan for learning &amp; portfolio purposes. Not affiliated with Netflix. Sample trailers: Google sample library.</footer>
-
-<div class="modal" id="modal">
-  <div class="mbox">
-    <div class="vid">
-      <button class="x" onclick="closeMovie()">✕</button>
-      <video id="player" controls playsinline style="display:none"></video>
-      <img class="ph" id="mImg" alt="">
-    </div>
-    <div class="min">
-      <h3 id="mTitle"></h3>
-      <p id="mMeta" style="margin-bottom:9px"></p>
-      <p id="mDesc"></p>
-      <div class="hbtns"><button class="play" id="mPlay">▶ Play Trailer</button><button class="info" id="mList">＋ My List</button></div>
-    </div>
+<!-- ================= WHO'S WATCHING ================= -->
+<div id="gate">
+  <div class="g-logo">NETFLIX<span style="font-size:13px;letter-spacing:0;color:#999;font-weight:400"> clone</span></div>
+  <div class="g-mid">
+    <h1>Who's watching?</h1>
+    <div class="g-row" id="gRow"></div>
+    <button class="g-manage" onclick="toast('Profile management is a demo here')">MANAGE PROFILES</button>
   </div>
 </div>
 
+<!-- ================= APP ================= -->
+<div id="app" hidden>
+  <nav id="nav">
+    <div class="logo">NETFLIX</div>
+    <div class="links"><a>Home</a><a>TV Shows</a><a>Movies</a><a>New &amp; Popular</a><a onclick="jumpList()">My List</a></div>
+    <div class="sp"></div>
+    <div class="search" id="searchBox">
+      <button class="icon-btn" onclick="document.getElementById('searchBox').classList.toggle('open');document.getElementById('q').focus()">🔍</button>
+      <input id="q" placeholder="Titles, people, genres" oninput="render()">
+    </div>
+    <div class="prof-wrap" id="profWrap">
+      <button class="avatar" id="navAvatar" onclick="document.getElementById('profWrap').classList.toggle('open')">I<span class="caret">▼</span></button>
+      <div class="dropdown" id="dropdown"></div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-in">
+      <div class="tag">N &nbsp;SERIES</div>
+      <h1>Big Buck Bunny</h1>
+      <p>A giant rabbit takes hilarious revenge on three bullying rodents in this open-source animated classic. Watch the full short film, free.</p>
+      <div class="hero-btns">
+        <button class="play" onclick="playVid(0)">▶ Play</button>
+        <button class="more" onclick="playVid(0)">ⓘ More Info</button>
+      </div>
+    </div>
+  </section>
+
+  <main id="rows"></main>
+  <footer>Demo UI clone built by Ibrahim Khan for learning &amp; portfolio purposes. Not affiliated with Netflix. Sample videos: Blender Foundation open movies (CC BY 3.0).<br><span id="footProf"></span></footer>
+</div>
+
+<dialog id="dlg">
+  <button class="x" onclick="closeDlg()">✕</button>
+  <video id="dlgVid" controls playsinline></video>
+  <div class="dlg-in"><h3 id="dlgT"></h3><p id="dlgD"></p></div>
+</dialog>
+<div id="toast"></div>
+
 <script>
-const SAMPLE = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/';
-const movies = [
-  { title:'The Last Kingdom of Sand', year:2026, match:98, dur:'2 Seasons', genre:'Adventure · Drama', file:'Sintel.mp4', img:'https://picsum.photos/seed/nfhero/800/450', desc:'A banished prince crosses a burning desert to reclaim his father\'s throne while an empire of raiders closes in from the sea.' },
-  { title:'Big Buck Bunny', year:2008, match:95, dur:'10m', genre:'Animation · Comedy', file:'BigBuckBunny.mp4', img:'https://picsum.photos/seed/nf1/500/280', desc:'A giant rabbit takes hilarious revenge on three bullying rodents in this beloved open-source animated short.' },
-  { title:'Elephants Dream', year:2006, match:89, dur:'11m', genre:'Sci-Fi · Animation', file:'ElephantsDream.mp4', img:'https://picsum.photos/seed/nf2/500/280', desc:'Two travellers explore a strange, infinite machine in the first movie ever made entirely with open-source tools.' },
-  { title:'Tears of Steel', year:2012, match:91, dur:'12m', genre:'Sci-Fi · Action', file:'TearsOfSteel.mp4', img:'https://picsum.photos/seed/nf3/500/280', desc:'Forty years after robots destroyed Amsterdam, a group of scientists stages one last desperate re-enactment.' },
-  { title:'Mountain Light', year:2025, match:93, dur:'1h 42m', genre:'Documentary · Nature', file:'ForBiggerJoyrides.mp4', img:'https://picsum.photos/seed/nf4/500/280', desc:'A breathtaking journey across the Karakoram and Himalaya ranges, filmed over three winters.' },
-  { title:'City of Wheels', year:2025, match:87, dur:'1h 28m', genre:'Action · Thriller', file:'SubaruOutbackOnStreetAndDirt.mp4', img:'https://picsum.photos/seed/nf5/500/280', desc:'A getaway driver takes one final job through the neon streets of a city that never sleeps.' },
-  { title:'The Silent Sea', year:2024, match:90, dur:'2h 5m', genre:'Drama · Mystery', file:'ForBiggerBlazes.mp4', img:'https://picsum.photos/seed/nf6/500/280', desc:'A lighthouse keeper and a shipwrecked stranger unravel a forty-year-old secret on a forgotten island.' },
-  { title:'Laugh Factory', year:2026, match:84, dur:'1 Season', genre:'Comedy · Stand-up', file:'ForBiggerFun.mp4', img:'https://picsum.photos/seed/nf7/500/280', desc:'Pakistan\'s funniest new comics take the stage — one mic, no mercy, all heart.' },
-  { title:'Escape Velocity', year:2026, match:96, dur:'2h 11m', genre:'Sci-Fi · Thriller', file:'ForBiggerEscapes.mp4', img:'https://picsum.photos/seed/nf8/500/280', desc:'The last crew of a dying space station has 90 minutes of oxygen — and one impossible plan.' },
-  { title:'Meltdown', year:2023, match:82, dur:'1h 37m', genre:'Action', file:'ForBiggerMeltdowns.mp4', img:'https://picsum.photos/seed/nf9/500/280', desc:'When a reactor goes critical, one engineer walks into the fire to stop a city-wide disaster.' },
+const PROFILES = [
+  { name: 'Ibrahim', color: '#e50914', kids: false },
+  { name: 'Guest', color: '#1f80e0', kids: false },
+  { name: 'Family', color: '#f5a623', kids: false },
+  { name: 'Kids', color: '#46d369', kids: true },
 ];
-const rowsDef = [
-  { title:'Trending Now', ids:[0,1,2,3,4] },
-  { title:'Popular on Netflix', ids:[5,6,7,8,9] },
-  { title:'Watch Again', ids:[2,4,6,8,1] },
+let current = PROFILES[0];
+
+const V = [
+  { t:'Big Buck Bunny', y:2008, m:'98% Match', d:'A giant gentle rabbit takes revenge on three bullying rodents. Blender Foundation open movie.', src:'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', poster:'https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg' },
+  { t:'Elephants Dream', y:2006, m:'91% Match', d:'Two travellers explore a strange, infinite machine. The first open movie ever made.', src:'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', poster:'https://storage.googleapis.com/gtv-videos-bucket/sample/images/ElephantsDream.jpg' },
+  { t:'Sintel', y:2010, m:'97% Match', d:'A lonely young woman searches for the dragon she once befriended. A Blender Foundation fantasy.', src:'https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4', poster:'https://storage.googleapis.com/gtv-videos-bucket/sample/images/Sintel.jpg' },
+  { t:'Tears of Steel', y:2012, m:'89% Match', d:'Scientists in future Amsterdam stage a desperate experiment to save humanity from robots.', src:'https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4', poster:'https://storage.googleapis.com/gtv-videos-bucket/sample/images/TearsOfSteel.jpg' },
+  { t:'For Bigger Blazes', y:2014, m:'94% Match', d:'A Google Chromecast showcase short — bigger blazes, bigger fun.', src:'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', poster:'https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg' },
+  { t:'For Bigger Escapes', y:2014, m:'92% Match', d:'A Chromecast showcase short about great escapes.', src:'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4', poster:'https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg' },
+  { t:'For Bigger Fun', y:2014, m:'95% Match', d:'A Chromecast showcase short — for bigger fun.', src:'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', poster:'https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerFun.jpg' },
+  { t:'For Bigger Joyrides', y:2014, m:'90% Match', d:'A Chromecast showcase short — joyrides, supersized.', src:'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4', poster:'https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerJoyrides.jpg' },
+  { t:'For Bigger Meltdowns', y:2014, m:'93% Match', d:'A Chromecast showcase short — meltdowns, supersized.', src:'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4', poster:'https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerMeltdowns.jpg' },
+  { t:'Subaru Outback Commercial', y:2015, m:'85% Match', d:'A sample car commercial from the Google sample bucket.', src:'https://storage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4', poster:'https://storage.googleapis.com/gtv-videos-bucket/sample/images/SubaruOutbackOnStreetAndDirt.jpg' },
+  { t:'Volkswagen GTI Commercial', y:2015, m:'84% Match', d:'A sample car commercial from the Google sample bucket.', src:'https://storage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4', poster:'https://storage.googleapis.com/gtv-videos-bucket/sample/images/VolkswagenGTIReview.jpg' },
 ];
 let myList = new Set();
+
+function toast(msg){ const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('on'), 2400); }
+
+/* ---------- profiles ---------- */
+function renderGate(){
+  document.getElementById('gRow').innerHTML = PROFILES.map((p, i) => `
+    <button class="g-prof" onclick="enterApp(${i})">
+      <div class="g-ava" style="background:${p.color}">${p.name[0]}</div><span>${p.name}</span>
+    </button>`).join('');
+}
+function enterApp(i){
+  current = PROFILES[i];
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('app').hidden = false;
+  const av = document.getElementById('navAvatar');
+  av.style.background = current.color;
+  av.innerHTML = current.name[0] + '<span class="caret">▼</span>';
+  document.getElementById('footProf').textContent = 'Watching as: ' + current.name + (current.kids ? ' (Kids profile)' : '');
+  document.getElementById('profWrap').classList.remove('open');
+  renderDropdown(); render();
+  toast('Welcome, ' + current.name);
+}
+function backToGate(){
+  document.getElementById('profWrap').classList.remove('open');
+  document.getElementById('app').hidden = true;
+  document.getElementById('gate').style.display = 'flex';
+  window.scrollTo(0, 0);
+}
+function renderDropdown(){
+  const others = PROFILES.map((p, i) => ({ p, i })).filter(x => x.p.name !== current.name);
+  document.getElementById('dropdown').innerHTML =
+    others.map(({ p, i }) => `<button onclick="enterApp(${i})"><span class="mini" style="background:${p.color}">${p.name[0]}</span>${p.name}</button>`).join('')
+    + '<hr>'
+    + '<button onclick="toast(\'Account page is a demo here\')">Account</button>'
+    + '<button onclick="toast(\'Help Centre is a demo here\')">Help Centre</button>'
+    + '<hr>'
+    + '<button onclick="backToGate()">Sign out of Netflix</button>';
+}
+document.addEventListener('click', e => {
+  const w = document.getElementById('profWrap');
+  if (w && !w.contains(e.target)) w.classList.remove('open');
+});
+
+/* ---------- catalogue ---------- */
 function card(i){
-  const m = movies[i];
-  return `<div class="mcard" onclick="openMovie(${i})"><img src="${m.img}" alt="">
-    <div class="ov"><b>${m.title}</b><small>${m.match}% Match · ${m.dur}</small>
-    <div class="ops">
-      <button title="Play" onclick="event.stopPropagation(); openMovie(${i}, true)">▶</button>
-      <button title="My List" class="${myList.has(i) ? 'inlist' : ''}" onclick="event.stopPropagation(); toggleList(${i})">${myList.has(i) ? '✓' : '＋'}</button>
-      <button title="Like" onclick="event.stopPropagation(); toast('Rated 👍 (demo)')">👍</button>
-    </div></div></div>`;
+  const v = V[i]; const inList = myList.has(i);
+  return `<div class="card" onclick="playVid(${i})">
+    <video src="${v.src}" poster="${v.poster}" muted preload="none"
+      onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0"></video>
+    <div class="meta"><b>${v.t}</b><small>${v.m}</small><span class="yr">${v.y}</span>
+      <div class="acts">
+        <button title="Play" onclick="event.stopPropagation();playVid(${i})">▶</button>
+        <button title="My List" class="${inList ? 'in' : ''}" onclick="event.stopPropagation();toggleList(${i})">${inList ? '✓' : '+'}</button>
+        <button title="More info" onclick="event.stopPropagation();playVid(${i})">⌄</button>
+      </div></div></div>`;
 }
 function render(){
-  const q = document.getElementById('q').value.toLowerCase();
-  const wrap = document.getElementById('rows');
-  if (q) {
-    const ids = movies.map((m, i) => i).filter(i => (movies[i].title + ' ' + movies[i].genre).toLowerCase().includes(q));
-    wrap.innerHTML = ids.length ? `<div class="row"><h2>Results for "${q.replace(/</g,'&lt;')}"</h2><div class="track">${ids.map(card).join('')}</div></div>` : '';
-    document.getElementById('nores').style.display = ids.length ? 'none' : 'block';
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const main = document.getElementById('rows');
+  if (q){
+    const hits = V.map((v, i) => ({ v, i })).filter(x => x.v.t.toLowerCase().includes(q));
+    main.innerHTML = hits.length
+      ? `<section class="row"><h2>Results for "${q}"</h2><div class="track">${hits.map(x => card(x.i)).join('')}</div></section>`
+      : '<div class="empty">No titles matched your search. Try "bunny", "sintel" or "dream".</div>';
     return;
   }
-  document.getElementById('nores').style.display = 'none';
-  let html = rowsDef.map(r => `<div class="row"><h2>${r.title}</h2><div class="track">${r.ids.map(card).join('')}</div></div>`).join('');
-  html += `<div class="row" id="mylist-row"><h2>My List</h2><div class="track">${myList.size ? [...myList].map(card).join('') : '<p style="color:#b3b3b3;font-size:14px">Nothing here yet — hover any title and tap ＋ to add it.</p>'}</div></div>`;
-  wrap.innerHTML = html;
+  const rows = [
+    ['Trending Now', [0, 2, 4, 1, 6, 8]],
+    ['Popular on Netflix', [2, 3, 0, 5, 7, 9]],
+    ['Animation & Family', [0, 1, 2, 4, 6]],
+    ['Shorts & Commercials', [8, 9, 10, 5, 7]],
+  ];
+  if (myList.size) rows.unshift([`My List — ${current.name}`, [...myList]]);
+  main.innerHTML = rows.map(([t, ids]) => `<section class="row"><h2>${t}</h2><div class="track">${ids.map(card).join('')}</div></section>`).join('');
 }
 function toggleList(i){ myList.has(i) ? myList.delete(i) : myList.add(i); render(); toast(myList.has(i) ? 'Added to My List' : 'Removed from My List'); }
-let current = 0;
-function openMovie(i, autoplay){
-  current = i; const m = movies[i];
-  document.getElementById('mTitle').textContent = m.title;
-  document.getElementById('mMeta').innerHTML = `<span class="match">${m.match}% Match</span> · ${m.year} · ${m.dur} · ${m.genre}`;
-  document.getElementById('mDesc').textContent = m.desc;
-  document.getElementById('mImg').src = m.img;
-  const p = document.getElementById('player');
-  p.style.display = 'none'; p.pause(); document.getElementById('mImg').style.display = 'block';
-  document.getElementById('mList').textContent = myList.has(i) ? '✓ In My List' : '＋ My List';
-  document.getElementById('modal').classList.add('open');
-  if (autoplay) playTrailer();
+function jumpList(){ window.scrollTo({ top: 420, behavior: 'smooth' }); if (!myList.size) toast('Your list is empty — tap + on any title'); }
+function playVid(i){
+  const v = V[i]; const d = document.getElementById('dlg');
+  document.getElementById('dlgT').textContent = v.t;
+  document.getElementById('dlgD').textContent = v.d;
+  const vid = document.getElementById('dlgVid'); vid.src = v.src; vid.poster = v.poster;
+  d.showModal(); vid.play().catch(() => {});
 }
-function playTrailer(){
-  const m = movies[current]; const p = document.getElementById('player');
-  p.src = SAMPLE + m.file; p.style.display = 'block';
-  document.getElementById('mImg').style.display = 'none';
-  p.play().catch(() => {});
-}
-document.getElementById('mPlay').addEventListener('click', playTrailer);
-document.getElementById('mList').addEventListener('click', () => { toggleList(current); document.getElementById('mList').textContent = myList.has(current) ? '✓ In My List' : '＋ My List'; });
-function closeMovie(){ const p = document.getElementById('player'); p.pause(); p.removeAttribute('src'); p.load(); document.getElementById('modal').classList.remove('open'); }
-document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') closeMovie(); });
-function scrollToId(id){ const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior:'smooth' }); }
-window.addEventListener('scroll', () => document.getElementById('hdr').classList.toggle('solid', window.scrollY > 40));
-function toast(msg){
-  const t = document.createElement('div');
-  t.textContent = msg;
-  t.style.cssText = 'position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#f5f5f1;color:#141414;padding:11px 18px;border-radius:6px;font-size:14px;z-index:99;box-shadow:0 6px 20px rgba(0,0,0,.5)';
-  document.body.appendChild(t); setTimeout(() => t.remove(), 2400);
-}
-render();
+function closeDlg(){ const vid = document.getElementById('dlgVid'); vid.pause(); vid.removeAttribute('src'); vid.load(); document.getElementById('dlg').close(); }
+addEventListener('scroll', () => document.getElementById('nav').classList.toggle('solid', scrollY > 40));
+renderGate();
 </script>
 </body>
 </html>
